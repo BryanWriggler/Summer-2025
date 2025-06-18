@@ -1,29 +1,53 @@
-#import "@preview/rubber-article:0.3.1": *
+#import "@preview/rubber-article:0.4.1": *
+#import "@preview/ctheorems:1.1.3": *
 
+//basic template setup
 #show: article.with(
-  show-header: true,
-  header-titel: "The Title of the Paper",
+  header-display: true,
   eq-numbering: "(1.1)",
-  eq-chapterwise: true
+  eq-chapterwise: true,
+  margins: 1.0in,
+)
+#show: thmrules
+
+//math environment setup
+#let myQuestion = thmbox(
+  "theorem", "Question",
+  fill: rgb(232,232,248),
+  stroke: rgb(46,46,50)
+)
+#let myThm = thmbox(
+  "theorem", "Theorem",
+  fill: rgb(22, 106, 250, 40),
+  stroke: rgb(5, 27, 62)
+)
+#let myDef = thmbox(
+  "theorem", "Definition",
+  fill: rgb(0,200,220, 20),
+  stroke: rgb(0,43,43)
+)
+#let myProp = thmbox(
+  "theorm", "Proposition",
+  fill: rgb(50,250,50, 20),
+  stroke: rgb(10,50,10) 
+)
+#let myLemma = thmbox(
+  "theorem", "Lemma",
+  fill: rgb(96,250, 153, 30),
+  stroke: rgb(20,50,35)
 )
 
+
+//start document
 #maketitle(
-  title: "The Title of the Paper",
-  authors: ("Authors Name",),
+  title: "Typst Template",
+  authors: ("Zih-Yu Hsieh",),
   date: datetime.today().display("[month repr:long] [day], [year]"),
 )
 
-//setup different math environments
-#let question = thmbox.with(
-  variant: "Question",
-  color: blue
-)
+=//1
+#myQuestion[
+  hello world
+]
+#text(weight: "bold")[Pf:]
 
-// Some example content has been added for you to see how the template looks like.
-= Introduction
-hello please show something
-
-= Appendix 1
-- John Lee, Introduction to Smooth Manifolds
-
-- Michael Spivak, Calculus of Manifolds
