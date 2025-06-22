@@ -1,0 +1,188 @@
+#import "@preview/rubber-article:0.4.1": *
+#import "@preview/ctheorems:1.1.3": *
+
+//basic template setup
+#show: article.with(
+  header-display: true,
+  eq-numbering: "(1.1)",
+  eq-chapterwise: true,
+  margins: 1.0in,
+)
+#show: thmrules
+
+//math environment setup
+#let myQuestion = thmbox(
+  "theorem", "Question",
+  fill: rgb(232,232,248),
+  stroke: rgb(46,46,50)
+)
+#let myThm = thmbox(
+  "theorem", "Theorem",
+  fill: rgb(22, 106, 250, 40),
+  stroke: rgb(5, 27, 62)
+)
+#let myDef = thmbox(
+  "theorem", "Definition",
+  fill: rgb(0,200,220, 20),
+  stroke: rgb(0,43,43)
+)
+#let myProp = thmbox(
+  "theorm", "Proposition",
+  fill: rgb(50,250,50, 20),
+  stroke: rgb(10,50,10) 
+)
+#let myLemma = thmbox(
+  "theorem", "Lemma",
+  fill: rgb(96,250, 153, 30),
+  stroke: rgb(20,50,35)
+)
+
+
+//start document
+#maketitle(
+  title: "Commutative Algebra Chapter 1 Problems",
+  authors: ("Zih-Yu Hsieh",),
+  date: datetime.today().display("[month repr:long] [day], [year]"),
+)
+
+= (Not done)//1.13
+#myQuestion[
+  Exercise 1.13 (unsolved);
+
+  + $sqrt(I)=R <==> I=R$.
+  + If ideal $P$ is prime, then $sqrt(P^n)=P$ for all $n in NN$.
+]<q1.13>
+#text(weight: "bold")[Pf:]
+
+= D//1
+#myQuestion[
+  Let $x$ be a nilpotent element of a ring $R$. Show that $1+x$ is a unit is $R$. Deduce that the sum of a nilpotent element and a unit is a unit.
+]<q1>
+#text(weight: "bold")[Pf:]
+
+Given that $x in R$ is nilpotent, then $x^k=0$ for some $k in NN$ (also, this implies that $y=-x$ is also nilpotent with the same constant).
+
+Then, $1+x = 1-(-x)=1-y$, which consider the following equation:
+$ 1 = 1-0 = 1-y^k = (1-y)(sum_(i=0)^(k-1)y^i) $
+In other words, the above term is the inverse of $1-y = 1+x$, which implies it is invertible.
+
+Now, for any unit $u in R$ and nilpotent $x in R$, since $u+x = u(1+u^(-1)x)$, where $u^(-1)x$ is nilpotent, then $u+x$ is product of two units, hence is a unit.
+
+= (Not done)//2
+#myQuestion[
+  Let $R$ be a ring. Let $f=a_0+a_1x+...+a_n x^n in R[x]$. Prove that:
+  + $f$ is a unit $<==>$ $a_0$ is a unit in $R$ and $a_1,...,a_n$ are nilpotent.
+  + $f$ is nilpotent $<==>$ $a_0,...,a_n$ are nilpotent.
+  + $f$ is a zero-divisor $<==>$ there exists $a != 0$ in $R$ such that $a f=0$.
+  + $f$ is primitive if $gcd(a_0,...,a_n)=1$. Prove that $f,g in R[x]$, then $f g$ is primitive $<==>$ $f$ and $g$ are primitive.
+]<q2>
+#text(weight: "bold")[Pf:]
++ $==>$: 
+
+  $<==:$ Recall that from @q1, a unit and nilpotent element sum to be a unit. Which, if $a in R$ s nilpotent, then for any $k in NN$, we have $a x^k$ also being nilpotent (the power of $a$ becomes $0$ eventually). Hence, inductively, $f=a_0+a_1x+...+a_n x^n$ can be expressed as unit $+$ nilpotent element, hence it is a unit.
+
+  \ 
+
++ $==>:$ If $f$ is nilpotent, then $f^k = (a_0+a_1x+...+a_n x^n)^k=0$ for some $k in NN$. Which, the leading term is $a_n^k (x^n)^k = 0$, hence $a_n^k = 0$, or $a_n$ is nilpotent. Since $a_n x^n$ is also nilpotent, then $f - a_n x^n$ is nilpotent (with $deg(f-a_n x^n) = n-1$). So, since the base case $f = a_0$ is nilpotent implies $a_0$ is nilpotent, by induction we can show that each $a_i$ is nilpotent.
+
+  $<==:$ If each coefficient is nilpotent, it's obvious that each degree's component is nilpotent (based on the proof above), hence $f$ is the sum of nilpotent elements, which is nilpotent.
+
+  \ 
+
++ date
+
+  \ 
+
++ 
+
+= D//3
+#myQuestion[
+  Generalize the results in @q2 to polynomial rings with several variables.
+]
+#text(weight: "bold")[Pf:]
+
+All the setup can be done through induction. For base case $n=1$ it is verified in @q2. Now, if all the statements are true for $n-1$ (where $n in NN$), then since $R[x_1,...,x_n] = K[x_n]$, where $K = R[x_1,...,x_(n-1)]$. Then:
++ $f in K[x_n]$ is a unit $<==>$ constant coefficient $f_0 in K=R[x_1,...,x_(n-1)]$ is unit, and the other coefficients $f_1,...,f_k in K$ are nilpotent. Which, since the constant of $f in R[x_1,...,x_n]$ is provided in $f_0$, while other non-constant terms' coefficients scattered in $f_1,...,f_k$ (and also the non-constant coefficients in $f_1$ as a member of polynomial ring $R[x_1,...,x_(n-1)]$), by induction hypothesis, this happens iff the constant coefficient of $f$ (also the constant coefficient of $f_0$) is unit, while the other terms are nilpotent.
+
+  \ 
+
++ $f in K[x_n]$ is nilpotent $<==>$ all coefficients $f_0,...,f_k in R[x_1,...,x_(n-1)]$ is nilpotent. Again, by induction hypothesis, all the coefficients of $f_0,...,f_k$ in $R$ (also the coefficients of $f$) must be nilpotent.
+
+  \ 
+
++ $f in K[x_n]$ is a zero divisor $<==>$ all its coefficients $f_0,...,f_k in R[x_1,...,x_(n-1)]$ all have some $a_0,...,a_k in R$, such that for each index $i$, $a_i f_i = 0$; which, $f$ multiplied by $a_0...a_k$ would make all coefficients $f_i in R[x_1,...,x_(n-1)]$ go to $0$, hence $a=a_0...a_k$ is the desired element with $a f = 0$.
+  
+  \ 
+
++ $f g in K[x_n]$ is primitive $<==>$ $f$ and $g$ are primitive in $K[x_n]$. Which, their coefficients in $R[x_1,...,x_(n-1)]$ must have $gcd$ being $1$. However, the $gcd$ of all its coefficients in $R$ also divides all their coefficients in $R[x_1,...,x_(n-1)]$, hence the $gcd$ in $R$ is limited to be $1$.
+
+= (Not done)//4
+#myQuestion[
+  In the ring $R[x]$, the Jacobson radical is equal to the nilradical.
+]
+#text(weight: "bold")[Pf:]
+Let $N$ be the nilradical, and $J$ be the Jacobson radical of $R[x]$. 
+Since $J$ is the intersection of all maximal ideals, $N$ is the intersection of all prime ideals, while maximal ideals are prime, then $N subset.eq J$ ($N$ could be the intersection of more ideals, since prime is not necessarily maximal).
+
+\ 
+
+Now, if $f in J$, by definition $1-f$ is a unit. This happens $<==>$ every non-constant coefficients of $1-f$ is nilpotent (the negaitve non-constant coefficients of $f$), while the constant coefficient of $f$, say $a_0$ satisfies $1-a_0$ being a unit (since $1-a_0$ is the constant coefficient of $1-f$). 
+
+Then, since $1-y f$ is also a unit for all $y in R[x]$...
+
+= (Not done)//5
+#myQuestion[
+  Let $R$ be a ring, and consider $R[[x]]$ (formal power series ring). Show that:
+  + $f$ is a unit in $R[[x]] <==>$ $a_0$ is a unit in $R$.
+  + If $f$ is nilpotent, then $a_n$ is nilpotent for all $n >= 0$. Is the converse true?
+  + $f$ belongs to the Jacobson radical of $R[[x]] <==>$ $a_0$ belongs to the Jacobson radical of $R$.
+  + The contraction of a maximal ideal $M$ of $R[[x]]$ is a maximal ideal of $R$, and $M$ i generated by $M^c$ and $x$.
+  + Every prime ideal of $R$ is the contraction of a prime ideal of $R[[x]]$.
+]
+#text(weight: "bold")[Pf:]
++ $==>:$ If $f$ is a unit in $R[[x]]$, there exists $g in R[[x]]$, with $f g = 1$. Then, the constant coefficient $1$ is given by the multiplication ofconstant coefficients of $f$ and $g$, showing that $a_0$ (constant coefficient of $f$) is a unit.
+
+  $<==:$ If $a_0$ is a unit in $R$, our goal is to find $g = sum_(n=0)^(infinity) b_n x^n$, where $f g = 1$.
+
+  First, it's clear that $b_0 = a_0^(-1)$. Now, for $b_1$, since we want the degree 1 coefficient of $f g$ to be $0$, and the degree $1$ coefficient is given b $a_0 b_1 + a_1 b_0$, then set $b_1 = -a_0^(-1) a_1 b_0$, we get the desired result.
+
+  Inductively, when $b_0,...,b_(n-1)$ all have fixed expression using the collections of $a_n$, since degree $n$ coefficient of $f g$ is given by $sum_(i=0)^(n)a_i b_(n-i)$, then if we want the expression to be $0$, we can set $b_n$ as follow:
+  $ a_0 b_n + sum_(i=1)^(n)a_i b_(n-i) = 0, quad b_n = -a_0^(-1)sum_(i=1)^n a_i b_(n-i) $
+  So, there exists an expression of $g$, where $f g = 1$, showing that $f$ is a unit.
+
+  \ 
+
+= (Not done)//6
+#myQuestion[
+  A ring $R$ is such that every ideal not contained in the nilradical contains a nonzero idempotent (an elemenet $e$ with $e^2=e != 0$). Prove that the nilradical and the Jacobson radical of $R$ are equal.
+]
+#text(weight: "bold")[Pf:]
+
+Let $N, J$ represent the niradical and Jacobson radical respectively. It is clear that $N subset.eq J$ by definition. 
+
+To prove that $J subset.eq N$ by contradiction, suppose the contrary that $J subset.eq.not N$, by assumption there exists $e in J$ with $e^2=e$. Now, consider the ideal $(e)$:
+
+= (Not done)//7
+#myQuestion[
+  Let $R$ be a ring in which every element satisfies $x^n=x$ for some $n in NN$. Show that every prime ideal in $R$ is maximal.
+]<q7>
+#text(weight: "bold")[Pf:]
+
+Let $P subset R$ be a prime ideal, the goal is to verify that $R\/P$ is a field. For all $x in R \\ P$, since $x^n = x$ for some $n in NN$, then $overline((x^(n-1))) overline(x)$...
+
+= D//8
+#myQuestion[
+  Let $R != 0$ be a ring. Show that the set of prime ideals of $R$ has minimal elements with respect to inclusion.
+]<q8>
+#text(weight: "bold")[Pf:]
+
+We'll prove by Zorn's Lemma, where let $A$ be the set of all prime ideals, and the Partial Order given by  $P_1 succ.eq P_2$ iff $P_1 subset.eq P_2$. 
+
+Let $C subset.eq A$ be a chain, and let $P_C = sect.big_(P in C) P$. It is clear that $P_C$ is an ideal, and if $P_C in A$, then $P_C$ is an upper bound of $C$. So, it suffices to show that $P_C in A$ (or $P_C$ is a prime ideal).
+
+Suppose $x,y in R$ satisfies $x y in P_C$, then since for any prime ideal $P in C$, $x y in P$, then either $x in P$ or $y in P$. If all $P in C$ contains $x$ (or $y$), then we're done. Now, if some contains $x$ and some contains $y$, consider the subchain $C_x := {P in C | x in P}$: 
+- If $C_x$ is comaximal in $C$ (in a set theoretic), then for every $P in C$, there exists $P_x in C_x$, where $P_x succ.eq P$, so $P_x subset.eq P$, hence $x in P$, showing that $x in P_C$.
+- Else if $C_x$ is not comaximal in $C$, then there exists $P in C$, where all $P_x in C_x$ has $P succ.neq P_x$ (which $P in.not C_x$). Hence, $y in P$, showing that all $P_x in C_x$ has $P subset.neq P_x$, or $y in P_x$. So, given $P in C$, regardless of its containment in $C_x$, we have $y in P$, showing that $y in P_C$.
+
+The above statements show that $P_C$ is prime, hence $P_C in A$, every chain has an upper bound.
+Then, by Zorn's Lemma, this POset has a maximal element, which is the minimal elements with respect to inclusion.
