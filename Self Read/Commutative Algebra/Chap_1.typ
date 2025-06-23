@@ -74,12 +74,24 @@ Now, for any unit $u in R$ and nilpotent $x in R$, since $u+x = u(1+u^(-1)x)$, w
   + $f$ is a unit $<==>$ $a_0$ is a unit in $R$ and $a_1,...,a_n$ are nilpotent.
   + $f$ is nilpotent $<==>$ $a_0,...,a_n$ are nilpotent.
   + $f$ is a zero-divisor $<==>$ there exists $a != 0$ in $R$ such that $a f=0$.
-  + $f$ is primitive if $gcd(a_0,...,a_n)=1$. Prove that $f,g in R[x]$, then $f g$ is primitive $<==>$ $f$ and $g$ are primitive.
+  + $f$ is primitive if $(a_0,...,a_n)=R$ (as an ideal). Prove that $f,g in R[x]$, then $f g$ is primitive $<==>$ $f$ and $g$ are primitive.
 ]<q2>
 #text(weight: "bold")[Pf:]
-+ $==>$: 
++ $==>$: Given $f=a_0+a_1x+...+a_n x^n$ is a unit, there exists $g=b_0+b_1x+...+b_m x^m$, where $f g = 1$. Which, the constant coefficient is given by $a_0 b_0 = 1$, so $a_0, b_0$ are both units.
 
-  $<==:$ Recall that from @q1, a unit and nilpotent element sum to be a unit. Which, if $a in R$ s nilpotent, then for any $k in NN$, we have $a x^k$ also being nilpotent (the power of $a$ becomes $0$ eventually). Hence, inductively, $f=a_0+a_1x+...+a_n x^n$ can be expressed as unit $+$ nilpotent element, hence it is a unit.
+  Now, we'll use induction to prove that $a_n^(r+1)b_(m-r)$ is nilpotent, given $0 <= r <= m$: First consider the base case $r=0$, the coefficient for degree $(n+m-r) = n+m$ is given by $a_n b_m = 0$. Then, for $r=1$, the coefficient for $n+m-r$ is given by $a_(n-1)b_m + a_n b_(m-1)= 0$, multiply by $a_n$ on both sides, we get:
+  $ a_(n-1)b_m a_n + a_n^2 b_(m-1) = 0 ==> a_n^2 b_(m-1) =0 $
+  Now, suppose for given $0 <= r < m$, the equation is true, then for $r+1$, we get the coefficient of degree $(n+m-(r+1))$ be as follow:
+  $ sum_(max{0,n-(r+1)}<=i <= n)a_i b_(n+m-(r+1)-i) = 0 $
+  Which, multiply by $a_n^(r+1)$, since $n-(r+1)<= i<= n$, then $n<= r+1+i<= n+r+1$, hence the coefficient $b_(m-(r+1+i-n))$ has $0 <= r+1+i-n <= r+1$, which for ever index $i$ with this expression being at most $r$, by induction hypothesis, $a_n^(r+1)b_(m-(r+1+i-n)) = 0$, hence every term (besides when the expression is $r+1$) gets annihilated.
+  So, eventually we get:
+  $ r+1+i-n = r+1 ==> i=n => a_n dot a_n^(r+1) b_(n+m-(r+1-n)) = 0 ==> a_n^(r+2) b_(m-(r+1)) = 0 $
+  This completes the induction.
+  
+  Hence, for $r=m$, we get $a_n^(m+1) b_0 = 0$, because $b_0$ is a unit, then $a_n$ is in fact nilpotent, which $-a_n x^n$ is also nilpotent.
+
+  By @q1, $f- a_n x^n$ is still a unit, and with degree $n-1$. Then, the other non-constnat coefficients can be proven to be nilpotent by induction.
+
 
   \ 
 
