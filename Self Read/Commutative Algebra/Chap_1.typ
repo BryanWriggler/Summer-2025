@@ -45,7 +45,7 @@
   date: datetime.today().display("[month repr:long] [day], [year]"),
 )
 
-= (Not done)//1.13
+= D//1.13
 #myQuestion[
   Exercise 1.13 (unsolved);
 
@@ -53,6 +53,13 @@
   + If ideal $P$ is prime, then $sqrt(P^n)=P$ for all $n in NN$.
 ]<q1.13>
 #text(weight: "bold")[Pf:]
+
++ $==>:$ If $sqrt(I) = R$, then since $R=sqrt(I) = phi^(-1)("Nil"(R\/I))$ (where $phi$ is the projection onto $R\/I$), then we have $"Nil"(R\/I) = R\/I$. However, if ring $S != (0)$, then $"Nil"(S) subset.neq S$, so since $"Nil"(R\/I) = R\/I$, we must have $R\/I = (0)$, showing that $I=R$.
+  $<==:$ If $I=R$, it follows that $sqrt(I)=R$.
+
+  \ 
+
++ Given $P$ is a prime ideal, then for any $n in NN$, any $x in sqrt(P^n)$ satisfies $x^k in P^n subset.eq P$, hence by induction one can prove that $x in P$. So, $sqrt(P^n)subset.eq P$. Also, for all $x in P$, $x^n in P^n$, hence $P subset.eq sqrt(P^n)$, eventually proving that $sqrt(P^n)=P$.
 
 = D//1
 #myQuestion[
@@ -68,7 +75,7 @@ In other words, the above term is the inverse of $1-y = 1+x$, which implies it i
 
 Now, for any unit $u in R$ and nilpotent $x in R$, since $u+x = u(1+u^(-1)x)$, where $u^(-1)x$ is nilpotent, then $u+x$ is product of two units, hence is a unit.
 
-= (Not done)//2
+= ND//2
 #myQuestion[
   Let $R$ be a ring. Let $f=a_0+a_1x+...+a_n x^n in R[x]$. Prove that:
   + $f$ is a unit $<==>$ $a_0$ is a unit in $R$ and $a_1,...,a_n$ are nilpotent.
@@ -128,7 +135,7 @@ All the setup can be done through induction. For base case $n=1$ it is verified 
 
 + $f g in K[x_n]$ is primitive $<==>$ $f$ and $g$ are primitive in $K[x_n]$. Which, their coefficients in $R[x_1,...,x_(n-1)]$ must have $gcd$ being $1$. However, the $gcd$ of all its coefficients in $R$ also divides all their coefficients in $R[x_1,...,x_(n-1)]$, hence the $gcd$ in $R$ is limited to be $1$.
 
-= (Not done)//4
+= D//4
 #myQuestion[
   In the ring $R[x]$, the Jacobson radical is equal to the nilradical.
 ]
@@ -138,11 +145,15 @@ Since $J$ is the intersection of all maximal ideals, $N$ is the intersection of 
 
 \ 
 
-Now, if $f in J$, by definition $1-f$ is a unit. This happens $<==>$ every non-constant coefficients of $1-f$ is nilpotent (the negaitve non-constant coefficients of $f$), while the constant coefficient of $f$, say $a_0$ satisfies $1-a_0$ being a unit (since $1-a_0$ is the constant coefficient of $1-f$). 
+Now, if $f in J$, by definition $1-f$ is a unit. This happens $<==>$ every non-constant coefficients of $1-f$ is nilpotent (they are given by $-a_1,...,-a_n$, the negaitve non-constant coefficients of $f$), while the constant coefficient of $f$, say $a_0$ satisfies $1-a_0$ being a unit (since $1-a_0$ is the constant coefficient of $1-f$). So, all the non-constant coefficients of $f$ are nilpotent.
 
-Then, since $1-y f$ is also a unit for all $y in R[x]$...
+Then, since $1-y f$ is also a unit for all $y in R[x]$, consider $y=1+x$: The polynomial $(1+x)f$ is given as follow:
+$ (1+x)f = a_0 + sum_(i=1)^(n)(a_(i-1)+a_i)x^i + a_n x^(n+1) $
+Then, $1-(1+x)f$ has $-(a_0+a_1)$ as the degree 1 coefficient. Since, $1-(1+x)f$ is a unit, this enforces $-(a_0+a_1)$ to be nilpotent; and since $a_1$ is nilpotent, $a_0$ must also be nilpotent (since $"Nil"(R)$ is an ideal, which forms a group under addition).
 
-= (Not done)//5
+So, because every coefficients are nilpotent, $f$ is nilpotent, hence $f in N$, showing the other inclusion $J subset.eq N$. 
+
+= ND//5
 #myQuestion[
   Let $R$ be a ring, and consider $R[[x]]$ (formal power series ring). Show that:
   + $f$ is a unit in $R[[x]] <==>$ $a_0$ is a unit in $R$.
@@ -164,7 +175,8 @@ Then, since $1-y f$ is also a unit for all $y in R[x]$...
 
   \ 
 
-= (Not done)//6
++ 
+= ND//6
 #myQuestion[
   A ring $R$ is such that every ideal not contained in the nilradical contains a nonzero idempotent (an elemenet $e$ with $e^2=e != 0$). Prove that the nilradical and the Jacobson radical of $R$ are equal.
 ]
@@ -174,13 +186,18 @@ Let $N, J$ represent the niradical and Jacobson radical respectively. It is clea
 
 To prove that $J subset.eq N$ by contradiction, suppose the contrary that $J subset.eq.not N$, by assumption there exists $e in J$ with $e^2=e$. Now, consider the ideal $(e)$:
 
-= (Not done)//7
+= ND//7
 #myQuestion[
-  Let $R$ be a ring in which every element satisfies $x^n=x$ for some $n in NN$. Show that every prime ideal in $R$ is maximal.
+  Let $R$ be a ring in which every element satisfies $x^n=x$ for some $n > 1$. Show that every prime ideal in $R$ is maximal.
 ]<q7>
 #text(weight: "bold")[Pf:]
 
-Let $P subset R$ be a prime ideal, the goal is to verify that $R\/P$ is a field. For all $x in R \\ P$, since $x^n = x$ for some $n in NN$, then $overline((x^(n-1))) overline(x)$...
+First, $"Nil"(R) = (0)$: If $x in "Nil"(R)$, then since there exist $n, k in NN$, with $x^n = x$ and $x^k = 0$ (where we demand $k$ to be the smallest, and $n>1$ by assumption), there are two cases to consider:
++ If $k <= n$, then $x^n = 0$, showing that $x=0$.
++ if $k>n$, then $k = l n + r$ for some $l,r in NN$, and $0 <= r < n$. Which, the following is satisfiesd:
+  $ x^k = x^(l n+r) = (x^n)^l dot x^r = x^(l+r) = 0 $
+  Notice that $l+r < l n + r = k$ by assumption that $n>1$, so we reach a contradiction (since there exists $l+r<k$, with $x^(l+r)=0$).
+Hence, the second case doesn't exist, where the first case shows that $"Nil"(R)=(0)$.
 
 = D//8
 #myQuestion[
@@ -198,3 +215,70 @@ Suppose $x,y in R$ satisfies $x y in P_C$, then since for any prime ideal $P in 
 
 The above statements show that $P_C$ is prime, hence $P_C in A$, every chain has an upper bound.
 Then, by Zorn's Lemma, this POset has a maximal element, which is the minimal elements with respect to inclusion.
+
+= D//9
+#myQuestion[
+  Let $I subset.neq R$ be an ideal. Show that $I = sqrt(I) <==>$ $I$ is an intersection of prime ideals.
+]
+
+$==>:$ If $sqrt(I)=I$, since the projection map $phi:R arrow.r.twohead R\/I$ satisfies the following: 
+$ I = sqrt(I) = phi^(-1)("Nil"(R\/I)) = sect.big_(overline(P)subset R\/I "prime")phi^(-1)(overline(P)) = sect.big_(I subset.eq P subset R "prime") P $
+Which is an intersection of prime ideals.
+
+\ 
+
+$<==:$ Suppose ${P_i}_(i in Alpha)$ is a collection of prime ideals, and define $I := sect.big_(i in Alpha)P_i$. Then, for all $x in sqrt(I)$, since there exists $n in NN$, with $x^n in I$, because $x^n in P_i$ for all index $i in Alpha$, then $x in P_i$, hence $x in I$, showing that $sqrt(I) subset.eq I$.
+Since the other inclusion is trivially true, $sqrt(I)=I$.
+
+= D//10
+#myQuestion[
+  Let $R$ be a ring, $"Nil"(R)$ be its nilradical. Show that the following are equivalent:
+  + $R$ has exactly one prime ideal.
+  + Every element of $R$ is either a unit or nilpotent.
+  + $R\/"Nil"(R)$ is a field.
+]
+
+$1 ==> 2:$ Suppose $R$ has precisely one prime ideal, then since $"Nil"(R)$ is the intersection of all prime ideals, $"Nil"(R) = P$ (the prime ideal). This also enforces $"Nil"(R)$ to be maximal (since every commutative ring has a maximal ideal, and all maximal ideal is prime). 
+
+Now, suppose $u in R \\ "Nil"(R)$ (i.e. not nilpotent), then since $"Nil"(R) subset.neq "Nil"(R) + (u)$, then $"Nil"(R)+(u) = R$, showing that $1 = k u + x$ for some $k in R$ and $x in "Nil"(R)$. Notice that $-x$ is nilpotent, which $1-x$ is a unit, hence $1-x = k u$, showing that $k u$ is a unit, which $u$ is a unit.
+
+Hence, every element of $R$ is either a unit or nilpotent.
+
+\ 
+
+$2 ==> 3:$ Suppose every element is either a unit or nilpotent, then for all $overline(u) in R\/"Nil"(R)$ (with $overline(u) := u mod "Nil"(R)$) that is nonzero, since $u$ is a unit, then inherantly, $overline(u)$ is also a unit in $R\/"Nil"(R)$, showing that it is a field.
+
+\ 
+
+$3==> 1:$ Suppose $R\/"Nil"(R)$ is a field, then $"Nil"(R)$ is maximal. Now, suppose $P$ is a prime ideal, then because $"Nil"(R) subset.eq P subset.neq R$, then this enforces $"Nil"(R) = P$. Hence, there is only one prime ideal, namely $"Nil"(R)$.
+
+= ND//11
+#myQuestion[
+  A ring $R$ is a #emph("Boolean Ring") if $x^2=x$ for all $x in R$. In a boolean ring $R$, show that:
+  + $2x := x+x = 0$ for all $x in R$.
+  + Every prime ideal $P$ is maximal, and $R\/P$ is a field with two elements.
+  + Every finitely generated ideal in $R$ is principal.
+]
+#text(weight: "bold")[Pf:]
+
++ For all $x in R$, since $x^2 = x$, we have $x+1=(x+1)^2 = x^2 + 2x + 1 = x+2x+1$, hence after cancellation, $2x = 0$.
+
++ Based on @q7, since all element $x in R$ has some $n >1$, with $x^n = x$ (in this case, $n=2$), then all prime ideal $P$ is maximal, showing that $R\/ P$ is a field.
+
+  Now, suppose $x in R$ satisfies $overline(x) in R\/ P$ is nonzero, then since $(overline(x))^2 = overline(x)$, then it is a root of the polynomial $y^2 - y in R\/P [y]$. Since this is a UFD, then there exists only two solution, namely $0$ and $1$. because $overline(x) != 0$ by assumption, then $overline(x) = 1$. Hence, $R\/ P tilde.equiv ZZ_2$.
+
++ Suppose $I = (a_1,...,a_n)$ is a finitely generated ideal, we claim that everything is generated by $a_1+...+a_n$.
+
+= ND//12
+#myQuestion[
+  A local ring contains no idempotent other than $0,1$.
+]
+#text(weight: "bold")[Pf:]
+
+Recall that a local ring $R$ has exactly one maximal ideal, say $M$. Now, suppose $e in R$ is idempotent, then in the quotient ring $R\/M$ (which is a field), since it is also a root of the polynomial $x^2-x in R\/M[x]$, then $e equiv 0 mod M$, or $e equiv 1 mod M$.
+
+For the first case, we have $(1+e)^2 = 1+2e + e^2 = 1+3e$
+
+For the second case, we have $e = 1+m$ for some $m in M$, hence $m = e-1$. Which, $m^2 = e^2 - 2e + 1 = -e+1 = -(e-1) = -m$, showing that $(m^2)^2 = m^2$
+
+
