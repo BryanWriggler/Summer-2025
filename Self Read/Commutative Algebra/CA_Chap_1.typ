@@ -364,7 +364,7 @@ For $RR[x]$, similar concept applies from $CC[x]$, but here there are irreducibl
 
 For $ZZ[x]$, it is hard, because it's not a PID. ... NOT done
 
-= ND//17
+= D//17
 #myQuestion[
   For each $f in R$, let $X_f$ denote the complement of $V(f)$ in $X = "Spec"(R)$. The sets $X_f$ are open under Zariski Topology. Show that they form a basis of open sets for the Zariski topology, and that:
   + $X_f sect X_g = X_(f g)$.
@@ -416,4 +416,65 @@ $ X_f sect X_g = X \\ (V(f) union V(g)) = X\\(V((f)) union V((g))) = X\\(V((f)(g
 
 7.  $<==:$ Any finite union of sets $X_f$ is open and compact (union of open sets is open, and finite union of compact subsets is compact).
 
-  $==>:$ Suppose $U subset.eq X$ is open and quasi-compact, then its complement $X \\ U = V(E)$ for some subset $E subset.eq R$. Then, if we let $F = R\\E$, we have $V(E union.sq F) = V(E) sect V(F) = V(R) = emptyset$
+  $==>:$ Suppose $U subset.eq X$ is open and quasi-compact, then its complement $X \\ U = V(E)$ for some subset $E subset.eq R$. Then, consider the following equality:
+  $ X\\U = V(E) = sect.big_(f in E)V(f) = X\\(union.big_(f in E)X_f) $
+  (since $X_f$ is the complement of $V(f)$).
+
+  As a result, we must have $U = union.big_(f in E)X_f$, hence the collection associated to $E$ forms an open cover of $U$, which by compactness, there exists $f_1,...,f_n in E$, such that $U = union.big_(i=1)^n X_(f_i)$, so it is intersection of finite $X_f$'s.
+
+= D//18
+#myQuestion[
+  Given $X="Spec"(R)$, for any prime ideal $x in X$, one would denote $P_x := x$ (even though $x$ is essentially $P_x$, just for notational purpose). Show that:
+  + The set ${x}$ is closed ($x$ is called a "closed point") in $"Spec"(A) <==> $ $P_x$ is maximal.
+  + $overline({x}) = V(P_x)$.
+  + $y in overline({x}) <==> P_x subset.eq P_y$.
+  + $X$ is a $T_0$-space (i.e. if $x,y$ are distinct points of $X$, then either there is a neighborhood of $x$ that doesn't cotain $y$, or a neighborhood of $y$ which doesn't contain $x$).
+]
+#text(weight: "bold")[Pf:]
+1. $<==:$ Suppose $P_x$ is maximal, then since $V(P_x) = {x}$ (since $x$ is a prime ideal containing itself, and any other prime ideal containing it must be itself due to maximality), then ${x}$ is closed.
+  $==>:$ Suppose the set ${x}$ is closed, then there exists subset $E subset R$, such that $V(E) = V((E)) = V(sqrt((E))) = {x}$. 
+
+  Which, notice that $sqrt((E)) = x = P_x$ in this case (properties of radicals), hence $V(P_x) = {x}$, showing that the only prime ideal containing itself is itself. This shows that $P_x$ is maximal (if not, then there should be some maximal ideal containing it, and the set $V(P_x)$ would contain more than one element).
+
+  Hence, ${x}$ is closed $<==> P_x$ is maximal.
+
+\ 
+
+2. For any $x in X$,since $P_x = x$, we have $x in V(P_x)$, then by definition, since $overline({x})$ is the smallest closed set containing $x$ while $V(P_x)$ is closed, $overline({x}) subset.eq V(P_x)$.
+
+  Now, let ${C_i := V(E_i) subset.eq X | i in I}$ denotes the collection of all closed subsets of $X$ containing $x$ (where each $E_i subset.eq R$), hence we have $overline({x}) = sect.big_(i in I)V(E_i) = V(union.big_(i in I)E_i)$.
+
+  Notice that by definition, $V(E_i)$ containing $x$ implies that $E_i subset.eq x = P_x$, hence the union $union.big_(i in I)E_i subset.eq P_x$. Which, as a result, $V(P_x) subset.eq V(union.big_(i in I)E_i) = overline({x})$.
+
+  So, this finishes the proof that $V(P_x) = overline({x})$.
+
+\ 
+
+3. Based on 2., we can conclude that $y in overline({x}) = V(P_x) <==> P_x subset.eq y = P_y$.
+
+\ 
+
+4. Given $x,y$ as two distinct points of $X$, there are two cases to consider:
+
+  First (WLOG), if $x subset.eq y$ (which, since $x != y$, we must have $x subset.neq y$), then as a result, we have $x in.not V(y)$ (since $x$ doesn't contain $y$ by definition). Which, take open subset $U = X\\ V(y)$, we have $x in U$; on the other hand, because $y$ contains itself, then $y in V(y)$, hence $y in.not U$, so $U$ satisfies all the desired result.
+
+  Then, if $x subset.eq.not y$, then there exist point $p in x\\y$, so if consider the set $V(p)$, we have $x in V(p)$, yet $y in.not V(p)$. Hence, take the open subset $U = X\\V(p)$, we have $y in U$, yet $x in.not U$.  
+
+\ 
+
+= ND//19
+#myQuestion[
+  A topological space $X$ is said to be #emph("irreducible") if $X != emptyset$ and if every pair of nonempty open sets in $X$ intersets, or equivalently if every nonempty open set is dense in $X$. Show that $X="Spec"(R)$ is irreducible iff the nilradical of $R$ is a prime ideal.
+]
+#text(weight: "bold")[Pf:]
+
+$==>:$ First, suppose that $X="Spec"(R)$ is irreducible, then for any two subsets $E_1,E_2 subset.eq R$, if $V(E_1) != V(E_2)$, then their complements (both open) have nontrivial intersection, hence there exists $x in X$, such that $x in.not V(E_1)$ and $x in.not V(E_2)$...
+
+= ND//20
+#myQuestion[
+  Let $X$ be a topological space.
+  + If $Y$ is an irreducible subspace of $X$, then the closure $overline(Y)$ of $Y$ in $X$ is irreducible.
+  + Every irreducible subspace of $X$ is contaiend in a maximal irreducible subspace.
+  + The maximal irreducible subspaces of $X$ are closed and cover $X$. They're called the #emph("irreducible components") of $X$. What are the irreducible components of a Hausdorff space?
+  + If $R$ is a ring and $X="Spec"(R)$, then the irreducible components of $X$ are the closed sets $V(P)$, where $P$ is a minimal prime ideal of $R$.
+]
