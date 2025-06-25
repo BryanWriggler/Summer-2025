@@ -281,4 +281,27 @@ For the first case, we have $(1+e)^2 = 1+2e + e^2 = 1+3e$
 
 For the second case, we have $e = 1+m$ for some $m in M$, hence $m = e-1$. Which, $m^2 = e^2 - 2e + 1 = -e+1 = -(e-1) = -m$, showing that $(m^2)^2 = m^2$
 
+= ND//13
+#myQuestion[
+  About construction of algebraic closure, read it
+]
 
+= ND//14
+#myQuestion[
+  In a ring $R$, let $Sigma$ be the set of all ideals in which every element is a zero-divisor. Show that the set $Sigma$ has maximal elements, and that every maximal element of $Sigma$ is a prime ideal. Hence the set of zero-divisors in $R$ is a union of prime ideals.
+]
+#text(weight: "bold")[Pf:]
+
+Again, we'll proceed with Zorn's Lemma with the partial order being inclusion. Given a chain $C subset.eq Sigma$, consider the following construction of "ideal":
+$ I_C = union.big_(I in C)I $
+If the above is an ideal containing only zero divisors, it's clear that it is an upper bound of $C$. It only contains zero divisors, because all $I in C$ only contains zero divisors,, and it's an ideal, because the union of a chain of ideals is an ideal.
+
+Hence, $I_C in Sigma$, showing that every chain in $Sigma$ has an upper bound. Then, by Zorn's Lemma, $Sigma$ has a maximal element.
+
+\ 
+
+Now, given that $P in Sigma$ is a maximal element, why is it prime? For all $x,y in R$, suppose $x y in P$, i.e. $x y$ is a zero divisor. Which as a result, either $x$ or $y$ must be a zero divisor.
+
+Which, WLOG, suppose $x$ is a zero-divisor, then $x in P$: If $x in.not P$, then notice that the ideal $(x)+P$ also contains only zero divisors (for all $k in R$ and $p in P$, the element $k x+p$ is a zero-divisor, since there exists $a, b in R$, with $a x = b p = 0$, then multiply by $a b$ provides $0$), so $(x)+P in Sigma$; and $P subset.neq (x)+P$, but this violates the assumption that $P$ is a maximal element in $Sigma$.
+
+Hence, the assumption is false, $x in P$. This demonstrates that $P$ is prime.
