@@ -40,12 +40,12 @@
 
 //start document
 #maketitle(
-  title: "Typst Template",
+  title: "Representation Theory Chap 1 Questions",
   authors: ("Zih-Yu Hsieh",),
   date: datetime.today().display("[month repr:long] [day], [year]"),
 )
 
-= ND//1
+= D//1
 #myQuestion[
   Let $L = RR^3$. Define $[x,y]=x times y$ the cross product, and verify that $L$ is a Lie algebra. Write down the structure constnats relative to the usual basis of $RR^3$.
 ]
@@ -53,13 +53,20 @@
 
 Cross product is both bilinear and antisymmetric, hence the first two axioms are satisfied. It remains to check the Jacobi's Identity.
 
-Given any $x,y,z in RR^3$, for simplicity convert it to standard basis notation: $x = x_1e_1+x_2e_2+x_3e_3$, and the same for $y,z$. Then, we get the following collection of equations:
-$ x times (y times z) =  $
+Given any $x,y,z in RR^3$, they can be written as linear combinations of $e_1,e_2,e_3$ (the standard basis), hence it suffices to check the Jacobi's identity for any $e_i,e_j,e_k$ (where $i,j,k  in {1,2,3}$).
 
-(do the calculation later)
+If $i,j,k$ are all distinct, then since the cross product of any two produces the third one, then, $[e_i,[e_j,e_k]]= plus.minus [e_i,e_i] = 0$, which satisfies the Jacobi's identity.
+
+If $i,j,k$ are all the same, then it is trivial (since one entry would provide $0$, so Jacobi's identity is trivially truw).
+
+If given $3$-tuple $i,i,j$, we get:
+$ [e_i,[e_i,e_j]] + [e_i,[e_j,e_i]] + [e_j,[e_i,e_i]]=[e_i,[e_i,e_j]]-[e_i,[e_i,e_j]] = 0 $
+Hence, the basis satisfies Jacobi's identity, which provides that in general cross product satisfies it.
+
+\ 
 
 Now, given standard basis $e_1,e_2,e_3$, the structure constant is given by:
-$ a_(1 2)^3 = 1, quad a_(2 3)^1 = 1,quad a_(3 1)^2=1 $
+$ a_(1 2)^3 = 1=-a_(2 1)^3, quad a_(2 3)^1 = 1=-a_(3 2)^1,quad a_(3 1)^2=1 = -a_(1 3)^2 $
 The reversion rule applies, and if $a_(i j)^k$ has $k = i$ or $k=j$ or $i=j$, the constant is $0$.
 
 = D //2
@@ -107,10 +114,22 @@ $ "ad"y (y) = 0 $
 Which, it has the following matrix:
 $ cal("M")("ad"y)=mat(0,0,0;-1,0,0;0,2,0) $
 
-= ND//4
+= D//4
 #myQuestion[
   Find a linear Lie algebra isomorphic to the nonabelian two dimensional algebra constructed in (1,4) (i.e. $[x,y]=x$, given the basis $x,y in V$).
 ]
+
+Given $V$ a 2-dimensional lie algebra, consider its adjoint representation:  It is a linear lie algebra, and for any $v = a x+b y in V$, for any $z in V$, the adjoint $"ad"v(z) = [v,z] = a[x,z]+b[y,z] = a("ad"x)(z)+b("ad"y)(z)$. Hence, $"ad"x, "ad"y$ span the adjoint representation.
+
+\ 
+
+First, to verify it's two-dimension, suppose some linear combination $a("ad"x)+b("ad"y) = 0$, then for all $z in V$, we have $a[x,z]+b[y,z]=0$, which plug in $z=x$ and $z=y$, we would get $b=0$ and $a=0$ respectively, so the two are linearly independent, which further shows that they're basis of the adjoint represention (which has 2-dimension).
+
+\ 
+
+Now, consider the commutator of $"ad"x$ and $"ad"y$: For all $z in V$, the commutator acts on it as such:
+$ ("ad"x compose "ad"y-"ad"y compose "ad"x)(z)= [x,[y,z]] - [y,[x,z]] = [x,[y,z]]+[y,[z,x]]\ = -[z,[x,y]] = -[z,x] = [x,z] = "ad"x(z) $
+Hence, the commutator provides $"ad"x$, showing that the map $x arrow.r.bar "ad"x$, $y arrow.r.bar "ad"y$ actually defines an isomorphism between lie algebra.
 
 = D//5
 #myQuestion[
@@ -118,7 +137,7 @@ $ cal("M")("ad"y)=mat(0,0,0;-1,0,0;0,2,0) $
 ]
 #text(weight: "bold")[Pf:]
 
-$frak("T")(n,F)$ as a set of all upper triangular matrices, is a lie algebra (since multiplication of two upper triangular is upper triangular), and it has dimension $n(n+1)/2$ (all upper triangular entries).
+$frak("t")(n,F)$ as a set of all upper triangular matrices, is a lie algebra (since multiplication of two upper triangular is upper triangular), and it has dimension $n(n+1)/2$ (all upper triangular entries).
 
 $frak("d")(n,F)$ as a set of all diagonal matrices, is a lie algebra (multiplication of two diagonal matrices is diagonal), and it has dimension $n$ (all $n$ diagonal entries).
 
@@ -167,6 +186,8 @@ Finally, it is a direct sum, because given $a I in frak("sl")(n,F) sect frak("s"
   When $"char"(F) = 0$, show that each classical algebra $L = A_l,B_l,C_l,D_l$ is equal to $[L,L]$.
 ]
 #text(weight: "bold")[Pf:]
+
+Given $A_l = frak("sl")(l+1, F)$ (sets of all matrices with trace $0$), 
 
 = ND//10
 #myQuestion[
