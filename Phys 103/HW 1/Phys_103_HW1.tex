@@ -1,0 +1,200 @@
+\documentclass{article}
+\usepackage[margin = 2.54cm]{geometry} % set margin to traditional doc
+
+%packages
+\usepackage{graphicx} % Required for inserting images
+\usepackage[most]{tcolorbox} %for creating environments
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor} %for importing multiple colors
+\usepackage{hyperref} %for creating links to different sections
+
+\linespread{1.2} %controlling line spread
+
+%define colors i like
+\definecolor{myTeal}{RGB}{0,128,128}
+\definecolor{myGreen}{RGB}{34,170,34}
+\definecolor{mySapphire}{RGB}{15,82,186}
+\definecolor{myEmerald}{RGB}{50.4, 130, 90}
+
+%create math environments, can add [section] or [subsection] to add index counter based on sections/subsections
+\newtheorem{define}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{lemma}{Lemma}
+
+%setup colored box environment for each math env above
+\tcolorboxenvironment{define}{
+    enhanced, colframe=myTeal!50!teal, colback=myTeal!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries
+}
+\tcolorboxenvironment{prop}{
+    enhanced, colframe=myGreen!50!black, colback=myGreen!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries
+}
+\tcolorboxenvironment{thm}{
+    enhanced, colframe=mySapphire!50!mySapphire, colback=mySapphire!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries
+}
+\tcolorboxenvironment{question}{
+    enhanced, colframe=blue!50!black, colback=blue!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries
+}
+\tcolorboxenvironment{lemma}{
+    enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries
+}
+
+%setup hyperlink within pdf
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+%common command (add to template)
+%general
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+\newcommand{\Id}{\textmd{Id}} %identity
+\newcommand{\lcm}{\textmd{lcm}}
+
+%algebra
+\newcommand{\Gal}{\textmd{Gal}}
+\newcommand{\Aut}{\textmd{Aut}}
+\newcommand{\End}{\textmd{End}}
+\newcommand{\Coker}{\textmd{Coker}}
+\newcommand{\Hom}{\textmd{Hom}}
+
+%analysis
+\newcommand{\Vol}{\textmd{Vol}}
+
+%complex
+\newcommand{\Real}{\textmd{Re}}
+\newcommand{\Imag}{\textmd{Im}} %can also be used for Image
+\newcommand{\Res}{\textmd{Res}}
+
+%lie algebra
+\newcommand{\gl}{\mathfrak{gl}}
+
+%physics
+\newcommand{\br}{\overline{r}}
+\newcommand{\bv}{\overline{v}}
+\newcommand{\ba}{\overline{a}}
+
+\title{Phys 103 HW1}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section{}%1
+\begin{question}\label{q1}
+    Consider a puck sliding across a frictionless merry-go-round at speed $v$ on a trajectory which passes through the center. The merry-go-round rotates at angular velocity $w$ and has radius $R$.
+    \begin{itemize}
+        \item[(a)] Write down the $r,\phi$ coordinates of the puck as functions of time, as observed by an observer standing next to the merry-go-round. Take $t=0$ to be the time when the puck is at the edge of the merry-go-round, the spatial origin to be at the center of the merry-go-round, and $\phi=0$ to be the initial angular location of the puck. Is the observer in an inertial frame?
+        \item[(b)] Write down the $r', \phi'$ coordinates of the puck as functions of time, as observed by an observer sitting on the edge of the merry-go-round. Take $t=0$ to be the time when the puck is at the edge of the merry-go-round, the spatial origin to be at the center of the merry-go-round, and $\phi'=0$ to be the initial angular location of the puck. Is the observer in an inertial frame?
+    \end{itemize}
+\end{question}
+
+\textbf{Pf:}
+
+For both parts, we'll assume that the codomain of $r,\phi$ is $\RR$ (i.e. allows negative radius $r$ for simplicity).
+\subsection*{(a)}
+First, we'll consider the distance of the puck away from the origin: On the $1$-dimensional trajectory, assume the origin (center) is position $r=0$, and at $t=0$, the puck is at the edge, which has position $r=R$ (the distance from the center to the edge, i.e. the radius). Assume the puck is traveling from the edge toward the center, relative to
+ the track its velocity is given by $-v$, hence the position $r(t) = \int (-v)dt = -vt+C$. With, $r(0) = 0+C = R$, we have $r(t)=R-vt$. This records the radial distance of the puck from the origin.
+
+Now, we'll consider the angle of the puck relative to the observer (which we'll keep track of the angle of its initial position on the trajectory): With initial angle $\phi(0) = 0$, and angular velocity $w$, then the angle $\phi(t) = \int w dt = wt + C$. Where with $\phi(0) = 0+C = 0$, we have $\phi(t) = wt$.
+
+\hfil
+
+With $(r,\phi)$ being the given polar coordinates of the puck, in cartesian coordinates, the position is given by:
+$$\br(t)=(r\cos(\phi),r\sin(\phi)) = (R-vt)(\cos(wt),\sin(wt))$$
+Taking derivative, we get the velocity as follow:
+$$\bv(t) = (-v\cos(wt)-w(R-vt)\sin(wt), -v\sin(wt)+w(R-vt)\cos(wt))$$
+Taking the second derivative, we get the acceleration as follow:
+$$\ba(t) = (wv\sin(wt)- w(-v\sin(wt) + w(R-vt)\cos(wt)), -wv\cos(wt) + w(-v\cos))$$
+
+
+
+\subsection*{(b)}
+
+\break
+
+\section{}%2
+\begin{question}\label{q2}
+    Consider an athlete putting a shot. Naturally, she would like to maximize the distance the shot travels. If the shot is put from a height $h$ and with initial speed $v_0$, what launch angle maximizes the distance traveled? Assume that $v_0$ and $h$ are independent of the launch angle, and ignore air resistance (but include gravity, if it wasn't obvious). You can (and should) assume that $h$ is "small" and give an answer to leading non-trivial order, but you should specify what counts as "small".
+\end{question}
+
+\textbf{Pf:}
+
+\break
+
+\section{}%3
+\begin{question}\label{q3}
+    Consider an object, such as a car, with mass $m$, starting from rest, movign in one dimension, and subject to two forces. One, provided by an engine with a certain power output, is $F_e = P/v$. The other is some quadratic drag from air resistance, $F_d = -cv^2$.$P,c$ are both positive constants. Unfortunately, it is not possible to analytically solve for the car's velocity as a function of time. However, we can get approximate analytic expressions which are very accurate.
+    \begin{itemize}
+        \item[(a)] First, nondimensionalize your equation, defining appropriate dimensionless time and velocity variables.
+        \item[(b)] At the start of the motion, $\tilde{v}<< 1$, so air resistance is a small correction; the car's motion is essentially just acceleration driven by the engine. By ignoring the force due to air resistance, determine an (approximate) formula $\tilde{v}(\tilde{t})$, valid for $\tilde{v}<<1$.
+        \item[(c)]Eventually, the car approaches terminal velocity. We can define 
+        $$\epsilon = \tilde{v}_t-\tilde{v}$$
+        If the car is going close to terminal velocity, $\epsilon <<1$. Expand the forces to linear order in $\epsilon$, and solve to get an (approximate) formula $\epsilon(\tilde{t})$, valid for $\epsilon<<1$.
+        \item[(d)] Now comes the leap of faith: assume that either the velocity is small enough to ignore air resistance or the velocity is close to terminal velocity. In other words, we'll write $\tilde{v}(\tilde{t})$ as a piecewise function; before some time $\tilde{t}_*$ it takes the form of your solution to (c). Choose an appropriate switching time $\tilde{t}_*$ and write down such a piecewise function for $\tilde{v}(\tilde{t})$. You should fix the two undetermined constants by using that (i) the car starts at rest and (ii) $\tilde{v}$ should be continuous.Plot the piecewise function $\tilde{v}(\tilde{t})$.
+        \item[(e)] Put all the constants back in to get $v(t)$. At what time $t$ does the car obtain $99\%$ of terminal velocity? You should give an analytic expression (using your approximate $\tilde{v}$). 
+    \end{itemize}
+\end{question}
+
+\textbf{Pf:}
+
+\break
+
+\section{}%4
+\begin{question}\label{q4}
+    Consider a circular hoop (mass $M$ and radius $R$) standing vertically on the ground. Onto the hoop are threaded two beads (each msas $m$ and radius $r$), which move without friction along the hoop. The two beadds start at rest practically at the top of the hoop (which requires $r<<R$; you can and should approximate for this being the case). One bead goes counterclockwise and the other clockwise.
+    \begin{itemize}
+        \item[(a)] What is the smallest value of $m/M$ for which the hoop rises off the ground?
+        \item[(b)] Assuming the hoop does not rise off the ground, approximately how long does it take the beads to reach the bottom of the hoop? 
+    \end{itemize}
+\end{question}
+
+\textbf{Pf:}
+
+\break
+
+\section{}%5
+\begin{question}\label{q5}
+    On the mastery questions, you showed that a rocket launched under the influence of gravity has a lower velocity, and that the "penalty" imposed by gravity is larger the longer it takes the rocket to burn its fuel. This suggests that, if launching to orbit off Earth, it would be best to make $dm/dt$ as large as possible. However, there's a technical challenge: burning fuel more rapidly generally requires a bigger engine, and the increasing mass of the engine imposes its own penalty. Let's take the rocket as having four components: fuel, fuel tank, engine, and payload initially, then 
+    $$m_0 = m_f + m_t+m_e+m_p$$
+    Let's assume that the rate of fuel consumption is proportional to the mass of the engine, 
+    $$\alpha \equiv \left|\frac{dm}{td}\right|=m_e/\tau$$
+    and that the effective exhaust speed is fixed at $u$, regardless of the size of the engine. $\tau$ is some constant with units of time (it's the amount of time for the engine to consume a mass of fuel equal to its own mass), and for any particular rocket, $\alpha$ will be constnat.
+    \begin{itemize}
+        \item[(a)] Calculate the velocity of the racket after it has consumed all its fuel. Your answer should depend on $u,g,\tau$ and the masses of the four components.
+        \item[(b)] Your final velocity should depend only on mass ratios, not the absolute masses. Explain physically why doubling the mass of everything has no effect on the final velocity.
+        \item[(c)]Since only mass ratios are important, we can define $\tilde{m_i} = m_i/m_f$ (Remember that $f$ stands for fuel, not final). $\tilde{m_p}$ is fixed by a combination of the desired payload and how large a rocket we can build; $\tilde{m_t}$ is more or less fixed by choice of fuel. $\tilde{m_e}$ is the variable we have control over. Find the $\tilde{m_e}$ which maximizes the final speed as a function of $u,g,\tau,\tilde{m_p},\tilde{m_t}$.
+        \item[(d)]For a chemical rocket, $u\sim 3 \textmd{km/s}$, $\tau\sim 7\textmd{s}$, and $\tilde{m_t}\sim 1/10$. Plug in numbers to get the optimal $\tilde{m_e}$ for both a negligible payload $(\tilde{m_p}=0$) and a modest payload ($\tilde{m_p}=0.1$). For both cases, also calculate the initial acceleration of the rocket, expressed as a number of $g$'s. 
+    \end{itemize}
+\end{question}
+
+\textbf{Pf:}
+
+\break
+
+\section{}%6
+\begin{question}\label{q6}
+\end{question}
+
+\textbf{Pf:}
+
+\end{document}
