@@ -37,6 +37,25 @@
   stroke: rgb(20,50,35)
 )
 
+//common syntaxes needed
+//analysis 
+#let Vol = $"Vol"$
+//algebra
+#let Hom = $"Hom"$
+#let End = $"End"$
+#let Aut = $"Aut"$
+#let Coker = $"Coker"$
+#let Gal = $"Gal"$
+//complex 
+#let Real = $"Re"$
+#let Imag = $"Im"$ //also used for image
+#let Arg = $"Arg"$
+#let Res = $"Res"$
+//lie algebra
+#let gl = $frak("gl")$
+#let sl = $frak("sl")$
+#let sp = $frak("sp")$
+
 
 //start document
 #maketitle(
@@ -153,5 +172,6 @@ So, no matter what case we run into a contradiction, then $I$ can't be proper, s
 
 = ND//6
 #myQuestion[
-  Prove that $frak("sl")(n,F)$ is simple, unless $"char"(F) = 3$.
-]
+  Prove that $frak("sl")(3,F)$ is simple, unless $"char"(F) = 3$.
+]  
+

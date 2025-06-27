@@ -37,6 +37,24 @@
   stroke: rgb(20,50,35)
 )
 
+//common syntaxes needed
+//analysis 
+#let Vol = $"Vol"$
+//algebra
+#let Hom = $"Hom"$
+#let End = $"End"$
+#let Aut = $"Aut"$
+#let Coker = $"Coker"$
+#let Gal = $"Gal"$
+//complex 
+#let Real = $"Re"$
+#let Imag = $"Im"$ //also used for image
+#let Arg = $"Arg"$
+#let Res = $"Res"$
+//lie algebra
+#let gl = $frak("gl")$
+#let sl = $frak("sl")$
+#let sp = $frak("sp")$
 
 //start document
 #maketitle(
