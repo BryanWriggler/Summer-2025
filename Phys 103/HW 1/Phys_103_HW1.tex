@@ -92,6 +92,8 @@
 \newcommand{\br}{\overline{r}}
 \newcommand{\bv}{\overline{v}}
 \newcommand{\ba}{\overline{a}}
+\newcommand{\bzero}{\overline{0}}
+\newcommand{\bF}{\overline{F}}
 
 \title{Phys 103 HW1}
 \author{Zih-Yu Hsieh}
@@ -112,23 +114,34 @@
 
 For both parts, we'll assume that the codomain of $r,\phi$ is $\RR$ (i.e. allows negative radius $r$ for simplicity).
 \subsection*{(a)}
-First, we'll consider the distance of the puck away from the origin: On the $1$-dimensional trajectory, assume the origin (center) is position $r=0$, and at $t=0$, the puck is at the edge, which has position $r=R$ (the distance from the center to the edge, i.e. the radius). Assume the puck is traveling from the edge toward the center, relative to
- the track its velocity is given by $-v$, hence the position $r(t) = \int (-v)dt = -vt+C$. With, $r(0) = 0+C = R$, we have $r(t)=R-vt$. This records the radial distance of the puck from the origin.
+First, we'll consider the distance of the puck away from the origin: On the $1$-dimensional trajectory, assume the origin (center) is position $r=0$, and at $t=0$, the puck is at the edge, which has position $r=R$ (assume that the puck initially has positive value position in the coordinate, so the distance from the center to the edge is the radius). Assume the puck is traveling in radial direction, relative to
+ the track its velocity is given by $v$, hence the position $r(t) = \int vdt = vt+C$. With, $r(0) = 0+C = R$, we have $r(t)=R+vt$. This records the radial distance of the puck from the origin.
 
 Now, we'll consider the angle of the puck relative to the observer (which we'll keep track of the angle of its initial position on the trajectory): With initial angle $\phi(0) = 0$, and angular velocity $w$, then the angle $\phi(t) = \int w dt = wt + C$. Where with $\phi(0) = 0+C = 0$, we have $\phi(t) = wt$.
 
 \hfil
 
 With $(r,\phi)$ being the given polar coordinates of the puck, in cartesian coordinates, the position is given by:
-$$\br(t)=(r\cos(\phi),r\sin(\phi)) = (R-vt)(\cos(wt),\sin(wt))$$
+$$\br(t)=(r\cos(\phi),r\sin(\phi)) = (R+vt)(\cos(wt),\sin(wt))$$
 Taking derivative, we get the velocity as follow:
-$$\bv(t) = (-v\cos(wt)-w(R-vt)\sin(wt), -v\sin(wt)+w(R-vt)\cos(wt))$$
+$$\bv(t) = (v\cos(wt)-w(R+vt)\sin(wt), v\sin(wt)+w(R+vt)\cos(wt))$$
 Taking the second derivative, we get the acceleration as follow:
-$$\ba(t) = (wv\sin(wt)- w(-v\sin(wt) + w(R-vt)\cos(wt)), -wv\cos(wt) + w(-v\cos))$$
-
-
+$$\ba(t) = (-wv\sin(wt)- w(v\sin(wt) + w(R+vt)\cos(wt)), wv\cos(wt) + w(v\cos(wt)-w(R+vt)\sin(wt)))$$
+$$ = (-2wv\sin(wt) - w^2(R+vt)\cos(wt), 2wv\cos(wt)-w^2(R+vt)\sin(wt))$$
+Which, plug in $t=0$, we get $\ba(0) = (-w^2R, 2wv) \neq \bar{0}$, showing that there are time where the puck is under acceleration. If we assume the puck is an isolated object, then because for the observer the puck is accelerating, the observer is not in an inertial frame.
 
 \subsection*{(b)}
+When considering the distance of the puck away from the origin, using similar coordinates from part (a), assume the center has radius $r=0$, the puck initially has radius $r=R$, and the puck has speed $v$ in radial direction, then the position of the puck is again given as $r(t)=R+vt$ (the same derivation).
+
+In contrast, for the angle $\phi$, since the observer is now on the edge of the merry-go-round, then the relative angle in between the observer and the puck's initial position never changes. So, $\phi(t)=0$ (where the initial angle of the puck is).
+
+\hfil
+
+With $(r,\phi)$ given as the polwer coordinates of the puck, in cartesian coordinates, the position is given by:
+$$\br(t) = (r\cos(\phi), r\sin(\phi)) = (R+vt)(1,0) = (R+vt,0)$$
+Hence, taken second derivative, we get the acceleration as follow:
+$$\ba(t) = \bzero$$
+If treating the puck as an isolated object again, then this observer is in an inertial frame (since the isolated object is not accelerating).
 
 \break
 
@@ -139,11 +152,45 @@ $$\ba(t) = (wv\sin(wt)- w(-v\sin(wt) + w(R-vt)\cos(wt)), -wv\cos(wt) + w(-v\cos)
 
 \textbf{Pf:}
 
+We'll assume the vertical direction upward is the $\hat{y}$ axis, while the horizontal direction (where the shot is heading horizontally) is the $\hat{x}$ axis. We'll also assume the initial position of the shot $\br(0) = (0,h)$, and let $\theta$ represents the initial launching angle.
+
+Since the only force taking into account is gravity, then the net force acting on the launch is $\bF_{net} = \bF_g = -mg\hat{y}$, hence the acceleration is given by $\ba = \frac{1}{m}\bF_{net} = -g\hat{y}$ (here assumes the mass of the shot is constant).
+
+Taking integration, we get $\bv(t) = \int \ba dt = -gt\hat{y}+\overline{C}$ for some $\overline{C} \in \RR^2$. Which, recall that initial velocity has speed $v_0$ and launch angle $\theta$, hence $\bv(0) = (v_0\cos(\theta),v_0\sin(\theta)) = 0\cdot \hat{y}+\overline{C}$. Hence, $\bv(t) = (v_0\cos(\theta), v_0\sin(\theta)-gt)$.
+
+Then, taking integration again, we get $\br(t) = \int \bv dt = (v_0\cos(\theta)t + r_x, v_0\sin(\theta)t - \frac{1}{2}gt^2 + r_y)$ for some $(r_x,r_y)\in \RR^2$, and with the assumption that $\br(0) = (0,h) = (0+r_x, 0-0+r_y)$, we get the following for position:
+$$\br(t) = \left(v_0\cos(\theta)t, v_0\sin(\theta)t-\frac{1}{2}gt^2+h\right)$$
+
+\hfil
+
+Now, the objective is to solve for the horizontal distance the shot would travel, which we need to calculate the time it lands (i.e. the second coordinate of $\br(t)$ is 0). For $-\frac{1}{2}gt^2-v_0\sin(\theta)t+h = 0$, using quadratic formula, we get the following expression for $t$:
+$$t = \frac{-v_0\sin(\theta)\pm \sqrt{v_0^2\sin^2(\theta)-4\cdot \left(-\frac{g}{2}\right)h}}{2\left(-\frac{g}{2}\right)} = \frac{v_0\sin(\theta)\pm\sqrt{v_0^2\sin^2(\theta)+2gh}}{g}$$
+Since we can assume both $g,h>0$ (it's not reasonable to launch a shot from height $h<0$ in general), hence $(v_0^2\sin^2(\theta)+2gh)\geq v_0^2\sin^2(\theta)$, showing that $\sqrt{v_0^2\sin^2(\theta)+2gh} \geq |v_0\sin(\theta)|\geq v_0\sin(\theta)$. So, for the time $t>0$, we need positive sign for the square root, getting that the landing time is as follow:
+$$t=\frac{v_0\sin(\theta)+\sqrt{v_0^2\sin^2(\theta)+2gh}}{g}$$
+Since the launch starts at time $=0$, then the above time is exactly the time where the shot is in the air. Hence, the horizontal distance traveled is given by:
+$$\Delta x=v_0\cos(\theta)t = v_0\cos(\theta)\cdot\frac{v_0\sin(\theta)+\sqrt{v_0^2\sin^2(\theta)+2gh}}{g} = v_0^2\sin(\theta)\cos(\theta)\frac{1+\sqrt{1+\frac{2gh}{v_0^2\sin^2(\theta)}}}{g}$$
+This expression is relatively hard to solve for the maximum value with $\theta$, so using Taylor polynomial to approximate for the square root term is necessary.
+
+Assume $\theta\in [k,\frac{\pi}{2}]$ for some $k>0$, or else the $\sin(\theta)$ in the denominator could go unbounded, if assume $h$ is small, can also assume $\frac{2gh}{v_0^2\sin^2(\theta)}$ is small, then the taylor polynomial of $\sqrt{1+x}$ could yield a good approximation. For $x$ close to $0$, up to linear order, its taylor polynomial is given as follow:
+$$\sqrt{1+x}\approx 1+\frac{1}{2}x$$
+Using this approximation for $x=\frac{2gh}{v_0^2\sin^2(\theta)}$, the horizontal displacement is approximated as follow:
+$$\Delta x\approx v_0^2\sin(\theta)\cos(\theta)\cdot\frac{1+\left(1+\frac{1}{2}\cdot\frac{2gh}{v_0^2\sin^2(\theta)}\right)}{g} = \frac{2v_0^2}{g}\sin(\theta)\cos(\theta)+h\cdot\frac{\cos(\theta)}{\sin(\theta)} = \frac{2v_0^2}{g}\sin(\theta)\cos(\theta)+h\cot(\theta)$$
+To get a local maximum, differentiate the above term with respect to $\theta$, we get:
+$$\frac{d}{d\theta}\Delta x=\frac{2v_0^2}{g}(\cos^2(\theta)-\sin^2(\theta))-h\csc^2(\theta)=\frac{2v_0^2}{g}(1-2\sin^2(\theta))-\frac{h}{\sin^2(\theta)}$$
+With the above expression being $0$, we get:
+$$\frac{2v_0^2}{g}(1-2\sin^2(\theta))-\frac{h}{\sin^2(\theta)}=0 \implies (2\sin^2(\theta)-1)\sin^2(\theta)+\frac{gh}{2v_0^2}=0$$
+With $x:=\sin^2(\theta)$, we get:
+$$2x^2-x+\frac{gh}{2v_0^2}=0 \implies x=\sin^2(\theta)=\frac{1\pm\sqrt{1-\frac{4gh}{v_0^2}}}{4}$$
+With the assumption that $\theta \geq k>0$, and $h$ being extremely small, then $\sqrt{1-\frac{4gh}{v_0^2}}$ would be pretty close to $1$, hence the negative sign would provide that $\sin^2(\theta)$ is approximately $0$, so we'll take the positive sign.
+
+Finally, this indicates the angle $\theta$ for maximum launch distance is given as follow:
+$$\sin^2(\theta)=\frac{1}{4}\left(1+\sqrt{1-\frac{4gh}{v_0^2}}\right),\quad \sin(\theta)=\frac{1}{2}\sqrt{1+\sqrt{1-\frac{4gh}{v_0^2}}}, \theta = \arcsin\left(\frac{1}{2}\sqrt{1+\sqrt{1-\frac{4gh}{v_0^2}}}\right)$$
+
 \break
 
 \section{}%3
 \begin{question}\label{q3}
-    Consider an object, such as a car, with mass $m$, starting from rest, movign in one dimension, and subject to two forces. One, provided by an engine with a certain power output, is $F_e = P/v$. The other is some quadratic drag from air resistance, $F_d = -cv^2$.$P,c$ are both positive constants. Unfortunately, it is not possible to analytically solve for the car's velocity as a function of time. However, we can get approximate analytic expressions which are very accurate.
+    Consider an object, such as a car, with mass $m$, starting from rest, moving in one dimension, and subject to two forces. One, provided by an engine with a certain power output, is $F_e = P/v$. The other is some quadratic drag from air resistance, $F_d = -cv^2$.$P,c$ are both positive constants. Unfortunately, it is not possible to analytically solve for the car's velocity as a function of time. However, we can get approximate analytic expressions which are very accurate.
     \begin{itemize}
         \item[(a)] First, nondimensionalize your equation, defining appropriate dimensionless time and velocity variables.
         \item[(b)] At the start of the motion, $\tilde{v}<< 1$, so air resistance is a small correction; the car's motion is essentially just acceleration driven by the engine. By ignoring the force due to air resistance, determine an (approximate) formula $\tilde{v}(\tilde{t})$, valid for $\tilde{v}<<1$.
@@ -156,12 +203,28 @@ $$\ba(t) = (wv\sin(wt)- w(-v\sin(wt) + w(R-vt)\cos(wt)), -wv\cos(wt) + w(-v\cos)
 \end{question}
 
 \textbf{Pf:}
+\subsection*{(a)}
+Given that force $F=m\frac{dv}{dt}=F_e + F_d$, we get the following differential equation:
+$$m\frac{dv}{dt}=\frac{P}{v}-cv^2$$
+For some non-determined constant velocity $v_0$ and time $t_0$, let $\tilde{v}=\frac{v}{v_0}$, $\tilde{t}=\frac{t}{t_0}$, then we get the following expression:
+$$\frac{d\tilde{v}}{d\tilde{t}} = \frac{d}{d\tilde{t}}\left(\frac{v(t)}{v_0}\right) = \frac{1}{v_0}\cdot \frac{dv}{dt}\cdot \frac{dt}{d \tilde{t}} = \frac{t_0}{v_0}\frac{dv}{dt}$$
+Substituting all the expressions of $v$ and $t$, we get:
+$$m\cdot \frac{v_0}{t_0}\frac{d\tilde{v}}{d\tilde{t}} = \frac{P}{v_0\tilde{v}}-c(v_0\tilde{v})^2$$
+
+
+\subsection*{(b)}
+
+\subsection*{(c)}
+
+\subsection*{(d)}
+
+\subsection*{(e)}
 
 \break
 
 \section{}%4
 \begin{question}\label{q4}
-    Consider a circular hoop (mass $M$ and radius $R$) standing vertically on the ground. Onto the hoop are threaded two beads (each msas $m$ and radius $r$), which move without friction along the hoop. The two beadds start at rest practically at the top of the hoop (which requires $r<<R$; you can and should approximate for this being the case). One bead goes counterclockwise and the other clockwise.
+    Consider a circular hoop (mass $M$ and radius $R$) standing vertically on the ground. Onto the hoop are threaded two beads (each mass $m$ and radius $r$), which move without friction along the hoop. The two beads start at rest practically at the top of the hoop (which requires $r<<R$; you can and should approximate for this being the case). One bead goes counterclockwise and the other clockwise.
     \begin{itemize}
         \item[(a)] What is the smallest value of $m/M$ for which the hoop rises off the ground?
         \item[(b)] Assuming the hoop does not rise off the ground, approximately how long does it take the beads to reach the bottom of the hoop? 
@@ -169,6 +232,51 @@ $$\ba(t) = (wv\sin(wt)- w(-v\sin(wt) + w(R-vt)\cos(wt)), -wv\cos(wt) + w(-v\cos)
 \end{question}
 
 \textbf{Pf:}
+
+Since the beads appear on both sides, WLOG, can assume the behavior is symmetric, hence we only need to analyze the bead on the right side.
+\subsection*{(a)}
+In case for the beads to move on the circular hoop, they require centripetal force (given by $F_c = \frac{mv^2}{r}$, where $m,v$ are mass and speed of each individual bead, and $r$ is the radius, in this case $r=R$).
+
+\textbf{Insert images}
+
+If consider the force diagram, for beads at the bottom half of the hoop, the force applied on the hoop by the beads are directed downward, hence it's not possible for the hoop to rise off the ground. Then, if the hoop rises, it must happen when the beads are on the upper half of the hoop, so the angle given above $\theta \in [0,\frac{\pi}{2}]$.
+
+\hfil
+
+First, for each angle $\theta$, the position of the bead is parametrized by:
+$$\br(\theta)=(R\sin(\theta), R+R\cos(\theta))$$
+Compared to the top (where height is $2R$), at angle $\theta$, the height drop is given by $2R-(R+R\cos(\theta)) = R(1-\cos(\theta))$, hence the lost potential energy of the bead is $mgR(1-\cos(\theta))$. If assume all the potential energy is transferred to kinetic energy, then $\frac{1}{2}mv^2 = mgR(1-\cos(\theta))$, hence at angle $\theta$, the speed of the bead satisfies:
+$$mv^2 = 2mgR(1-\cos(\theta))$$
+Then, the centripetal force $F_c = \frac{mv^2}{R} = 2mg(1-\cos(\theta))$. With the force diagram, the centripetal force at angle $\theta$ is given as the following vector:
+$$\bF_c = -F_c(\sin(\theta),\cos(\theta)) = -2mg(1-\cos(\theta))(\sin(\theta),\cos(\theta))$$
+
+\hfil
+
+Then, let $\bF_b$ be the force applied on the bead by the hoop, and $\bF_g = (0,-mg)$ is the gravity force on the bead. Then, for the motion of the bead to stay in the circular hoop, we need $\bF_g+\bF_b = \bF_c$ (the net force being the centripetal force), hence:
+$$\bF_b = \bF_c - \bF_g = -2mg(1-\cos(\theta))(\sin(\theta),\cos(\theta)) - (0,-mg)$$
+$$ = \left(-2mg(1-\cos(\theta))\sin(\theta), mg-2mg(1-\cos(\theta))\cos(\theta)\right)$$
+Which, the force applied on the hoop by the bead (using Newton's Third Law) is given by:
+$$\bF_h = -\bF_b = \left(2mg(1-\cos(\theta))\sin(\theta), 2mg(1-\cos(\theta))\cos(\theta)-mg\right)$$
+So, the vertical component of $\bF_h$ is given by $(2mg(1-\cos(\theta))\cos(\theta)-mg)\hat{y}$; and since the two beads on both sides apply the vertical components in the same way, the total vertical force applied on the hoop by the beads is $\bF_h^{(y)} = 2(2mg(1-\cos(\theta))\cos(\theta)-mg)\hat{y}$.
+
+\hfil
+
+Finally, for the hoop to rise, the net vertical force on it must be directed upward. Since the only vertical forces on the hoop are $\bF_h^{(y)}$ and gravity force $-Mg\hat{y}$, the net vertical force on the hoop is:
+$$\bF_h^{(y)}-Mg\hat{y} = \left(mg(-4\cos^2(\theta)+4\cos(\theta)-2)-Mg\right)\hat{y}$$
+However, if calculate the maximum of the term $-4\cos^2(\theta)+4\cos(\theta)-2$ in the domain $\theta\in [0,\frac{\pi}{2}]$, first taking the derivative being $0$ we get:
+$$8\cos(\theta)\sin(\theta)-4\sin(\theta) = 0,\quad 4\sin(\theta)(2\cos(\theta)-1)=0$$
+Which, $\sin(\theta)=0$ (where $\theta=0$), or $\cos(\theta)=\frac{1}{2}$ must be satisfied.
+
+So, the absolute maximum of this expression must occur at $\theta=0,\ \theta=\frac{\pi}{2}$, or $\cos(\theta)=\frac{1}{2}$. However, plugging into the expression, we get:
+$$\theta=0\implies -4\cos^2(\theta)+4\cos(\theta)-2 = -4+4-2 = -2$$
+$$\theta=\frac{\pi}{2}\implies -4\cos^2(\theta)+4\cos(\theta)-2=-4\cdot 0+4\cdot 0-2 = -2$$
+$$\cos(\theta)=\frac{1}{2}\implies -4\cos^2(\theta)+4\cos(\theta)-2 = -4\cdot\frac{1}{4}+4\cdot\frac{1}{2}-2 = -1$$
+Since all the possible maximum values are negative, that expression is negative.
+
+However, since $m,M,g$ are all positive, the expression $mg(-4\cos^2(\theta)+4\cos(\theta)-2)-Mg<0$ (since both $mg, Mg$ are multiplied with a negative value regardless of $\theta$), hence the vertical forces applied on the hoop is always directed downward, showing that it's not possible for the hoop to rise off the ground.
+
+\subsection*{(b)}
+
 
 \break
 
