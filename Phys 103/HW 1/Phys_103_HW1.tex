@@ -188,7 +188,7 @@ $$\sin^2(\theta)=\frac{1}{4}\left(1+\sqrt{1-\frac{4gh}{v_0^2}}\right),\quad \sin
 
 \break
 
-\section{}%3
+\section{(Not done)}%3
 \begin{question}\label{q3}
     Consider an object, such as a car, with mass $m$, starting from rest, moving in one dimension, and subject to two forces. One, provided by an engine with a certain power output, is $F_e = P/v$. The other is some quadratic drag from air resistance, $F_d = -cv^2$.$P,c$ are both positive constants. Unfortunately, it is not possible to analytically solve for the car's velocity as a function of time. However, we can get approximate analytic expressions which are very accurate.
     \begin{itemize}
@@ -222,7 +222,7 @@ $$m\cdot \frac{v_0}{t_0}\frac{d\tilde{v}}{d\tilde{t}} = \frac{P}{v_0\tilde{v}}-c
 
 \break
 
-\section{}%4
+\section{(Insert image)}%4
 \begin{question}\label{q4}
     Consider a circular hoop (mass $M$ and radius $R$) standing vertically on the ground. Onto the hoop are threaded two beads (each mass $m$ and radius $r$), which move without friction along the hoop. The two beads start at rest practically at the top of the hoop (which requires $r<<R$; you can and should approximate for this being the case). One bead goes counterclockwise and the other clockwise.
     \begin{itemize}
@@ -233,7 +233,8 @@ $$m\cdot \frac{v_0}{t_0}\frac{d\tilde{v}}{d\tilde{t}} = \frac{P}{v_0\tilde{v}}-c
 
 \textbf{Pf:}
 
-Since the beads appear on both sides, WLOG, can assume the behavior is symmetric, hence we only need to analyze the bead on the right side.
+Since the beads appear on both sides, WLOG, can assume the behavior is symmetric, hence for the vertical components, we only need to analyze the bead on the right side.
+\begin{comment}
 \subsection*{(a)}
 In case for the beads to move on the circular hoop, they require centripetal force (given by $F_c = \frac{mv^2}{r}$, where $m,v$ are mass and speed of each individual bead, and $r$ is the radius, in this case $r=R$).
 
@@ -274,9 +275,77 @@ $$\cos(\theta)=\frac{1}{2}\implies -4\cos^2(\theta)+4\cos(\theta)-2 = -4\cdot\fr
 Since all the possible maximum values are negative, that expression is negative.
 
 However, since $m,M,g$ are all positive, the expression $mg(-4\cos^2(\theta)+4\cos(\theta)-2)-Mg<0$ (since both $mg, Mg$ are multiplied with a negative value regardless of $\theta$), hence the vertical forces applied on the hoop is always directed downward, showing that it's not possible for the hoop to rise off the ground.
+\end{comment}
 
+\textbf{Insert Image}
+\subsection*{(a)}
+First, for each angle $\theta$, the position of the bead is parametrized by:
+$$\br(\theta)=(R\sin(\theta), R+R\cos(\theta))$$
+Compared to the top (where height is $2R$), at angle $\theta$, the height drop is given by $2R-(R+R\cos(\theta)) = R(1-\cos(\theta))$, hence the lost potential energy of the bead is $mgR(1-\cos(\theta))$. If assume all the potential energy is transferred to kinetic energy, then $\frac{1}{2}mv^2 = mgR(1-\cos(\theta))$, hence at angle $\theta$, the speed of the bead satisfies:
+$$v^2 = 2gR(1-\cos(\theta))\implies v=\sqrt{2gR(1-\cos(\theta))}$$
+And, the unit tangent vector of the trajectory is given by:
+$$\hat{v}(\theta)=\frac{\br'(\theta)}{|\br'(\theta)|} = \frac{1}{|\br'(\theta)|}(R\cos(\theta), -R\sin(\theta)) = (\cos(\theta),-\sin(\theta))$$
+
+\hfil
+
+Now, to calculate the acceleration on the bead, consider the following: Given some change in angle $\Delta\theta$, the distance this bead travels is about $\Delta x = R\Delta\theta$, and say the speed initially is given by $v$, then the change in time is approximately $\Delta t\approx\frac{\Delta x}{v} = \frac{R\Delta\theta}{v}$, hence $\frac{\Delta\theta}{\Delta t}\approx \frac{v}{R}$. Taking the limit, we get that $\frac{d\theta}{dt} = \frac{v}{R}$.
+
+Since at each angle $\theta$, the velocity of the bead now is given by $\bv = v\hat{v} = \sqrt{2gR(1-\cos(\theta))}(\cos(\theta),-\sin(\theta))$. Then, the acceleration $\ba = \frac{d\bv}{dt} = \frac{d\bv}{d\theta}\cdot \frac{d\theta}{dt}$, which based on the formulas above, we get:
+$$\frac{d\bv}{d\theta} = \frac{d}{d\theta}\left(\sqrt{2gR(1-\cos(\theta))}\right)\ (\cos(\theta),-\sin(\theta))+\sqrt{2gR(1-\cos(\theta))}\ \frac{d}{d\theta}\left((\cos(\theta),-\sin(\theta))\right)$$
+$$ = \frac{2gR\sin(\theta)}{2\sqrt{2gR(1-\cos(\theta))}}(\cos(\theta),-\sin(\theta))+\sqrt{2gR(1-\cos(\theta))}(-\sin(\theta),-\cos(\theta))$$
+$$ = \frac{gR\sin(\theta)}{v}(\cos(\theta),-\sin(\theta))-v(\sin(\theta),\cos(\theta))$$
+
+$$\ba = \frac{d\bv}{d\theta}\cdot \frac{v}{R} = g\sin(\theta)(\cos(\theta),-\sin(\theta))-\frac{v^2}{R}(\sin(\theta),\cos(\theta))$$
+$$ = g\sin(\theta)(\cos(\theta),-\sin(\theta))-2g(1-\cos(\theta))(\sin(\theta),\cos(\theta))$$
+Hence, the vertical force component on the bead is given by:
+$$\bF_y = m\ba_y = m\left(-g\sin^2(\theta)-2g(1-\cos(\theta))\cos(\theta)\right)\hat{y}$$
+$$ = -mg((1-\cos^2(\theta))+(2\cos(\theta)-2\cos^2(\theta)))\hat{y}$$
+$$= -mg(-3\cos^2(\theta)+2\cos(\theta)+1)\hat{y}$$
+Let $\bF_b^{(y)}$ be the vertical force applied on the bead by the hoop, and $\bF_{g,h} = -mg\hat{y}$ be the gravity force applied on the bead. Then, for the bead to stay in the given motion with the proposed velocity, the net vertical force should be $\bF_y$. Hence, $\bF_b^{(y)}-mg\hat{y}=\bF_y$, or: 
+$$\bF_b^{(y)}=\bF_y + mg\hat{y} = \left(mg-mg(-3\cos^2(\theta)+2\cos(\theta)+1)\right)\hat{y}$$
+$$= mg(3\cos^2(\theta)-2\cos(\theta))\hat{y}$$
+Let $\bF_h^{(y)}$ be the vertical force applied on the hoop by a single bead, using Newton's Third Law, $\bF_h^{(y)}=-\bF_b^{(y)}$, and since there are two beads, the vertical force applied on the hoop by the beads is:
+$$2\bF_h^{(y)} = -2\bF_b^{(y)} = 2mg(2\cos(\theta)-3\cos^2(\theta))\hat{y} = mg(4\cos(\theta)-6\cos^2(\theta))\hat{y}$$
+
+\hfil
+
+Finally, for the hoop to rise off the ground, the vertical force applied on it should be directed upward. Since the only vertical forces are $2\bF_h^{(y)}$ and its gravity force $-Mg\hat{y}$, then the net vertical force is:
+$$\bF_{y,\textmd{net}} = 2\bF_h^{(y)}-Mg\hat{y} = \left(mg(4\cos(\theta)-6\cos^2(\theta))-Mg\right)\hat{y}$$
+For the force to be directed upward, the component is positive, hence this inequality is satisfied:
+$$mg(4\cos(\theta)-6\cos^2(\theta))-Mg>0 \implies \frac{m}{M}(4\cos(\theta)-6\cos^2(\theta))>1$$ 
+For $\cos(\theta)= \frac{1}{3}$, we have:
+$$4\cos(\theta)-6\cos^2(\theta) =\frac{4}{3}-\frac{6}{9} = \frac{2}{3}>0$$
+Hence, there are points where $4\cos(\theta)-6\cos^2(\theta)>0$ for $\theta\in [0,\pi]$ (the range of motion). Which, for $4\cos(\theta)-6\cos^2(\theta)>0$, the previous inequality can then be written as:
+$$\frac{m}{M}>\frac{1}{4\cos(\theta)-6\cos^2(\theta)}$$
+To find the infimum (intuitively, the smallest $\frac{m}{M}$ could approach), it suffices to find the maximum of $4\cos(\theta)-6\cos^2(\theta)$ for $\theta\in [0,\pi]$. Taking derivative being $0$, we get:
+$$-4\sin(\theta)+12\cos(\theta)\sin(\theta)=0,\quad 4\sin(\theta)(3\cos(\theta)-1)=0$$
+So, maximum happens at either $\sin(\theta)=0$ (which $\theta=0$ or $\pi$), and $\cos(\theta)=\frac{1}{3}$. Plug in the values, we get:
+$$\theta=0\implies 4\cos(\theta)-6\cos^2(\theta) = 4-6=-2$$
+$$\theta=\pi\implies 4\cos(\theta)-6\cos^2(\theta)=-4-6 = -10$$
+$$\cos(\theta)=\frac{1}{3}\implies 4\cos(\theta)-6\cos^2(\theta) = \frac{4}{3}-\frac{6}{9} = \frac{2}{3}$$
+Since $\frac{2}{3}$ is the largest, the maximum of $4\cos(\theta)-6\cos^2(\theta)$ on $[0,\pi]$ is $\frac{2}{3}$, hence the minimum of $\frac{1}{4\cos(\theta)-6\cos^2(\theta)} = \frac{3}{2}$ (for the denominator $>0$).
+
+Hence, $\frac{m}{M}>\frac{3}{2}$ is the infimum ratio for the hoop to rise.
 \subsection*{(b)}
+Suppose the hoop doesn't rise, recall that for each $\Delta\theta$, the traveled distance for the bead is approximately $\Delta x\approx R\Delta\theta$, hence given speed $v$ at the initial point, the time elapsed during $\Delta x$ is $\Delta t\approx \frac{\Delta x}{v} \approx \frac{R}{v}\Delta \theta$, or $\frac{\Delta t}{\Delta\theta}\approx \frac{R}{v}$; thus taking the limit, $\frac{dt}{d\theta}=\frac{R}{v}$. 
+\begin{comment}
+Hence, for the traveling angle $\theta\in [0,\pi]$, and $v=\sqrt{2gR(1-\cos(\theta))}$, the time elapsed in total is given by:
+$$\Delta t = \int_0^\pi \frac{dt}{d\theta}d\theta = \int_0^\pi \frac{R}{\sqrt{2gR(1-\cos(\theta))}}d\theta$$
+Using the property $2\sin^2(t)=1-\cos(2t)$, let $t=\frac{\theta}{2}$, $dt = \frac{1}{2}d\theta$, the substitution provides:
+$$\Delta t = \frac{R}{\sqrt{gR}}\int_0^\pi\frac{1}{\sqrt{2(1-\cos(\theta))}}d\theta = 2\sqrt{\frac{R}{g}}\int_0^\frac{\pi}{2}\frac{1}{\sqrt{4\sin^2(t)}}dt = 2\sqrt{\frac{R}{g}}\int_0^\frac{\pi}{2}\frac{1}{2}\csc(t)dt$$
+$$0$$
+\end{comment}
 
+\textbf{insert image}
+
+Now, notice that initially the beads are not directly on top (or $\theta_0>0$ initially), their centers are certain angle away from the top. Since $r<<R$, then we have $R\theta_0 \approx r$, hence $\theta_0 \approx \frac{r}{R}$ is the initial angle of the beads.
+
+Also, When the beads fall to the ground, since $r<<R$, assume it approximately lands at $\theta_f=\pi$ (at the bottom). Then, with $v=\sqrt{2gR(1-\cos(\theta))}$, the time elapsed can be approximated as follow:
+$$\Delta t \approx \int_{\theta_0}^{\theta_f}\frac{dt}{d\theta}d\theta = \int_{\frac{r}{R}}^{\pi}\frac{R}{\sqrt{2gR(1-\cos(\theta))}}d\theta = \sqrt{\frac{R}{g}}\int_{\frac{r}{R}}^{\pi}\frac{1}{\sqrt{2(1-\cos(\theta))}}d\theta$$
+Now, given that $t=\frac{\theta}{2}$, we have the relation $2\sin^2(t) = 1-\cos(2t) = 1-\cos(\theta)$, and $dt = \frac{1}{2}d\theta$, then the above integral becomes:
+$$\Delta t \approx 2\sqrt{\frac{R}{g}}\int_{\frac{r}{2R}}^{\frac{\pi}{2}}\frac{1}{\sqrt{2\cdot 2\sin^2(t)}}dt = 2\sqrt{\frac{R}{g}}\int_{\frac{r}{2R}}^{\frac{\pi}{2}}\frac{1}{2\sin(t)}dt = \sqrt{\frac{R}{g}}\int_{\frac{r}{2R}}^{\frac{\pi}{2}}csc(t)dt$$
+$$ = -\sqrt{\frac{R}{g}}\ln(\cot(t)+\csc(t))\bigg|_{\frac{r}{2R}}^{\frac{\pi}{2}} = \sqrt{\frac{R}{g}}\ln\left(\cot\left(\frac{r}{2R}\right)+\csc\left(\frac{r}{2R}\right)\right)$$
+Which, this is the approximated time the beads take to fall onto the ground.
 
 \break
 
