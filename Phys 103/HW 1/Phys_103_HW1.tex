@@ -354,7 +354,7 @@ Which, this is the approximated time the beads take to fall onto the ground.
     On the mastery questions, you showed that a rocket launched under the influence of gravity has a lower velocity, and that the "penalty" imposed by gravity is larger the longer it takes the rocket to burn its fuel. This suggests that, if launching to orbit off Earth, it would be best to make $dm/dt$ as large as possible. However, there's a technical challenge: burning fuel more rapidly generally requires a bigger engine, and the increasing mass of the engine imposes its own penalty. Let's take the rocket as having four components: fuel, fuel tank, engine, and payload initially, then 
     $$m_0 = m_f + m_t+m_e+m_p$$
     Let's assume that the rate of fuel consumption is proportional to the mass of the engine, 
-    $$\alpha \equiv \left|\frac{dm}{td}\right|=m_e/\tau$$
+    $$\alpha \equiv \left|\frac{dm}{dt}\right|=m_e/\tau$$
     and that the effective exhaust speed is fixed at $u$, regardless of the size of the engine. $\tau$ is some constant with units of time (it's the amount of time for the engine to consume a mass of fuel equal to its own mass), and for any particular rocket, $\alpha$ will be constnat.
     \begin{itemize}
         \item[(a)] Calculate the velocity of the racket after it has consumed all its fuel. Your answer should depend on $u,g,\tau$ and the masses of the four components.
@@ -365,13 +365,104 @@ Which, this is the approximated time the beads take to fall onto the ground.
 \end{question}
 
 \textbf{Pf:}
+\subsection*{(a)}
+Recall the formula for the rate of change of time:
+$$m\frac{dv}{dt}=u\frac{dm}{dt}+F_{\textmd{ext}}$$
+Here, if we fix the upward direction as positive, then $F_{\textmd{ext}} = F_g = -mg$ (assume the only external force is the gravity, which is directed downward). Hence, with $m>0$ for all time $t$, the differential equation implies:
+$$\frac{dv}{dt}=u\cdot\frac{1}{m}\frac{dm}{dt}-g$$
+
+Also, since the mass is decreasing (always consuming fuel), we have $\frac{dm}{dt}=-\frac{m_e}{\tau}$ (which is constant), hence the time it takes to burn the fuel (with final mass $m_{\textmd{fin}} = m_t+m_e+m_p$), becomes:
+$$\Delta t = \frac{m_0 - m_{\textmd{fin}}}{dm/dt} = \frac{-m_f}{-m_e/\tau} = \frac{m_f\cdot \tau}{m_e}$$
+Which, with the differential equation, the change in velocity becomes:
+$$\Delta v=\int_0^{\Delta t}\frac{dv}{dt}dt = \int_0^{\frac{m_f\cdot \tau}{m_e}}\left(u\cdot\frac{1}{m}\frac{dm}{dt}-g\right)dt = u\ln(m(t))\bigg|_0^{\Delta t}-g\Delta t$$
+$$=u\ln\left(\frac{m_{\textmd{fin}}}{m_0}\right)-\frac{g\cdot m_f\cdot \tau}{m_e} = u\ln\left(\frac{m_t+m_e+m_p}{m_f+m_t+m_e+m_p}\right)-\frac{g\cdot m_f\cdot \tau}{m_e}$$
+(Note: $m(0) = m_0$, and $m(\Delta t)= m_\textmd{fin}$).
+
+If assuming initiall $v_0=0$, then the above term provides the final velocity when the rocket consumes all its fuel.
+
+\subsection*{(b)} 
+Physically, when doubling the mass of everything, the gravity force applies on the rocket is larger at each moment, providing a larger negative acceleration than the original case; 
+
+however, if $\tau$ (the time for the engine to consume the same mass of fuel as the engine's mass) doesn't change, then at any time period, the engine is also consuming a larger amount of fuel, causing $\frac{dm}{dt}$ to have a larger magnitude, and this provides a stronger thrusting force on the rocket. 
+
+With both force components on the rocket increase (and points in different direction), their overall effect of the increase cancel out, leaving the rocket's change in velocity being affected only by the mass ratio.
+
+\subsection*{(c)}
+Recall that the velocity eventually is given as follow (with each index $i$, $\tilde{m_i} = \frac{m_i}{m_f}$):
+$$v_\textmd{fin} = u\ln\left(\frac{m_t+m_e+m_p}{m_f+m_t+m_e+m_p}\right)-\frac{g\cdot m_f\cdot\tau}{m_e}$$
+$$ = u\ln\left(\frac{\tilde{m_e}+\tilde{m_t}+\tilde{m_p}}{\tilde{m_e}+1+\tilde{m_t}+\tilde{m_p}}\right) - \frac{g\cdot \tau}{\tilde{m_e}}$$
+Let $x=\tilde{m_e}$ for simplicity, final velocity as a function of $x$ is given by:
+$$v_\textmd{fin}(x) = u\ln\left(\frac{x+\tilde{m_t}+\tilde{m_p}}{x+1+\tilde{m_t}+\tilde{m_p}}\right) - \frac{g\cdot\tau}{x}$$
+$$ = u\ln(x+\tilde{m_t}+\tilde{m_p})-u\ln(x+1+\tilde{m_t}+\tilde{m_p})-\frac{g\tau}{x}$$
+To find the maximum for $x>0$, taking the derivative and evaluate to be $0$, we get:
+$$\frac{u}{x+\tilde{m_t}+\tilde{m_p}}-\frac{u}{x+1+\tilde{m_t}+\tilde{m_p}}+\frac{g\tau}{x^2} = 0$$
+$$\implies \frac{u}{(x+\tilde{m_t}+\tilde{m_p})(x+1+\tilde{m_t}+\tilde{m_p})}=-\frac{g\tau}{x^2}$$
+$$\implies ux^2 = -g\tau(x^2+(1+2\tilde{m_t}+2\tilde{m_p})x+(\tilde{m_t}+\tilde{m_p})(1+\tilde{m_t}+\tilde{m_p}))$$
+$$\implies (u+g\tau)x^2+g\tau(1+2\tilde{m_t}+2\tilde{m_p})x+g\tau(\tilde{m_t}+\tilde{m_p})(1+\tilde{m_t}+\tilde{m_p})=0$$
+Which, using quadratic formula, we get the following expression of $x$:
+$$x=\frac{-g\tau(1+2\tilde{m_t}+2\tilde{m_p})\pm\sqrt{g^2\tau^2(1+2\tilde{m_t}+2\tilde{m_p})^2-4g\tau(u+g\tau)(\tilde{m_t}+\tilde{m_p})(1+\tilde{m_t}+\tilde{m_p})}}{2(u+g\tau)}$$
+With the restriction that $x>0$, the $\pm$ will be dependent on the actual values, and the chosen units for each constants.
+
+\subsection*{(d)}
+Given that $u=3\textmd{km/s}$, $\tau = 7\textmd{s}$, and $\tilde{m_t}=\frac{1}{10}=0.1$. Since the speed is given in km/s, convert $g = 9.8 \textmd{m/s}^2 = 9.8\cdot 10^{-3}\textmd{km/s}^2$. Also, since $u$ represents the relative velocity of the fuel flow from the rocket, with the fuel propelled in the negative direction, $u=-3$ needs to be used.
+
+Also, recall the acceleration formula is given by follow in part (a):
+$$\frac{dv}{dt}=u\cdot\frac{1}{m}\frac{dm}{dt}-g$$
+If we define $\tilde{m} = \frac{m}{m_f}$, we have $\tilde{m_0} = \frac{m_f+m_t+m_e+m_g}{m_f} = 1+\tilde{m_t}+\tilde{m_e}+\tilde{m_g}$, we have $\frac{d\tilde{m}}{dt} = \frac{1}{m_f}\frac{dm}{dt}$, then the differential equation becomes:
+$$\frac{dv}{dt}=u\cdot \frac{1}{\tilde{m}\cdot m_f}\cdot m_f\frac{d\tilde{m}}{dt}-g = u\cdot\frac{1}{\tilde{m}}\cdot\frac{d\tilde{m}}{dt}-g$$
+And, as $\frac{dm}{dt} = -\frac{m_e}{\tau}$, $\frac{d\tilde{m}}{dt} = -\frac{1}{m_f}\cdot \frac{m_e}{\tau} = -\frac{\tilde{m_e}}{\tau}$.
+\subsubsection*{1) When $\tilde{m_p}=0$:}
+Plug into the formula for $\tilde{m_e}>0$ in part (c), we get:
+$$\tilde{m_e} \approx 0.0667 $$
+For the initial acceleration (with $\tilde{m} = \tilde{m_0}$), plug in the numbers, we get:
+$$\frac{dv}{dt}\bigg|_{t=0} = (-3)\cdot\frac{1}{1+0.1+0.0667+0}\cdot\left(-\frac{0.0667}{7}\right)-g \approx 0.0245-g$$
+(Note: $g=9.8\cdot 10^{-3}$ here is in km/s$^2$, based on the conversion of the units, the same applies to $\frac{dv}{dt}$).
+
+\subsubsection*{2) When $\tilde{m_p}=0.1$:}
+Plug into the formula again, we get:
+$$\tilde{m_e} \approx 0.0931$$
+Plug in all the numbers to get initial acceleration, we get:
+$$\frac{dv}{dt}\bigg|_{t=0} = (-3)\cdot\frac{1}{1+0.1+0.0931+0.1}\cdot\left(-\frac{0.0931}{7}\right)-g \approx 0.0334-g$$
+(Again, here $\frac{dv}{dt}$ is in km/s$^2$).
+
 
 \break
 
-\section{}%6
+\section{Extra Credit}%6
 \begin{question}\label{q6}
+    Consider an object of mass $m$ moving in one dimension subject to three resistive forces: a constant frictional force with magnitude $\mu mg$, linear air resistance with magnitude $bv$, and quadratic air resistance with magnitude $cv^2$. If object starts with speed $v_0$, how long does it take to come to rest?
 \end{question}
 
 \textbf{Pf:}
+
+Set the traveling direction to be positive, then the above resistive forces are all directed in a negative direction. Hence, the differential equation of the force is given as follow:
+$$F = m\frac{dv}{dt} = - cv^2- bv-\mu mg  \implies \frac{1}{v^2+\frac{b}{c}v+\frac{\mu mg}{c}}\frac{dv}{dt}=-\frac{c}{m}$$
+Using quadratic formula, if $v^2+\frac{b}{c}v+\frac{\mu mg}{c}=0$, $v$ is expressed as:
+$$v=-\frac{b}{2c}\pm\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}$$
+Which, let $\alpha=-\frac{b}{2c}$ and $\beta = \sqrt{(\frac{b}{2c})^2-\frac{\mu mg}{c}}$, using partial fraction, the rational term of $v$ can be expressed as:
+$$v^2+\frac{b}{c}v+\frac{\mu mg}{c} = (v-(\alpha+\beta))(v-(\alpha-\beta))$$
+$$\frac{1}{v^2+\frac{b}{c}v+\frac{\mu mg}{c}}=\frac{A}{v-(\alpha+\beta)}+\frac{B}{v-(\alpha-\beta)}$$\
+Solving for the coefficients $A,B$, $A=-B$, and $B=-\frac{1}{2\beta}$, then the differential equation becomes:
+$$\frac{1}{2\beta}\left(\frac{1}{v-(\alpha+\beta)}-\frac{1}{v-(\alpha-\beta)}\right)\frac{dv}{dt}=-\frac{c}{m}$$
+Taking the integral, we get:
+$$\frac{1}{2\beta}\int\left(\frac{1}{v-(\alpha+\beta)}-\frac{1}{v-(\alpha-\beta)}\right)\frac{dv}{dt}dt = \frac{1}{2\beta}\ln\left(\frac{v-(\alpha+\beta)}{v-(\alpha-\beta)}\right)$$
+$$= \int\left(-\frac{c}{m}\right)dt = -\frac{c}{m}t+K$$
+
+$$\implies \ln\left(\frac{v-(\alpha+\beta)}{v-(\alpha-\beta)}\right) = -\frac{2c\beta}{m}t+K'\implies \frac{v-(\alpha+\beta)}{v-(\alpha-\beta)} = 1-\frac{2\beta}{v-(\alpha-\beta)} = K''\exp\left(-\frac{2c\beta}{m}t\right)$$
+$$\implies 1-K''\exp\left(-\frac{2c\beta}{m}t\right) = \frac{2\beta}{v-(\alpha-\beta)}\implies v-(\alpha-\beta)= \frac{2\beta}{1-K''\exp\left(-\frac{2c\beta}{m}t\right)}$$
+$$\implies v= \frac{2\beta}{1-K''\exp\left(-\frac{2c\beta}{m}t\right)}+(\alpha-\beta)$$
+
+Since for $t=0$, $v(0)=v_0$, then we get the following equality:
+$$v_0 = \frac{2\beta}{1-K''}+(\alpha-\beta) \implies \frac{v_0-\alpha+\beta}{2\beta} = \frac{1}{1-K''}\implies 1-K'' = \frac{2\beta}{v_0-\alpha+\beta}\implies K'' = 1-\frac{2\beta}{v_0-\alpha+\beta}$$
+Hence, the precise expression of velocity is:
+$$v(t) = \frac{2\beta}{1-\left(1-\frac{2\beta}{v_0-\alpha+\beta}\right)\exp\left(-\frac{2c\beta}{m}t\right)}+(\alpha-\beta)$$
+
+\hfil
+
+To calculate when it stops, we need $v(t)=0$, hence, we get:
+$$\frac{2\beta}{1-\left(1-\frac{2\beta}{v_0-\alpha+\beta}\right)\exp\left(-\frac{2c\beta}{m}t\right)}+(\alpha-\beta) = 0\implies \frac{2\beta}{\alpha-\beta}=\left(1-\frac{2\beta}{v_0-\alpha+\beta}\right)\exp\left(-\frac{2c\beta}{m}t\right)-1$$
+$$\implies \exp\left(-\frac{2c\beta}{m}t\right) = \frac{\frac{2\beta}{\alpha-\beta}-1}{(1-\frac{2\beta}{v_0-\alpha+\beta})} = \frac{3\beta-\alpha}{\alpha-\beta}\cdot \frac{v_0-\alpha+\beta}{v_0-\alpha-\beta}$$
+$$\implies -\frac{2c\beta}{m}t = \ln\left(\frac{3\beta-\alpha}{\alpha-\beta}\cdot \frac{v_0-\alpha+\beta}{v_0-\alpha-\beta}\right)\implies t=-\frac{m}{2c\beta}\ln\left(\frac{3\beta-\alpha}{\alpha-\beta}\cdot \frac{v_0-\alpha+\beta}{v_0-\alpha-\beta}\right)$$
+Plug the original definition
 
 \end{document}
