@@ -126,11 +126,19 @@ Now, for any unit $u in R$ and nilpotent $x in R$, since $u+x = u(1+u^(-1)x)$, w
 
   \ 
 
-+ date
++ Suppose $f$ is a zero-divisor, then there exists $g = b_0+b_1x+...+b_m x^m$, where $f g = 0$, and here can assume $m$ is the smallest nonnegative integer that achieves this.
+
+  This shows that $a_n b_m = 0$ (the leading coefficient). Hence, if consider $f(a_n g) = a_n(f g)=0$, since if $a_n g$ is nonzero, then it has degree at most $m-1<m = deg(g)$, hence it reaches a contradiction (since $g$ is assumed to be the smallest). Then, $a_n g=0$.
+
+  Therefore, $(f-a_n x^n)g = f g-(a_n g)x^n = 0$, where $f-a_n x^n$ has degree at most $n-1$. Hence, applying induction, we can deduce that for every $a_k$, there exists nonzero polynomials $g_k$, such that $a_k g_k=0$. If multiply the leading coefficients of all $g_k$ together, since each leading coefficient of $g_k$ multiplied with $a_k$ provides $0$, this product annihilates all coefficients of $f$, hence its product with $f$ provides $0$.
 
   \ 
 
-+ 
++ First, recall that all the coefficients of $f g$ are finite sum of productst of the coefficients of $f$ and $g$, hence let $I=(a_0,a_1,...,a_n),\ J=(b_0,b_1,...,b_m)$ represents the ideals of $f$ and $g$'s coefficients respectively, we get that $K$ (the ideal corresponds to $f g$) satisfies $K subset.eq I J$ (since the generators of $K$, the coefficients of $f g$ are inside $I J$).
+
+  $==>:$ To prove the contrapositive, assume either $f$ or $g$ is not primitive, then since either $I$ or $J$ are proper ideals of $R$, we have $K subset.eq I J subset.neq R$, hence since $K$ is proper, $f g$ is not primitive.
+
+  $<==:$ IF $f$ and $g$ are primite, here using $f$ as an example, since there exists $k_0,k_1,...,k_n in R$, such that $k_0 a_0 + k_1 a_1+...+k_n a_n = 1$,
 
 = D//3
 #myQuestion[
@@ -193,7 +201,21 @@ So, because every coefficients are nilpotent, $f$ is nilpotent, hence $f in N$, 
 
   \ 
 
-+ 
++ Here, if $f$ is nilpotent, then $f^n = 0$ for some $n in NN$. Then, the constant coefficient becomees $a_0^n = 0$, showing that the constant term is nilpotent. THn, $f-a_0 x^0$ becomes a power series with smallest degree $1$, and is also nilpotent.
+
+  Now, by induction, if proven that the $deg <= n-1$ terms are nilpotent, then subtracting out these terms, we get $f_n = a_n x^n + ...$ is nilpotent. Then, there exists $k in NN$, where $f_n^k = 0$. Then, the smallest degree is $x^(n k)$, with coefficient $a_n^k = 0$. Hence, $a_n$ is also nilpotent. Then by induction, all coefficients are nilpotent.
+
+\ 
+
+3.  $==>:$ suppose $f$ belongs to the Jacobson radical of $R[[x]]$, then for all $g in R[[x]]$ (in particular, can choose $g in R$), satisfies $1-g f$ being a unit in $R[[x]]$, which is achieved only when the constant coefficient is a unit (proven in 1.). So, since its constant coefficient is given by $1-g_0 f_0$, since for all $g_0 in R$ this term is a unit, we have $f_0$ being in the Jacbson radical of $R$.
+
+  $<==:$ Suppose $f_0$ belongs to the Jacobson radical of $R$, then for all $g in R[[x]]$, the term $1-g f$ has constant coefficient $1-g_0 f_0$, which is a unit, hence $1-g f$ is a unit. THis shows that $f$ belongs to the Jacobson Radical of $R[[x]]$.
+
+  \ 
+
+4. Given a projection map $R[[x]]arrow.r R$ that returns the constant coefficient
+
+
 = ND//6
 #myQuestion[
   A ring $R$ is such that every ideal not contained in the nilradical contains a nonzero idempotent (an elemenet $e$ with $e^2=e != 0$). Prove that the nilradical and the Jacobson radical of $R$ are equal.

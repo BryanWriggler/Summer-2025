@@ -193,6 +193,7 @@ $$\sin^2(\theta)=\frac{1}{4}\left(1+\sqrt{1-\frac{4gh}{v_0^2}}\right),\quad \sin
 
 \break
 
+\begin{comment}
 \section{}%3
 \begin{question}\label{q3}
     Consider an object, such as a car, with mass $m$, starting from rest, moving in one dimension, and subject to two forces. One, provided by an engine with a certain power output, is $F_e = P/v$. The other is some quadratic drag from air resistance, $F_d = -cv^2$.$P,c$ are both positive constants. Unfortunately, it is not possible to analytically solve for the car's velocity as a function of time. However, we can get approximate analytic expressions which are very accurate.
@@ -341,8 +342,122 @@ $$\implies \exp\left(-\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\frac{t}{m}\right)
 $$\implies -\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\frac{t}{m}=\ln\left(-\frac{1}{100C''''\sqrt{c\sqrt{P}}}\right)$$
 $$\implies t=-\frac{m\ln\left(-\frac{1}{100C''''\sqrt{c\sqrt{P}}}\right)}{\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)}$$
 Where $C'''' = \left(\sqrt{\frac{1}{c\sqrt{P}}-\frac{1}{\sqrt{c\sqrt{P}}}+\frac{1}{4}}-\frac{1}{\sqrt{c\sqrt{P}}}\right)\exp\left(\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\left(\frac{1}{2c\sqrt{P}}-\frac{1}{2\sqrt{c\sqrt{P}}}+\frac{1}{8}\right)\right)$.
+\end{comment}
+
+\section{}%3
+\begin{question}\label{q3}
+    Consider an object, such as a car, with mass $m$, starting from rest, moving in one dimension, and subject to two forces. One, provided by an engine with a certain power output, is $F_e = P/v$. The other is some quadratic drag from air resistance, $F_d = -cv^2$.$P,c$ are both positive constants. Unfortunately, it is not possible to analytically solve for the car's velocity as a function of time. However, we can get approximate analytic expressions which are very accurate.
+    \begin{itemize}
+        \item[(a)] Calculate the terminal velocity $v_t$, and use it to define a dimensionless velocity variable $\tilde{v}=\frac{v}{v_t}$. Similarly, determine a timescale $\tau$ from the constant parameters in the problem, and use it to define a dimensionless time variable $\tilde{t}=\frac{t}{\tau}$. Write Newton's second law in terms of these dimensionless variables.
+        \item[(b)] At the start of the motion, $\tilde{v}<< 1$, so air resistance is a small correction; the car's motion is essentially just acceleration driven by the engine. By ignoring the force due to air resistance, determine an (approximate) formula $\tilde{v}(\tilde{t})$, valid for $\tilde{v}<<1$.
+        \item[(c)]Eventually, the car approaches terminal velocity. We can define 
+        $$\epsilon = \tilde{v}_t-\tilde{v}$$
+        If the car is going close to terminal velocity, $\epsilon <<1$. Expand the forces to linear order in $\epsilon$, and solve to get an (approximate) formula $\epsilon(\tilde{t})$, valid for $\epsilon<<1$.
+        \item[(d)] Now comes the leap of faith: assume that either the velocity is small enough to ignore air resistance or the velocity is close to terminal velocity. In other words, we'll write $\tilde{v}(\tilde{t})$ as a piecewise function; before some time $\tilde{t}_*$ it takes the form of your solution to (c). Choose an appropriate switching time $\tilde{t}_*$ and write down such a piecewise function for $\tilde{v}(\tilde{t})$. You should fix the two undetermined constants by using that (i) the car starts at rest and (ii) $\tilde{v}$ should be continuous.Plot the piecewise function $\tilde{v}(\tilde{t})$.
+        \item[(e)] Put all the constants back in to get $v(t)$. At what time $t$ does the car obtain $99\%$ of terminal velocity? You should give an analytic expression (using your approximate $\tilde{v}$). 
+    \end{itemize}
+\end{question}
+\textbf{Pf:}
+
+\subsection*{(a)}
+First, assuming the mass of the object is not changing, then we get the differential equation $F = m\frac{dv}{dt} = F_e + F_d = \frac{P}{v}-cv^2$ (the total force given). From a physical interpretation, the object wold reach terminal velocity, hence as $t\rightarrow\infty$, we get $\frac{dv}{dt}\rightarrow 0$, and $v\rightarrow v_t$. So, we get the following equation:
+$$0 = \frac{P}{v_t}-cv_t^2 \implies cv_t^3 = P\implies v_t = \sqrt[3]{\frac{P}{c}}$$
+Then, define $\tilde{v}=\frac{v}{v_t} = \sqrt[3]{\frac{c}{P}}v$ and $\tilde{t}=\frac{t}{\tau}$ (for some yet to be determined $\tau>0$), we get the following relationship:
+$$\frac{d\tilde{v}}{d\tilde{t}} = \frac{d\tilde{v}}{dt}\cdot \frac{dt}{d\tilde{t}} = \frac{1}{v_t}\frac{dv}{dt}\cdot \tau = \frac{\tau}{v_t}\frac{dv}{dt}\implies \frac{dv}{dt}=\frac{v_t}{\tau}\frac{d\tilde{v}}{d\tilde{t}}$$
+Plug back into the differential equation, we get:
+$$\frac{mv_t}{\tau}\frac{d\tilde{v}}{d\tilde{t}}=\frac{P}{v_t\tilde{v}}-cv_t^2\tilde{v}^2\implies \frac{d\tilde{v}}{d\tilde{t}} = \frac{\tau P}{mv_t^2\tilde{v}}-\frac{c\tau v_t}{m}\tilde{v}^2$$
+Define $\tau := \frac{mv_t^2}{P}$, we get the differential equation as follow:
+$$\frac{d\tilde{v}}{d\tilde{t}} = \frac{1}{\tilde{v}}-\frac{cv_t^3}{P}\tilde{v}^2$$
+
+\subsection*{(b)}
+If initially assume $\tilde{v}<<1$ (where air resistance is negligible), then we have $c=0$. Hence, the differential equation in part (a) simplified to the following:
+$$\frac{d\tilde{v}}{d\tilde{t}}=\frac{1}{\tilde{v}}\implies \tilde{v}\frac{d\tilde{v}}{d\tilde{t}}=1$$
+Solving the differential equation, we get:
+$$\int \tilde{v}\frac{d\tilde{v}}{d\tilde{t}}d\tilde{t} = \int 1d\tilde{t}\implies \frac{1}{2}\tilde{v}^2=\tilde{t}+C\implies \tilde{v} = \pm\sqrt{2\tilde{t}+C'}$$
+Which, with the assumption that $t=0$ satisfies $v(0) = 0$ (initially at rest), we can derive $\tilde{t}=0$ satisfies $\tilde{v}(0) = 0$; also, WLOG, can assume the velocity is positive (can assume the engine powers the object in a way that the object moves in the positive direction). Hence, $C' = 0$, showing that $\tilde{v}(\tilde{t})=\sqrt{2\tilde{t}}$.
+
+\subsection*{(c)}
+When approaching terminal velocity (where $\epsilon = 1-\tilde{v}$ is small, with $\epsilon<<1$), we'll substitute $\tilde{v}$ with $\epsilon$. Where, we get the following:
+$$\frac{d\epsilon}{d\tilde{t}}=-\frac{d\tilde{v}}{d\tilde{t}},\quad \tilde{v}=1-\epsilon$$
+Hence, the differential equation can be expressed as:
+$$-\frac{d\epsilon}{d\tilde{t}}=\frac{d\tilde{v}}{d\tilde{t}}= \frac{1}{\tilde{v}}-\frac{cv_t^3}{P}\tilde{v}^2 = \frac{1}{1-\epsilon}-\frac{cv_t^3}{P}(1-2\epsilon+\epsilon^2)$$
+Which, since $\epsilon<1$, then the using the taylor series, $\frac{1}{1-\epsilon} =\sum_{k=0}^{\infty}\epsilon^k$. If we extract all the above terms up to linear order, we get the following approximation:
+$$-\frac{d\epsilon}{d\tilde{t}}=(1+\epsilon)-\frac{cv_t^3}{P}(1-2\epsilon)\implies \frac{d\epsilon}{dt}=\left(\frac{cv_t^3}{P}-1\right)-\left(\frac{2cv_t^3}{P}+1\right)\epsilon$$
+$$\implies \frac{1}{\left(\frac{2cv_t^3}{P}+1\right)\epsilon-\left(\frac{cv_t^3}{P}-1\right)}\frac{d\epsilon}{d\tilde{t}} = -1 \implies \int \frac{1}{\left(\frac{2cv_t^3}{P}+1\right)\epsilon-\left(\frac{cv_t^3}{P}-1\right)}\frac{d\epsilon}{d\tilde{t}}d\tilde{t}=\int(-1)d\tilde{t}$$
+$$\implies \frac{1}{\left(\frac{2cv_t^3}{P}+1\right)}\ln\left(\left(\frac{2cv_t^3}{P}+1\right)\epsilon-\left(\frac{cv_t^3}{P}-1\right)\right) = -\tilde{t}+C$$
+$$\implies \left(\frac{2cv_t^3}{P}+1\right)\epsilon-\left(\frac{cv_t^3}{P}-1\right) = D\exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\tilde{t}\right)$$
+$$\implies \epsilon = E\cdot\exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\tilde{t}\right) + \frac{\left(\frac{cv_t^3}{P}-1\right)}{\left(\frac{2cv_t^3}{P}+1\right)} = E\cdot\exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\tilde{t}\right) + \frac{cv_t^3-P}{2cv_t^3+P}$$
+Here, $E$ depends on the initial condition provided. Which, by the definition of $\epsilon=1-\tilde{v}$, we get the following:
+$$\tilde{v}=1-\epsilon = 1-\frac{cv_t^3-P}{2cv_t^3+P}+F\cdot \exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\tilde{t}\right),\quad F=-E$$
+
+\subsection*{(d)}
+Given the information, we want the time $\tilde{t}\leq \tilde{t_*}$ to satisfy the equation in (b), while $\tilde{t}>\tilde{t_*}$ to satisfy the equation in (c), and the velocity is continuous (for some yet to be determined $\tilde{t_*}$). Which, we want a function in the following form:
+$$\tilde{v}(\tilde{t})=\begin{cases}
+    \sqrt{2\tilde{t}} & \tilde{t}\leq\tilde{t_*}\\
+    1-\frac{cv_t^3-P}{2cv_t^3+P}+F\cdot \exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\tilde{t}\right) & \tilde{t}>\tilde{t_*}
+\end{cases}$$
+If we choose when $\tilde{v}=\frac{1}{2}$ to switch (i.e. when $\epsilon = 1-\tilde{v} = \frac{1}{2}<1$, up to half of the terminal velocity), we get the following for $\tilde{t_*}$:
+$$\sqrt{2\tilde{t_*}} = \frac{1}{2}\implies \tilde{t_*}= \frac{1}{8}$$
+And, for the function to be continuous, we want the right limit to be $\frac{1}{2}$ also (because the second function is continuous, this is the same as the evaluation of the second function that $\tilde{t_*}=\frac{1}{8}$). Then, we get the following:
+$$1-\frac{cv_t^3-P}{2cv_t^3+P}+F\cdot \exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\cdot\frac{1}{8}\right)=\frac{1}{2}\implies F = \left(\frac{cv_t^3-P}{2cv_t^3+P}-\frac{1}{2}\right)\exp\left(\left(\frac{2cv_t^3}{P}+1\right)\frac{1}{8}\right)$$
+Then, the general form of the function becomes:
+$$\tilde{v}(\tilde{t})=\begin{cases}
+    \sqrt{2\tilde{t}} & \tilde{t}\leq \frac{1}{8}\\
+    1-\frac{cv_t^3-P}{2cv_t^3+P}+\left(\frac{cv_t^3-P}{2cv_t^3+P}-\frac{1}{2}\right)\exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\left(\tilde{t}-\frac{1}{8}\right)\right) & \tilde{t}>\frac{1}{8}
+\end{cases}$$
+Using graphing program, the following is the graph (where the horizontal axis is $\tilde{t}$, vertical axis is $\tilde{v}$):
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width = 100mm]{Question 3 plot.png}
+    \end{center}
+\end{figure}
+And, the following is the utilized code:
+
+\rule{15.24cm}{0.01mm}
+\begin{verbatim}
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+#define constant
+c = 2
+P = 8
+t_0 = 1/8
+v_t = (P/c)**(1/3)
+
+D = (c*(v_t**3) - P)/(2*c*(v_t**3)+P) #coefficient appears in constant term
+E = 2*c*(v_t**3)/P #coefficient appears in the exponent
+
+#define velocity
+def v(t):
+ if(t <= t_0): return math.sqrt(2*t) #ignore air resistance
+ else: return 1-D+(D-1/2)*math.exp(-E*(t-1/8)) #include air resistance
+
+#plot velocity
+t = np.arange(0, 1.5, 0.02)
+
+velocity = []
+for i in range(len(t)):
+   velocity.append(v(t[i]))
+
+plt.plot(t,velocity, lw=2)
+plt.ylim(-0.05,1.1)
+
+plt.show()
+\end{verbatim}
+
+\rule{15.24cm}{0.01mm}
+
+\subsection*{(e)}
+If reconsider the relation $v = v_t\tilde{v} = \sqrt[3]{\frac{P}{c}}\tilde{v}$, and $\tilde{t}=\frac{t}{\tau} = \frac{Pt}{mv_t^2}$, plug these relations to the funciton in part (d), we get the following:
+$$v(t) = \begin{cases}
+    v_t\sqrt{\frac{2Pt}{mv_t^2}} & t\leq \frac{1}{8}\tau\\
+    v_t\left(1-\frac{cv_t^3-P}{2cv_t^3+P}+\left(\frac{cv_t^3-P}{2cv_t^3+P}-\frac{1}{2}\right)\exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\left(\frac{Pt}{mv_t^2}-\frac{1}{8}\right)\right)\right) & t>\frac{1}{8}\tau
+\end{cases}$$
 
 \break
+
+
 
 \section{(Insert image)}%4
 \begin{question}\label{q4}
@@ -494,7 +609,7 @@ Here, if we fix the upward direction as positive, then $F_{\textmd{ext}} = F_g =
 $$\frac{dv}{dt}=u\cdot\frac{1}{m}\frac{dm}{dt}-g$$
 
 Also, since the mass is decreasing (always consuming fuel), we have $\frac{dm}{dt}=-\frac{m_e}{\tau}$ (which is constant), hence the time it takes to burn the fuel (with final mass $m_{\textmd{fin}} = m_t+m_e+m_p$), becomes:
-$$\Delta t = \frac{m_0 - m_{\textmd{fin}}}{dm/dt} = \frac{-m_f}{-m_e/\tau} = \frac{m_f\cdot \tau}{m_e}$$
+$$\Delta t = \frac{m_{\textmd{fin}}-m_0}{dm/dt} = \frac{-m_f}{-m_e/\tau} = \frac{m_f\cdot \tau}{m_e}$$
 Which, with the differential equation, the change in velocity becomes:
 $$\Delta v=\int_0^{\Delta t}\frac{dv}{dt}dt = \int_0^{\frac{m_f\cdot \tau}{m_e}}\left(u\cdot\frac{1}{m}\frac{dm}{dt}-g\right)dt = u\ln(m(t))\bigg|_0^{\Delta t}-g\Delta t$$
 $$=u\ln\left(\frac{m_{\textmd{fin}}}{m_0}\right)-\frac{g\cdot m_f\cdot \tau}{m_e} = u\ln\left(\frac{m_t+m_e+m_p}{m_f+m_t+m_e+m_p}\right)-\frac{g\cdot m_f\cdot \tau}{m_e}$$
@@ -507,7 +622,7 @@ Physically, when doubling the mass of everything, the gravity force applies on t
 
 however, if $\tau$ (the time for the engine to consume the same mass of fuel as the engine's mass) doesn't change, then at any time period, the engine is also consuming a larger amount of fuel, causing $\frac{dm}{dt}$ to have a larger magnitude, and this provides a stronger thrusting force on the rocket. 
 
-With both force components on the rocket increase (and points in different direction), their overall effect of the increase cancel out, leaving the rocket's change in velocity being affected only by the mass ratio.
+With both force components on the rocket increase (and point in different direction), their overall effect of the increase cancel out, leaving the rocket's change in velocity being affected only by the mass ratio.
 
 \subsection*{(c)}
 Recall that the velocity eventually is given as follow (with each index $i$, $\tilde{m_i} = \frac{m_i}{m_f}$):
