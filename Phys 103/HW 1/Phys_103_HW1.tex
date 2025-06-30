@@ -25,6 +25,7 @@
 \newtheorem{thm}{Theorem}
 \newtheorem{question}{Question}
 \newtheorem{lemma}{Lemma}
+\newtheorem{code}{Code}
 
 %setup colored box environment for each math env above
 \tcolorboxenvironment{define}{
@@ -44,6 +45,10 @@
     arc=5mm, lower separated=false, fonttitle=\bfseries
 }
 \tcolorboxenvironment{lemma}{
+    enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries
+}
+\tcolorboxenvironment{code}{
     enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
     arc=5mm, lower separated=false, fonttitle=\bfseries
 }
@@ -188,7 +193,7 @@ $$\sin^2(\theta)=\frac{1}{4}\left(1+\sqrt{1-\frac{4gh}{v_0^2}}\right),\quad \sin
 
 \break
 
-\section{(Not done)}%3
+\section{}%3
 \begin{question}\label{q3}
     Consider an object, such as a car, with mass $m$, starting from rest, moving in one dimension, and subject to two forces. One, provided by an engine with a certain power output, is $F_e = P/v$. The other is some quadratic drag from air resistance, $F_d = -cv^2$.$P,c$ are both positive constants. Unfortunately, it is not possible to analytically solve for the car's velocity as a function of time. However, we can get approximate analytic expressions which are very accurate.
     \begin{itemize}
@@ -209,16 +214,133 @@ $$m\frac{dv}{dt}=\frac{P}{v}-cv^2$$
 For some non-determined constant velocity $v_0$ and time $t_0$, let $\tilde{v}=\frac{v}{v_0}$, $\tilde{t}=\frac{t}{t_0}$, then we get the following expression:
 $$\frac{d\tilde{v}}{d\tilde{t}} = \frac{d}{d\tilde{t}}\left(\frac{v(t)}{v_0}\right) = \frac{1}{v_0}\cdot \frac{dv}{dt}\cdot \frac{dt}{d \tilde{t}} = \frac{t_0}{v_0}\frac{dv}{dt}$$
 Substituting all the expressions of $v$ and $t$, we get:
-$$m\cdot \frac{v_0}{t_0}\frac{d\tilde{v}}{d\tilde{t}} = \frac{P}{v_0\tilde{v}}-c(v_0\tilde{v})^2$$
+$$m\cdot \frac{v_0}{t_0}\frac{d\tilde{v}}{d\tilde{t}} = \frac{P}{v_0\tilde{v}}-c(v_0\tilde{v})^2\implies \frac{d\tilde{v}}{d\tilde{t}}=\frac{t_0\cdot P}{mv_0^2}\cdot\frac{1}{\tilde{v}}-\frac{ct_0\cdot v_0}{m}\tilde{v}^2$$
+If set $t_0=m$, and $v_0 = \sqrt{P}$, the above differential equation can be simplified as:
+$$\frac{d\tilde{v}}{d\tilde{t}}=\frac{mP}{m(\sqrt{P})^2}\cdot\frac{1}{\tilde{v}}-\frac{cm\sqrt{P}}{m}\tilde{v}^2 = \frac{1}{\tilde{v}}-c\sqrt{P}\tilde{v}^2$$
+This will be the nondimensionalized differential equation we use.
 
+\hfil
 
 \subsection*{(b)}
+For $\tilde{v}<<1$, if we can assume air resistance is negligible, then $c=0$, hence the differential equation becomes:
+$$\frac{d\tilde{v}}{d\tilde{t}}=\frac{1}{\tilde{v}} \implies \tilde{v}\frac{d\tilde{v}}{d\tilde{t}}=1\implies \int \tilde{v}\frac{d\tilde{v}}{d\tilde{t}}d\tilde{t} = \frac{1}{2}\tilde{v}^2 = \int 1d\tilde{t}=\tilde{t}+C$$
+$$\implies \tilde{v}^2 = 2\tilde{t}+C' \implies \tilde{v}=\pm\sqrt{2\tilde{t}+C'}$$
+With $\tilde{v}\geq 0$ (can assume it is traveling in the same direction), the positive sign can be chosen; and, since at $\tilde{t}=0$ (implying $t=0$), we have $\tilde{v}(0)=0$ (initially at rest), hence $\tilde{v}(0) = \sqrt{0+C'} = 0$, showing that $C' = 0$, or $\tilde{v}(\tilde{t}) = \sqrt{2\tilde{t}}$.
+
+\hfil
 
 \subsection*{(c)}
+If define $\epsilon=\tilde{v_t}-\tilde{v}$ (with $\tilde{v_t}$ being a constant), then $\frac{d\epsilon}{d\tilde{t}} = - \frac{d\tilde{v}}{d\tilde{t}}$, and $\tilde{v}=\tilde{v_t}-\epsilon$. Then, the original differential equation becomes:
+$$\frac{d\tilde{v}}{d\tilde{t}}=\frac{1}{\tilde{v}}-c\sqrt{P}\tilde{v}^2 \implies -\frac{d\epsilon}{d\tilde{t}} = \frac{1}{\tilde{v_t}-\epsilon}-c\sqrt{P}(\tilde{v_t}-\epsilon)^2 = \frac{1}{\tilde{v_t}}\cdot \frac{1}{1-\frac{\epsilon}{\tilde{v_t}}}-c\sqrt{P}(\tilde{v_t}-\epsilon)^2$$
+If assume $\epsilon<<1$, can assume $|\frac{\epsilon}{\tilde{v_t}}|<1$, hence the taylor series of $\frac{1}{1-x}$ is given by $\sum_{n=0}^{\infty}x^n$. Taking up to linear term (for both the rational and the second degree polynomial), we get the following:
+$$-\frac{d\epsilon}{d\tilde{t}}\approx \frac{1}{\tilde{v_t}}\left(1+\frac{\epsilon}{\tilde{v_t}}\right)-c\sqrt{P}(\tilde{v_t}^2-2\tilde{v_t}\epsilon) = \left(\frac{1}{\tilde{v_t}}-c\sqrt{P}\tilde{v_t}^2\right)+\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)\epsilon$$
+$$\implies \frac{1}{\left(\frac{1}{\tilde{v_t}}-c\sqrt{P}\tilde{v_t}^2\right)+\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)\epsilon}\frac{d\epsilon}{d\tilde{t}} = -1$$
+Taking integral on both sides with respect to $\tilde{t}$, we get:
+$$\frac{1}{\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)}\ln\left(\left(\frac{1}{\tilde{v_t}}-c\sqrt{P}\tilde{v_t}^2\right)+\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)\epsilon\right) = -\tilde{t}+C$$
+$$\implies\ln\left(\left(\frac{1}{\tilde{v_t}}-c\sqrt{P}\tilde{v_t}^2\right)+\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)\epsilon\right)=-\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)\tilde{t}+C'$$
+$$\implies \left(\frac{1}{\tilde{v_t}}-c\sqrt{P}\tilde{v_t}^2\right)+\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)\epsilon = C''\exp\left(-\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)\tilde{t}\right)$$
+$$\implies \epsilon = C'''\exp\left(-\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)\tilde{t}\right)-\left(\frac{1}{\tilde{v_t}}-c\sqrt{P}\tilde{v_t}^2\right)/\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)$$
+
+$$\implies \epsilon(\tilde{t}) = C'''\exp\left(-\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)\tilde{t}\right)-\frac{\tilde{v_t}-c\sqrt{P}\tilde{v_t}^3}{1+2c\sqrt{P}\tilde{v_t}^3}$$
+Where the constant $C'''$ is dependent on the initial condition.
+
+\hfil
+
+Then, recall that $\epsilon = \tilde{v_t}-\tilde{v}$, then to express $\tilde{v}$ using the above terms, we get:
+$$\tilde{v}(\tilde{t}) = C''''\exp\left(-\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)\tilde{t}\right)+\frac{\tilde{v_t}-c\sqrt{P}\tilde{v_t}^3}{1+2c\sqrt{P}\tilde{v_t}^3}+\tilde{v_t}$$
+With the assumption that $\tilde{v_t}$ is the terminal velocity, we get that $\lim_{\tilde{t}\rightarrow\infty}\tilde{v}(\tilde{t}) = \tilde{v_t}$, then the above terms provide the following equality:
+$$\frac{\tilde{v_t}-c\sqrt{P}\tilde{v_t}^3}{1+2c\sqrt{P}\tilde{v_t}^3}+\tilde{v_t} = \tilde{v_t}\implies \frac{\tilde{v_t}-c\sqrt{P}\tilde{v_t}^3}{1+2c\sqrt{P}\tilde{v_t}^3}=0\implies \tilde{v_t}-c\sqrt{P}\tilde{v_t}^3=0\implies \tilde{v_t}=0,\ \tilde{v_t} = \pm \frac{1}{\sqrt{c\sqrt{P}}}$$
+With $\tilde{v_t}>0$, can assume $\tilde{v_t} = \frac{1}{\sqrt{c\sqrt{P}}}$. Finally, this generates the following form of function:
+$$\tilde{v}(\tilde{t}) = C''''\exp\left(-\left(\frac{1}{\tilde{v_t}^2}+2c\sqrt{P}\tilde{v_t}\right)\tilde{t}\right)+\tilde{v_t} = C''''\exp\left(-\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)t\right)+\frac{1}{\sqrt{c\sqrt{P}}}$$
+(Note: the rational term becomes $0$ by our assumption).
+
+Hence, the term $\epsilon = \tilde{v_t}-\tilde{v}$ becomes:
+$$\epsilon(\tilde{t}) = -C''''\exp\left(-\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\tilde{t}\right)$$
+
+\hfil
 
 \subsection*{(d)}
+When ignoring the air resistance (and assuming the object starts at rest), in part (b) the velocity is given by $\tilde{v}(\tilde{t}) = \sqrt{2\tilde{t}}$; when taking into account of air resistance, the approximate velocity is given by $\tilde{v}(\tilde{t}) = C''''\exp\left(-\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)t\right)+\frac{1}{\sqrt{c\sqrt{P}}}$ in part (c).
+
+In case to make the piecewise function more accurate, we want a time $\tilde{t_*}$ such that the first expression provides $\epsilon = \tilde{v_t}-\tilde{v}<<1$ (specifically, take $\epsilon\leq 0.5$ for simplicity). Then, we get the following:
+$$\tilde{v_t}-\tilde{v}(\tilde{t_*}) = \frac{1}{\sqrt{c\sqrt{P}}}-\sqrt{2\tilde{t_*}}\leq 0.5 \implies \frac{1}{\sqrt{c\sqrt{P}}}-\frac{1}{2}\leq \sqrt{2\tilde{t_*}}$$
+$$\implies \frac{1}{c\sqrt{P}}-\frac{1}{\sqrt{c\sqrt{P}}}+\frac{1}{4}\leq 2\tilde{t_*} \implies \tilde{t_*}\geq \frac{1}{2c\sqrt{P}}-\frac{1}{2\sqrt{c\sqrt{P}}}+\frac{1}{8}$$
+When the equality holds, the first expression provides the following speed:
+$$\tilde{t_*}=\frac{1}{2c\sqrt{P}}-\frac{1}{2\sqrt{c\sqrt{P}}}+\frac{1}{8},\quad \tilde{v}(\tilde{t_*}) = \sqrt{\frac{1}{c\sqrt{P}}-\frac{1}{\sqrt{c\sqrt{P}}}+\frac{1}{4}}$$
+The second expression provides the following speed:
+$$\tilde{v}(\tilde{t_*})=C''''\exp\left(-\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\left(\frac{1}{2c\sqrt{P}}-\frac{1}{2\sqrt{c\sqrt{P}}}+\frac{1}{8}\right)\right) + \frac{1}{\sqrt{c\sqrt{P}}}$$
+For the velocity to be continuous, the above two terms needs to be the same. Then, after some calculation, the coefficient $C''''$ is given as:
+$$C'''' = \left(\sqrt{\frac{1}{c\sqrt{P}}-\frac{1}{\sqrt{c\sqrt{P}}}+\frac{1}{4}}-\frac{1}{\sqrt{c\sqrt{P}}}\right)\exp\left(\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\left(\frac{1}{2c\sqrt{P}}-\frac{1}{2\sqrt{c\sqrt{P}}}+\frac{1}{8}\right)\right)$$
+For simplicity, we'll keep $C''''$. Then, the velocity can be recorded as the following piecewise function:
+$$\tilde{v}(\tilde{t}) = \begin{cases}
+    \sqrt{2\tilde{t}} & \tilde{t}\leq \tilde{t_*}\\
+    C''''\exp\left(-\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\tilde{t}\right)+\frac{1}{\sqrt{c\sqrt{P}}} & \tilde{t}>\tilde{t_*}
+\end{cases}$$
+Where $\tilde{t_*} = \frac{1}{2c\sqrt{P}}-\frac{1}{2\sqrt{c\sqrt{P}}}+\frac{1}{8}$.
+
+\hfil
+
+The following is the plot:
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width=100mm]{Figure_1.png}
+    \end{center}
+\end{figure}
+
+The following is the python code:
+\begin{code}
+
+    \hfil
+
+\begin{verbatim}
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+#define constant
+c = 2
+P = 2
+t_0 = 1/(2*c*math.sqrt(P))-1/(2*math.sqrt(c*math.sqrt(P)))+1/8 #switching time
+C = (math.sqrt(2*t_0)-1/math.sqrt(c*math.sqrt(P)))
+    *math.exp((c*math.sqrt(P)+2*math.sqrt(c*math.sqrt(P)))*t_0) 
+    #constant for exponential function
+
+#define velocity
+def v(t):
+ if(t <= t_0): return math.sqrt(2*t) #ignore air resistance
+ else: return C*math.exp(-(c*math.sqrt(P)+2*math.sqrt(c*math.sqrt(P)))*t)
+              +1/math.sqrt(c*math.sqrt(P)) #include air resistance, approximated
+
+#plot velocity
+t = np.arange(0, 0.8, 0.02)
+
+velocity = []
+for i in range(len(t)):
+   velocity.append(v(t[i]))
+
+plt.plot(t,velocity, lw=2)
+plt.ylim(-0.05,0.65)
+
+plt.show()
+\end{verbatim}
+\end{code}
+
+\hfil
 
 \subsection*{(e)}
+Finally, using $\tilde{t}=\frac{t}{t_0}=\frac{t}{m}$, and $\tilde{v}=\frac{v}{v_0}=\frac{v}{\sqrt{P}}$ from part (a), plug back in to the function got in (d), it is as follow:
+$$v(t)=\sqrt{P}\tilde{v}(t) = \begin{cases}
+    \sqrt{\frac{2Pt}{m}} & t\leq m\tilde{t_*}\\
+    C''''\exp\left(-\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\frac{t}{m}\right)+\frac{1}{\sqrt{c\sqrt{P}}} & t> m\tilde{t_*}
+\end{cases}$$ 
+Where $C''''$ and $\tilde{t_*}$ are given in part (d).
+
+Now, given that terminal velocity $v_t = \sqrt{P}\tilde{v_t} = \sqrt{P}\cdot \frac{1}{\sqrt{c\sqrt{P}}} = \sqrt{\frac{\sqrt{P}}{c}}$, if we want $v(t) = 0.99 v_t$ (99\% terminal velocity), it uses the second function, which we want the following:
+$$C''''\exp\left(-\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\frac{t}{m}\right)+\frac{1}{\sqrt{c\sqrt{P}}} = 0.99\frac{1}{\sqrt{c\sqrt{P}}}$$
+$$\implies \exp\left(-\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\frac{t}{m}\right) = -\frac{1}{100C''''\sqrt{c\sqrt{P}}}$$
+$$\implies -\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\frac{t}{m}=\ln\left(-\frac{1}{100C''''\sqrt{c\sqrt{P}}}\right)$$
+$$\implies t=-\frac{m\ln\left(-\frac{1}{100C''''\sqrt{c\sqrt{P}}}\right)}{\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)}$$
+Where $C'''' = \left(\sqrt{\frac{1}{c\sqrt{P}}-\frac{1}{\sqrt{c\sqrt{P}}}+\frac{1}{4}}-\frac{1}{\sqrt{c\sqrt{P}}}\right)\exp\left(\left(c\sqrt{P}+2\sqrt{c\sqrt{P}}\right)\left(\frac{1}{2c\sqrt{P}}-\frac{1}{2\sqrt{c\sqrt{P}}}+\frac{1}{8}\right)\right)$.
 
 \break
 
@@ -445,10 +567,19 @@ $$\frac{1}{v^2+\frac{b}{c}v+\frac{\mu mg}{c}}=\frac{A}{v-(\alpha+\beta)}+\frac{B
 Solving for the coefficients $A,B$, $A=-B$, and $B=-\frac{1}{2\beta}$, then the differential equation becomes:
 $$\frac{1}{2\beta}\left(\frac{1}{v-(\alpha+\beta)}-\frac{1}{v-(\alpha-\beta)}\right)\frac{dv}{dt}=-\frac{c}{m}$$
 Taking the integral, we get:
-$$\frac{1}{2\beta}\int\left(\frac{1}{v-(\alpha+\beta)}-\frac{1}{v-(\alpha-\beta)}\right)\frac{dv}{dt}dt = \frac{1}{2\beta}\ln\left(\frac{v-(\alpha+\beta)}{v-(\alpha-\beta)}\right)$$
-$$= \int\left(-\frac{c}{m}\right)dt = -\frac{c}{m}t+K$$
+$$\frac{1}{2\beta}\int\left(\frac{1}{v-(\alpha+\beta)}-\frac{1}{v-(\alpha-\beta)}\right)\frac{dv}{dt}dt = \frac{1}{2\beta}\ln\left(\frac{v-(\alpha+\beta)}{v-(\alpha-\beta)}\right)]= \int\left(-\frac{c}{m}\right)dt = -\frac{c}{m}t+K$$
 
-$$\implies \ln\left(\frac{v-(\alpha+\beta)}{v-(\alpha-\beta)}\right) = -\frac{2c\beta}{m}t+K'\implies \frac{v-(\alpha+\beta)}{v-(\alpha-\beta)} = 1-\frac{2\beta}{v-(\alpha-\beta)} = K''\exp\left(-\frac{2c\beta}{m}t\right)$$
+$$\implies \ln\left(\frac{v-(\alpha+\beta)}{v-(\alpha-\beta)}\right) = -\frac{2c\beta}{m}t+K'$$
+For $t=0$, since $v(0)=v_0$, we get the following relationship:
+$$\ln\left(\frac{v_0-(\alpha+\beta)}{v_0-(\alpha-\beta)}\right)=K'$$
+Which, for some time $t$, if $v=0$, we get the following equality:
+$$\ln\left(\frac{-(\alpha+\beta)}{-(\alpha-\beta)}\right) = \ln\left(\frac{\alpha+\beta}{\alpha-\beta}\right) = -\frac{2c\beta}{m}t + \ln\left(\frac{v_0-(\alpha+\beta)}{v_0-(\alpha-\beta)}\right)$$
+$$\implies \frac{2c\beta}{m}t = \ln\left(\frac{v_0-(\alpha+\beta)}{v_0-(\alpha-\beta)}\right)-\ln\left(\frac{\alpha+\beta}{\alpha-\beta}\right)=\ln\left(\frac{(v_0-(\alpha+\beta))(\alpha-\beta)}{(v_0-(\alpha-\beta))(\alpha+\beta)}\right)$$
+$$\implies t=\frac{m}{2c\beta}\ln\left(\frac{(v_0-\alpha-\beta)(\alpha-\beta)}{(v_0-\alpha+\beta)(\alpha+\beta)}\right)$$
+Finally, with $\alpha=-\frac{b}{2c}$, and $\beta=\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}$, we get the following expression for the time it takes to come to rest:
+$$t = \frac{m}{2c\beta}\ln\left(\frac{\left(v_0+\frac{b}{2c}-\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)\left(-\frac{b}{2c}-\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)}{\left(v_0+\frac{b}{2c}+\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)\left(-\frac{b}{2c}+\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)}\right)$$
+\begin{comment}
+$$\implies \frac{v-(\alpha+\beta)}{v-(\alpha-\beta)} = 1-\frac{2\beta}{v-(\alpha-\beta)} = K''\exp\left(-\frac{2c\beta}{m}t\right)$$
 $$\implies 1-K''\exp\left(-\frac{2c\beta}{m}t\right) = \frac{2\beta}{v-(\alpha-\beta)}\implies v-(\alpha-\beta)= \frac{2\beta}{1-K''\exp\left(-\frac{2c\beta}{m}t\right)}$$
 $$\implies v= \frac{2\beta}{1-K''\exp\left(-\frac{2c\beta}{m}t\right)}+(\alpha-\beta)$$
 
@@ -464,5 +595,6 @@ $$\frac{2\beta}{1-\left(1-\frac{2\beta}{v_0-\alpha+\beta}\right)\exp\left(-\frac
 $$\implies \exp\left(-\frac{2c\beta}{m}t\right) = \frac{\frac{2\beta}{\alpha-\beta}-1}{(1-\frac{2\beta}{v_0-\alpha+\beta})} = \frac{3\beta-\alpha}{\alpha-\beta}\cdot \frac{v_0-\alpha+\beta}{v_0-\alpha-\beta}$$
 $$\implies -\frac{2c\beta}{m}t = \ln\left(\frac{3\beta-\alpha}{\alpha-\beta}\cdot \frac{v_0-\alpha+\beta}{v_0-\alpha-\beta}\right)\implies t=-\frac{m}{2c\beta}\ln\left(\frac{3\beta-\alpha}{\alpha-\beta}\cdot \frac{v_0-\alpha+\beta}{v_0-\alpha-\beta}\right)$$
 Plug the original definition
+\end{comment}
 
 \end{document}
