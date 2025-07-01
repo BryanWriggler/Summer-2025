@@ -553,4 +553,30 @@ Since in either case, the union of two being $X$ implies one of the closed set i
 
 1. Suppose $Y subset.eq X$ is an irreducible subspace, then for any open subsets $U_1, U_2 subset.eq X$ such that $U_i sect Y != emptyset$, we have $(U_1 sect Y) sect (U_2 sect Y) = (U_1 sect U_2 sect Y) != emptyset$.
 
-  Which, suppose $U_1, U_2$ now have nontrivial intersection with $overline(Y)$, then it implies that $U_1, U_2$ 
+  Which, suppose $U_1, U_2$ now have nontrivial intersection with $overline(Y)$, suppose $y_1,y_2 in overline(Y)$ satisfy $y_i in U_i$ for each $i$, there are two cases:
+  - First, if $y_i$ is a limit point of $Y$, then every open neighborhood contains a point in $Y$, hence $U_i$ contains some points in $Y$. 
+  - Then, if $y_i$ is an isolated point of the set ${y_i} union Y$, then $y_i in Y$ is enforced: suppose $y_i in.not Y$, then by definition, there exists some open neighborhood $U in.rev y_i$, which $U sect Y = emptyset$. However, this implies that $Y subset.eq X\\U$ (which is a closed set), hence $overline(Y)subset.eq X\\U$, which notice that $y_i in.not X\\U$, while $y_i in overline(Y) subset.eq X\\U$, which is a contradiction.
+
+  Hence, if $U_1, U_2$ has nontrivial intersection with $overline(Y)$, they must both have nontrivial intersection with $Y$, hence $(U_1 sect Y)sect(U_2 sect Y) != emptyset$, showing that $U_1 sect U_2 != emptyset$. This proves the irreducibility of $overline(Y)$.
+
+  \ 
+
+2. For this, we'll use Zorn's Lemma: First, let the set $A$ be all the irreducible subspace of $X$ (it is nonempty, because a single point is irreducible, since its only open set is the point and $emptyset$), and equip it with partial order with inclusion $subset.eq$. Then, for any chain $C subset.eq A$, consider the following subset:
+  $ Y_C = union.big_(Y in C)Y $
+  First, to show that $Y_C in A$, consider any open subsets $U_1, U_2 subset.eq X$ such that $U_i sect Y_C != emptyset$: Since there exists $y_1, y_2 in Y_C$ such that $y_i in U_i$ for each $i$, and there exists $Y_1,Y_2 in C$ such that each $y_i in Y_i$. Then, based on the property of chain, WLOG, assume $Y_1 subset.eq Y_2$, then $y_1, y_2 in Y_2$. Hence, $U_i sect Y_2 != emptyset$ for each $i$, showing that $U_1 sect U_2 != emptyset$ (since $Y_2$ is irreducible). Hence, any two open subsets with nontrivial intersection with $Y_C$, actually intersects, showing that $Y_C$ is irreducible, hence $Y_C in A$.
+
+  Afterward, since $Y_C$ is obviously an upperbound of $C$, then every chain has an upper bound. By Zorn's Lemma, $A$ has a maximal element (which is a maximal irreducible subspace).
+
+\ 
+
+3. First, given $Y subset.eq X$ that is a maximal, since $overline(Y)$ is also irreducible, and $Y subset.eq overline(Y)$, then by maximality, we must have $Y=overline(Y)$, showing that $Y$ is closed.
+
+  Given a Hausdorff space, suppose nonempty $Y subset.eq X$ is an irreducible component of $X$, then $Y = {x}$ for some $x in X$: Suppose the contrary that $Y$ contains $y_1,y_2$ that are distinct, then by Hausdorff definition, there exists open neighborhoods $U_1, U_2subset.eq X$, where each $y_i in U_i$, and $U_1 sect U_2 = emptyset$. 
+
+  However, since each $U_i sect Y != emptyset$ (since it contains $y_i$), by irreducibility we must have $U_1 sect U_2 != emptyset$, which is a contradiction. Hence, $Y$ must be a singleton set.
+
+  This shows that a Hausdorff Space has irreducible components being all the singleton set.
+
+  \ 
+
+4. 
