@@ -10,6 +10,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[dvipsnames]{xcolor} %for importing multiple colors
 \usepackage{hyperref} %for creating links to different sections
+\usepackage{tikz} %for certain graph drawing
 
 \linespread{1.2} %controlling line spread
 
@@ -120,9 +121,9 @@
 For both parts, we'll assume that the codomain of $r,\phi$ is $\RR$ (i.e. allows negative radius $r$ for simplicity).
 \subsection*{(a)}
 First, we'll consider the distance of the puck away from the origin: On the $1$-dimensional trajectory, assume the origin (center) is position $r=0$, and at $t=0$, the puck is at the edge, which has position $r=R$ (assume that the puck initially has positive value position in the coordinate, so the distance from the center to the edge is the radius). Assume the puck is traveling in radial direction, relative to
- the track its velocity is given by $v$, hence the position $r(t) = \int vdt = vt+C$. With, $r(0) = 0+C = R$, we have $r(t)=R+vt$. This records the radial distance of the puck from the origin.
+ the track its velocity is given by $v$, hence the position $r(t) = \int vdt = vt+C$. With $r(0) = 0+C = R$, we have $r(t)=R+vt$. This records the radial distance of the puck from the origin.
 
-Now, we'll consider the angle of the puck relative to the observer (which we'll keep track of the angle of its initial position on the trajectory): With initial angle $\phi(0) = 0$, and angular velocity $w$, then the angle $\phi(t) = \int w dt = wt + C$. Where with $\phi(0) = 0+C = 0$, we have $\phi(t) = wt$.
+Now, we'll consider the angle of the puck relative to the observer (which we'll keep track of the angle of its initial position on the trajectory, since no matter where the puck is on the trajectory, because the trajectory passes through the center, the puck's angle is the same as the trajectory): With initial angle $\phi(0) = 0$, and angular velocity $w$, then the angle $\phi(t) = \int w dt = wt + C$. Where with $\phi(0) = 0+C = 0$, we have $\phi(t) = wt$.
 
 \hfil
 
@@ -161,22 +162,22 @@ We'll assume the vertical direction upward is the $\hat{y}$ axis, while the hori
 
 Since the only force taking into account is gravity, then the net force acting on the launch is $\bF_{net} = \bF_g = -mg\hat{y}$, hence the acceleration is given by $\ba = \frac{1}{m}\bF_{net} = -g\hat{y}$ (here assumes the mass of the shot is constant).
 
-Taking integration, we get $\bv(t) = \int \ba dt = -gt\hat{y}+\overline{C}$ for some $\overline{C} \in \RR^2$. Which, recall that initial velocity has speed $v_0$ and launch angle $\theta$, hence $\bv(0) = (v_0\cos(\theta),v_0\sin(\theta)) = 0\cdot \hat{y}+\overline{C}$. Hence, $\bv(t) = (v_0\cos(\theta), v_0\sin(\theta)-gt)$.
+Taking integration, we get $\bv(t) = \int \ba dt = -gt\hat{y}+\overline{C}$ for some $\overline{C} \in \RR^2$. Which, recall that initial velocity has speed $v_0$ and launch angle $\theta$, hence $\bv(0) = (v_0\cos(\theta),v_0\sin(\theta)) = 0\cdot \hat{y}+\overline{C}$. Which, $\bv(t) = (v_0\cos(\theta), v_0\sin(\theta)-gt)$.
 
 Then, taking integration again, we get $\br(t) = \int \bv dt = (v_0\cos(\theta)t + r_x, v_0\sin(\theta)t - \frac{1}{2}gt^2 + r_y)$ for some $(r_x,r_y)\in \RR^2$, and with the assumption that $\br(0) = (0,h) = (0+r_x, 0-0+r_y)$, we get the following for position:
 $$\br(t) = \left(v_0\cos(\theta)t, v_0\sin(\theta)t-\frac{1}{2}gt^2+h\right)$$
 
 \hfil
 
-Now, the objective is to solve for the horizontal distance the shot would travel, which we need to calculate the time it lands (i.e. the second coordinate of $\br(t)$ is 0). For $-\frac{1}{2}gt^2-v_0\sin(\theta)t+h = 0$, using quadratic formula, we get the following expression for $t$:
+Now, the objective is to solve for the horizontal distance the shot would travel, which we need to calculate the time it lands (i.e. the second coordinate of $\br(t)$ is 0). For $-\frac{1}{2}gt^2+v_0\sin(\theta)t+h = 0$, using quadratic formula, we get the following expression for $t$:
 $$t = \frac{-v_0\sin(\theta)\pm \sqrt{v_0^2\sin^2(\theta)-4\cdot \left(-\frac{g}{2}\right)h}}{2\left(-\frac{g}{2}\right)} = \frac{v_0\sin(\theta)\pm\sqrt{v_0^2\sin^2(\theta)+2gh}}{g}$$
-Since we can assume both $g,h>0$ (it's not reasonable to launch a shot from height $h<0$ in general), hence $(v_0^2\sin^2(\theta)+2gh)\geq v_0^2\sin^2(\theta)$, showing that $\sqrt{v_0^2\sin^2(\theta)+2gh} \geq |v_0\sin(\theta)|\geq v_0\sin(\theta)$. So, for the time $t>0$, we need positive sign for the square root, getting that the landing time is as follow:
+Since we can assume both $g,h>0$ (it's not reasonable to launch a shot from height $h<0$ in general), hence $(v_0^2\sin^2(\theta)+2gh)\geq v_0^2\sin^2(\theta)$, showing that $\sqrt{v_0^2\sin^2(\theta)+2gh} \geq |v_0\sin(\theta)|\geq v_0\sin(\theta)$. So, for $t>0$, we need positive sign for the square root, getting that the landing time is as follow:
 $$t=\frac{v_0\sin(\theta)+\sqrt{v_0^2\sin^2(\theta)+2gh}}{g}$$
 Since the launch starts at time $=0$, then the above time is exactly the time where the shot is in the air. Hence, the horizontal distance traveled is given by:
 $$\Delta x=v_0\cos(\theta)t = v_0\cos(\theta)\cdot\frac{v_0\sin(\theta)+\sqrt{v_0^2\sin^2(\theta)+2gh}}{g} = v_0^2\sin(\theta)\cos(\theta)\frac{1+\sqrt{1+\frac{2gh}{v_0^2\sin^2(\theta)}}}{g}$$
 This expression is relatively hard to solve for the maximum value with $\theta$, so using Taylor polynomial to approximate for the square root term is necessary.
 
-Assume $\theta\in [k,\frac{\pi}{2}]$ for some $k>0$, or else the $\sin(\theta)$ in the denominator could go unbounded, if assume $h$ is small, can also assume $\frac{2gh}{v_0^2\sin^2(\theta)}$ is small, then the taylor polynomial of $\sqrt{1+x}$ could yield a good approximation. For $x$ close to $0$, up to linear order, its taylor polynomial is given as follow:
+Assume $\theta\in [k,\frac{\pi}{2}]$ for some $k>0$, or else the $\sin(\theta)$ in the denominator could go unbounded, if assume $h$ is small, can also assume $\frac{2gh}{v_0^2\sin^2(\theta)}$ is small, then the taylor polynomial of $\sqrt{1+x}$ could yield a good approximation (also, since for $h=0$, optimal angle $\theta=\frac{\pi}{4}$, physically it's also good to assume the angle is close to $\frac{\pi}{4}$, hence the input term is bounded). For $x$ close to $0$, up to linear order, its taylor polynomial is given as follow:
 $$\sqrt{1+x}\approx 1+\frac{1}{2}x$$
 Using this approximation for $x=\frac{2gh}{v_0^2\sin^2(\theta)}$, the horizontal displacement is approximated as follow:
 $$\Delta x\approx v_0^2\sin(\theta)\cos(\theta)\cdot\frac{1+\left(1+\frac{1}{2}\cdot\frac{2gh}{v_0^2\sin^2(\theta)}\right)}{g} = \frac{2v_0^2}{g}\sin(\theta)\cos(\theta)+h\cdot\frac{\cos(\theta)}{\sin(\theta)} = \frac{2v_0^2}{g}\sin(\theta)\cos(\theta)+h\cot(\theta)$$
@@ -188,8 +189,9 @@ With $x:=\sin^2(\theta)$, we get:
 $$2x^2-x+\frac{gh}{2v_0^2}=0 \implies x=\sin^2(\theta)=\frac{1\pm\sqrt{1-\frac{4gh}{v_0^2}}}{4}$$
 With the assumption that $\theta \geq k>0$, and $h$ being extremely small, then $\sqrt{1-\frac{4gh}{v_0^2}}$ would be pretty close to $1$, hence the negative sign would provide that $\sin^2(\theta)$ is approximately $0$, so we'll take the positive sign.
 
-Finally, this indicates the angle $\theta$ for maximum launch distance is given as follow:
-$$\sin^2(\theta)=\frac{1}{4}\left(1+\sqrt{1-\frac{4gh}{v_0^2}}\right),\quad \sin(\theta)=\frac{1}{2}\sqrt{1+\sqrt{1-\frac{4gh}{v_0^2}}}, \theta = \arcsin\left(\frac{1}{2}\sqrt{1+\sqrt{1-\frac{4gh}{v_0^2}}}\right)$$
+Finally, this indicates the angle $\theta$ for maximum launch distance is approximated as follow:
+$$\sin^2(\theta)=\frac{1}{4}\left(1+\sqrt{1-\frac{4gh}{v_0^2}}\right)\implies \sin(\theta)=\frac{1}{2}\sqrt{1+\sqrt{1-\frac{4gh}{v_0^2}}}$$
+$$\implies \theta = \arcsin\left(\frac{1}{2}\sqrt{1+\sqrt{1-\frac{4gh}{v_0^2}}}\right)$$
 
 \break
 
@@ -360,7 +362,7 @@ Where $C'''' = \left(\sqrt{\frac{1}{c\sqrt{P}}-\frac{1}{\sqrt{c\sqrt{P}}}+\frac{
 \textbf{Pf:}
 
 \subsection*{(a)}
-First, assuming the mass of the object is not changing, then we get the differential equation $F = m\frac{dv}{dt} = F_e + F_d = \frac{P}{v}-cv^2$ (the total force given). From a physical interpretation, the object wold reach terminal velocity, hence as $t\rightarrow\infty$, we get $\frac{dv}{dt}\rightarrow 0$, and $v\rightarrow v_t$. So, we get the following equation:
+First, assuming the mass of the object is not changing, then we get the differential equation $F = m\frac{dv}{dt} = F_e + F_d = \frac{P}{v}-cv^2$ (the total force given). From a physical interpretation, the object would reach terminal velocity, hence as $t\rightarrow\infty$, we get $\frac{dv}{dt}\rightarrow 0$, and $v\rightarrow v_t$. So, we get the following equation:
 $$0 = \frac{P}{v_t}-cv_t^2 \implies cv_t^3 = P\implies v_t = \sqrt[3]{\frac{P}{c}}$$
 Then, define $\tilde{v}=\frac{v}{v_t} = \sqrt[3]{\frac{c}{P}}v$ and $\tilde{t}=\frac{t}{\tau}$ (for some yet to be determined $\tau>0$), we get the following relationship:
 $$\frac{d\tilde{v}}{d\tilde{t}} = \frac{d\tilde{v}}{dt}\cdot \frac{dt}{d\tilde{t}} = \frac{1}{v_t}\frac{dv}{dt}\cdot \tau = \frac{\tau}{v_t}\frac{dv}{dt}\implies \frac{dv}{dt}=\frac{v_t}{\tau}\frac{d\tilde{v}}{d\tilde{t}}$$
@@ -368,9 +370,11 @@ Plug back into the differential equation, we get:
 $$\frac{mv_t}{\tau}\frac{d\tilde{v}}{d\tilde{t}}=\frac{P}{v_t\tilde{v}}-cv_t^2\tilde{v}^2\implies \frac{d\tilde{v}}{d\tilde{t}} = \frac{\tau P}{mv_t^2\tilde{v}}-\frac{c\tau v_t}{m}\tilde{v}^2$$
 Define $\tau := \frac{mv_t^2}{P}$, we get the differential equation as follow:
 $$\frac{d\tilde{v}}{d\tilde{t}} = \frac{1}{\tilde{v}}-\frac{cv_t^3}{P}\tilde{v}^2$$
+Also, with $v_t =\sqrt[3]{\frac{P}{c}}$, $\frac{cv_t^3}{P}=1$, hence the differential equation becomes:
+$$\frac{d\tilde{v}}{d\tilde{t}} = \frac{1}{\tilde{v}}-\tilde{v}^2$$
 
 \subsection*{(b)}
-If initially assume $\tilde{v}<<1$ (where air resistance is negligible), then we have $c=0$. Hence, the differential equation in part (a) simplified to the following:
+If initially assume $\tilde{v}<<1$ (where air resistance is negligible), then we have $c=0$ (or the quadratic term is negligible). Hence, the differential equation in part (a) simplified to the following:
 $$\frac{d\tilde{v}}{d\tilde{t}}=\frac{1}{\tilde{v}}\implies \tilde{v}\frac{d\tilde{v}}{d\tilde{t}}=1$$
 Solving the differential equation, we get:
 $$\int \tilde{v}\frac{d\tilde{v}}{d\tilde{t}}d\tilde{t} = \int 1d\tilde{t}\implies \frac{1}{2}\tilde{v}^2=\tilde{t}+C\implies \tilde{v} = \pm\sqrt{2\tilde{t}+C'}$$
@@ -380,30 +384,26 @@ Which, with the assumption that $t=0$ satisfies $v(0) = 0$ (initially at rest), 
 When approaching terminal velocity (where $\epsilon = 1-\tilde{v}$ is small, with $\epsilon<<1$), we'll substitute $\tilde{v}$ with $\epsilon$. Where, we get the following:
 $$\frac{d\epsilon}{d\tilde{t}}=-\frac{d\tilde{v}}{d\tilde{t}},\quad \tilde{v}=1-\epsilon$$
 Hence, the differential equation can be expressed as:
-$$-\frac{d\epsilon}{d\tilde{t}}=\frac{d\tilde{v}}{d\tilde{t}}= \frac{1}{\tilde{v}}-\frac{cv_t^3}{P}\tilde{v}^2 = \frac{1}{1-\epsilon}-\frac{cv_t^3}{P}(1-2\epsilon+\epsilon^2)$$
+$$-\frac{d\epsilon}{d\tilde{t}}=\frac{d\tilde{v}}{d\tilde{t}}= \frac{1}{\tilde{v}}-\tilde{v}^2 = \frac{1}{1-\epsilon}-(1-2\epsilon+\epsilon^2)$$
 Which, since $\epsilon<1$, then the using the taylor series, $\frac{1}{1-\epsilon} =\sum_{k=0}^{\infty}\epsilon^k$. If we extract all the above terms up to linear order, we get the following approximation:
-$$-\frac{d\epsilon}{d\tilde{t}}=(1+\epsilon)-\frac{cv_t^3}{P}(1-2\epsilon)\implies \frac{d\epsilon}{dt}=\left(\frac{cv_t^3}{P}-1\right)-\left(\frac{2cv_t^3}{P}+1\right)\epsilon$$
-$$\implies \frac{1}{\left(\frac{2cv_t^3}{P}+1\right)\epsilon-\left(\frac{cv_t^3}{P}-1\right)}\frac{d\epsilon}{d\tilde{t}} = -1 \implies \int \frac{1}{\left(\frac{2cv_t^3}{P}+1\right)\epsilon-\left(\frac{cv_t^3}{P}-1\right)}\frac{d\epsilon}{d\tilde{t}}d\tilde{t}=\int(-1)d\tilde{t}$$
-$$\implies \frac{1}{\left(\frac{2cv_t^3}{P}+1\right)}\ln\left(\left(\frac{2cv_t^3}{P}+1\right)\epsilon-\left(\frac{cv_t^3}{P}-1\right)\right) = -\tilde{t}+C$$
-$$\implies \left(\frac{2cv_t^3}{P}+1\right)\epsilon-\left(\frac{cv_t^3}{P}-1\right) = D\exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\tilde{t}\right)$$
-$$\implies \epsilon = E\cdot\exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\tilde{t}\right) + \frac{\left(\frac{cv_t^3}{P}-1\right)}{\left(\frac{2cv_t^3}{P}+1\right)} = E\cdot\exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\tilde{t}\right) + \frac{cv_t^3-P}{2cv_t^3+P}$$
-Here, $E$ depends on the initial condition provided. Which, by the definition of $\epsilon=1-\tilde{v}$, we get the following:
-$$\tilde{v}=1-\epsilon = 1-\frac{cv_t^3-P}{2cv_t^3+P}+F\cdot \exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\tilde{t}\right),\quad F=-E$$
+$$-\frac{d\epsilon}{d\tilde{t}}=(1+\epsilon)-(1-2\epsilon)\implies \frac{d\epsilon}{d\tilde{t}}=-3\epsilon \implies \epsilon = Ke^{-3\tilde{t}}$$
+Here, $K$ depends on the initial condition provided. Which, by the definition of $\epsilon=1-\tilde{v}$, we get the following:
+$$\tilde{v}=1-\epsilon = 1+K'e^{-3\tilde{t}}$$
 
 \subsection*{(d)}
 Given the information, we want the time $\tilde{t}\leq \tilde{t_*}$ to satisfy the equation in (b), while $\tilde{t}>\tilde{t_*}$ to satisfy the equation in (c), and the velocity is continuous (for some yet to be determined $\tilde{t_*}$). Which, we want a function in the following form:
 $$\tilde{v}(\tilde{t})=\begin{cases}
     \sqrt{2\tilde{t}} & \tilde{t}\leq\tilde{t_*}\\
-    1-\frac{cv_t^3-P}{2cv_t^3+P}+F\cdot \exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\tilde{t}\right) & \tilde{t}>\tilde{t_*}
+    1+K'e^{-3t} & \tilde{t}>\tilde{t_*}
 \end{cases}$$
 If we choose when $\tilde{v}=\frac{1}{2}$ to switch (i.e. when $\epsilon = 1-\tilde{v} = \frac{1}{2}<1$, up to half of the terminal velocity), we get the following for $\tilde{t_*}$:
 $$\sqrt{2\tilde{t_*}} = \frac{1}{2}\implies \tilde{t_*}= \frac{1}{8}$$
 And, for the function to be continuous, we want the right limit to be $\frac{1}{2}$ also (because the second function is continuous, this is the same as the evaluation of the second function that $\tilde{t_*}=\frac{1}{8}$). Then, we get the following:
-$$1-\frac{cv_t^3-P}{2cv_t^3+P}+F\cdot \exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\cdot\frac{1}{8}\right)=\frac{1}{2}\implies F = \left(\frac{cv_t^3-P}{2cv_t^3+P}-\frac{1}{2}\right)\exp\left(\left(\frac{2cv_t^3}{P}+1\right)\frac{1}{8}\right)$$
+$$1+K'e^{-3\cdot\frac{1}{8}} = \frac{1}{2}\implies K' = -\frac{1}{2}e^{\frac{3}{8}}$$
 Then, the general form of the function becomes:
 $$\tilde{v}(\tilde{t})=\begin{cases}
     \sqrt{2\tilde{t}} & \tilde{t}\leq \frac{1}{8}\\
-    1-\frac{cv_t^3-P}{2cv_t^3+P}+\left(\frac{cv_t^3-P}{2cv_t^3+P}-\frac{1}{2}\right)\exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\left(\tilde{t}-\frac{1}{8}\right)\right) & \tilde{t}>\frac{1}{8}
+    1-\frac{1}{2}e^{-3t+3/8} & \tilde{t}>\frac{1}{8}
 \end{cases}$$
 Using graphing program, the following is the graph (where the horizontal axis is $\tilde{t}$, vertical axis is $\tilde{v}$):
 \begin{figure}[h!]
@@ -411,7 +411,8 @@ Using graphing program, the following is the graph (where the horizontal axis is
         \includegraphics[width = 100mm]{Question 3 plot.png}
     \end{center}
 \end{figure}
-And, the following is the utilized code:
+
+And, the following is the utilized code (programming language: python):
 
 \rule{15.24cm}{0.01mm}
 \begin{verbatim}
@@ -425,13 +426,10 @@ P = 8
 t_0 = 1/8
 v_t = (P/c)**(1/3)
 
-D = (c*(v_t**3) - P)/(2*c*(v_t**3)+P) #coefficient appears in constant term
-E = 2*c*(v_t**3)/P #coefficient appears in the exponent
-
 #define velocity
 def v(t):
  if(t <= t_0): return math.sqrt(2*t) #ignore air resistance
- else: return 1-D+(D-1/2)*math.exp(-E*(t-1/8)) #include air resistance
+ else: return 1-1/2*math.exp(-3*(t-1/8)) #include air resistance
 
 #plot velocity
 t = np.arange(0, 1.5, 0.02)
@@ -449,17 +447,23 @@ plt.show()
 \rule{15.24cm}{0.01mm}
 
 \subsection*{(e)}
-If reconsider the relation $v = v_t\tilde{v} = \sqrt[3]{\frac{P}{c}}\tilde{v}$, and $\tilde{t}=\frac{t}{\tau} = \frac{Pt}{mv_t^2}$, plug these relations to the funciton in part (d), we get the following:
+If reconsider the relation $v = v_t\tilde{v}$, $\tilde{t}=\frac{t}{\tau}$, $v_t=\sqrt[3]{\frac{P}{c}}$, and $\tau = \frac{mv_t^2}{P}$. Plug these relations to the function in part (d), we get the following:
 $$v(t) = \begin{cases}
-    v_t\sqrt{\frac{2Pt}{mv_t^2}} & t\leq \frac{1}{8}\tau\\
-    v_t\left(1-\frac{cv_t^3-P}{2cv_t^3+P}+\left(\frac{cv_t^3-P}{2cv_t^3+P}-\frac{1}{2}\right)\exp\left(-\left(\frac{2cv_t^3}{P}+1\right)\left(\frac{Pt}{mv_t^2}-\frac{1}{8}\right)\right)\right) & t>\frac{1}{8}\tau
+    v_t\sqrt{\frac{2t}{\tau}} & t\leq \frac{1}{8}\tau\\
+    v_t\left(1-\frac{1}{2}e^{-3\frac{t}{\tau}+3/8}\right) & t>\frac{1}{8}\tau
+\end{cases}\quad = \begin{cases}
+    \sqrt{\frac{2Pt}{m}} & t\leq \frac{m}{8\cdot P^{1/3}\cdot c^{2/3}}\\
+    \sqrt[3]{\frac{P}{c}}-\frac{1}{2}\sqrt[3]{\frac{P}{c}}\exp\left(-\frac{3\cdot P^{1/3}\cdot c^{2/3}t}{m}+\frac{3}{8}\right) & t>\frac{m}{8\cdot P^{1/3}\cdot c^{2/3}}
 \end{cases}$$
+If the velocity approaches $0.99 v_t$ (99\% terminal velocity), it's equivalent to $\tilde{v}(\tilde{t}) = 0.99$, hence we get the followingtime variable:
+$$\tilde{v}(\tilde{t})=1-\frac{1}{2}e^{-3\tilde{t}+3/8} = 0.99 \implies e^{-3\tilde{t}+3/8} = \frac{1}{50}\implies -3\tilde{t}+\frac{3}{8}=-\ln(50)$$
+$$\implies \tilde{t} = \frac{1}{8}+\frac{\ln(50)}{3}$$
+With $\tilde{t} = \frac{t}{\tau}$, we derive the following time:
+$$t = \tau\left(\frac{1}{8}+\frac{\ln(50)}{3}\right) = \left(\frac{1}{8}+\frac{\ln(50)}{3}\right)\cdot \frac{m}{P^{1/3}\cdot c^{2/3}}$$
 
 \break
 
-
-
-\section{(Insert image)}%4
+\section{}%4
 \begin{question}\label{q4}
     Consider a circular hoop (mass $M$ and radius $R$) standing vertically on the ground. Onto the hoop are threaded two beads (each mass $m$ and radius $r$), which move without friction along the hoop. The two beads start at rest practically at the top of the hoop (which requires $r<<R$; you can and should approximate for this being the case). One bead goes counterclockwise and the other clockwise.
     \begin{itemize}
@@ -471,50 +475,14 @@ $$v(t) = \begin{cases}
 \textbf{Pf:}
 
 Since the beads appear on both sides, WLOG, can assume the behavior is symmetric, hence for the vertical components, we only need to analyze the bead on the right side.
-\begin{comment}
-\subsection*{(a)}
-In case for the beads to move on the circular hoop, they require centripetal force (given by $F_c = \frac{mv^2}{r}$, where $m,v$ are mass and speed of each individual bead, and $r$ is the radius, in this case $r=R$).
 
-\textbf{Insert images}
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width = 60mm]{q4 coord.jpg}
+        \caption{The coordinates used in this question}
+    \end{center}
+\end{figure}
 
-If consider the force diagram, for beads at the bottom half of the hoop, the force applied on the hoop by the beads are directed downward, hence it's not possible for the hoop to rise off the ground. Then, if the hoop rises, it must happen when the beads are on the upper half of the hoop, so the angle given above $\theta \in [0,\frac{\pi}{2}]$.
-
-\hfil
-
-First, for each angle $\theta$, the position of the bead is parametrized by:
-$$\br(\theta)=(R\sin(\theta), R+R\cos(\theta))$$
-Compared to the top (where height is $2R$), at angle $\theta$, the height drop is given by $2R-(R+R\cos(\theta)) = R(1-\cos(\theta))$, hence the lost potential energy of the bead is $mgR(1-\cos(\theta))$. If assume all the potential energy is transferred to kinetic energy, then $\frac{1}{2}mv^2 = mgR(1-\cos(\theta))$, hence at angle $\theta$, the speed of the bead satisfies:
-$$mv^2 = 2mgR(1-\cos(\theta))$$
-Then, the centripetal force $F_c = \frac{mv^2}{R} = 2mg(1-\cos(\theta))$. With the force diagram, the centripetal force at angle $\theta$ is given as the following vector:
-$$\bF_c = -F_c(\sin(\theta),\cos(\theta)) = -2mg(1-\cos(\theta))(\sin(\theta),\cos(\theta))$$
-
-\hfil
-
-Then, let $\bF_b$ be the force applied on the bead by the hoop, and $\bF_g = (0,-mg)$ is the gravity force on the bead. Then, for the motion of the bead to stay in the circular hoop, we need $\bF_g+\bF_b = \bF_c$ (the net force being the centripetal force), hence:
-$$\bF_b = \bF_c - \bF_g = -2mg(1-\cos(\theta))(\sin(\theta),\cos(\theta)) - (0,-mg)$$
-$$ = \left(-2mg(1-\cos(\theta))\sin(\theta), mg-2mg(1-\cos(\theta))\cos(\theta)\right)$$
-Which, the force applied on the hoop by the bead (using Newton's Third Law) is given by:
-$$\bF_h = -\bF_b = \left(2mg(1-\cos(\theta))\sin(\theta), 2mg(1-\cos(\theta))\cos(\theta)-mg\right)$$
-So, the vertical component of $\bF_h$ is given by $(2mg(1-\cos(\theta))\cos(\theta)-mg)\hat{y}$; and since the two beads on both sides apply the vertical components in the same way, the total vertical force applied on the hoop by the beads is $\bF_h^{(y)} = 2(2mg(1-\cos(\theta))\cos(\theta)-mg)\hat{y}$.
-
-\hfil
-
-Finally, for the hoop to rise, the net vertical force on it must be directed upward. Since the only vertical forces on the hoop are $\bF_h^{(y)}$ and gravity force $-Mg\hat{y}$, the net vertical force on the hoop is:
-$$\bF_h^{(y)}-Mg\hat{y} = \left(mg(-4\cos^2(\theta)+4\cos(\theta)-2)-Mg\right)\hat{y}$$
-However, if calculate the maximum of the term $-4\cos^2(\theta)+4\cos(\theta)-2$ in the domain $\theta\in [0,\frac{\pi}{2}]$, first taking the derivative being $0$ we get:
-$$8\cos(\theta)\sin(\theta)-4\sin(\theta) = 0,\quad 4\sin(\theta)(2\cos(\theta)-1)=0$$
-Which, $\sin(\theta)=0$ (where $\theta=0$), or $\cos(\theta)=\frac{1}{2}$ must be satisfied.
-
-So, the absolute maximum of this expression must occur at $\theta=0,\ \theta=\frac{\pi}{2}$, or $\cos(\theta)=\frac{1}{2}$. However, plugging into the expression, we get:
-$$\theta=0\implies -4\cos^2(\theta)+4\cos(\theta)-2 = -4+4-2 = -2$$
-$$\theta=\frac{\pi}{2}\implies -4\cos^2(\theta)+4\cos(\theta)-2=-4\cdot 0+4\cdot 0-2 = -2$$
-$$\cos(\theta)=\frac{1}{2}\implies -4\cos^2(\theta)+4\cos(\theta)-2 = -4\cdot\frac{1}{4}+4\cdot\frac{1}{2}-2 = -1$$
-Since all the possible maximum values are negative, that expression is negative.
-
-However, since $m,M,g$ are all positive, the expression $mg(-4\cos^2(\theta)+4\cos(\theta)-2)-Mg<0$ (since both $mg, Mg$ are multiplied with a negative value regardless of $\theta$), hence the vertical forces applied on the hoop is always directed downward, showing that it's not possible for the hoop to rise off the ground.
-\end{comment}
-
-\textbf{Insert Image}
 \subsection*{(a)}
 First, for each angle $\theta$, the position of the bead is parametrized by:
 $$\br(\theta)=(R\sin(\theta), R+R\cos(\theta))$$
@@ -527,7 +495,7 @@ $$\hat{v}(\theta)=\frac{\br'(\theta)}{|\br'(\theta)|} = \frac{1}{|\br'(\theta)|}
 
 Now, to calculate the acceleration on the bead, consider the following: Given some change in angle $\Delta\theta$, the distance this bead travels is about $\Delta x = R\Delta\theta$, and say the speed initially is given by $v$, then the change in time is approximately $\Delta t\approx\frac{\Delta x}{v} = \frac{R\Delta\theta}{v}$, hence $\frac{\Delta\theta}{\Delta t}\approx \frac{v}{R}$. Taking the limit, we get that $\frac{d\theta}{dt} = \frac{v}{R}$.
 
-Since at each angle $\theta$, the velocity of the bead now is given by $\bv = v\hat{v} = \sqrt{2gR(1-\cos(\theta))}(\cos(\theta),-\sin(\theta))$. Then, the acceleration $\ba = \frac{d\bv}{dt} = \frac{d\bv}{d\theta}\cdot \frac{d\theta}{dt}$, which based on the formulas above, we get:
+So, at each angle $\theta$, the velocity of the bead now is given by $\bv = v\hat{v} = \sqrt{2gR(1-\cos(\theta))}(\cos(\theta),-\sin(\theta))$. Then, the acceleration $\ba = \frac{d\bv}{dt} = \frac{d\bv}{d\theta}\cdot \frac{d\theta}{dt}$, which based on the formulas above, we get:
 $$\frac{d\bv}{d\theta} = \frac{d}{d\theta}\left(\sqrt{2gR(1-\cos(\theta))}\right)\ (\cos(\theta),-\sin(\theta))+\sqrt{2gR(1-\cos(\theta))}\ \frac{d}{d\theta}\left((\cos(\theta),-\sin(\theta))\right)$$
 $$ = \frac{2gR\sin(\theta)}{2\sqrt{2gR(1-\cos(\theta))}}(\cos(\theta),-\sin(\theta))+\sqrt{2gR(1-\cos(\theta))}(-\sin(\theta),-\cos(\theta))$$
 $$ = \frac{gR\sin(\theta)}{v}(\cos(\theta),-\sin(\theta))-v(\sin(\theta),\cos(\theta))$$
@@ -556,7 +524,7 @@ Hence, there are points where $4\cos(\theta)-6\cos^2(\theta)>0$ for $\theta\in [
 $$\frac{m}{M}>\frac{1}{4\cos(\theta)-6\cos^2(\theta)}$$
 To find the infimum (intuitively, the smallest $\frac{m}{M}$ could approach), it suffices to find the maximum of $4\cos(\theta)-6\cos^2(\theta)$ for $\theta\in [0,\pi]$. Taking derivative being $0$, we get:
 $$-4\sin(\theta)+12\cos(\theta)\sin(\theta)=0,\quad 4\sin(\theta)(3\cos(\theta)-1)=0$$
-So, maximum happens at either $\sin(\theta)=0$ (which $\theta=0$ or $\pi$), and $\cos(\theta)=\frac{1}{3}$. Plug in the values, we get:
+So, maximum happens at either $\sin(\theta)=0$ (which $\theta=0$ or $\pi$, including the boundary), or $\cos(\theta)=\frac{1}{3}$. Plug in the values, we get:
 $$\theta=0\implies 4\cos(\theta)-6\cos^2(\theta) = 4-6=-2$$
 $$\theta=\pi\implies 4\cos(\theta)-6\cos^2(\theta)=-4-6 = -10$$
 $$\cos(\theta)=\frac{1}{3}\implies 4\cos(\theta)-6\cos^2(\theta) = \frac{4}{3}-\frac{6}{9} = \frac{2}{3}$$
@@ -565,15 +533,13 @@ Since $\frac{2}{3}$ is the largest, the maximum of $4\cos(\theta)-6\cos^2(\theta
 Hence, $\frac{m}{M}>\frac{3}{2}$ is the infimum ratio for the hoop to rise.
 \subsection*{(b)}
 Suppose the hoop doesn't rise, recall that for each $\Delta\theta$, the traveled distance for the bead is approximately $\Delta x\approx R\Delta\theta$, hence given speed $v$ at the initial point, the time elapsed during $\Delta x$ is $\Delta t\approx \frac{\Delta x}{v} \approx \frac{R}{v}\Delta \theta$, or $\frac{\Delta t}{\Delta\theta}\approx \frac{R}{v}$; thus taking the limit, $\frac{dt}{d\theta}=\frac{R}{v}$. 
-\begin{comment}
-Hence, for the traveling angle $\theta\in [0,\pi]$, and $v=\sqrt{2gR(1-\cos(\theta))}$, the time elapsed in total is given by:
-$$\Delta t = \int_0^\pi \frac{dt}{d\theta}d\theta = \int_0^\pi \frac{R}{\sqrt{2gR(1-\cos(\theta))}}d\theta$$
-Using the property $2\sin^2(t)=1-\cos(2t)$, let $t=\frac{\theta}{2}$, $dt = \frac{1}{2}d\theta$, the substitution provides:
-$$\Delta t = \frac{R}{\sqrt{gR}}\int_0^\pi\frac{1}{\sqrt{2(1-\cos(\theta))}}d\theta = 2\sqrt{\frac{R}{g}}\int_0^\frac{\pi}{2}\frac{1}{\sqrt{4\sin^2(t)}}dt = 2\sqrt{\frac{R}{g}}\int_0^\frac{\pi}{2}\frac{1}{2}\csc(t)dt$$
-$$0$$
-\end{comment}
 
-\textbf{insert image}
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width = 50mm]{q4 b.jpg}
+        \caption{The bead's position near the top}
+    \end{center}
+\end{figure}
 
 Now, notice that initially the beads are not directly on top (or $\theta_0>0$ initially), their centers are certain angle away from the top. Since $r<<R$, then we have $R\theta_0 \approx r$, hence $\theta_0 \approx \frac{r}{R}$ is the initial angle of the beads.
 
@@ -584,7 +550,9 @@ $$\Delta t \approx 2\sqrt{\frac{R}{g}}\int_{\frac{r}{2R}}^{\frac{\pi}{2}}\frac{1
 $$ = -\sqrt{\frac{R}{g}}\ln(\cot(t)+\csc(t))\bigg|_{\frac{r}{2R}}^{\frac{\pi}{2}} = \sqrt{\frac{R}{g}}\ln\left(\cot\left(\frac{r}{2R}\right)+\csc\left(\frac{r}{2R}\right)\right)$$
 Which, this is the approximated time the beads take to fall onto the ground.
 
-\break
+\hfil
+
+\hfil
 
 \section{}%5
 \begin{question}\label{q5}
@@ -626,8 +594,7 @@ With both force components on the rocket increase (and point in different direct
 
 \subsection*{(c)}
 Recall that the velocity eventually is given as follow (with each index $i$, $\tilde{m_i} = \frac{m_i}{m_f}$):
-$$v_\textmd{fin} = u\ln\left(\frac{m_t+m_e+m_p}{m_f+m_t+m_e+m_p}\right)-\frac{g\cdot m_f\cdot\tau}{m_e}$$
-$$ = u\ln\left(\frac{\tilde{m_e}+\tilde{m_t}+\tilde{m_p}}{\tilde{m_e}+1+\tilde{m_t}+\tilde{m_p}}\right) - \frac{g\cdot \tau}{\tilde{m_e}}$$
+$$v_\textmd{fin} = u\ln\left(\frac{m_t+m_e+m_p}{m_f+m_t+m_e+m_p}\right)-\frac{g\cdot m_f\cdot\tau}{m_e} = u\ln\left(\frac{\tilde{m_e}+\tilde{m_t}+\tilde{m_p}}{\tilde{m_e}+1+\tilde{m_t}+\tilde{m_p}}\right) - \frac{g\cdot \tau}{\tilde{m_e}}$$
 Let $x=\tilde{m_e}$ for simplicity, final velocity as a function of $x$ is given by:
 $$v_\textmd{fin}(x) = u\ln\left(\frac{x+\tilde{m_t}+\tilde{m_p}}{x+1+\tilde{m_t}+\tilde{m_p}}\right) - \frac{g\cdot\tau}{x}$$
 $$ = u\ln(x+\tilde{m_t}+\tilde{m_p})-u\ln(x+1+\tilde{m_t}+\tilde{m_p})-\frac{g\tau}{x}$$
@@ -637,7 +604,7 @@ $$\implies \frac{u}{(x+\tilde{m_t}+\tilde{m_p})(x+1+\tilde{m_t}+\tilde{m_p})}=-\
 $$\implies ux^2 = -g\tau(x^2+(1+2\tilde{m_t}+2\tilde{m_p})x+(\tilde{m_t}+\tilde{m_p})(1+\tilde{m_t}+\tilde{m_p}))$$
 $$\implies (u+g\tau)x^2+g\tau(1+2\tilde{m_t}+2\tilde{m_p})x+g\tau(\tilde{m_t}+\tilde{m_p})(1+\tilde{m_t}+\tilde{m_p})=0$$
 Which, using quadratic formula, we get the following expression of $x$:
-$$x=\frac{-g\tau(1+2\tilde{m_t}+2\tilde{m_p})\pm\sqrt{g^2\tau^2(1+2\tilde{m_t}+2\tilde{m_p})^2-4g\tau(u+g\tau)(\tilde{m_t}+\tilde{m_p})(1+\tilde{m_t}+\tilde{m_p})}}{2(u+g\tau)}$$
+$$x=\tilde{m_e}=\frac{-g\tau(1+2\tilde{m_t}+2\tilde{m_p})\pm\sqrt{g^2\tau^2(1+2\tilde{m_t}+2\tilde{m_p})^2-4g\tau(u+g\tau)(\tilde{m_t}+\tilde{m_p})(1+\tilde{m_t}+\tilde{m_p})}}{2(u+g\tau)}$$
 With the restriction that $x>0$, the $\pm$ will be dependent on the actual values, and the chosen units for each constants.
 
 \subsection*{(d)}
@@ -645,7 +612,7 @@ Given that $u=3\textmd{km/s}$, $\tau = 7\textmd{s}$, and $\tilde{m_t}=\frac{1}{1
 
 Also, recall the acceleration formula is given by follow in part (a):
 $$\frac{dv}{dt}=u\cdot\frac{1}{m}\frac{dm}{dt}-g$$
-If we define $\tilde{m} = \frac{m}{m_f}$, we have $\tilde{m_0} = \frac{m_f+m_t+m_e+m_g}{m_f} = 1+\tilde{m_t}+\tilde{m_e}+\tilde{m_g}$, we have $\frac{d\tilde{m}}{dt} = \frac{1}{m_f}\frac{dm}{dt}$, then the differential equation becomes:
+If we define $\tilde{m} = \frac{m}{m_f}$, we have $\tilde{m_0} = \frac{m_f+m_t+m_e+m_g}{m_f} = 1+\tilde{m_t}+\tilde{m_e}+\tilde{m_g}$, and $\frac{d\tilde{m}}{dt} = \frac{1}{m_f}\frac{dm}{dt}$, then the differential equation becomes:
 $$\frac{dv}{dt}=u\cdot \frac{1}{\tilde{m}\cdot m_f}\cdot m_f\frac{d\tilde{m}}{dt}-g = u\cdot\frac{1}{\tilde{m}}\cdot\frac{d\tilde{m}}{dt}-g$$
 And, as $\frac{dm}{dt} = -\frac{m_e}{\tau}$, $\frac{d\tilde{m}}{dt} = -\frac{1}{m_f}\cdot \frac{m_e}{\tau} = -\frac{\tilde{m_e}}{\tau}$.
 \subsubsection*{1) When $\tilde{m_p}=0$:}
@@ -660,7 +627,7 @@ Plug into the formula again, we get:
 $$\tilde{m_e} \approx 0.0931$$
 Plug in all the numbers to get initial acceleration, we get:
 $$\frac{dv}{dt}\bigg|_{t=0} = (-3)\cdot\frac{1}{1+0.1+0.0931+0.1}\cdot\left(-\frac{0.0931}{7}\right)-g \approx 0.0334-g$$
-(Again, here $\frac{dv}{dt}$ is in km/s$^2$).
+(Again, here $\frac{dv}{dt}$ is in km/s$^2$). 
 
 
 \break
@@ -682,7 +649,7 @@ $$\frac{1}{v^2+\frac{b}{c}v+\frac{\mu mg}{c}}=\frac{A}{v-(\alpha+\beta)}+\frac{B
 Solving for the coefficients $A,B$, $A=-B$, and $B=-\frac{1}{2\beta}$, then the differential equation becomes:
 $$\frac{1}{2\beta}\left(\frac{1}{v-(\alpha+\beta)}-\frac{1}{v-(\alpha-\beta)}\right)\frac{dv}{dt}=-\frac{c}{m}$$
 Taking the integral, we get:
-$$\frac{1}{2\beta}\int\left(\frac{1}{v-(\alpha+\beta)}-\frac{1}{v-(\alpha-\beta)}\right)\frac{dv}{dt}dt = \frac{1}{2\beta}\ln\left(\frac{v-(\alpha+\beta)}{v-(\alpha-\beta)}\right)]= \int\left(-\frac{c}{m}\right)dt = -\frac{c}{m}t+K$$
+$$\frac{1}{2\beta}\int\left(\frac{1}{v-(\alpha+\beta)}-\frac{1}{v-(\alpha-\beta)}\right)\frac{dv}{dt}dt = \frac{1}{2\beta}\ln\left(\frac{v-(\alpha+\beta)}{v-(\alpha-\beta)}\right)= \int\left(-\frac{c}{m}\right)dt = -\frac{c}{m}t+K$$
 
 $$\implies \ln\left(\frac{v-(\alpha+\beta)}{v-(\alpha-\beta)}\right) = -\frac{2c\beta}{m}t+K'$$
 For $t=0$, since $v(0)=v_0$, we get the following relationship:
@@ -692,7 +659,7 @@ $$\ln\left(\frac{-(\alpha+\beta)}{-(\alpha-\beta)}\right) = \ln\left(\frac{\alph
 $$\implies \frac{2c\beta}{m}t = \ln\left(\frac{v_0-(\alpha+\beta)}{v_0-(\alpha-\beta)}\right)-\ln\left(\frac{\alpha+\beta}{\alpha-\beta}\right)=\ln\left(\frac{(v_0-(\alpha+\beta))(\alpha-\beta)}{(v_0-(\alpha-\beta))(\alpha+\beta)}\right)$$
 $$\implies t=\frac{m}{2c\beta}\ln\left(\frac{(v_0-\alpha-\beta)(\alpha-\beta)}{(v_0-\alpha+\beta)(\alpha+\beta)}\right)$$
 Finally, with $\alpha=-\frac{b}{2c}$, and $\beta=\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}$, we get the following expression for the time it takes to come to rest:
-$$t = \frac{m}{2c\beta}\ln\left(\frac{\left(v_0+\frac{b}{2c}-\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)\left(-\frac{b}{2c}-\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)}{\left(v_0+\frac{b}{2c}+\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)\left(-\frac{b}{2c}+\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)}\right)$$
+$$t = \frac{m}{2c\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}}\ln\left(\frac{\left(v_0+\frac{b}{2c}-\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)\left(-\frac{b}{2c}-\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)}{\left(v_0+\frac{b}{2c}+\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)\left(-\frac{b}{2c}+\sqrt{\left(\frac{b}{2c}\right)^2-\frac{\mu mg}{c}}\right)}\right)$$
 \begin{comment}
 $$\implies \frac{v-(\alpha+\beta)}{v-(\alpha-\beta)} = 1-\frac{2\beta}{v-(\alpha-\beta)} = K''\exp\left(-\frac{2c\beta}{m}t\right)$$
 $$\implies 1-K''\exp\left(-\frac{2c\beta}{m}t\right) = \frac{2\beta}{v-(\alpha-\beta)}\implies v-(\alpha-\beta)= \frac{2\beta}{1-K''\exp\left(-\frac{2c\beta}{m}t\right)}$$

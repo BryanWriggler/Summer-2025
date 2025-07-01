@@ -8,13 +8,10 @@ P = 8
 t_0 = 1/8
 v_t = (P/c)**(1/3)
 
-D = (c*(v_t**3) - P)/(2*c*(v_t**3)+P) #coefficient appears in constant term
-E = 2*c*(v_t**3)/P #coefficient appears in the exponent
-
 #define velocity
 def v(t):
  if(t <= t_0): return math.sqrt(2*t) #ignore air resistance
- else: return 1-D+(D-1/2)*math.exp(-E*(t-1/8)) #include air resistance
+ else: return 1-1/2*math.exp(-3*(t-1/8)) #include air resistance
 
 #plot velocity
 t = np.arange(0, 1.5, 0.02)
