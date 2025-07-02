@@ -234,7 +234,7 @@ So, because every coefficients are nilpotent, $f$ is nilpotent, hence $f in N$, 
   This shows that $p^(-1)(P)$ is a prime ideal, since $R[[x]]\/p^(-1)(P)$ is an integral domain.
 
 
-= ND//6
+= D//6
 #myQuestion[
   A ring $R$ is such that every ideal not contained in the nilradical contains a nonzero idempotent (an elemenet $e$ with $e^2=e != 0$). Prove that the nilradical and the Jacobson radical of $R$ are equal.
 ]
@@ -242,20 +242,21 @@ So, because every coefficients are nilpotent, $f$ is nilpotent, hence $f in N$, 
 
 Let $N, J$ represent the niradical and Jacobson radical respectively. It is clear that $N subset.eq J$ by definition. 
 
-To prove that $J subset.eq N$ by contradiction, suppose the contrary that $J subset.eq.not N$, by assumption there exists nonzero $e in J$ with $e^2=e$ (which implies $e$ is not nilpotent, hence $e in.not N$). Which by definition of Jacobson radical, every $k in R$ satisfies $1-k e$ being a unit
+To prove that $J subset.eq N$ by contradiction, suppose the contrary that $J subset.eq.not N$, by assumption there exists nonzero $e in J$ with $e^2=e$ (which implies $e$ is not nilpotent, hence $e in.not N$). Which by definition of Jacobson radical, every $k in R$ satisfies $1-k e$ being a unit, which $1-e$ is a unit. Yet, $(1-e)e = e-e^2 = e-e = 0$, while $e != 0$, showing that $1-e$ is a zero divisor, which contradicts the fact that it is a unit.
 
-= ND//7
+Hence, the assumption is wrong, $J subset.eq N$. So, the two are the same.
+
+= D//7
 #myQuestion[
   Let $R$ be a ring in which every element satisfies $x^n=x$ for some $n > 1$. Show that every prime ideal in $R$ is maximal.
 ]<q7>
 #text(weight: "bold")[Pf:]
 
-First, $"Nil"(R) = (0)$: If $x in "Nil"(R)$, then since there exist $n, k in NN$, with $x^n = x$ and $x^k = 0$ (where we demand $k$ to be the smallest, and $n>1$ by assumption), there are two cases to consider:
-+ If $k <= n$, then $x^n = 0$, showing that $x=0$.
-+ if $k>n$, then $k = l n + r$ for some $l,r in NN$, and $0 <= r < n$. Which, the following is satisfiesd:
-  $ x^k = x^(l n+r) = (x^n)^l dot x^r = x^(l+r) = 0 $
-  Notice that $l+r < l n + r = k$ by assumption that $n>1$, so we reach a contradiction (since there exists $l+r<k$, with $x^(l+r)=0$).
-Hence, the second case doesn't exist, where the first case shows that $"Nil"(R)=(0)$.
+First, given $P$ as a prime ideal, since $R\/P$ is an integral domain, then for any polynomial with degree $n$, it has at most $n$ distinct roots. Which, suppose $x in R\\P$ satisfies $x^n = x$, then $overline(x) != 0$, and it satisfies the following for all $k in NN$:
+$ (overline(x)^k)^n = overline(x^(n k)) = overline((x^n)^k) = overline(x^k)=overline(x)^k $
+Hence, the set ${overline(x)^k|k in NN}$ are all roots of the polynomial $y^n - y in (R\/P)[y]$. Since by definition there are at most $n$ roots, then there must exist $k > k'$, where $overline(x)^k = overline(x)^(k')$, hence $overline(x)^(k')(overline(x)^(k-k')-1)=0$. Then, since $R\/P$ is an integral domain, with $overline(x)!=0$, then we must have $overline(x)^(k-k')-1=0$, showing that $overline(x)$ is a unit.
+
+So, $R\/P$ is in fact a field, showing that $P$ is maximal.
 
 = D//8
 #myQuestion[
