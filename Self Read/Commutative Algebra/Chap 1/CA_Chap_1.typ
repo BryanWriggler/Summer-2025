@@ -47,6 +47,7 @@
 #let Coker = $"Coker"$
 #let Gal = $"Gal"$
 #let Nil = $"Nil"$
+#let Spec = $"Spec"$
 //complex 
 #let Real = $"Re"$
 #let Imag = $"Im"$ //also used for image
@@ -567,6 +568,8 @@ Since in either case, the union of two being $X$ implies one of the closed set i
 
   Afterward, since $Y_C$ is obviously an upperbound of $C$, then every chain has an upper bound. By Zorn's Lemma, $A$ has a maximal element (which is a maximal irreducible subspace).
 
+  Applying this to the quotient topology $X\/Y$, there exists a maximal irreducible subspace $Y' subset.eq X\/Y$, such that it contains $[y]$ (the equivalence class of some $y in Y$). Our claim is that the preimage of $Y'$ under quotient map is also irreducible. For any open subsets $U_1', U_2' subset.eq X\/Y$ that has nontrivial intersection with $Y'$
+
 \ 
 
 3. First, given $Y subset.eq X$ that is a maximal, since $overline(Y)$ is also irreducible, and $Y subset.eq overline(Y)$, then by maximality, we must have $Y=overline(Y)$, showing that $Y$ is closed.
@@ -579,4 +582,12 @@ Since in either case, the union of two being $X$ implies one of the closed set i
 
   \ 
 
-4. 
+4. Let $X=Spec(R)$, the goal is to prove that $C subset.eq X$ is maximal irreducible $<==> C=V(P)$ for some minimal prime ideal $P$.
+
+  $==>:$ Suppose $C subset.eq X$ is maximal irreducible, we know $C = V(I)$ for some ideal $I$, and can assume $I$ is the intersection of all prime ideals in $V(I)$ (i.e. $I$ is a radical).
+
+  $<==:$ Given that $C=V(P)$ (where $P$ is a minimal prime ideal). Suppose $U_1, U_2 subset.eq X$ are open subsets with nontrivial intersection with $C$, take $V(E_i) = X\\U_i$ for each index $i$ (where $E_i subset.eq R$). Since there exists $x_1, x_2 in V(P)$, such that $x_i in U_i$, then $x_i in.not V(E_i)$, showing that $E_i subset.eq.not P_(x_i)$ (while $P subset.eq P_(x_i)$). Which, this implies that each $E_i subset.eq.not P$, hence $P in X$ (as a point of prime ideal in $X=Spec(R)$) satisfies $P in.not V(E_i)$ for both $i$, showing that $P in U_i = X\\V(E_i)$. Hence, $U_1 sect U_2 sect C!= emptyset$ (since $C=V(P)$, so $P in C$ also).
+
+    Since $U_1, U_2$ are arbitrary open subsets, this shows that $C$ is an irreducible subspace.
+
+    Now, to prove that it's maximal, suppose $C subset.eq C'$, where $C'$ is also irreducible (then WLOG, since $overline(C')$ is also irreducible, can assume $C'$ is closed). Which, $C' = V(E')$ for some $E' subset.eq R$. Then, with $V(P) subset.eq V(E')$, we have $E' subset.eq P$ (in general it's not true, but since $P$ is prime, $sqrt(P)=P$, showing that $P$ is exactly the intersection of all prime ideals in $V(P)$).
