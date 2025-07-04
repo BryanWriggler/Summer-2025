@@ -591,4 +591,17 @@ Since in either case, the union of two being $X$ implies one of the closed set i
 
     Since $U_1, U_2$ are arbitrary open subsets, this shows that $C$ is an irreducible subspace.
 
-    Now, to prove that it's maximal, suppose $C subset.eq C'$, where $C'$ is also irreducible (then WLOG, since $overline(C')$ is also irreducible, can assume $C'$ is closed). Which, $C' = V(E')$ for some $E' subset.eq R$. Then, with $V(P) subset.eq V(E')$, we have $E' subset.eq P$ (in general it's not true, but since $P$ is prime, $sqrt(P)=P$, showing that $P$ is exactly the intersection of all prime ideals in $V(P)$).
+    Now, to prove that it's maximal, suppose $C subset.eq C'$, where $C'$ is also irreducible (then WLOG, since $overline(C')$ is also irreducible, can assume $C'$ is closed). Which, $C' = V(E')$ for some $E' subset.eq R$. Then, with $V(P) subset.eq V(E')$, we have $E' subset.eq P$ (in general it's not true, but since $P$ is prime, $sqrt(P)=P$, showing that $P$ is exactly the intersection of all prime ideals in $V(P)$). Which, since $V(E')=V((E')) = V(sqrt((E')))$, with $V(P) subset.eq V(sqrt((E')))$ and both being a radical, we must have $sqrt(E') subset.eq sqrt(P)$.
+
+= ND//21
+#myQuestion[
+  Let $phi: R arrow.r S$ be a ring homomorphism. Let $X=Spec(R)$ and $Y=Spec(S)$. If $q in Y$, then $phi^(-1)(q)$ is a prime ideal of $R$, i.i., a point of $X$. Hence, $phi$ induces a mapping $phi^*: Y arrow.r X$, by $phi^*(q) = phi^(-1)(q)$. Show that:
+  1. If $f in R$ then $(phi^*)^(-1)(X_f) = Y_(phi(f))$, and hence that $phi^*$ is continuous.
+  2. If $I$ is an ideal of $R$, then $(phi^*)^(-1)(V(I)) = V(I^e)$.
+  3. If $J$ is an ideal of $S$, then $overline(phi^*(V(J))) = V(J^c)$.
+  4. If $phi$ is surjective, then $phi^*$ is a homeomorphism of $Y$ onto a closed subset $V(ker(phi))$ of $X$. (In particular, $Spec(R)$ and $Spec(R\/Nil(R))$ are naturally homeomorphic).
+  5. If $phi$ is injective, then $phi^*(Y)$ is dense in $X$. More precisely, $phi^*(Y)$ is dense in $X <==> ker(phi) subset.eq Nil(R)$.
+
+  6. Let $psi:S arrow.r U$ be another ring homomorphism. Then $(psi compose phi)^* = phi^* compose psi^*$.
+  7. Let $R$ be an integral domain with just one nonzero prime ideal $P$, and let $K$ be a field of fractions of $R$. Let $S = (R\/P) times K$. Define $phi:R arrow.r S$ by $phi(x) = (overline(x),x)$, where $overline(x)$ is the image of $x$ in $R\/P$. Show that $phi^*$ is bijective, but not a homeomorphism.
+]
