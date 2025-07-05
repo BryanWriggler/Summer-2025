@@ -31,23 +31,23 @@
 %setup colored box environment for each math env above
 \tcolorboxenvironment{define}{
     enhanced, colframe=myTeal!50!teal, colback=myTeal!10,
-    arc=5mm, lower separated=false, fonttitle=\bfseries
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
 }
 \tcolorboxenvironment{prop}{
     enhanced, colframe=myGreen!50!black, colback=myGreen!15,
-    arc=5mm, lower separated=false, fonttitle=\bfseries
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
 }
 \tcolorboxenvironment{thm}{
     enhanced, colframe=mySapphire!50!mySapphire, colback=mySapphire!15,
-    arc=5mm, lower separated=false, fonttitle=\bfseries
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
 }
 \tcolorboxenvironment{question}{
     enhanced, colframe=blue!50!black, colback=blue!10,
-    arc=5mm, lower separated=false, fonttitle=\bfseries
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
 }
 \tcolorboxenvironment{lemma}{
     enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
-    arc=5mm, lower separated=false, fonttitle=\bfseries
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
 }
 
 %setup hyperlink within pdf
@@ -513,29 +513,103 @@ for i in range(2): #for Tw_0
 \section{}
 \begin{question}\label{q5}
     Consider an \emph{undamped oscillator} driven exactly on resonance,
-    $$\ddot x+w_0^2 x=\Real(f_0e^{9(w_0t+\delta)})$$
-    If we naively plug into our formula for $C,\phi$ from lecture, we get that the amplitude is infinite, which (at least at first glance) doesn't make much sense. Solve the differential equation from scratch to get $x(t)$. Explain (with the benefit of hindsight) both how your solution is consistent with $C$ being infinite, and why (physically) the response to being driven on-resonance wit no damping has infinite amplitude.
+    $$\ddot x+w_0^2 x=\Real(f_0e^{i(w_0t+\delta)})$$
+    If we naively plug into our formula for $C,\phi$ from lecture, we get that the amplitude is infinite, which (at least at first glance) doesn't make much sense. Solve the differential equation from scratch to get $x(t)$. Explain (with the benefit of hindsight) both how your solution is consistent with $C$ being infinite, and why (physically) the response to being driven on-resonance with no damping has infinite amplitude.
 \end{question}
 
 \textbf{Pf:}
 
-Temporarily, assume a solution exists, then using the 
+Temporarily, assume a complex solution exists (not considering just the real part), then using the expression given in class, since with linear operator $\frac{d}{dt}$, the differential equation can be written as:
+\begin{equation}
+    \paran*{\frac{d}{dt}-iw_0}\paran*{\frac{d}{dt}+iw_0}x = f_0e^{i(w_0t+\delta)}
+\end{equation}
+ we get the following expression:
+\begin{align}
+    &e^{iw_0t}\frac{d}{dt}\paran*{e^{-iw_0t}\cdot e^{-iw_0t}\frac{d}{dt}\paran*{e^{iw_0t}x}}=f_0e^{i(w_0t+\delta)}\implies \frac{d}{dt}\paran*{e^{-iw_0t}\cdot e^{-iw_0t}\frac{d}{dt}\paran*{e^{iw_0t}x}} = f_0e^{i\delta}\\
+    &\implies e^{-2iw_0t}\frac{d}{dt}(e^{iw_0t}x) = f_0e^{i\delta}+C \implies \frac{d}{dt}(e^{iw_0t}x) = f_0e^{2iw_0t+i\delta}+Ce^{2iw_0t}\\
+    &\implies e^{iw_0t}x = \frac{f_0}{2iw_0}e^{2iw_0t+i\delta}+\frac{C}{2iw_0}e^{2iw_0t}+D\implies x = \frac{f_0}{2iw_0}e^{i(w_0t+\delta)}+C'e^{iw_0t}+De^{-iw_0t}
+\end{align}
+Taking the real part, we get the following as the solution to the original real differential equation (assuming $f_0$ is real):
+\begin{equation}
+    x(t) = \frac{f_0}{2w_0}\sin(w_0t+\delta) + C''\cos(w_0t)+D'\sin(w_0t)
+\end{equation}
+(Note: $C'',D'$ are dependent on the arbitrary constant $C',D$; since $e^{ix}$ can be decomposed into complex linear combination of $\sin,\cos$, the above is valid up to choice of constants).
+
+However, notice that $\sin(w_0t+\delta) = \cos(\delta)\sin(w_0t)+\sin(\delta)\cos(w_0t)$, then $x(t)$ becomes:
+\begin{equation}
+    x(t)=\paran*{\frac{f_0}{2w_0}\sin(\delta)+C''}\cos(w_0t)+\paran*{\frac{f_0}{2w_0}\cos(\delta)+D'}\sin(w_0t) = C'''\cos(w_0t)+D''\sin(w_0t)
+\end{equation}
+Which, $x(t)$ in fact satisfies the equation $\ddot x+w_0^2 x=0$, which cannot be a solution to $\ddot x+w_0^2x = \Real(f_0e^{i(w_0t+\delta)})$, unless $f_0 = 0$. If $f_0\neq 0$, assuming solution exists would reach a contradiction, so a solution doesn't exist.
+
+\hfil
+
+This is consistent with amplitude of $C$ being infinite, since infinity is not a well-defined number in $\RR$ or $\CC$, so a solution just can't exist.
+
+Physically, for a on-resonance undamped oscillator, then its constantly providing power to the system; however, in contrast to the case in Question \ref{q3}, now since it's undamped, then there's no other forces dissipating the input power, hence the energy of the system would accumulate, and eventually goes unbounded.
 
 \break
 
 \section{}
 \begin{question}\label{q6}
+    Consider the equation of motion for the simple pendulum,
+    $$\ddot \phi+w_0^2\sin(\phi)=0,\quad w_0=\sqrt{\frac{g}{L}}$$
+    If we take the small-angle approximation $\sin(\phi)\approx\phi$, we get a simple harmonic oscillator. However, the pendulum is not quite a SHO: If the amplitude of oscillation (the angle) is large enough we should instead approximate $\sin(\phi)\approx \phi-\phi^3/6$; the equation of motion is then 
+    $$\ddot\phi+w_0^2\phi=\frac{1}{6}w_0^2\phi^3$$
+    It turns out that this means the period of a pendulum depends on the maximum amplitude,
+    $$T\approx\frac{2\pi}{w_0}\paran*{1\pm\frac{\phi^2_{\max}}{16}}$$
+    Where either the plus or minus sign is correct.
+    
+    Additionally, any actual pendulum has some damping. For a pendulum of length $l$, the period is thus shifted by both the damping and the amplitude dependence. If you had a desired period $T_d$, you might think you coudl just adjust the length of your pendulum from $g(T/(2\pi))^2$ based on knowing the value of the two corrections. However, there's a problem: the damping causes the amplitude to decrease, so the amplitude-dependent shift in the period is not constant.
+    \begin{itemize}
+        \item[(a)] Suppose you set your pendulum up to have an (initial) period of $2$ seconds and count one second every time it passes through vertical. Does the pendulum (eventually) run fast or slow (i.e. is the plus or minus sign correct?) 
+        \item[(b)] With $Q\approx 10,000$ (a high-quality but entirely achievable pendulum) and $\phi_{\max}=0.1$ radians (initially), and assuming the pendulum has a period of $2$ seconds with $\phi_{\max}=0.1$ radians, about how many seconds is the pendulum ahead or behind after one day? 
+    \end{itemize}
 \end{question}
 
 \textbf{Pf:}
+\subsection*{(a)}
+\textbf{insert graph}
+
+Based on graph, we know that the acceleration
 
 \break
 
 \section{Extra Credit}
 \begin{question}\label{q7}
+    Again consider the simple pendulum, as specified in the previous problem. The point is to derive the result: The amplitde-dependent period of the pendulum. The differential equation we need to solve is as 
+    $$\ddot\phi+w_0^2\phi=\epsilon w_0^2\phi^3$$
+    Throughout the problem, $\epsilon<<1$; and at the end, we'll plug in $\epsilon=\frac{1}{6}$ to get the result for the pendulum.
+    \begin{itemize}
+        \item[(a)] The (unknown) solution for $\phi$ is a function of time; it also depends on $\epsilon$. We can expand $\phi$ in a power series in $\psi$:
+        $$\phi(t,\epsilon)=\phi_0(t)+\epsilon \phi_1(t)+...$$
+        As usual, when substitute this into our equation of motion, the coefficients of each power must match. Show that the $0^{th}$ and $1^{st}$ order terms give 
+        $$\ddot\phi_0+w_0^2\phi_0=0,\quad \ddot\phi_1+w_0^2\phi_1 = w_0^2\phi_0^3$$
+        and solve these for $\phi_0$ and $\phi_1$.
+        \item[(b)] You should find that $\phi_1$ is unbounded. Argue that this is physically impossible due to energy considerations.
+        \item[(c)] Clearly, we need a different method. The \emph{method of multiple scales} suppose that the solution has two qualitatively distinct behaviors, one on "short" time scales (e.g. seconds) and another on "long" time scales (e.g. minutes). (An example field where the method of multiple scales shows up is atmospheric dynamics/weather modeling). Define 
+        $$T_0=t,\quad T_1=\epsilon t,...$$
+        And 
+        $$\frac{d}{dt}=\frac{dT_0}{dt}\frac{\partial}{\partial T_0}+\frac{dT_1}{dt}\frac{\partial}{\partial T_1}+... = \frac{\partial}{\partial T_0}+\epsilon\frac{\partial}{\partial T_1}+...$$
+        Write out $\frac{d^2}{dt^2}$ to $O(\epsilon^2)$.
+        \item[(d)] With 
+        $$\phi=\phi_0(T_0,T_1,...)+\epsilon\phi_1(T_0,T_1,...)+...$$
+        calculate the $O(\epsilon^0)$ and $O(\epsilon^1)$ terms in the equation of motion. You should find that the $O(\epsilon^0)$ equation has the solution 
+        $$\phi_0=A(T_1,...)e^{iw_0T_0}+A^*(T_1,...)e^{-iw_0T_0}$$
+        \item[(e)] If we have a "driving" term which is exacly on the resonance in the $\phi_1$ equation, we know that we'll get an unbounded term in $\phi_1$. Since this is physically impossible, we should require that there is no on-resonance driving term $e^{\pm iw_0T_0}$ in the $O(\epsilon^1)$ equation (or equivalently, that the coefficients of these two exponentials are zero). Show that this produces a differential equation for $A(T_1)$, and solve this for $A(T_1)$ (suggest: $A(T_1) = R(T_1)e^{i\theta(T_1)}$).
+        \item[(f)] This gives us enough pieces to get the correction to $\phi$. With $\phi\approx \phi_0$ and the numerical value of $\epsilon$ restored, find $|phi(t)$ when the pendulum is released at rest from angle $\phi_{\max}$. As stated earlier, you should find that your function is periodic with period 
+        $$T=\frac{2\pi}{w}\paran*{1\pm\frac{\phi^2_{\max}}{16}}$$
+        with either a plus or a minus sign.
+
+        We could get $\phi_1$ as well, but getting it with all the proper time-dependence requires going to the $O(\epsilon^2)$ equation, and so on. We'll stop here since it's enough to get a non-trivial correction to the period.
+    \end{itemize}
 \end{question}
 
 \textbf{Pf:}
+\subsection*{(a)}
+Given the ininite series expression, \textbf{assume the function is smooth and converges uniformly for simplicity}, then taking differentiation, the second derivative becomes:
+\begin{equation}
+    d
+\end{equation}
 
 \break
 
