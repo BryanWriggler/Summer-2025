@@ -38,6 +38,7 @@
 )
 
 //common syntaxes needed
+#let neq = $!=$
 //analysis 
 #let Vol = $"Vol"$
 //algebra
