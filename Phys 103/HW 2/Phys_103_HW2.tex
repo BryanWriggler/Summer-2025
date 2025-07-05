@@ -3,6 +3,7 @@
 
 %packages
 \usepackage{graphicx} % Required for inserting images
+\usepackage{subcaption}
 \usepackage[most]{tcolorbox} %for creating environments
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -238,7 +239,7 @@ With $w_1 = \sqrt{w_0^2-\beta^2} = w_0\sqrt{1-\left(\frac{\beta}{w_0}\right)^2}$
 
 \break
 
-\section{(Not done)}
+\section{}
 \begin{question}\label{q3}
     Consider a damped oscillator with natural frequency $w_0$ and damping constant $\beta$, driven by a force $F_0\cos(wt)$.
     \begin{itemize}
@@ -251,43 +252,50 @@ With $w_1 = \sqrt{w_0^2-\beta^2} = w_0\sqrt{1-\left(\frac{\beta}{w_0}\right)^2}$
 
 \textbf{Pf:}
 
-If the differential equation is $\ddot x+2\beta \dot x + w_0^2x = \frac{\tilde{F_0}}{m}e^{iwt}$ (where $\tilde{F_0}=F_0e^{i\delta}$ for phase $\delta$; since $\delta=0$ here, $\tilde{F_0}=F_0$; divide by $m$ is because the initial setup for force is $m\ddot x$, the whole differential equation is divided by $m$), then the solution is $\frac{F_0/m}{(w_0^2-w^2)+2i\beta w}e^{iwt} = \frac{F_0}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}((w_0^2-w^2)-2\beta wi)(\cos(wt)+i\sin(wt))$. Which, taken the real part as the solution (which corresponds to the solution of $F_0\cos(wt)$), we get:
+If the differential equation is $\ddot x+2\beta \dot x + w_0^2x = \frac{\tilde{F_0}}{m}e^{iwt}$ (where $\tilde{F_0}=F_0e^{i\delta}$ for phase $\delta$; since $\delta=0$ here, $\tilde{F_0}=F_0$; divide by $m$ is because the initial setup for force is $m\ddot x$, the whole differential equation is divided by $m$), then the solution is $\frac{F_0/m}{(w_0^2-w^2)+2i\beta w}e^{iwt} = \frac{F_0}{m((w_0^2-w^2)^2+(2\beta w)^2)}((w_0^2-w^2)-2\beta wi)(\cos(wt)+i\sin(wt))$. Which, taken the real part as the solution (which corresponds to the solution of $F_0\cos(wt)$), we get:
 \begin{equation}
-    x(t) = \frac{F_0}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}\paran*{(w_0^2-w^2)\cos(wt)+2\beta w\sin(wt)}
+    x(t) = \frac{F_0}{m((w_0^2-w^2)^2+(2\beta w)^2)}\paran*{(w_0^2-w^2)\cos(wt)+2\beta w\sin(wt)}
 \end{equation}
-Which, this is the stable state solution of the driven oscillator, which we can use tfor calculation. (Note: based on the expression, since the linear combination of $B\sin(wt)+C\cos(wt)=A\cos(wt+\phi)$ has amplitude $A=\sqrt{B^2+C^2}$, then $x(t)$ in fact has amplitude $A=\frac{F_0}{m}$).
+Which, this is the stable state solution of the driven oscillator, which we can use tfor calculation. (Note: based on the expression, since the linear combination of $B\sin(wt)+C\cos(wt)=A\cos(wt+\phi)$ has amplitude $A=\sqrt{B^2+C^2}$, then $x(t)$ in fact has amplitude $A=\frac{F_0}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}$).
 
-\subsection*{(a) (Not done)}
+\subsection*{(a)}
 \subsubsection*{Power of Driving force:}
 Under $1$-dimension, the power $P = Fv$ (where $v$ is the velocity), hence we first need to find the velocity:
 \begin{equation}
-    v(t)=x'(t) = \frac{F_0w}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}(2\beta w\cos(wt)-(w_0^2-w^2)\sin(wt))
+    v(t)=x'(t) = \frac{F_0w}{m((w_0^2-w^2)^2+(2\beta w)^2)}(2\beta w\cos(wt)-(w_0^2-w^2)\sin(wt))
 \end{equation}
 Then, with driving force $F_{\textmd{drive}}(t)=F_0\cos(wt)$, the power is given by:
 \begin{align}
-    P_{\textmd{drive}}(t)&=F_{\textmd{drive}}(t)v(t) = \frac{F_0^2w}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}(2\beta w\cos^2(wt)-(w_0^2-w^2)\sin(wt)\cos(wt))\\
-    &=\frac{F_0^2w}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}\paran*{2\beta w\cdot\frac{1+\cos(2wt)}{2}-\frac{w_0^2-w^2}{2}\sin(2wt)}
+    P_{\textmd{drive}}(t)&=F_{\textmd{drive}}(t)v(t) = \frac{F_0^2w}{m((w_0^2-w^2)^2+(2\beta w)^2)}(2\beta w\cos^2(wt)-(w_0^2-w^2)\sin(wt)\cos(wt))\\
+    &=\frac{F_0^2w}{m((w_0^2-w^2)^2+(2\beta w)^2)}\paran*{2\beta w\cdot\frac{1+\cos(2wt)}{2}-\frac{w_0^2-w^2}{2}\sin(2wt)}
 \end{align}
 Which, notice that taking the average over period $\frac{2\pi}{w}$, since both $\cos(2wt),\sin(2wt)$ would provide an integral of $0$, the only term left is the constant (in the paranthesis, it's provided by $2\beta w \cdot \frac{1}{2}=\beta w$). Hence, the average driving power is:
 \begin{equation}
-    \bracket*{P_{\textmd{drive}}} = \frac{F_0^2\cdot\beta w^2}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}} = \frac{1}{\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}\cdot m\beta w^2A^2
+    \bracket*{P_{\textmd{drive}}} = \frac{F_0^2\cdot\beta w^2}{m((w_0^2-w^2)^2+(2\beta w)^2)} = m\beta w^2\paran*{\frac{F_0}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}}^2 = m\beta w^2A^2
 \end{equation}
 
 \subsubsection*{Power of Damping force:}
 Recall that $\beta=\frac{b}{2m}$, and the damping force is provided by $F_{\textmd{damp}} = -bv$. Then, the power dissipated $P_{\textmd{damp}}=F_{\textmd{damp}}v = -bv^2$. Using the formula derived above, we get:
 \begin{equation}
-    P_{\textmd{damp}}(t)=-bv^2(t) = -b\cdot \frac{F_0^2w^2}{m^2((w_0^2-w^2)^2+(2\beta w)^2)}((2\beta w)^2\cos^2(wt)+(w_0^2-w^2)^2\sin^2(wt)-4\beta w(w_0^2-w^2)\sin(wt)\cos(wt))
+    P_{\textmd{damp}}(t)=-bv^2(t) = -b\cdot \frac{F_0^2w^2}{m^2((w_0^2-w^2)^2+(2\beta w)^2)^2}((2\beta w)^2\cos^2(wt)+(w_0^2-w^2)^2\sin^2(wt)-4\beta w(w_0^2-w^2)\sin(wt)\cos(wt))
 \end{equation}
-Which, recall that $\cos^2(wt)=\frac{1+\cos(2wt)}{2}$, $\sin^2(wt)=\frac{1-\cos(2wt)}{2}$, and $2\sin(wt)\cos(wt)=\sin(2wt)$. Taking the average over a time duration of $\frac{2\pi}{w}$, with integer multiples of $w$ being the frequency, $\sin(2wt),\cos(2wt)$ all provide $0$, then only the constant terms are left. Which, the average power dissipated by damping force is given by the constant in the above function:
+Which, recall that $\cos^2(wt)=\frac{1+\cos(2wt)}{2}$, $\sin^2(wt)=\frac{1-\cos(2wt)}{2}$, and $2\sin(wt)\cos(wt)=\sin(2wt)$. Taking the average over a time duration of $\frac{2\pi}{w}$, with integer multiples of $w$ being the frequency, $\sin(2wt),\cos(2wt)$ all provide average of $0$, then only the constant terms are left (which are the ones multiplied by $\frac{1}{2}$, in the $\cos(2wt)$ form of $\sin^2(wt)$ and $\cos^2(wt)$). Which, the average power dissipated by damping force is given by the constant in the above function:
 \begin{align}
-    \bracket*{P_\textmd{damp}} &= -b\cdot\frac{F_0^2w^2}{m^2((w_0^2-w^2)^2+(2\beta w)^2)}\paran*{\frac{(2\beta w)^2}{2}+\frac{(w_0^2-w^2)^2}{2}}\\
-    &= -2m\beta\cdot \frac{F_0^2w^2}{2m^2} = -m\beta w^2\paran*{\frac{F_0}{w}}^2 = -m\beta w^2A^2
+    \bracket*{P_\textmd{damp}} &= -b\cdot\frac{F_0^2w^2}{m^2((w_0^2-w^2)^2+(2\beta w)^2)^1}\paran*{\frac{(2\beta w)^2}{2}+\frac{(w_0^2-w^2)^2}{2}}\\
+    &= -2m\beta w^2\cdot\frac{1}{2}\paran*{\frac{F_0}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}}^2 = -m\beta w^2A^2
 \end{align}
-This shows that the two are in fact the same.
-
+This shows that the driving and the damping force provides the power with same magnitude, but different sign, so the average power provided is still $0$ (i.e. the input energy from driving force is dissipated by the damping force).
 
 \subsection*{(b)}
-Given that the average power is $m\beta w^2A^2$, since $\beta, w_0, F_0$ are fixed, 
+Given that the average power (of the driving force) is $m\beta w^2A^2$, the full form of the power is:
+\begin{eqnarray}
+    P_\textmd{ave} = m\beta w^2\cdot\frac{F_0^2}{m^2((w_0^2-w^2)^2+(2\beta w)^2)} = \frac{\beta F_0^2}{m\paran*{\paran*{\frac{w_0^2}{w}-w}^2+(2\beta)^2}}
+\end{eqnarray}
+Which, given that $F_0,\beta,w_0$ are all fixed (and nonzero), the above term has strictly psitive denominator. Hence, finding the maximum is equivalent to find the minimum of the denominator.
+
+Given $\paran*{\frac{w_0^2}{w}-w}^2+(2\beta)^2$, its minimum occurs when the quadratic term is $0$. Hence, minimum occurs when $\frac{w_0^2}{w}-w=0$, $w^2=w_0^2$, or $w=\pm w_0$; and with $w>0$, we have the minimum occurs at $w=w_0$.
+
+Finally, this shows that $P_\textmd{ave}$ has a maximum when $w=w_0$.
 
 \break
 
@@ -305,18 +313,213 @@ Given that the average power is $m\beta w^2A^2$, since $\beta, w_0, F_0$ are fix
 
 \textbf{Pf:}
 \subsection*{(a)}
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width = 150mm]{sketch plot q3_a.png}
+        \caption{Demonstration of the Function}
+    \end{center}
+\end{figure}
 Based on the graph, we can conclude that the period is $T$ (also, for all $t \in \RR$, we have $f(t+T) = f_0\paran*{\frac{t+T}{T}-\left\lfloor\frac{1}{2}+\frac{t+T}{T}\right\rfloor}=f_0\paran*{1+\frac{t}{T}-\left\lfloor\frac{1}{2}+\frac{t}{T}+1\right\rfloor}$, with $\lfloor x+1\rfloor = \lfloor x\rfloor +1$, $f(t+1)=f(t)$).
 
 \subsection*{(b)}
-Within the interval $(-\frac{T}{2},\frac{T}{2})$, since $-\frac{1}{2}<\frac{t}{T}<\frac{1}{2} $, we have $0<\frac{1}{2}+\frac{t}{T}\rfloor<1$, hence the floor function constantly provides $0$. Therefore, $f(t) = f_0\frac{t}{T}$.
+Within the interval $(-\frac{T}{2},\frac{T}{2})$, since $-\frac{1}{2}<\frac{t}{T}<\frac{1}{2} $, we have $0<\frac{1}{2}+\frac{t}{T}<1$, hence the floor function of this expression constantly provides $0$. Therefore, $f(t) = f_0\frac{t}{T}$.
+
+Which, when calculating the Fourier coefficients, for all $n\in \ZZ$, we get the following:
+\begin{equation}
+    n=0,\quad a_0 = \frac{1}{T}\int_{-\frac{T}{2}}^\frac{T}{2}f(t)dt = \frac{1}{T}\int_{-\frac{T}{2}}^\frac{T}{2}\frac{f_0t}{T}dt = 0
+\end{equation}
+(Note: the above function is odd).
+\begin{align}
+    n\neq 0,\quad a_n &= \frac{1}{T}\int_{-\frac{T}{2}}^\frac{T}{2}f(t)e^{-i2\pi nt/T}dt = \frac{f_0}{T^2}\int_{-\frac{T}{2}}^\frac{T}{2}te^{-i2\pi nt/T}dt\\
+    &=\frac{-f_0}{T\cdot i2\pi n}te^{-i2\pi nt/T}\bigg|_{-\frac{T}{2}}^\frac{T}{2} + \frac{f_0}{T\cdot i2\pi n}\int_{-\frac{T}{2}}^\frac{T}{2}e^{-i2\pi nt/T}dt\\
+    &= -\frac{f_0}{i2\pi n}e^{i\pi n} +\frac{f_0}{(2\pi n)^2}e^{-i2\pi nt/T}\bigg|_{-\frac{T}{2}}^\frac{T}{2} = (-1)^{n}\frac{f_0 i}{2\pi n}
+\end{align}
+Hence, the Fourier Series of the function is:
+\begin{align}
+    f(t) = \sum_{\substack{n=-\infty\\n\neq 0}}^{\infty}\frac{(-1)^n f_0i}{2\pi n}e^{i2\pi nt/T}
+\end{align}
+
+\hfil
+
+To plot the function, we'll convert it back to a real function. By pairing up the terms disregarding the sign, we get:
+\begin{align}
+    f(t)&= \sum_{n=1}^{\infty}\frac{(-1)^nf_0 i}{2\pi}\paran*{\frac{e^{i2\pi nt/T}}{n}+\frac{e^{-i2\pi nt/T}}{-n}} = \sum_{n=1}^{\infty}\frac{(-1)^nf_0 i}{n\pi}\cdot i\sin\paran*{\frac{2n\pi}{T}t}\\
+    &= \sum_{n=1}^{\infty}\frac{(-1)^{n+1} f_0}{n\pi}\sin\paran*{\frac{2n\pi}{T}t}
+\end{align}
+Using $N=10$ as the approximation, we get the following graph:
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width=100mm]{phys_103_hw2_q3_b.png}
+        \caption{Fourier Approximation with index $n=10$}
+    \end{center}
+\end{figure}
+
+Here's the provided code (source: python):
+
+\rule{15.24cm}{0.01mm}
+\begin{verbatim}
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+#define constant (Note: both need to be positive)
+T = 4
+f_0 = 4
+
+#define original function
+def f(t):
+   return f_0*(t/T - math.floor(1/2+t/T))
+
+#define fourier series approximation, with n=10
+def fourier(t):
+   output = 0
+
+   for n in range(1,11):
+      output += (-1)**(n+1) * f_0 / (n* math.pi) * math.sin(2*n* math.pi * t/T)
+
+   return output
+
+#plot function
+t = np.arange(-f_0, f_0, 0.01)
+
+Function = []
+Fourier = []
+for i in range(len(t)):
+   Function.append(f(t[i]))
+   Fourier.append(fourier(t[i]))
+
+plt.plot(t,Function, lw=2, label='Function f(t)')
+plt.plot(t,Fourier, lw=2, label = 'Fourier Approximation')
+plt.ylim(-T,T)
+
+plt.legend()
+plt.show()
+\end{verbatim}
+
+\rule{15.24cm}{0.01mm}
+
+\subsection*{(c)}
+(Note: for this part we'll focus on stable state solutions).
+
+Recall that with periodic driven force $F_0\sin(wt)$, using methods similar to Question \ref{q3}, if develop a complex differential equation $\ddot x+2\beta \dot x+w_0^2 x=\frac{F_0}{m}e^{iwt}$ (divided by mass to get acceleration), the solution is $\tilde{x}(t)=\frac{F_0/m}{(w_0^2-w^2)+(2\beta w)i}e^{iwt} = \frac{F_0}{m((w_0^2-w^2)^2+(2\beta w)^2)}((w_0^2-w^2)-(2\beta w)i)(\cos(wt)+i\sin(wt))$. Then, if take the imaginary part, since $\Imag\paran*{\frac{F_0}{m}e^{iwt}} = \frac{F_0}{m}\sin(wt)$ (the driven force over mass), then $\Imag(\tilde{x})$ would provide a solution to our driven force. Which, we get the corresponding solution as follow:
+\begin{align}
+    x(t) &= \frac{F_0}{m((w_0^2-w^2)^2+(2\beta w)^2)}\paran*{(w_0^2-w^2)\sin(wt)-(2\beta w)\cos(wt)}
+\end{align}
+With $w = \frac{2\pi n}{T}$ for the case of Fourier Series, it can be simplified as follow:
+\begin{align}
+    x_n(t)&=\frac{F_n}{mw_0^4\paran*{\paran*{1-\paran*{\frac{2\pi n}{Tw_0}}^2}^2+\paran*{\frac{2\beta}{w_0}\frac{2\pi n}{Tw_0}}^2}}\cdot w_0^2\paran*{\paran*{1-\paran*{\frac{2\pi n}{Tw_0}}^2}\sin\paran*{\frac{2\pi n}{T}t}-\paran*{\frac{2\beta}{w_0}\frac{2\pi n}{Tw_0}}\cos\paran*{\frac{2\pi n}{T}t}}\\
+    &= \frac{F_n}{mw_0^2\paran*{\paran*{1-\paran*{\frac{2\pi n}{Tw_0}}^2}^2+\paran*{\frac{2\pi n}{Q\cdot Tw_0}}^2}}\paran*{\paran*{1-\paran*{\frac{2\pi n}{Tw_0}}^2}\sin\paran*{\frac{2\pi n}{T}t}-\paran*{\frac{2\pi n}{Q\cdot Tw_0}}\cos\paran*{\frac{2\pi n}{T}t}}
+\end{align}
+Which, since the driven force is given by $f(t) = \sum_{n=1}^{\infty}\frac{(-1)^{n+1}f_0}{n\pi}\sin\paran*{\frac{2n\pi}{T}t}$, utilize linearity of differential equation, we get the following expression for the force:
+\begin{align}
+    x(t)=\sum_{n=1}^{\infty}x_n(t),\quad \forall n\in \NN,\ F_n = \frac{(-1)^{n+1}f_0}{n\pi}
+\end{align} 
+(Note: each $F_n$ represents the fourier coefficient of the $\sin(\frac{2n\pi}{T}t)$ term, since that is the "$F_0$" in the initial assumption of the sinusoidal driven force; here because each term is relatively complicated, we use some simplified notation).
+
+For the plots, I chose $w_0=2$, $Tw_0 = \{\pi, 4\}$, and $Q=\{2,20\}$ as parameters, and $n=30$ as approximations. Here are the results:
+\begin{figure}[h!]
+    \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\linewidth]{0,0.png}
+         \caption{$Q=1$}
+     \end{subfigure}
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\linewidth]{0,1.png}
+         \caption{$Q=20$}
+     \end{subfigure}
+     \caption{When $Tw_0 = \pi$ (Not in phase with any term)}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\linewidth]{1,0.png}
+         \caption{$Q=1$}
+     \end{subfigure}
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\linewidth]{1,1.png}
+         \caption{$Q=20$}
+     \end{subfigure}
+     \caption{When $Tw_0 = 4$ (in phase with some term)}
+\end{figure}
+(Note: rest of the graphs are on the next page).
+
+So qualitatively, after getting to stable state, when quality factor $Q$ is higher, the amplitude of the system is higher (not too obvious though); on the other hand, being in phase or not affects the amplitude even more. One can see that when $Tw_0 = \pi$ (when the system is not in phase with natural frequency), the amplitude with provided constants are explicitly lower than the amplitude when $Tw_0 = 4$ (with $w_0 = 2$, the system is in phase with some force components).
+
+\hfil
+
+Here's the code used to generate the graphs (source: python):
+
+\rule{15.24cm}{0.01mm}
+
+\begin{verbatim}
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+#define set of constants (Note: all need to be positive)
+#fixed constant
+w_0 = 2 
+f_0 = 4
+m=1
+#array of constants
+Tw_0 = [math.pi,4] #the first is never in phase, while the second always 
+                    in phase with some term
+Q = [1,20] #provide two different quality factors
+
+#define the sum of solutions approximation, with n=10
+def x(Tw, q, t): #here, Tw represents the Tw_0 chosen
+   output = 0
+
+   for n in range(1,31):
+      w = 2* math.pi * n/(Tw)*w_0 #the frequency
+      B = 1-(2 * math.pi * n/(Tw))**2 #coefficient of sin term
+      C = 2* math.pi * n/(q * Tw) #coefficient of cos term
+
+      A = (-1)**(n+1) * f_0 / (n * math.pi) * 1/(m * w_0**2 * (B**2+C**2)) #amplitude
+      output += A*(B*math.sin(w*t)-C*math.cos(w*t))
+
+   return output
+
+#plot functions
+for i in range(2): #for Tw_0
+   for j in range(2): #for Q
+        t = np.arange(-10, 10, 0.01)
+
+        Tw = Tw_0[i]
+        q = Q[j]
+
+        #add X list
+        X = []
+        for k in range(len(t)):
+            X.append(x(Tw, q, t[k]))
+
+        #plot function on graph
+        plt.plot(t,X, lw=2)
+        plt.ylim(-0.25,0.25)
+
+        plt.savefig(str(i)+','+str(j)+'.png') #save graph
+        plt.clf() #clear graph
+\end{verbatim}
+
+\rule{15.24cm}{0.01mm}
 
 \break
 
 \section{}
 \begin{question}\label{q5}
+    Consider an \emph{undamped oscillator} driven exactly on resonance,
+    $$\ddot x+w_0^2 x=\Real(f_0e^{9(w_0t+\delta)})$$
+    If we naively plug into our formula for $C,\phi$ from lecture, we get that the amplitude is infinite, which (at least at first glance) doesn't make much sense. Solve the differential equation from scratch to get $x(t)$. Explain (with the benefit of hindsight) both how your solution is consistent with $C$ being infinite, and why (physically) the response to being driven on-resonance wit no damping has infinite amplitude.
 \end{question}
 
 \textbf{Pf:}
+
+Temporarily, assume a solution exists, then using the 
 
 \break
 
