@@ -75,6 +75,8 @@
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 \DeclarePairedDelimiter{\paran}{(}{)}%paranthesis
 \DeclarePairedDelimiter{\bracket}{\langle}{\rangle}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
 %algebra
 \newcommand{\Gal}{\textmd{Gal}}
@@ -157,7 +159,7 @@ So, any subsequent local maxima have a time difference of $\frac{2\pi}{w_1}$, sh
 
 \break
 
-\section{((b) not done)}
+\section{}
 \begin{question}\label{q2}
     
     \hfil
@@ -207,7 +209,11 @@ Then, the total energy is given as follow:
 \end{align}
 (Note: recall that $Q=\frac{w_0}{2\beta}$, so $\frac{2\beta}{2w_0} = \frac{1}{2Q}$).
 
-\subsection*{(b) (Not done)}
+\subsection*{(b)}
+When consider a physical (1-dimensional) simple harmonic oscillator (SHO), its amplitude represents its displacement away from the equilibrium, while the first derivative is the velocity. In this case, the damping force $-b\dot x = -bv$ is a non-conservative force proportional to velocity (which is always against the motion), in contrast to the force $-kx$ that is conservative, so when the object in SHO has nonzero velocity, the damping force will be dissipating energy, while the force $-kx$ is not disspating any energy (only transfers it between potential and kinetic energy).
+
+Since the velocity is oscillating also (due to SHO's oscillating nature), then the power dissipated by damping force, $P_\textmd{damp} = (-bv)v = -bv^2$ is also oscillating, which the energy $E$ over time (as an antiderivative of $P$, in this case $P_\textmd{damp}$) is also going to be oscillatory. 
+(Note: since other forces, like $-kx$ is not dissipating any mechanical energy, then the only rate of change of energy is coming from the damping force, hence $P=P_\textmd{damp}$).
 
 \subsection*{(c)}
 Given that $\tilde{t}=\frac{t}{2\pi/w_1}$, then $\frac{dE}{d\tilde{t}} = \frac{dE}{dt}\frac{dt}{d\tilde{t}} = \frac{2\pi}{w_1}\frac{dE}{dt}$. Which, define $\phi_1 = 2\phi-\arccos\frac{1}{2Q}$, calculating the derivative, we get:
@@ -313,13 +319,22 @@ Finally, this shows that $P_\textmd{ave}$ has a maximum when $w=w_0$.
 
 \textbf{Pf:}
 \subsection*{(a)}
+First, for all $t \in \RR$, we have $f(t+T) = f_0\paran*{\frac{t+T}{T}-\left\lfloor\frac{1}{2}+\frac{t+T}{T}\right\rfloor}=f_0\paran*{1+\frac{t}{T}-\left\lfloor\frac{1}{2}+\frac{t}{T}+1\right\rfloor}$, with $\lfloor x+1\rfloor = \lfloor x\rfloor +1$, we have $f(t+T)=f(t)$.
+Also, for all $n \in \ZZ$, if consider the region $[nT-\frac{T}{2},nT+\frac{T}{2})$, the following is true:
+\begin{align}
+    \forall t \in \left[nT-\frac{T}{2},nT+\frac{T}{2}\right),\quad &\frac{1}{2}+\frac{nT-T/2}{T}\leq \frac{1}{2}+\frac{t}{T}<\frac{1}{2}+\frac{nT+T/2}{T}\\
+    &\implies n\leq \frac{1}{2}+\frac{t}{T}<n+1\implies \floor*{\frac{1}{2}+\frac{t}{T}}=n
+\end{align}
+Hence, we have $f(t) = f_0\paran*{\frac{t}{T}-n} = f_0\paran*{\frac{t_0}{T}}$, where $t_0\in [-\frac{T}{2},\frac{T}{2})$ satisfies $t = Tn+t_0$ in this case.
+
+Combining these relations, this determines that the period is $T$, and we get the following graph:
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width = 150mm]{sketch plot q3_a.png}
-        \caption{Demonstration of the Function}
+        \includegraphics[width=80mm]{q4_a.jpg}
+        \caption{Graph of Sawtooth Function}
     \end{center}
 \end{figure}
-Based on the graph, we can conclude that the period is $T$ (also, for all $t \in \RR$, we have $f(t+T) = f_0\paran*{\frac{t+T}{T}-\left\lfloor\frac{1}{2}+\frac{t+T}{T}\right\rfloor}=f_0\paran*{1+\frac{t}{T}-\left\lfloor\frac{1}{2}+\frac{t}{T}+1\right\rfloor}$, with $\lfloor x+1\rfloor = \lfloor x\rfloor +1$, $f(t+1)=f(t)$).
+
 
 \subsection*{(b)}
 Within the interval $(-\frac{T}{2},\frac{T}{2})$, since $-\frac{1}{2}<\frac{t}{T}<\frac{1}{2} $, we have $0<\frac{1}{2}+\frac{t}{T}<1$, hence the floor function of this expression constantly provides $0$. Therefore, $f(t) = f_0\frac{t}{T}$.
@@ -510,7 +525,7 @@ for i in range(2): #for Tw_0
 
 \break
 
-\section{}
+\section{Need revision (final explanation)}
 \begin{question}\label{q5}
     Consider an \emph{undamped oscillator} driven exactly on resonance,
     $$\ddot x+w_0^2 x=\Real(f_0e^{i(w_0t+\delta)})$$
@@ -526,20 +541,11 @@ Temporarily, assume a complex solution exists (not considering just the real par
  we get the following expression:
 \begin{align}
     &e^{iw_0t}\frac{d}{dt}\paran*{e^{-iw_0t}\cdot e^{-iw_0t}\frac{d}{dt}\paran*{e^{iw_0t}x}}=f_0e^{i(w_0t+\delta)}\implies \frac{d}{dt}\paran*{e^{-iw_0t}\cdot e^{-iw_0t}\frac{d}{dt}\paran*{e^{iw_0t}x}} = f_0e^{i\delta}\\
-    &\implies e^{-2iw_0t}\frac{d}{dt}(e^{iw_0t}x) = f_0e^{i\delta}+C \implies \frac{d}{dt}(e^{iw_0t}x) = f_0e^{2iw_0t+i\delta}+Ce^{2iw_0t}\\
-    &\implies e^{iw_0t}x = \frac{f_0}{2iw_0}e^{2iw_0t+i\delta}+\frac{C}{2iw_0}e^{2iw_0t}+D\implies x = \frac{f_0}{2iw_0}e^{i(w_0t+\delta)}+C'e^{iw_0t}+De^{-iw_0t}
+    &\implies e^{-2iw_0t}\frac{d}{dt}(e^{iw_0t}x) = f_0e^{i\delta}t+C \implies \frac{d}{dt}(e^{iw_0t}x) = f_0te^{2iw_0t+i\delta}+Ce^{2iw_0t}\\
+    &\implies e^{iw_0t}x = \frac{f_0}{2iw_0}te^{2iw_0t+i\delta} - \frac{f_0}{(2iw_0)^2}e^{2iw_0t+i\delta}+\frac{C}{2iw_0}e^{2iw_0t}+D\\
+    &\implies x = \frac{f_0}{2iw_0}te^{i(w_0t+\delta)}+\frac{f_0}{4w_0}e^{i(w_0t+\delta)} + C'e^{iw_0t}+De^{-iw_0t}
 \end{align}
-Taking the real part, we get the following as the solution to the original real differential equation (assuming $f_0$ is real):
-\begin{equation}
-    x(t) = \frac{f_0}{2w_0}\sin(w_0t+\delta) + C''\cos(w_0t)+D'\sin(w_0t)
-\end{equation}
-(Note: $C'',D'$ are dependent on the arbitrary constant $C',D$; since $e^{ix}$ can be decomposed into complex linear combination of $\sin,\cos$, the above is valid up to choice of constants).
-
-However, notice that $\sin(w_0t+\delta) = \cos(\delta)\sin(w_0t)+\sin(\delta)\cos(w_0t)$, then $x(t)$ becomes:
-\begin{equation}
-    x(t)=\paran*{\frac{f_0}{2w_0}\sin(\delta)+C''}\cos(w_0t)+\paran*{\frac{f_0}{2w_0}\cos(\delta)+D'}\sin(w_0t) = C'''\cos(w_0t)+D''\sin(w_0t)
-\end{equation}
-Which, $x(t)$ in fact satisfies the equation $\ddot x+w_0^2 x=0$, which cannot be a solution to $\ddot x+w_0^2x = \Real(f_0e^{i(w_0t+\delta)})$, unless $f_0 = 0$. If $f_0\neq 0$, assuming solution exists would reach a contradiction, so a solution doesn't exist.
+Given initial conditions of positions and velocity, $C',D\in \CC$ can be solved. Notice that as $t\rightarrow\infty$, the term $te^{i(w_0t+\delta)}$ goes unbounded, while the other terms governed purely by $e^{iw_0t}$ remain bounded, showing that if taken the real part to get a physical solution for an oscillator, the amplitude of the oscillator would progressively grow, and eventually goes unbounded (i.e. infinite amplitude).
 
 \hfil
 
@@ -549,7 +555,7 @@ Physically, for a on-resonance undamped oscillator, then its constantly providin
 
 \break
 
-\section{}
+\section{Need more detailed explanation for (a)}
 \begin{question}\label{q6}
     Consider the equation of motion for the simple pendulum,
     $$\ddot \phi+w_0^2\sin(\phi)=0,\quad w_0=\sqrt{\frac{g}{L}}$$
@@ -671,7 +677,7 @@ So, $\cos^3(x) = \frac{3}{4}\cos(x)+\frac{1}{4}\cos(3x)$. Plug into the second d
 \begin{equation}
     \ddot\phi_1 +w_0^2\phi_1 = w_0^2\cdot A^3\cos^3(w_0t+\varphi) = w_0^2A^3\paran*{\frac{3}{4}\cos(w_0t+\delta)+\frac{1}{4}\cos(3w_0t+3\varphi)}
 \end{equation}
-Using linearity, $\phi_1$ can be expressed as a linear combination of the solution corresponds to $\cos(w_0t+\varphi)$, and $\cos(3w_0t+3\varphi)$; However, for $\cos(w_0t+\varphi)$, since the nonhomogeneous equation has the same frequency as the homogeneous equation (both uses frequency $w_0$), then based on Question \ref{q5}, it has no solution (or, there's no steady state, because the amplitude eventually goes unbounded).
+Using linearity, $\phi_1$ can be expressed as a linear combination of the solution corresponds to $\cos(w_0t+\varphi)$, and $\cos(3w_0t+3\varphi)$; However, for $\cos(w_0t+\varphi)$, since the nonhomogeneous equation has the same frequency as the homogeneous equation (both uses frequency $w_0$), then based on Question \ref{q5} (if taken the real part of the complex solution), it has unbounded solution (or, there's no steady state, because the amplitude eventually goes unbounded).
 
 \subsection*{(b)}
 Based on the expression in (a), $\phi_1$ has no solution (physically, it means the system for $\phi_1$ goes unbounded), and it's because there is a term of $\ddot\phi_1+w_0^2\phi_1 = K\cos(w_0t+\varphi)$, which has the same situation as what happened in Question \ref{q5}. Since we've proven that its energy would eventually diverge to infinity, then a solution can't exist.

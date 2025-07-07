@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  6 JUL 2025 17:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  7 JUL 2025 16:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -615,24 +615,24 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 ) (./Phys_103_HW2.aux)
 \openout1 = `Phys_103_HW2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -692,77 +692,84 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count347
-Package hyperref Info: Link coloring ON on input line 101.
+Package hyperref Info: Link coloring ON on input line 103.
  (./Phys_103_HW2.out) (./Phys_103_HW2.out)
 \@outlinefile=\write4
 \openout4 = `Phys_103_HW2.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 103.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 105.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 103.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 105.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-Overfull \hbox (11.55055pt too wide) detected at line 200
+Overfull \hbox (11.55055pt too wide) detected at line 202
 []
  []
 
 
-Overfull \hbox (23.00533pt too wide) detected at line 217
+Overfull \hbox (23.00533pt too wide) detected at line 223
 []
  []
 
 [4] [5]
-Overfull \hbox (60.26785pt too wide) detected at line 281
+Overfull \hbox (60.26785pt too wide) detected at line 287
 [][][]\OML/cmm/m/it/10 P[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = \OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 bv[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = \OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 b \OMS/cmsy/m/n/10 ^^A []\OT1/cmr/m/n/10 ((2\OML/cmm/m/it/10 ^^Lw\OT1/cmr/m/n/10 )[] [][](\OML/cmm/m/it/10 wt\OT1/cmr/m/n/10 ) + (\OML/cmm/m/it/10 w[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 w[]\OT1/cmr/m/n/10 )[] [][](\OML/cmm/m/it/10 wt\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 4\OML/cmm/m/it/10 ^^Lw\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 w[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 w[]\OT1/cmr/m/n/10 ) [](\OML/cmm/m/it/10 wt\OT1/cmr/m/n/10 ) [](\OML/cmm/m/it/10 wt\OT1/cmr/m/n/10 ))
  []
 
 [6] [7]
-<sketch plot q3_a.png, id=169, 1782.66pt x 667.49374pt>
-File: sketch plot q3_a.png Graphic file (type png)
-<use sketch plot q3_a.png>
-Package pdftex.def Info: sketch plot q3_a.png  used on input line 318.
-(pdftex.def)             Requested size: 426.79134pt x 159.80455pt.
- [8 <./sketch plot q3_a.png>]
-<phys_103_hw2_q3_b.png, id=181, 462.528pt x 346.896pt>
+<q4_a.jpg, id=169, 1336.995pt x 1045.9075pt>
+File: q4_a.jpg Graphic file (type jpg)
+<use q4_a.jpg>
+Package pdftex.def Info: q4_a.jpg  used on input line 333.
+(pdftex.def)             Requested size: 227.62204pt x 178.05727pt.
+ [8 <./q4_a.jpg>]
+<phys_103_hw2_q3_b.png, id=179, 462.528pt x 346.896pt>
 File: phys_103_hw2_q3_b.png Graphic file (type png)
 <use phys_103_hw2_q3_b.png>
-Package pdftex.def Info: phys_103_hw2_q3_b.png  used on input line 352.
+Package pdftex.def Info: phys_103_hw2_q3_b.png  used on input line 367.
 (pdftex.def)             Requested size: 284.52756pt x 213.40593pt.
- [9 <./phys_103_hw2_q3_b.png>] [10]
-Overfull \hbox (9.79906pt too wide) detected at line 412
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9] [10 <./phys_103_hw2_q3_b.png>]
+Overfull \hbox (9.79906pt too wide) detected at line 427
 []
  []
 
 <0,0.png, id=201, 462.528pt x 346.896pt>
 File: 0,0.png Graphic file (type png)
 <use 0,0.png>
-Package pdftex.def Info: 0,0.png  used on input line 424.
+Package pdftex.def Info: 0,0.png  used on input line 439.
 (pdftex.def)             Requested size: 211.38849pt x 158.54192pt.
 <0,1.png, id=202, 462.528pt x 346.896pt>
 File: 0,1.png Graphic file (type png)
 <use 0,1.png>
-Package pdftex.def Info: 0,1.png  used on input line 429.
-(pdftex.def)             Requested size: 211.38849pt x 158.54192pt.
-<1,0.png, id=203, 462.528pt x 346.896pt>
-File: 1,0.png Graphic file (type png)
-<use 1,0.png>
-Package pdftex.def Info: 1,0.png  used on input line 439.
-(pdftex.def)             Requested size: 211.38849pt x 158.54192pt.
-<1,1.png, id=204, 462.528pt x 346.896pt>
-File: 1,1.png Graphic file (type png)
-<use 1,1.png>
-Package pdftex.def Info: 1,1.png  used on input line 444.
+Package pdftex.def Info: 0,1.png  used on input line 444.
 (pdftex.def)             Requested size: 211.38849pt x 158.54192pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[11 <./0,0.png> <./0,1.png>] [12 <./1,0.png> <./1,1.png>] [13] [14] [15] [16] [17] [18]
-Overfull \hbox (10.55673pt too wide) detected at line 729
+<1,0.png, id=203, 462.528pt x 346.896pt>
+File: 1,0.png Graphic file (type png)
+<use 1,0.png>
+Package pdftex.def Info: 1,0.png  used on input line 454.
+(pdftex.def)             Requested size: 211.38849pt x 158.54192pt.
+<1,1.png, id=204, 462.528pt x 346.896pt>
+File: 1,1.png Graphic file (type png)
+<use 1,1.png>
+Package pdftex.def Info: 1,1.png  used on input line 459.
+(pdftex.def)             Requested size: 211.38849pt x 158.54192pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[11] [12 <./0,0.png> <./0,1.png> <./1,0.png> <./1,1.png>] [13] [14] [15] [16] [17] [18]
+Overfull \hbox (10.55673pt too wide) detected at line 735
 []
  []
 
@@ -771,22 +778,32 @@ Overfull \hbox (10.55673pt too wide) detected at line 729
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `Phys_103_HW2.out' has not changed.
-(rerunfilecheck)             Checksum: AEE48DD4CBC1F4E957C7938E9775E50F;479.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `Phys_103_HW2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Phys_103_HW2.out':
+(rerunfilecheck)             Before: 497EB29187C1E880AE01E23592B568A2;969
+(rerunfilecheck)             After:  FEDD145E53015FD063F7989AAABED38F;790.
  ) 
 Here is how much of TeX's memory you used:
- 29692 strings out of 474116
- 595884 string characters out of 5743681
- 1957187 words of memory out of 5000000
- 51449 multiletter control sequences out of 15000+600000
+ 29709 strings out of 474116
+ 596181 string characters out of 5743681
+ 1954187 words of memory out of 5000000
+ 51465 multiletter control sequences out of 15000+600000
  568689 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  93i,16n,99p,819b,947s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Phys_103_HW2.pdf (19 pages, 613228 bytes).
+Output written on Phys_103_HW2.pdf (19 pages, 596855 bytes).
 PDF statistics:
  423 PDF objects out of 1000 (max. 8388607)
- 324 compressed objects within 4 object streams
- 148 named destinations out of 1000 (max. 500000)
+ 325 compressed objects within 4 object streams
+ 149 named destinations out of 1000 (max. 500000)
  243 words of extra memory for PDF output out of 10000 (max. 10000000)
 

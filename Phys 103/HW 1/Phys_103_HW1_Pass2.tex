@@ -6,6 +6,7 @@
 \usepackage[most]{tcolorbox} %for creating environments
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{mathtools}
 \usepackage{verbatim}
 \usepackage[utf8]{inputenc}
 \usepackage[dvipsnames]{xcolor} %for importing multiple colors
@@ -69,6 +70,10 @@
 
 \newcommand{\Id}{\textmd{Id}} %identity
 \newcommand{\lcm}{\textmd{lcm}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\paran}{(}{)}%paranthesis
+\DeclarePairedDelimiter{\bracket}{\langle}{\rangle}
 
 %algebra
 \newcommand{\Gal}{\textmd{Gal}}
@@ -112,10 +117,27 @@ Fxxk you.
 
 \section*{2}
 \begin{question}\label{q2}
-    
+    Consider an athlete putting a shot. Naturally, she would like to maximize the distance the shot travels. If the shot is put from a height $h$ and with initial speed $v_0$, what launch angle maximizes the distance traveled? Assume that $v_0$ and $h$ are independent of the launch angle, and ignore air resistance (but include gravity, if it wasn't obvious). You can (and should) assume that $h$ is "small" and give an answer to leading non-trivial order, but you should specify what counts as "small".
 \end{question}
 
 \textbf{Pf:}
+
+In my original attempt, after doing massive calculation, I got to the part showing the following result:
+\begin{equation}
+    \sin^2(\theta)\approx \frac{1}{4}\paran*{1+\sqrt{1-\frac{4gh}{v_0^2}}}
+\end{equation}
+\textbf{However, in my final solution, I didn't use Taylor Series approximation to get an approximated results for $\theta$, which isn't the desired form of answer}.
+
+As a result, for $\sqrt{1-x}$, its first several derivatives is given as follow:
+\begin{equation}
+    \frac{d}{dx}\sqrt{1-x}=-\frac{1}{2\sqrt{1-x}},\quad\frac{d^2}{dx^2}\sqrt{1-x} = -\frac{1}{4}(1-x)^{3/2}
+\end{equation}
+Which, with the center about $x=0$, $\sqrt{1-x}\approx 1-\frac{1}{2}x-\frac{1}{4}x^2$ when $x$ is small; taking up to leading term, $\sqrt{1-x}\approx 1-\frac{1}{2}x$. Using this as a result, we get:
+\begin{align}
+    &\sin^2(\theta)\approx \frac{1}{4}\paran*{1+1-\frac{1}{2}\cdot \frac{4gh}{v_0^2}} = \frac{1}{2}-\frac{gh}{2v_0^2}\\
+    &\implies \sin(\theta)\approx \frac{\sqrt{2}}{2}\sqrt{1-\frac{gh}{2v_0^2}}\approx \frac{\sqrt{2}}{2}\paran*{1-\frac{1}{2}\cdot\frac{gh}{2v_0^2}} = \frac{\sqrt{2}}{2}\paran*{1-\frac{gh}{4v_0^2}}
+\end{align}
+
 
 \break
 
