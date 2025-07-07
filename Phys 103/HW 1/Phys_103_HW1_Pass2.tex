@@ -1,0 +1,140 @@
+\documentclass{article}
+\usepackage[margin = 2.54cm]{geometry} % set margin to traditional doc
+
+%packages
+\usepackage{graphicx} % Required for inserting images
+\usepackage[most]{tcolorbox} %for creating environments
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor} %for importing multiple colors
+\usepackage{hyperref} %for creating links to different sections
+
+\linespread{1.2} %controlling line spread
+
+%define colors i like
+\definecolor{myTeal}{RGB}{0,128,128}
+\definecolor{myGreen}{RGB}{34,170,34}
+\definecolor{mySapphire}{RGB}{15,82,186}
+\definecolor{myEmerald}{RGB}{50.4, 130, 90}
+
+%create math environments, can add [section] or [subsection] to add index counter based on sections/subsections
+\newtheorem{define}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{lemma}{Lemma}
+
+%setup colored box environment for each math env above
+\tcolorboxenvironment{define}{
+    enhanced, colframe=myTeal!50!teal, colback=myTeal!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{prop}{
+    enhanced, colframe=myGreen!50!black, colback=myGreen!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{thm}{
+    enhanced, colframe=mySapphire!50!mySapphire, colback=mySapphire!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{question}{
+    enhanced, colframe=blue!50!black, colback=blue!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{lemma}{
+    enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+
+%setup hyperlink within pdf
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+%common command (add to template)
+%general
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+\newcommand{\Id}{\textmd{Id}} %identity
+\newcommand{\lcm}{\textmd{lcm}}
+
+%algebra
+\newcommand{\Gal}{\textmd{Gal}}
+\newcommand{\Aut}{\textmd{Aut}}
+\newcommand{\End}{\textmd{End}}
+\newcommand{\Coker}{\textmd{Coker}}
+\newcommand{\Hom}{\textmd{Hom}}
+\newcommand{\Nil}{\textmd{Nil}}
+
+%analysis
+\newcommand{\Vol}{\textmd{Vol}}
+
+%complex
+\newcommand{\Real}{\textmd{Re}}
+\newcommand{\Imag}{\textmd{Im}} %can also be used for Image
+\newcommand{\Res}{\textmd{Res}}
+
+%lie algebra
+\newcommand{\gl}{\mathfrak{gl}}
+
+\title{Latex Template}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{question}\label{q1}
+    Consider a puck sliding across a frictionless merry-go-round at speed $v$ on a trajectory which passes through the center. The merry-go-round rotates at angular velocity $w$ and has radius $R$.
+    \begin{itemize}
+        \item[(a)] Write down the $r,\phi$ coordinates of the puck as functions of time, as observed by an observer standing next to the merry-go-round. Take $t=0$ to be the time when the puck is at the edge of the merry-go-round, the spatial origin to be at the center of the merry-go-round, and $\phi=0$ to be the initial angular location of the puck. Is the observer in an inertial frame?
+        \item[(b)] Write down the $r', \phi'$ coordinates of the puck as functions of time, as observed by an observer sitting on the edge of the merry-go-round. Take $t=0$ to be the time when the puck is at the edge of the merry-go-round, the spatial origin to be at the center of the merry-go-round, and $\phi'=0$ to be the initial angular location of the puck. Is the observer in an inertial frame?
+    \end{itemize}
+\end{question}
+
+\textbf{Pf:}
+
+Fxxk you.
+
+\break
+
+\section*{2}
+\begin{question}\label{q2}
+    
+\end{question}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{question}\label{q4}
+    
+\end{question}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{question}\label{q5}
+    
+\end{question}
+
+\textbf{Pf:}
+
+\break
+
+\end{document}

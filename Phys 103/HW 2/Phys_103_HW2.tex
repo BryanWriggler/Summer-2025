@@ -448,7 +448,7 @@ For the plots, I chose $w_0=2$, $Tw_0 = \{\pi, 4\}$, and $Q=\{2,20\}$ as paramet
 \end{figure}
 (Note: rest of the graphs are on the next page).
 
-So qualitatively, after getting to stable state, when quality factor $Q$ is higher, the amplitude of the system is higher (not too obvious though); on the other hand, being in phase or not affects the amplitude even more. One can see that when $Tw_0 = \pi$ (when the system is not in phase with natural frequency), the amplitude with provided constants are explicitly lower than the amplitude when $Tw_0 = 4$ (with $w_0 = 2$, the system is in phase with some force components).
+So qualitatively, after getting to stable state, when quality factor $Q$ is higher, the amplitude of the system is higher (not too obvious though); on the other hand, being in phase or not affects the amplitude even more (where in phase provides a larger amplitude). One can see that when $Tw_0 = \pi$ (when the system is not in phase with natural frequency), the amplitude with provided constants are explicitly lower than the amplitude when $Tw_0 = 4$ (with $w_0 = 2$, the system is in phase with some force components).
 
 \hfil
 
@@ -568,13 +568,46 @@ Physically, for a on-resonance undamped oscillator, then its constantly providin
 
 \textbf{Pf:}
 \subsection*{(a)}
-\textbf{insert graph}
+When the angle is getting larger (where $\phi>0$), if we modeled the angle by $\ddot\phi=-w_0^2\phi+\frac{1}{6}w_0^2\phi^3$, we get that this term has a smaller magnitude than $-w_0^2\phi$ (since for $\phi \in (0,\frac{\pi}{2})$ the normal range of oscillation, we have $-\phi<-\phi+\frac{1}{6}\phi^3<0$, due to the fact that $\frac{\pi}{2}<2<\sqrt{6}$). Since the corresponding acceleration is smaller than the case of a simple harmonic oscillator, it takes a longer time to complete one cycle (because when angle gets large, angular acceleration $\ddot \phi$ has smaller magnitude, which takes longer to accelerate, or get to a higher speed). So, the period $T\approx \frac{2\pi}{w_0}\paran*{1+\frac{\phi^2_{\max}}{16}}$.
 
-Based on graph, we know that the acceleration
+\subsection*{(b)}
+A simple harmonic oscillator in general has the amplitude decrease with a factor of $e^{-\beta t}$. With $Q=\frac{w_0}{2\beta}$, $\beta = \frac{w_0}{2Q}$, so the amplitude is decreasing with a factor of $e^{-\frac{w_0}{2Q}t}$.
+
+Initially, with $\phi_{\max}=0.1$ rad, and $T=2$, we get the following relation:
+\begin{equation}
+    2 =  \frac{2\pi}{w_0}\paran*{1+\frac{1}{1600}}\implies w_0 = \frac{1601\pi}{1600}\textmd{rad/s}
+\end{equation}
+
+\hfil
+
+To calculate the difference in cycle, for a Simple Harmonic Oscillator, with period $T=\frac{2\pi}{w_0}$, and $86,400$ seconds a day, it goes through $\frac{86,400 \cdot w_0}{2\pi}$ cycles in total.
+
+Now, for each small change in time $\Delta t$, assuming the oscillator iswith period $T$, then it approximately goes through $\frac{\Delta t}{T}$ cycles, and the total amount of cycle is approximately summing up all of these small pieces over the duration of $86,400$ seconds. Taking the limit, we get:
+\begin{align}
+    \#\textmd{ cycles} = \int_{t=0}^{86,400}\frac{dt}{T},\quad T(t) = \frac{2\pi}{w_0}\paran*{1+\frac{\phi_{\max}(t)^2}{16}}
+\end{align}
+Which, wit the give decreasing factor above, $\phi_{\max}(t) = 0.1 \cdot e^{-\frac{w_0}{2Q}t}$, so the integral becomes:
+\begin{align}
+    \int_{0}^{86,400}\frac{dt}{\frac{2\pi}{w_0}\paran*{1+\frac{e^{-\frac{w_0}{Q}t}}{1600}}} &= \frac{w_0}{2\pi}\int_{0}^{86,400}\frac{1600}{1600+e^{-\frac{w_0}{Q}t}}dt = \frac{w_0}{2\pi}\int_{0}^{86,400}\paran*{1-\frac{e^{-\frac{w_0}{Q}t}}{1600+e^{-\frac{w_0}{Q}t}}}dt\\
+    &= \frac{86,400\cdot w_0}{2\pi}+\frac{w_0}{2\pi}\cdot \frac{Q}{w_0}\int_{0}^{86,400}\frac{-\frac{w_0}{Q}e^{-\frac{w_0}{Q}t}}{1600+e^{-\frac{w_0}{Q}t}}dt\\
+    &= \frac{86,400\cdot w_0}{2\pi}+\frac{Q}{2\pi}\int_{0}^{86,400}\frac{\frac{d}{dt}(1600+e^{-\frac{w_0}{Q}t})}{1600+e^{-\frac{w_0}{Q}t}}dt\\
+    &= \frac{86,400\cdot w_0}{2\pi} + \frac{Q}{2\pi}\ln(1600+e^{-\frac{w_0}{Q}t})\bigg|_{0}^{86,400}\\
+    &= \frac{86,400\cdot w_0}{2\pi} + \frac{Q}{2\pi}\ln\paran*{\frac{1600+e^{-\frac{w_0}{Q}\cdot 86,400}}{1601}}
+\end{align}
+Which, to calculate the number of cycles behind a Simple Harmonic Oscillator, we get:
+\begin{align}
+    \#\textmd{ cycles behind} = \frac{86,400\cdot w_0}{2\pi} - \#\textmd{ cycles} = -\frac{Q}{2\pi}\ln\paran*{\frac{1600+e^{-\frac{w_0}{Q}\cdot 86,400}}{1601}}
+\end{align}
+Then, the amount of seconds behind is given by $(\#\textmd{ cycles behind})\cdot \frac{2\pi}{w_0}$ (number of cycles times the natural period), which is given by:
+\begin{align}
+    \Delta t = -\frac{Q}{w_0}\ln\paran*{\frac{1600+e^{-\frac{w_0}{Q}\cdot 86,400}}{1601}}
+\end{align}
+Plugin $Q=10,000$, $w_0=\frac{1601\pi}{1600}$, we get that $\Delta t\approx 1.988$.
 
 \break
 
-\section{Extra Credit}
+\section{Extra Credit (not done)}
+\begin{comment}
 \begin{question}\label{q7}
     Again consider the simple pendulum, as specified in the previous problem. The point is to derive the result: The amplitde-dependent period of the pendulum. The differential equation we need to solve is as 
     $$\ddot\phi+w_0^2\phi=\epsilon w_0^2\phi^3$$
@@ -595,7 +628,7 @@ Based on graph, we know that the acceleration
         $$\phi=\phi_0(T_0,T_1,...)+\epsilon\phi_1(T_0,T_1,...)+...$$
         calculate the $O(\epsilon^0)$ and $O(\epsilon^1)$ terms in the equation of motion. You should find that the $O(\epsilon^0)$ equation has the solution 
         $$\phi_0=A(T_1,...)e^{iw_0T_0}+A^*(T_1,...)e^{-iw_0T_0}$$
-        \item[(e)] If we have a "driving" term which is exacly on the resonance in the $\phi_1$ equation, we know that we'll get an unbounded term in $\phi_1$. Since this is physically impossible, we should require that there is no on-resonance driving term $e^{\pm iw_0T_0}$ in the $O(\epsilon^1)$ equation (or equivalently, that the coefficients of these two exponentials are zero). Show that this produces a differential equation for $A(T_1)$, and solve this for $A(T_1)$ (suggest: $A(T_1) = R(T_1)e^{i\theta(T_1)}$).
+        \item[(e)] If we have a "driving" term which is exactly on the resonance in the $\phi_1$ equation, we know that we'll get an unbounded term in $\phi_1$. Since this is physically impossible, we should require that there is no on-resonance driving term $e^{\pm iw_0T_0}$ in the $O(\epsilon^1)$ equation (or equivalently, that the coefficients of these two exponentials are zero). Show that this produces a differential equation for $A(T_1)$, and solve this for $A(T_1)$ (suggest: $A(T_1) = R(T_1)e^{i\theta(T_1)}$).
         \item[(f)] This gives us enough pieces to get the correction to $\phi$. With $\phi\approx \phi_0$ and the numerical value of $\epsilon$ restored, find $|phi(t)$ when the pendulum is released at rest from angle $\phi_{\max}$. As stated earlier, you should find that your function is periodic with period 
         $$T=\frac{2\pi}{w}\paran*{1\pm\frac{\phi^2_{\max}}{16}}$$
         with either a plus or a minus sign.
@@ -603,13 +636,113 @@ Based on graph, we know that the acceleration
         We could get $\phi_1$ as well, but getting it with all the proper time-dependence requires going to the $O(\epsilon^2)$ equation, and so on. We'll stop here since it's enough to get a non-trivial correction to the period.
     \end{itemize}
 \end{question}
+\end{comment}
+\begin{question}\label{q7}
+    Too long.
+\end{question}
 
 \textbf{Pf:}
 \subsection*{(a)}
 Given the ininite series expression, \textbf{assume the function is smooth and converges uniformly for simplicity}, then taking differentiation, the second derivative becomes:
 \begin{equation}
-    d
+    \ddot\phi = \sum_{n=0}^{\infty}\epsilon^n \ddot\phi_n
 \end{equation}
+Plug into the differential equation, we get:
+\begin{align}
+    \sum_{n=0}^{\infty}\epsilon^n \ddot\phi_n + w_0^2\sum_{n=0}^{\infty}\epsilon^n \phi_n = \epsilon w_0^2\paran*{\phi_0 + \epsilon\phi_1 + \sum_{n=2}^{\infty}\epsilon^n \phi_n}^3
+\end{align}
+Taking the terms of $\epsilon^0$ and $\epsilon^1$ on both sides, we get the following two equations:
+\begin{align}
+    \begin{cases}
+        \ddot \phi_0 + w_0^2\phi_0 = 0\\
+        \epsilon \ddot\phi_1 + w_0^2\epsilon \phi_1 = \epsilon w_0^2\phi_0^3
+    \end{cases}\quad \implies \quad \begin{cases}
+        \ddot \phi_0 + w_0^2\phi_0 = 0\\
+        \ddot\phi_1 + w_0^2\phi_1 = w_0^2\phi_0^3
+    \end{cases}
+\end{align}
+The first equation is an undamped Single Harmonic Oscillator, which has solution $\phi_0(t) = A\cos(w_0t+\varphi)$ for some amplitude $A$ and phase $\varphi$. Now, for the second equation, using sum of angle formula, we get the following identity:
+\begin{align}
+    \cos^3(x) &= \cos(x)\cdot \frac{1+\cos(2x)}{2} = \frac{1}{2}\paran*{\cos(x)+(\cos(x)\cos(2x)-\sin(x)\sin(2x))+\sin(x)\sin(2x)}\\
+    &= \frac{1}{2}(\cos(x)+\cos(3x)+2\sin^2(x)\cos(x)) = \frac{1}{2}(\cos(x)+\cos(3x)+2\cos(x)-2\cos^3(x))\\
+    &=\frac{3}{2}\cos(x)+\frac{1}{2}\cos(3x)-\cos^3(x)
+\end{align}
+So, $\cos^3(x) = \frac{3}{4}\cos(x)+\frac{1}{4}\cos(3x)$. Plug into the second differential equation, we get:
+\begin{equation}
+    \ddot\phi_1 +w_0^2\phi_1 = w_0^2\cdot A^3\cos^3(w_0t+\varphi) = w_0^2A^3\paran*{\frac{3}{4}\cos(w_0t+\delta)+\frac{1}{4}\cos(3w_0t+3\varphi)}
+\end{equation}
+Using linearity, $\phi_1$ can be expressed as a linear combination of the solution corresponds to $\cos(w_0t+\varphi)$, and $\cos(3w_0t+3\varphi)$; However, for $\cos(w_0t+\varphi)$, since the nonhomogeneous equation has the same frequency as the homogeneous equation (both uses frequency $w_0$), then based on Question \ref{q5}, it has no solution (or, there's no steady state, because the amplitude eventually goes unbounded).
+
+\subsection*{(b)}
+Based on the expression in (a), $\phi_1$ has no solution (physically, it means the system for $\phi_1$ goes unbounded), and it's because there is a term of $\ddot\phi_1+w_0^2\phi_1 = K\cos(w_0t+\varphi)$, which has the same situation as what happened in Question \ref{q5}. Since we've proven that its energy would eventually diverge to infinity, then a solution can't exist.
+
+\subsection*{(c)}
+Given the following expression of $\frac{d}{dt}$:
+\begin{equation}
+    \frac{d}{dt}=\sum_{n=0}^{\infty}\epsilon^n\frac{\partial}{\partial T_n}
+\end{equation}
+Assuming it's a linear operator on functions that converge under such operation, such that partial derivatives commute, then we get:
+\begin{align}
+    \frac{d^2}{dt^2} = \paran*{\sum_{n=0}^{\infty}\epsilon^n\frac{\partial}{\partial T_n}}\paran*{\sum_{m=0}^{\infty}\epsilon^m\frac{\partial}{\partial T_m}} = \sum_{n=0}^{\infty}\sum_{m=0}^{\infty}\epsilon^{n+m}\frac{\partial^2}{\partial T_n \partial T_m}= \sum_{k=0}^{\infty}\epsilon^k\paran*{\sum_{i=0}^{k}\frac{\partial^2}{\partial T_i \partial T_{k-i}}}
+\end{align}
+Up to second order in $\epsilon$, we get the operator: 
+\begin{align}
+    &\frac{\partial^2}{\partial T_0^2} + \epsilon\paran*{\frac{\partial^2}{\partial T_0\partial T_1}+\frac{\partial^2}{\partial T_1\partial T_0}} + \epsilon^2\paran*{\frac{\partial^2}{\partial T_2\partial T_0}+\frac{\partial^2}{\partial T_1^2}+\frac{\partial^2}{\partial T_0\partial T_2}}\\
+    &= \frac{\partial^2}{\partial T_0^2}+2\epsilon\frac{\partial^2}{\partial T_0\partial T_1}+2\epsilon^2\frac{\partial^2}{\partial T_0\partial T_2}+\epsilon^2\frac{\partial^2}{\partial T_1^2}
+\end{align}
+
+\subsection*{(d)}
+If just regarding up to $\epsilon^0$ and $\epsilon^1$, the derivative operator only need up to $\epsilon$ term, while the function only goes up to $\phi_1$ (afterward all have order $\epsilon^n,\ n\geq 2$). Apply to $\phi=\sum_{n=0}^{\infty}\epsilon^n\phi_n$ and plug into the differential equation, we get:
+\begin{align}
+    &\paran*{\frac{\partial^2}{\partial T_0^2}+2\epsilon\frac{\partial^2}{\partial T_0\partial T_1}}(\phi_0+\epsilon\phi_1) + w_0^2(\phi_0+\epsilon \phi_1) =\epsilon w_0^2(\phi_0+\epsilon\phi_1)^3\quad\textmd{(truncate up to }\epsilon^1) \\
+    &\implies \frac{\partial^2\phi_0}{\partial T_0^2}+\epsilon\frac{\partial^2\phi_1}{\partial T_0^2} + 2\epsilon\frac{\partial^2\phi_0}{\partial T_0\partial T_1} + w_0^2\phi_0+\epsilon w_0^2\phi_1 = \epsilon w_0^2\phi_0^3
+\end{align}
+Which, combine the terms based on $\epsilon$, we get the following equation:
+\begin{align}
+    \begin{cases}
+        \frac{\partial^2}{\partial T_0^2}\phi_0 + w_0^2\phi_0 = 0 & \epsilon^0 \textmd{ term}\\
+        \frac{\partial^2}{\partial T_0^2}\phi_1 + 2\frac{\partial^2}{\partial T_0\partial T_1}\phi_0 + w_0^2\phi_1 = w_0^2\phi_0^3 & \epsilon^1 \textmd{ term}
+    \end{cases}
+\end{align}
+The equation involving $\phi_0$ only becomes a Simple Harmonic Oscillator (a homogeneous equation in this case), which we know the solution is given by:
+\begin{align}
+    \phi_0 = Ae^{iw_0T_0}+A^*e^{-iw_0T_0}
+\end{align}
+Where $A=A(T_1,...)$ and $A^*=A^*(T_1,...)$ (since they're terms non-dependent to variable $T_0$).
+
+\subsection*{(e)}
+If assume there's no on-resonance term (for $e^{\pm iw_0T_0}$, the coefficients are $0$), plug the solution of $\phi_0$ to the $\epsilon^1$-term differential equation from (d), we get:
+\begin{align}
+    \frac{\partial^2}{\partial T_0^2}\phi_1 + 2\frac{\partial}{\partial T_1}\paran*{\frac{\partial}{\partial T_0}\phi_0} + w_0^2\phi_1 = w_0^2\phi_0^3
+\end{align}
+\begin{align}
+    \implies&\frac{\partial^2}{\partial T_0^2}\phi_1 + 2\frac{\partial}{\partial T_1}\paran*{iw_0(Ae^{iw_0T_0}-A^*e^{-iw_0T_0})} + w_0^2\phi_1 \\
+    &= w_0^2\paran*{A^3e^{3iw_0T_0} + 3A^2A^*e^{iw_0T_0}+3A(A^*)^2e^{-iw_0T_0}+(A^*)^3e^{-3iw_0T_0}}
+\end{align}
+\begin{align}
+    \implies&\frac{\partial^2}{\partial T_0^2}\phi_1 - 2iw_0\paran*{-\frac{\partial A}{\partial T_1}e^{iw_0T_0}+\frac{\partial A^*}{\partial T_1}e^{-iw_0T_0}} + w_0^2\phi_1\\
+    &= w_0^2\paran*{A^3e^{3iw_0T_0} + 3A^2A^*e^{iw_0T_0}+3A(A^*)^2e^{-iw_0T_0}+(A^*)^3e^{-3iw_0T_0}}
+\end{align}
+\begin{align}
+    \implies &\frac{\partial^2}{\partial T_0^2}\phi_1+w_0^2\phi_1 \\
+    &= w_0^2A^3e^{3iw_0T_0}+w_0^2(A^*)^3e^{-3iw_0T_0} + \paran*{3w_0^2A^2A^* - 2iw_0\frac{\partial A}{\partial T_1}}e^{iw_0T_0} + \paran*{3w_0^2A(A^*)^2+2iw_0\frac{\partial A^*}{\partial T_1}}e^{-iw_0T_0}
+\end{align}
+Which, with the assumption that $e^{\pm iw_0T_0}$ need $0$ coefficient, we get:
+\begin{align}
+    \begin{cases}
+        3w_0^2A^2A^*-2iw_0\frac{\partial A}{\partial T_1}=0\\
+        3w_0^2A(A^*)^2+2iw_0\frac{\partial A^*}{\partial T_1}=0
+    \end{cases}\implies \begin{cases}
+        3w_0A^2A^*-2i\frac{\partial A}{\partial T_1}=0\\
+        3w_0A(A^*)^2+2i\frac{\partial A^*}{\partial T_1}=0
+    \end{cases}
+\end{align}
+Assume $A\neq 0$ in general, the first equation in (80) implies that $A^* = \frac{2i}{3w_0A^2}\frac{\partial A}{\partial T_1}$, plug into the second equation, we get:
+\begin{align}
+    &-\frac{4}{3w_0A^3}\paran*{\frac{\partial A}{\partial T_1}}^2+\frac{8}{3w_0A^3}\paran*{\frac{\partial A}{\partial T_1}}^2-\frac{4}{3w_0A^2}\frac{\partial^2A}{\partial T_1^2}=0\\
+    &\implies \frac{4}{3w_0A^2}\paran*{\frac{1}{A}\paran*{\frac{\partial A}{\partial T_1}}^2-\frac{\partial^2 A}{\partial T_1^2}}=0 \implies \frac{1}{A}\paran*{\frac{\partial A}{\partial T_1}}^2=\frac{\partial ^2A}{\partial T_1^2}
+\end{align}
+A possible solution to the above differential equation is $A=ke^{lT_1}$, where $k,l \in \CC$, and $k\neq 0$.
 
 \break
 
