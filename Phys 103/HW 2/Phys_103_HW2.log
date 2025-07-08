@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  7 JUL 2025 16:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  7 JUL 2025 19:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -707,103 +707,91 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-Overfull \hbox (11.55055pt too wide) detected at line 202
+Overfull \hbox (11.55055pt too wide) detected at line 203
 []
  []
 
 
-Overfull \hbox (23.00533pt too wide) detected at line 223
+Overfull \hbox (23.00533pt too wide) detected at line 224
 []
  []
 
 [4] [5]
-Overfull \hbox (60.26785pt too wide) detected at line 287
+Overfull \hbox (60.26785pt too wide) detected at line 288
 [][][]\OML/cmm/m/it/10 P[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = \OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 bv[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = \OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 b \OMS/cmsy/m/n/10 ^^A []\OT1/cmr/m/n/10 ((2\OML/cmm/m/it/10 ^^Lw\OT1/cmr/m/n/10 )[] [][](\OML/cmm/m/it/10 wt\OT1/cmr/m/n/10 ) + (\OML/cmm/m/it/10 w[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 w[]\OT1/cmr/m/n/10 )[] [][](\OML/cmm/m/it/10 wt\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 4\OML/cmm/m/it/10 ^^Lw\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 w[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 w[]\OT1/cmr/m/n/10 ) [](\OML/cmm/m/it/10 wt\OT1/cmr/m/n/10 ) [](\OML/cmm/m/it/10 wt\OT1/cmr/m/n/10 ))
  []
 
 [6] [7]
-<q4_a.jpg, id=169, 1336.995pt x 1045.9075pt>
+<q4_a.jpg, id=170, 1336.995pt x 1045.9075pt>
 File: q4_a.jpg Graphic file (type jpg)
 <use q4_a.jpg>
-Package pdftex.def Info: q4_a.jpg  used on input line 333.
+Package pdftex.def Info: q4_a.jpg  used on input line 334.
 (pdftex.def)             Requested size: 227.62204pt x 178.05727pt.
  [8 <./q4_a.jpg>]
-<phys_103_hw2_q3_b.png, id=179, 462.528pt x 346.896pt>
+<phys_103_hw2_q3_b.png, id=180, 462.528pt x 346.896pt>
 File: phys_103_hw2_q3_b.png Graphic file (type png)
 <use phys_103_hw2_q3_b.png>
-Package pdftex.def Info: phys_103_hw2_q3_b.png  used on input line 367.
-(pdftex.def)             Requested size: 284.52756pt x 213.40593pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[9] [10 <./phys_103_hw2_q3_b.png>]
-Overfull \hbox (9.79906pt too wide) detected at line 427
+Package pdftex.def Info: phys_103_hw2_q3_b.png  used on input line 368.
+(pdftex.def)             Requested size: 221.93149pt x 166.44995pt.
+ [9 <./phys_103_hw2_q3_b.png>] [10]
+Overfull \hbox (9.79906pt too wide) detected at line 428
 []
  []
 
-<0,0.png, id=201, 462.528pt x 346.896pt>
+<0,0.png, id=203, 462.528pt x 346.896pt>
 File: 0,0.png Graphic file (type png)
 <use 0,0.png>
-Package pdftex.def Info: 0,0.png  used on input line 439.
-(pdftex.def)             Requested size: 211.38849pt x 158.54192pt.
-<0,1.png, id=202, 462.528pt x 346.896pt>
+Package pdftex.def Info: 0,0.png  used on input line 440.
+(pdftex.def)             Requested size: 230.18271pt x 172.63771pt.
+<0,1.png, id=204, 462.528pt x 346.896pt>
 File: 0,1.png Graphic file (type png)
 <use 0,1.png>
-Package pdftex.def Info: 0,1.png  used on input line 444.
-(pdftex.def)             Requested size: 211.38849pt x 158.54192pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<1,0.png, id=203, 462.528pt x 346.896pt>
+Package pdftex.def Info: 0,1.png  used on input line 445.
+(pdftex.def)             Requested size: 230.18271pt x 172.63771pt.
+<1,0.png, id=205, 462.528pt x 346.896pt>
 File: 1,0.png Graphic file (type png)
 <use 1,0.png>
-Package pdftex.def Info: 1,0.png  used on input line 454.
-(pdftex.def)             Requested size: 211.38849pt x 158.54192pt.
-<1,1.png, id=204, 462.528pt x 346.896pt>
+Package pdftex.def Info: 1,0.png  used on input line 455.
+(pdftex.def)             Requested size: 230.18271pt x 172.63771pt.
+<1,1.png, id=206, 462.528pt x 346.896pt>
 File: 1,1.png Graphic file (type png)
 <use 1,1.png>
-Package pdftex.def Info: 1,1.png  used on input line 459.
-(pdftex.def)             Requested size: 211.38849pt x 158.54192pt.
+Package pdftex.def Info: 1,1.png  used on input line 460.
+(pdftex.def)             Requested size: 230.18271pt x 172.63771pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[11] [12 <./0,0.png> <./0,1.png> <./1,0.png> <./1,1.png>] [13] [14] [15] [16] [17] [18]
-Overfull \hbox (10.55673pt too wide) detected at line 735
+[11 <./0,0.png> <./0,1.png>] [12 <./1,0.png> <./1,1.png>] [13] [14] [15] [16] [17] [18]
+Overfull \hbox (10.55673pt too wide) detected at line 732
 []
  []
 
-[19] (./Phys_103_HW2.aux)
+[19]
+Overfull \hbox (21.23074pt too wide) in paragraph at lines 772--774
+\OT1/cmr/m/n/10 If $\OML/cmm/m/it/10 ^^^[]\OT1/cmr/m/n/10 (0) = \OML/cmm/m/it/10 ^^^[]$\OT1/cmr/m/n/10 , and $\OML/cmm/m/it/10 ^^^[]\OT1/cmr/m/n/10 (0) = 0$, then we get $[][] [](\OML/cmm/m/it/10 ^^N\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 ^^^[]$\OT1/cmr/m/n/10 , and its deriva-tive $\OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 w[][] []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^N\OT1/cmr/m/n/10 ) =
+ []
+
+[20] (./Phys_103_HW2.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `Phys_103_HW2.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Phys_103_HW2.out':
-(rerunfilecheck)             Before: 497EB29187C1E880AE01E23592B568A2;969
-(rerunfilecheck)             After:  FEDD145E53015FD063F7989AAABED38F;790.
+Package rerunfilecheck Info: File `Phys_103_HW2.out' has not changed.
+(rerunfilecheck)             Checksum: F30593CBDE3D7E37DCB83C5CC7393F31;316.
  ) 
 Here is how much of TeX's memory you used:
- 29709 strings out of 474116
- 596181 string characters out of 5743681
- 1954187 words of memory out of 5000000
+ 29721 strings out of 474116
+ 596332 string characters out of 5743681
+ 1957187 words of memory out of 5000000
  51465 multiletter control sequences out of 15000+600000
  568689 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 93i,16n,99p,819b,947s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,16n,99p,786b,947s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Phys_103_HW2.pdf (19 pages, 596855 bytes).
+Output written on Phys_103_HW2.pdf (20 pages, 600945 bytes).
 PDF statistics:
- 423 PDF objects out of 1000 (max. 8388607)
- 325 compressed objects within 4 object streams
- 149 named destinations out of 1000 (max. 500000)
+ 440 PDF objects out of 1000 (max. 8388607)
+ 341 compressed objects within 4 object streams
+ 161 named destinations out of 1000 (max. 500000)
  243 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -115,12 +115,12 @@
 \textbf{Pf:}
 
 \subsection*{(a)}
-Given the oscillator has the motion $x(t)=Ae^{-\beta t}\cos(w_1t-\phi)$, since $x(0) = A\cos(\phi)=0$, WLOG, can guess $\phi = \frac{\pi}{2}$ (if its $n\pi +\frac{\pi}{2}$, one can always change the constant $A$ accordingly). So, $x(t)=Ae^{-\beta t}\cos(w_1 t-\frac{\pi}{2})=Ae^{-\beta t}\sin(w_1 t)$ (here, assume $A>0$).
+Given the oscillator has the motion $x(t)=Ae^{-\beta t}\cos(w_1t-\phi)$, since $x(0) = A\cos(-\phi)=A\cos(\phi)=0$, WLOG, can guess $\phi = \frac{\pi}{2}$ (if its $n\pi +\frac{\pi}{2}$, one can always change the constant $A$ accordingly). So, $x(t)=Ae^{-\beta t}\cos(w_1 t-\frac{\pi}{2})=Ae^{-\beta t}\sin(w_1 t)$ (here, assume $A\neq 0$).
 
 Which, if $x(t) = 0$, we have $Ae^{-\beta t}\sin(w_1 t)=0$. Since $A, e^{-\beta t}\neq 0$, we must have $\sin(w_1 t)=0$. As a result, $t = \frac{n\pi}{w_1}$ for $n \in \ZZ$. So, if the period is defined to be the amount of time to get two zeros, the period is $\frac{2\pi}{w_1}$ (since subsequent zeros apart each other with time $\frac{\pi}{w_1}$).
 
 \subsection*{(b)}
-If using the same equation $x(t)=Ae^{-\beta t}\sin(w_1t)$, to calculate where the local maxima is, we first consider up to its derivative:
+If using the same equation $x(t)=Ae^{-\beta t}\sin(w_1t)$, to calculate where the local maxima are, we first consider its derivative:
 \begin{equation}
     x'(t) = -A\beta e^{-\beta t}\sin(w_1 t)+Ae^{-\beta t}w_1\cos(w_1 t)
 \end{equation}
@@ -133,7 +133,7 @@ This shows that $t=\frac{(2n+1/2)\pi}{w_1}$ is no longer local maxima, since $x'
 
 \hfil
 
-However, if consider where $x'(t)=0$, suppose $t_0 \in [0,2\pi)$ satisfies $x'(t_0)=0$, we get the following relation:
+However, if consider where $x'(t)=0$, suppose $t_0 \in [0,\frac{2\pi}{w_1})$ satisfies $x'(t_0)=0$, we get the following relation:
 \begin{align}
     x'(t_0)&=-Ae^{-\beta t_0}(-\beta\sin(w_1 t_0)+w_1\cos(w_1 t_0)) = 0,\quad Ae^{-\beta t_0}\neq 0\\
     &\implies -\beta\sin(w_1 t_0)+w_1\cos(w_1 t_0)=0\\
@@ -145,7 +145,7 @@ On the other hand, if consider the second derivative, we get the following:
 \begin{equation}
     x''(t) = A(\beta^2-w_1^2)e^{-\beta t}\sin(w_1 t)-2A\beta w_1e^{-\beta t}\cos(w_1 t)
 \end{equation}
-Given that $t_0$ is local maximuj, $x''(t_0)<0$; however, for all $n\in\ZZ$, if $n$ is odd ($n=2k+1$ for some $k\in \ZZ$), the time $t=\frac{n\pi}{w_1}+t_0$ satisfies:
+Given that $t_0$ is a local maximum, $x''(t_0)<0$; however, for all $n\in\ZZ$, if $n$ is odd ($n=2k+1$ for some $k\in \ZZ$), the time $t=\frac{n\pi}{w_1}+t_0$ satisfies:
 \begin{align}
     x''\left(\frac{n\pi}{w_1}+t_0\right)&=A(\beta^2-w_1^2)e^{-\beta t}\sin\left(w_1\frac{n\pi}{w_1}+w_1t_0\right) - 2A\beta w_1e^{-\beta t}\cos\left(w_1\frac{n\pi}{w_1}+w_1t_0\right)\\
     &= A(\beta^2-w_1^2)e^{-\beta (\frac{n\pi}{w_1}+t_0)}\sin((2k+1)\pi +w_1t_0)-2A\beta w_1e^{-\beta (\frac{n\pi}{w_1}+t_0)}\cos((2k+1)\pi +w_1t_0)\\
@@ -154,7 +154,7 @@ Given that $t_0$ is local maximuj, $x''(t_0)<0$; however, for all $n\in\ZZ$, if 
 \end{align}
 Which, showing that $t=\frac{n\pi}{w_1}+t_0$ are all local minimum (since second derivatives are all positive). 
 
-If $n$ is even instead ($n=2k$ for some $k\in\ZZ$), the above equation has no negative in the front, hence the second derivative remains negative, showing that $t=\frac{2k \pi}{w_1}+t_0$ are all local maxima.
+If $n$ is even instead ($n=2k$ for some $k\in\ZZ$), the above equation after (10) has no negative in the front, hence the second derivative remains negative, showing that $t=\frac{2k \pi}{w_1}+t_0$ are all local maxima.
 So, any subsequent local maxima have a time difference of $\frac{2\pi}{w_1}$, showing that the period $\frac{2\pi}{w_1}$ can also be determined by the time between subsequent local maxima.
 
 \break
@@ -178,7 +178,7 @@ So, any subsequent local maxima have a time difference of $\frac{2\pi}{w_1}$, sh
 \textbf{Pf:}
 
 \subsection*{(a)}
-Recall that the elastic potential energy $U=\frac{1}{2}kx^2$, the kinetic energy is $K=\frac{1}{2}mv^2$, the natural frequency square $w_0^2=\frac{k}{m}$, and the frequency square $w_1^2=w_0^2-\beta^2$.
+Recall that the elastic potential energy $U=\frac{1}{2}kx^2$, the kinetic energy is $K=\frac{1}{2}mv^2$, the natural frequency square $w_0^2=\frac{k}{m}$ (or $mw_0^2=k$), and the frequency square $w_1^2=w_0^2-\beta^2$.
 
 With $x(t)=Ae^{-\beta t}\cos(w_1t+\phi)$, we have the derivative $x'(t)=v(t)=-Ae^{-\beta t}(\beta \cos(w_1t+\phi)+w_1\sin(w_1t+\phi))$. Then plug in above, we get the energy as:
 \begin{equation}
@@ -192,11 +192,12 @@ With $x(t)=Ae^{-\beta t}\cos(w_1t+\phi)$, we have the derivative $x'(t)=v(t)=-Ae
 \end{align}
 Recall that the linear combination of $\sin,\cos$ can be given as follow, for all $A,B\in \RR$:
 \begin{equation}
-    A\sin(x)+B\cos(x) = \sqrt{A^2+B^2}\cos\left(x-\arctan\left(\frac{B}{A}\right)\right)
+    A\sin(x)+B\cos(x) = \sqrt{A^2+B^2}\cos\left(x-\arctan\left(\frac{A}{B}\right)\right)
 \end{equation}
 So, the kinetic energy can then be expressed as:
 \begin{align}
-    K&=\frac{1}{2}kA^2e^{-2\beta t}\sin^2(w_1t+\phi)+\frac{1}{2}kA^2e^{-2\beta t}\cdot\left(\frac{\beta}{w_0}\right)^2\cdot \sqrt{1+\left(\frac{w_1}{\beta}\right)^2}\cos\left(2w_1t+2\phi - \arctan\frac{w_1}{\beta}\right)\\
+    K&= \frac{1}{2}kA^2e^{-2\beta t}\sin^2(w_1t+\phi)+\frac{1}{2}kA^2e^{-2\beta t}\cdot\left(\frac{\beta}{w_0}\right)^2\paran*{\frac{w_1}{\beta}\sin(2w_1t+2\phi)+\cos(2w_1t+2\phi)}\\
+    &=\frac{1}{2}kA^2e^{-2\beta t}\sin^2(w_1t+\phi)+\frac{1}{2}kA^2e^{-2\beta t}\cdot\left(\frac{\beta}{w_0}\right)^2\cdot \sqrt{1+\left(\frac{w_1}{\beta}\right)^2}\cos\left(2w_1t+2\phi - \arctan\frac{w_1}{\beta}\right)\\
     &=\frac{1}{2}kA^2e^{-2\beta t}\sin^2(w_1t+\phi)+\frac{1}{2}kA^2e^{-2\beta t}\cdot\left(\frac{\beta}{w_0}\right)^2\cdot \sqrt{\frac{\beta^2+(w_0^2-\beta^2)}{\beta^2}}\cos\left(2w_1t+2\phi - \arctan\frac{\sqrt{w_0^2-\beta^2}}{\beta}\right)\\
     &= \frac{1}{2}kA^2e^{-2\beta t}\sin^2(w_1t+\phi)+\frac{1}{2}kA^2e^{-2\beta t}\cdot\left(\frac{\beta}{w_0}\right)^2\cdot \frac{w_0}{\beta}\cos\left(2w_1t+2\phi - \arccos\frac{\beta}{w_0}\right)
 \end{align}
@@ -204,16 +205,16 @@ So, the kinetic energy can then be expressed as:
 
 Then, the total energy is given as follow:
 \begin{align}
-    E = K+U &= \frac{1}{2}kA^3e^{-2\beta t}(\cos^2(w_1t+\phi)+\sin^2(w_1t+\phi)) + \frac{1}{2}kA^2e^{-2\beta t}\frac{2\beta}{2w_0}\cos\left(2w_1t+2\phi-\arccos\frac{2\beta}{2w_0}\right)\\
+    E = K+U &= \frac{1}{2}kA^2e^{-2\beta t}(\cos^2(w_1t+\phi)+\sin^2(w_1t+\phi)) + \frac{1}{2}kA^2e^{-2\beta t}\frac{2\beta}{2w_0}\cos\left(2w_1t+2\phi-\arccos\frac{2\beta}{2w_0}\right)\\
     &= \frac{1}{2}kA^2e^{-2\beta t}\left(1+\frac{1}{2Q}\cos\left(2w_1t+2\phi-\arccos\frac{1}{2Q}\right)\right)
 \end{align}
 (Note: recall that $Q=\frac{w_0}{2\beta}$, so $\frac{2\beta}{2w_0} = \frac{1}{2Q}$).
 
 \subsection*{(b)}
-When consider a physical (1-dimensional) simple harmonic oscillator (SHO), its amplitude represents its displacement away from the equilibrium, while the first derivative is the velocity. In this case, the damping force $-b\dot x = -bv$ is a non-conservative force proportional to velocity (which is always against the motion), in contrast to the force $-kx$ that is conservative, so when the object in SHO has nonzero velocity, the damping force will be dissipating energy, while the force $-kx$ is not disspating any energy (only transfers it between potential and kinetic energy).
+When consider a physical (1-dimensional) simple harmonic oscillator (SHO), its amplitude represents its displacement away from the equilibrium, while the first derivative is the velocity. In this case, the damping force $-b\dot x = -bv$ is a non-conservative force with magnitude proportional to velocity (which is always against the motion), so when the object in SHO has nonzero velocity, the damping force will be dissipating energy, while the force $-kx$ (which is position-dependent only in 1D, so is conservative) is not disspating any energy (only transfers it between potential and kinetic energy).
 
 Since the velocity is oscillating also (due to SHO's oscillating nature), then the power dissipated by damping force, $P_\textmd{damp} = (-bv)v = -bv^2$ is also oscillating, which the energy $E$ over time (as an antiderivative of $P$, in this case $P_\textmd{damp}$) is also going to be oscillatory. 
-(Note: since other forces, like $-kx$ is not dissipating any mechanical energy, then the only rate of change of energy is coming from the damping force, hence $P=P_\textmd{damp}$).
+(Note: since the other force $-kx$ is not dissipating any mechanical energy, then the only rate of change of energy is coming from the damping force, hence $P=P_\textmd{damp}$).
 
 \subsection*{(c)}
 Given that $\tilde{t}=\frac{t}{2\pi/w_1}$, then $\frac{dE}{d\tilde{t}} = \frac{dE}{dt}\frac{dt}{d\tilde{t}} = \frac{2\pi}{w_1}\frac{dE}{dt}$. Which, define $\phi_1 = 2\phi-\arccos\frac{1}{2Q}$, calculating the derivative, we get:
@@ -223,20 +224,20 @@ Given that $\tilde{t}=\frac{t}{2\pi/w_1}$, then $\frac{dE}{d\tilde{t}} = \frac{d
 \end{align}
 Which, consider the term $-\frac{1}{E}\frac{dE}{d\tilde{t}}$, we get:
 \begin{align}
-    -\frac{1}{E}\frac{dE}{d\tilde{t}} &= \frac{2\pi}{w_1}\cdot 2\beta +\frac{2\pi}{w}\cdot \frac{w_1}{Q}\cdot\frac{\frac{1}{2}kA^2e^{-2\beta t}\sin(2w_1t+\phi_1)}{\frac{1}{2}kA^2e^{-2\beta t}\left(1+\frac{1}{2Q}\cos\left(2w_1t+\phi_1\right)\right)}\\
+    -\frac{1}{E}\frac{dE}{d\tilde{t}} &= \frac{2\pi}{w_1}\cdot 2\beta +\frac{2\pi}{w_1}\cdot \frac{w_1}{Q}\cdot\frac{\frac{1}{2}kA^2e^{-2\beta t}\sin(2w_1t+\phi_1)}{\frac{1}{2}kA^2e^{-2\beta t}\left(1+\frac{1}{2Q}\cos\left(2w_1t+\phi_1\right)\right)}\\
     &= \frac{2\pi}{w_1}\cdot 2\beta+\frac{2\pi}{w_1}\cdot\frac{2w_1}{2Q}\cdot\frac{\sin(2w_1t+\phi_1)}{1+\frac{1}{2Q}\cos(2w_1t+\phi_1)}
 \end{align}
-For the first term, taking the average over duration $\frac{2\pi}{w_1}$, we get $\frac{2\pi}{w_1}\cdot 2\beta$ (since it is a constant). For the second ter, since $u=1+\frac{1}{2Q}\cos(2w_1t+\phi_1)$ has derivative $-\frac{2w_1}{2Q}\sin(2w_1t+\phi_1)$, taking the average, we get:
+For the first term, taking the average over period $\frac{2\pi}{w_1}$, we get $\frac{2\pi}{w_1}\cdot 2\beta$ (since it is a constant). For the second ter, since $1+\frac{1}{2Q}\cos(2w_1t+\phi_1)$ has derivative $-\frac{2w_1}{2Q}\sin(2w_1t+\phi_1)$, taking the average, we get:
 \begin{align}
     \frac{1}{2\pi/w_1}\int_{t=0}^\frac{2\pi}{w_1}\frac{2\pi}{w_1}\cdot\frac{2w_1}{2Q}\cdot\frac{\sin(2w_1t+\phi_1)}{1+\frac{1}{2Q}\cos(2w_1t+\phi_1)} dt &= -\int_{t=0}^{\frac{2\pi}{w_1}}\frac{\frac{d}{dt}\left(1+\frac{1}{2Q}\cos(2w_1t+\phi_1)\right)}{1+\frac{1}{2Q}\cos(2w_1t+\phi_1)}dt\\
     &= -\ln\left(1+\frac{1}{2Q}\cos(2w_1t+\phi_1)\right)\bigg|_{0}^{\frac{2\pi}{w_1}}\\
     &= 0
 \end{align}
-(Note:recall that $\cos(2w_1t+\phi_1)$ has period $\frac{2\pi}{w_1}$).
+(Note: recall that $\cos(2w_1t+\phi_1)$ has period $\frac{\pi}{w_1}$, so the above terms cancel out because the difference in time is an integer multiple of $\frac{\pi}{w_1}$).
  
 As a result, since average can be distributed over addition, we get the following:
 \begin{equation}
-    -\left<\frac{1}{E}\frac{dE}{d\tilde{t}}\right>=\left<-\frac{1}{E}\frac{dE}{d\tilde{t}}\right> = \frac{2\pi}{w_1}\cdot 2\beta
+    -\left<\frac{1}{E}\frac{dE}{d\tilde{t}}\right>=\left<-\frac{1}{E}\frac{dE}{d\tilde{t}}\right> = \bracket*{\frac{2\pi}{w_1}\cdot 2\beta}+\bracket*{\frac{2\pi}{w_1}\cdot \frac{2w_1}{2Q}\cdot\frac{\sin(2w_1t+\phi_1)}{1+\frac{1}{2Q}\cos(2w_1t+\phi_1)}} = \frac{2\pi}{w_1}\cdot 2\beta
 \end{equation}
 With $w_1 = \sqrt{w_0^2-\beta^2} = w_0\sqrt{1-\left(\frac{\beta}{w_0}\right)^2}$, and $Q=\frac{w_0}{2\beta}$, such average becomes:
 \begin{equation}
@@ -258,11 +259,11 @@ With $w_1 = \sqrt{w_0^2-\beta^2} = w_0\sqrt{1-\left(\frac{\beta}{w_0}\right)^2}$
 
 \textbf{Pf:}
 
-If the differential equation is $\ddot x+2\beta \dot x + w_0^2x = \frac{\tilde{F_0}}{m}e^{iwt}$ (where $\tilde{F_0}=F_0e^{i\delta}$ for phase $\delta$; since $\delta=0$ here, $\tilde{F_0}=F_0$; divide by $m$ is because the initial setup for force is $m\ddot x$, the whole differential equation is divided by $m$), then the solution is $\frac{F_0/m}{(w_0^2-w^2)+2i\beta w}e^{iwt} = \frac{F_0}{m((w_0^2-w^2)^2+(2\beta w)^2)}((w_0^2-w^2)-2\beta wi)(\cos(wt)+i\sin(wt))$. Which, taken the real part as the solution (which corresponds to the solution of $F_0\cos(wt)$), we get:
+If the differential equation is $\ddot x+2\beta \dot x + w_0^2x = \frac{\tilde{F_0}}{m}e^{iwt}$ (where $\tilde{F_0}=F_0e^{i\delta}$ for phase $\delta$; since $\delta=0$ here, $\tilde{F_0}=F_0$; divide by $m$ is because the initial setup for force is $m\ddot x$, the whole differential equation is divided by $m$), then the solution is $\frac{F_0/m}{(w_0^2-w^2)+2i\beta w}e^{iwt} = \frac{F_0}{m((w_0^2-w^2)^2+(2\beta w)^2)}((w_0^2-w^2)-2\beta wi)(\cos(wt)+i\sin(wt))$. Which, taken the real part as the solution (which corresponds to the solution of driving force $F_0\cos(wt)$), we get:
 \begin{equation}
     x(t) = \frac{F_0}{m((w_0^2-w^2)^2+(2\beta w)^2)}\paran*{(w_0^2-w^2)\cos(wt)+2\beta w\sin(wt)}
 \end{equation}
-Which, this is the stable state solution of the driven oscillator, which we can use tfor calculation. (Note: based on the expression, since the linear combination of $B\sin(wt)+C\cos(wt)=A\cos(wt+\phi)$ has amplitude $A=\sqrt{B^2+C^2}$, then $x(t)$ in fact has amplitude $A=\frac{F_0}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}$).
+This is the stable state solution of the driven oscillator, which we can use for calculation. (Note: based on the expression, since the linear combination of $B\sin(wt)+C\cos(wt)=A\cos(wt+\phi)$ has amplitude $A=\sqrt{B^2+C^2}$, then $x(t)$ in fact has amplitude $A=\frac{F_0}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}$).
 
 \subsection*{(a)}
 \subsubsection*{Power of Driving force:}
@@ -285,21 +286,21 @@ Recall that $\beta=\frac{b}{2m}$, and the damping force is provided by $F_{\text
 \begin{equation}
     P_{\textmd{damp}}(t)=-bv^2(t) = -b\cdot \frac{F_0^2w^2}{m^2((w_0^2-w^2)^2+(2\beta w)^2)^2}((2\beta w)^2\cos^2(wt)+(w_0^2-w^2)^2\sin^2(wt)-4\beta w(w_0^2-w^2)\sin(wt)\cos(wt))
 \end{equation}
-Which, recall that $\cos^2(wt)=\frac{1+\cos(2wt)}{2}$, $\sin^2(wt)=\frac{1-\cos(2wt)}{2}$, and $2\sin(wt)\cos(wt)=\sin(2wt)$. Taking the average over a time duration of $\frac{2\pi}{w}$, with integer multiples of $w$ being the frequency, $\sin(2wt),\cos(2wt)$ all provide average of $0$, then only the constant terms are left (which are the ones multiplied by $\frac{1}{2}$, in the $\cos(2wt)$ form of $\sin^2(wt)$ and $\cos^2(wt)$). Which, the average power dissipated by damping force is given by the constant in the above function:
+Which, recall that $\cos^2(wt)=\frac{1+\cos(2wt)}{2}$, $\sin^2(wt)=\frac{1-\cos(2wt)}{2}$, and $2\sin(wt)\cos(wt)=\sin(2wt)$. Taking the average over a time duration of $\frac{2\pi}{w}$, with integer multiples of $w$ being the frequency, $\sin(2wt),\cos(2wt)$ all provide average of $0$, then only the constant terms are left (which are the ones multiplied by $\frac{1}{2}$, in the $\cos(2wt)$ form of $\sin^2(wt)$ and $\cos^2(wt)$). So, the average power dissipated by damping force is given by:
 \begin{align}
-    \bracket*{P_\textmd{damp}} &= -b\cdot\frac{F_0^2w^2}{m^2((w_0^2-w^2)^2+(2\beta w)^2)^1}\paran*{\frac{(2\beta w)^2}{2}+\frac{(w_0^2-w^2)^2}{2}}\\
+    \bracket*{P_\textmd{damp}} &= -b\cdot\frac{F_0^2w^2}{m^2((w_0^2-w^2)^2+(2\beta w)^2)^2}\paran*{\frac{(2\beta w)^2}{2}+\frac{(w_0^2-w^2)^2}{2}}\\
     &= -2m\beta w^2\cdot\frac{1}{2}\paran*{\frac{F_0}{m\sqrt{(w_0^2-w^2)^2+(2\beta w)^2}}}^2 = -m\beta w^2A^2
 \end{align}
-This shows that the driving and the damping force provides the power with same magnitude, but different sign, so the average power provided is still $0$ (i.e. the input energy from driving force is dissipated by the damping force).
+This shows that the driving and the damping force provides the power with same magnitude, but different sign, so the average power provided is still $0$ (i.e. the overall input energy from driving force is dissipated by the damping force).
 
 \subsection*{(b)}
 Given that the average power (of the driving force) is $m\beta w^2A^2$, the full form of the power is:
 \begin{eqnarray}
     P_\textmd{ave} = m\beta w^2\cdot\frac{F_0^2}{m^2((w_0^2-w^2)^2+(2\beta w)^2)} = \frac{\beta F_0^2}{m\paran*{\paran*{\frac{w_0^2}{w}-w}^2+(2\beta)^2}}
 \end{eqnarray}
-Which, given that $F_0,\beta,w_0$ are all fixed (and nonzero), the above term has strictly psitive denominator. Hence, finding the maximum is equivalent to find the minimum of the denominator.
+Which, given that $F_0,\beta,w_0$ are all fixed (and nonzero), the above term has strictly positive denominator. Hence, finding the maximum is equivalent to find the minimum of the denominator.
 
-Given $\paran*{\frac{w_0^2}{w}-w}^2+(2\beta)^2$, its minimum occurs when the quadratic term is $0$. Hence, minimum occurs when $\frac{w_0^2}{w}-w=0$, $w^2=w_0^2$, or $w=\pm w_0$; and with $w>0$, we have the minimum occurs at $w=w_0$.
+Given $\paran*{\frac{w_0^2}{w}-w}^2+(2\beta)^2$, its minimum occurs when the quadratic term with $w$ is $0$. Hence, minimum occurs when $\frac{w_0^2}{w}-w=0$, $w^2=w_0^2$, or $w=\pm w_0$; and with $w>0$, we have the minimum occurs at $w=w_0$.
 
 Finally, this shows that $P_\textmd{ave}$ has a maximum when $w=w_0$.
 
@@ -337,7 +338,7 @@ Combining these relations, this determines that the period is $T$, and we get th
 
 
 \subsection*{(b)}
-Within the interval $(-\frac{T}{2},\frac{T}{2})$, since $-\frac{1}{2}<\frac{t}{T}<\frac{1}{2} $, we have $0<\frac{1}{2}+\frac{t}{T}<1$, hence the floor function of this expression constantly provides $0$. Therefore, $f(t) = f_0\frac{t}{T}$.
+Within the interval $(-\frac{T}{2},\frac{T}{2})$, since $-\frac{1}{2}<\frac{t}{T}<\frac{1}{2} $, we have $0<\frac{1}{2}+\frac{t}{T}<1$, hence $\floor*{\frac{1}{2}+\frac{t}{T}}=0$. Therefore, $f(t) = f_0\frac{t}{T}$.
 
 Which, when calculating the Fourier coefficients, for all $n\in \ZZ$, we get the following:
 \begin{equation}
@@ -364,7 +365,7 @@ To plot the function, we'll convert it back to a real function. By pairing up th
 Using $N=10$ as the approximation, we get the following graph:
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[width=100mm]{phys_103_hw2_q3_b.png}
+        \includegraphics[width=78mm]{phys_103_hw2_q3_b.png}
         \caption{Fourier Approximation with index $n=10$}
     \end{center}
 \end{figure}
@@ -416,11 +417,11 @@ plt.show()
 \subsection*{(c)}
 (Note: for this part we'll focus on stable state solutions).
 
-Recall that with periodic driven force $F_0\sin(wt)$, using methods similar to Question \ref{q3}, if develop a complex differential equation $\ddot x+2\beta \dot x+w_0^2 x=\frac{F_0}{m}e^{iwt}$ (divided by mass to get acceleration), the solution is $\tilde{x}(t)=\frac{F_0/m}{(w_0^2-w^2)+(2\beta w)i}e^{iwt} = \frac{F_0}{m((w_0^2-w^2)^2+(2\beta w)^2)}((w_0^2-w^2)-(2\beta w)i)(\cos(wt)+i\sin(wt))$. Then, if take the imaginary part, since $\Imag\paran*{\frac{F_0}{m}e^{iwt}} = \frac{F_0}{m}\sin(wt)$ (the driven force over mass), then $\Imag(\tilde{x})$ would provide a solution to our driven force. Which, we get the corresponding solution as follow:
+Recall that with periodic driven force $F_0\sin(wt)$, using methods similar to Question \ref{q3}, if develop a complex differential equation $\ddot x+2\beta \dot x+w_0^2 x=\frac{F_0}{m}e^{iwt}$ (divided by mass to get acceleration), the solution is $\tilde{x}(t)=\frac{F_0/m}{(w_0^2-w^2)+(2\beta w)i}e^{iwt} = \frac{F_0}{m((w_0^2-w^2)^2+(2\beta w)^2)}((w_0^2-w^2)-(2\beta w)i)(\cos(wt)+i\sin(wt))$. Then, if take the imaginary part, since $\Imag\paran*{\frac{F_0}{m}e^{iwt}} = \frac{F_0}{m}\sin(wt)$ (the driven force over mass), then $\Imag(\tilde{x})$ would provide a solution to our physical system. Which, we get the corresponding solution as follow:
 \begin{align}
     x(t) &= \frac{F_0}{m((w_0^2-w^2)^2+(2\beta w)^2)}\paran*{(w_0^2-w^2)\sin(wt)-(2\beta w)\cos(wt)}
 \end{align}
-With $w = \frac{2\pi n}{T}$ for the case of Fourier Series, it can be simplified as follow:
+With $w = \frac{2\pi n}{T}$ for the case of Fourier Series, it can be expressed as follow:
 \begin{align}
     x_n(t)&=\frac{F_n}{mw_0^4\paran*{\paran*{1-\paran*{\frac{2\pi n}{Tw_0}}^2}^2+\paran*{\frac{2\beta}{w_0}\frac{2\pi n}{Tw_0}}^2}}\cdot w_0^2\paran*{\paran*{1-\paran*{\frac{2\pi n}{Tw_0}}^2}\sin\paran*{\frac{2\pi n}{T}t}-\paran*{\frac{2\beta}{w_0}\frac{2\pi n}{Tw_0}}\cos\paran*{\frac{2\pi n}{T}t}}\\
     &= \frac{F_n}{mw_0^2\paran*{\paran*{1-\paran*{\frac{2\pi n}{Tw_0}}^2}^2+\paran*{\frac{2\pi n}{Q\cdot Tw_0}}^2}}\paran*{\paran*{1-\paran*{\frac{2\pi n}{Tw_0}}^2}\sin\paran*{\frac{2\pi n}{T}t}-\paran*{\frac{2\pi n}{Q\cdot Tw_0}}\cos\paran*{\frac{2\pi n}{T}t}}
@@ -429,17 +430,17 @@ Which, since the driven force is given by $f(t) = \sum_{n=1}^{\infty}\frac{(-1)^
 \begin{align}
     x(t)=\sum_{n=1}^{\infty}x_n(t),\quad \forall n\in \NN,\ F_n = \frac{(-1)^{n+1}f_0}{n\pi}
 \end{align} 
-(Note: each $F_n$ represents the fourier coefficient of the $\sin(\frac{2n\pi}{T}t)$ term, since that is the "$F_0$" in the initial assumption of the sinusoidal driven force; here because each term is relatively complicated, we use some simplified notation).
+(Note: each $F_n$ represents the fourier coefficient of the $\sin(\frac{2n\pi}{T}t)$ term in the driving force, since that is the "$F_0$" coefficient of the sinusoidal driven force; here because each term is relatively complicated, we use some simplified notation).
 
 For the plots, I chose $w_0=2$, $Tw_0 = \{\pi, 4\}$, and $Q=\{2,20\}$ as parameters, and $n=30$ as approximations. Here are the results:
 \begin{figure}[h!]
     \centering
-     \begin{subfigure}[b]{0.45\textwidth}
+     \begin{subfigure}[b]{0.49\textwidth}
          \centering
          \includegraphics[width=\linewidth]{0,0.png}
          \caption{$Q=1$}
      \end{subfigure}
-     \begin{subfigure}[b]{0.45\textwidth}
+     \begin{subfigure}[b]{0.49\textwidth}
          \centering
          \includegraphics[width=\linewidth]{0,1.png}
          \caption{$Q=20$}
@@ -449,12 +450,12 @@ For the plots, I chose $w_0=2$, $Tw_0 = \{\pi, 4\}$, and $Q=\{2,20\}$ as paramet
 
 \begin{figure}[h!]
     \centering
-     \begin{subfigure}[b]{0.45\textwidth}
+     \begin{subfigure}[b]{0.49\textwidth}
          \centering
          \includegraphics[width=\linewidth]{1,0.png}
          \caption{$Q=1$}
      \end{subfigure}
-     \begin{subfigure}[b]{0.45\textwidth}
+     \begin{subfigure}[b]{0.49\textwidth}
          \centering
          \includegraphics[width=\linewidth]{1,1.png}
          \caption{$Q=20$}
@@ -463,7 +464,7 @@ For the plots, I chose $w_0=2$, $Tw_0 = \{\pi, 4\}$, and $Q=\{2,20\}$ as paramet
 \end{figure}
 (Note: rest of the graphs are on the next page).
 
-So qualitatively, after getting to stable state, when quality factor $Q$ is higher, the amplitude of the system is higher (not too obvious though); on the other hand, being in phase or not affects the amplitude even more (where in phase provides a larger amplitude). One can see that when $Tw_0 = \pi$ (when the system is not in phase with natural frequency), the amplitude with provided constants are explicitly lower than the amplitude when $Tw_0 = 4$ (with $w_0 = 2$, the system is in phase with some force components).
+So qualitatively, after getting to stable state, when quality factor $Q$ is higher, the amplitude of the system is higher (not too obvious though); on the other hand, being in phase or not affects the amplitude even more (where being in phase provides a larger amplitude). One can see that when $Tw_0 = \pi$ (when the system is not in phase with natural frequency), the amplitude with provided constants are explicitly lower than the amplitude when $Tw_0 = 4$ (with $w_0 = 2$, the system is in phase with some force components).
 
 \hfil
 
@@ -525,7 +526,7 @@ for i in range(2): #for Tw_0
 
 \break
 
-\section{Need revision (final explanation)}
+\section{}
 \begin{question}\label{q5}
     Consider an \emph{undamped oscillator} driven exactly on resonance,
     $$\ddot x+w_0^2 x=\Real(f_0e^{i(w_0t+\delta)})$$
@@ -540,22 +541,18 @@ Temporarily, assume a complex solution exists (not considering just the real par
 \end{equation}
  we get the following expression:
 \begin{align}
-    &e^{iw_0t}\frac{d}{dt}\paran*{e^{-iw_0t}\cdot e^{-iw_0t}\frac{d}{dt}\paran*{e^{iw_0t}x}}=f_0e^{i(w_0t+\delta)}\implies \frac{d}{dt}\paran*{e^{-iw_0t}\cdot e^{-iw_0t}\frac{d}{dt}\paran*{e^{iw_0t}x}} = f_0e^{i\delta}\\
+    &e^{iw_0t}\frac{d}{dt}\paran*{e^{-iw_0t}\cdot e^{-iw_0t}\frac{d}{dt}\paran*{e^{iw_0t}x}}=f_0e^{i(w_0t+\delta)}\implies \frac{d}{dt}\paran*{e^{-2iw_0t}\frac{d}{dt}\paran*{e^{iw_0t}x}} = f_0e^{i\delta}\\
     &\implies e^{-2iw_0t}\frac{d}{dt}(e^{iw_0t}x) = f_0e^{i\delta}t+C \implies \frac{d}{dt}(e^{iw_0t}x) = f_0te^{2iw_0t+i\delta}+Ce^{2iw_0t}\\
     &\implies e^{iw_0t}x = \frac{f_0}{2iw_0}te^{2iw_0t+i\delta} - \frac{f_0}{(2iw_0)^2}e^{2iw_0t+i\delta}+\frac{C}{2iw_0}e^{2iw_0t}+D\\
-    &\implies x = \frac{f_0}{2iw_0}te^{i(w_0t+\delta)}+\frac{f_0}{4w_0}e^{i(w_0t+\delta)} + C'e^{iw_0t}+De^{-iw_0t}
+    &\implies x = \frac{f_0}{2iw_0}te^{i(w_0t+\delta)}+\frac{f_0}{4w_0^2}e^{i(w_0t+\delta)} + C'e^{iw_0t}+De^{-iw_0t}
 \end{align}
-Given initial conditions of positions and velocity, $C',D\in \CC$ can be solved. Notice that as $t\rightarrow\infty$, the term $te^{i(w_0t+\delta)}$ goes unbounded, while the other terms governed purely by $e^{iw_0t}$ remain bounded, showing that if taken the real part to get a physical solution for an oscillator, the amplitude of the oscillator would progressively grow, and eventually goes unbounded (i.e. infinite amplitude).
+Given initial conditions of positions and velocity, $C',D\in \CC$ can be solved. Notice that as $t\rightarrow\infty$, the term $te^{i(w_0t+\delta)}$ goes unbounded, while the other terms governed purely by $e^{\pm iw_0t}, e^{i(w_0t+\delta)}$ remain bounded, showing that if taken the real part to get a physical solution for an oscillator, the amplitude of the oscillator would progressively grow, and eventually goes unbounded (i.e. infinite amplitude). 
 
-\hfil
-
-This is consistent with amplitude of $C$ being infinite, since infinity is not a well-defined number in $\RR$ or $\CC$, so a solution just can't exist.
-
-Physically, for a on-resonance undamped oscillator, then its constantly providing power to the system; however, in contrast to the case in Question \ref{q3}, now since it's undamped, then there's no other forces dissipating the input power, hence the energy of the system would accumulate, and eventually goes unbounded.
+Physically, for an on-resonance undamped oscillator, the driving force is constantly providing power to the system; however, in contrast to the case in Question \ref{q3}, now since it's undamped, then there's no other forces dissipating the input power, hence the energy of the system would accumulate, and eventually goes unbounded. Which, since the amplitude square of an oscillator is approximately proportional to the energy of the oscillator, this indicates that the amplitude would eventually go unbounded, which fits with the conclusion from the above solution of the ODE.
 
 \break
 
-\section{Need more detailed explanation for (a)}
+\section{}
 \begin{question}\label{q6}
     Consider the equation of motion for the simple pendulum,
     $$\ddot \phi+w_0^2\sin(\phi)=0,\quad w_0=\sqrt{\frac{g}{L}}$$
@@ -574,25 +571,29 @@ Physically, for a on-resonance undamped oscillator, then its constantly providin
 
 \textbf{Pf:}
 \subsection*{(a)}
-When the angle is getting larger (where $\phi>0$), if we modeled the angle by $\ddot\phi=-w_0^2\phi+\frac{1}{6}w_0^2\phi^3$, we get that this term has a smaller magnitude than $-w_0^2\phi$ (since for $\phi \in (0,\frac{\pi}{2})$ the normal range of oscillation, we have $-\phi<-\phi+\frac{1}{6}\phi^3<0$, due to the fact that $\frac{\pi}{2}<2<\sqrt{6}$). Since the corresponding acceleration is smaller than the case of a simple harmonic oscillator, it takes a longer time to complete one cycle (because when angle gets large, angular acceleration $\ddot \phi$ has smaller magnitude, which takes longer to accelerate, or get to a higher speed). So, the period $T\approx \frac{2\pi}{w_0}\paran*{1+\frac{\phi^2_{\max}}{16}}$.
+When the angle is getting larger, since the force is modeled by $-k\sin(\phi)$ instead of $k\phi$ in this case, notice that $|\sin(\phi)|\leq|\phi|$ in general, which shows that taking the acceleration's magnitude (which is proportional to the force's magnitude), the model with $\sin(\phi)$ has smaller magnitude of acceleration at all point (hence at all time). 
+
+This shows that the period of the oscillator modeled by $\sin(\phi)$ actually has a longer period than the simple harmonic oscillator (SHO, modeled by $\phi$), because if consider a quarter of the motion (going from $\phi_{\max}$ to $\phi=0$, from speed $v=0$ to $v_{\max}$), since at each location an SHO has a larger magnitude of acceleration than the one modeled by $\sin(\phi)$ (while the accelerations have the same direction), then the speed of the SHO in this quarter of motion has higher speed than the one modeled by $\sin(\phi)$ at any angle, hence SHO takes less time to complete a quarter of motion, which takes less time in general to complete a cycle (analogous to $4$ quarter of motions).
+
+As a result, the oscillator modeled by $\sin(\phi)$ takes longer to complete one cycle, which has longer period, showing that the plus sign $T\approx\frac{2\pi}{w_0}\paran*{1+\frac{\phi_{\max}^2}{16}}$ is the desired answer.
+
+
 
 \subsection*{(b)}
 A simple harmonic oscillator in general has the amplitude decrease with a factor of $e^{-\beta t}$. With $Q=\frac{w_0}{2\beta}$, $\beta = \frac{w_0}{2Q}$, so the amplitude is decreasing with a factor of $e^{-\frac{w_0}{2Q}t}$.
 
-Initially, with $\phi_{\max}=0.1$ rad, and $T=2$, we get the following relation:
+Initially, with $\phi_{\max}=0.1$ rad, and $T_0=2$ seconds, we get the following relation:
 \begin{equation}
-    2 =  \frac{2\pi}{w_0}\paran*{1+\frac{1}{1600}}\implies w_0 = \frac{1601\pi}{1600}\textmd{rad/s}
+    T_0=2 =  \frac{2\pi}{w_0}\paran*{1+\frac{1}{1600}}\implies w_0 = \frac{1601\pi}{1600}\textmd{rad/s}
 \end{equation}
 
 \hfil
 
-To calculate the difference in cycle, for a Simple Harmonic Oscillator, with period $T=\frac{2\pi}{w_0}$, and $86,400$ seconds a day, it goes through $\frac{86,400 \cdot w_0}{2\pi}$ cycles in total.
-
-Now, for each small change in time $\Delta t$, assuming the oscillator iswith period $T$, then it approximately goes through $\frac{\Delta t}{T}$ cycles, and the total amount of cycle is approximately summing up all of these small pieces over the duration of $86,400$ seconds. Taking the limit, we get:
+Now, to calculate the number of cycles of the oscillator with $\sin(\phi)$, for each small change in time $\Delta t$ (in seconds), assuming the oscillator is with period $T(t)$ (in seconds), then it approximately goes through $\frac{\Delta t}{T(t)}$ cycles, and the total amount of cycle is approximately summing up all of these small pieces over the duration of $1$ day ($86,400$ seconds). Taking the limit, we get:
 \begin{align}
     \#\textmd{ cycles} = \int_{t=0}^{86,400}\frac{dt}{T},\quad T(t) = \frac{2\pi}{w_0}\paran*{1+\frac{\phi_{\max}(t)^2}{16}}
 \end{align}
-Which, wit the give decreasing factor above, $\phi_{\max}(t) = 0.1 \cdot e^{-\frac{w_0}{2Q}t}$, so the integral becomes:
+With the decreasing factor above, and $\phi_{\max}(0)=0.1$ rad as described, $\phi_{\max}(t) = 0.1 \cdot e^{-\frac{w_0}{2Q}t}$, so the integral becomes:
 \begin{align}
     \int_{0}^{86,400}\frac{dt}{\frac{2\pi}{w_0}\paran*{1+\frac{e^{-\frac{w_0}{Q}t}}{1600}}} &= \frac{w_0}{2\pi}\int_{0}^{86,400}\frac{1600}{1600+e^{-\frac{w_0}{Q}t}}dt = \frac{w_0}{2\pi}\int_{0}^{86,400}\paran*{1-\frac{e^{-\frac{w_0}{Q}t}}{1600+e^{-\frac{w_0}{Q}t}}}dt\\
     &= \frac{86,400\cdot w_0}{2\pi}+\frac{w_0}{2\pi}\cdot \frac{Q}{w_0}\int_{0}^{86,400}\frac{-\frac{w_0}{Q}e^{-\frac{w_0}{Q}t}}{1600+e^{-\frac{w_0}{Q}t}}dt\\
@@ -600,19 +601,15 @@ Which, wit the give decreasing factor above, $\phi_{\max}(t) = 0.1 \cdot e^{-\fr
     &= \frac{86,400\cdot w_0}{2\pi} + \frac{Q}{2\pi}\ln(1600+e^{-\frac{w_0}{Q}t})\bigg|_{0}^{86,400}\\
     &= \frac{86,400\cdot w_0}{2\pi} + \frac{Q}{2\pi}\ln\paran*{\frac{1600+e^{-\frac{w_0}{Q}\cdot 86,400}}{1601}}
 \end{align}
-Which, to calculate the number of cycles behind a Simple Harmonic Oscillator, we get:
+Plug in $Q=10,000$ and $w_0=\frac{1601\pi}{1600}$, we get the following:
 \begin{align}
-    \#\textmd{ cycles behind} = \frac{86,400\cdot w_0}{2\pi} - \#\textmd{ cycles} = -\frac{Q}{2\pi}\ln\paran*{\frac{1600+e^{-\frac{w_0}{Q}\cdot 86,400}}{1601}}
+    \textmd{\# cycles} \approx 43226.01
 \end{align}
-Then, the amount of seconds behind is given by $(\#\textmd{ cycles behind})\cdot \frac{2\pi}{w_0}$ (number of cycles times the natural period), which is given by:
-\begin{align}
-    \Delta t = -\frac{Q}{w_0}\ln\paran*{\frac{1600+e^{-\frac{w_0}{Q}\cdot 86,400}}{1601}}
-\end{align}
-Plugin $Q=10,000$, $w_0=\frac{1601\pi}{1600}$, we get that $\Delta t\approx 1.988$.
+To calculate the error, if assuming in this calculation period $T=2$ seconds is fixed, then the time passes is $T\cdot (\textmd{\# cycles}) \approx 86452.02$ seconds. So, it is ahead by about $86,452.02-86,400 = 52.02$ seconds, which is about $1$ minute ahead.
 
 \break
 
-\section{Extra Credit (not done)}
+\section{Extra Credit}
 \begin{comment}
 \begin{question}\label{q7}
     Again consider the simple pendulum, as specified in the previous problem. The point is to derive the result: The amplitde-dependent period of the pendulum. The differential equation we need to solve is as 
@@ -748,7 +745,41 @@ Assume $A\neq 0$ in general, the first equation in (80) implies that $A^* = \fra
     &-\frac{4}{3w_0A^3}\paran*{\frac{\partial A}{\partial T_1}}^2+\frac{8}{3w_0A^3}\paran*{\frac{\partial A}{\partial T_1}}^2-\frac{4}{3w_0A^2}\frac{\partial^2A}{\partial T_1^2}=0\\
     &\implies \frac{4}{3w_0A^2}\paran*{\frac{1}{A}\paran*{\frac{\partial A}{\partial T_1}}^2-\frac{\partial^2 A}{\partial T_1^2}}=0 \implies \frac{1}{A}\paran*{\frac{\partial A}{\partial T_1}}^2=\frac{\partial ^2A}{\partial T_1^2}
 \end{align}
-A possible solution to the above differential equation is $A=ke^{lT_1}$, where $k,l \in \CC$, and $k\neq 0$.
+Let $B=\frac{\partial A}{\partial T_1}$, and assume $B\neq 0$ in general, we get:
+\begin{align}
+    &\frac{1}{A}\frac{\partial A}{\partial T_1}=\frac{1}{B}\frac{\partial^2A}{\partial T_1^2}=\frac{1}{B}\frac{\partial B}{\partial T_1}\\
+    &\implies \ln(A) = \ln(B)+C,\quad C=C(T_2,...)\\
+    &\implies A = C'B = C' \frac{\partial A}{\partial T_1}\\
+    &\implies A = De^{T_1/C''} = De^{kT_1},\quad k=\frac{1}{C''},\ ,\ k=k(T_2,...),\ D=D(T_2,...)
+\end{align}
+Plug the equation back into formula of $A^*$ gotten above, we get $A^* = \frac{2ik}{3w_0D}e^{-kT_1}$, hence in general the formula of $\phi_0$ is given as:
+\begin{align}
+    \phi_0 = De^{kT_1}e^{iw_0T_0}+\frac{2ik}{3w_0D}e^{-kT_1}e^{-iw_0T_0}
+\end{align}
+However, with $kT_1 = \epsilon kt$, and the fact that $\phi_0$ is bounded, we must require $k$ to be purely imaginary (if $k$ has a nonzero real part, then $e^{kT_1}$ or $e^{-kT_1}$ would have one of them's magnitude diverge, since they're controlled by $e^{\pm\Real(k)T_1}$ as $T_1\rightarrow\infty$). So, $k = li$ for some $l=l(T_2,...)$ (which has output in $\RR$). Then, $\phi_0$ can be phramed as:
+\begin{align}
+    \phi_0 = De^{i(w_0T_0+lT_1)}-\frac{2l}{3w_0D}e^{-i(w_0T_0+lT_1)} = De^{i(w_0+\epsilon l)t}-\frac{2l}{3w_0D}e^{-i(w_0+\epsilon l)t}
+\end{align}
+
+\subsection*{(f)}
+If given that $\phi\approx \phi_0$, for the constants, can assume $l \in \RR$, and $D=Ae^{i\delta}$ for some $A,\delta\in\RR$. With an oscillator modeled by $\sin(\phi)$, the coefficient $\epsilon=\frac{1}{6}$. Hence, define $w := w_0+\epsilon l = w_0+\frac{l}{6}$, $\phi_0$ can be approximated as:
+\begin{align}
+    \phi_0(t) = Ae^{i(wt+\delta)}-\frac{2l}{3w_0A}e^{-i(wt+\delta)}
+\end{align}
+Taking the real part would be a solution to a physical system, hence we get:
+\begin{align}
+    \phi_0(t)=A\cos(wt+\delta)-\frac{2l}{3w_0A}\cos(-(wt+\delta)) = \paran*{A-\frac{2l}{3w_0A}}\cos(wt+\delta)
+\end{align}
+If $\phi_0(0) = \phi_{\max}$, and $\phi_0'(0)=0$, then we get $\paran*{A-\frac{2l}{3w_0A}}\cos(\delta) = \phi_{\max}$, and its derivative $-w\paran*{A-\frac{2l}{3w_0A}}\sin(\delta)=0$, showing that $\sin(\delta)=0$, so can assume $\delta = 0$.
+
+Which, we get that $\paran*{A-\frac{2l}{3w_0A}}=\phi_{\max}$ (assuming it's positive), and $w=w_0+\frac{l}{6}$ is the frequency. Which, we get the period as:
+\begin{align}
+    T=\frac{2\pi}{w} = \frac{2\pi}{w_0(1+l/(6w_0))} = \frac{2\pi}{w_0}\paran*{1-\frac{l}{6w_0+l}}
+\end{align}
+Now, given the formula of $\phi_{\max}$, we get the following:
+\begin{align}
+    \phi_{\max}^2 =
+\end{align}
 
 \break
 
