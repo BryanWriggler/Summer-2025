@@ -48,6 +48,7 @@
 #let Coker = $"Coker"$
 #let Gal = $"Gal"$
 #let Nil = $"Nil"$
+#let char = $"char"$
 //complex 
 #let Real = $"Re"$
 #let Imag = $"Im"$ //also used for image
