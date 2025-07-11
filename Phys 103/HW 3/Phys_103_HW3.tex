@@ -1,0 +1,177 @@
+\documentclass{article}
+\usepackage[margin = 2.54cm]{geometry} % set margin to traditional doc
+
+%packages
+\usepackage{graphicx} % Required for inserting images
+\usepackage[most]{tcolorbox} %for creating environments
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor} %for importing multiple colors
+\usepackage{hyperref} %for creating links to different sections
+
+\linespread{1.2} %controlling line spread
+
+%define colors i like
+\definecolor{myTeal}{RGB}{0,128,128}
+\definecolor{myGreen}{RGB}{34,170,34}
+\definecolor{mySapphire}{RGB}{15,82,186}
+\definecolor{myEmerald}{RGB}{50.4, 130, 90}
+
+%create math environments, can add [section] or [subsection] to add index counter based on sections/subsections
+\newtheorem{define}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{lemma}{Lemma}
+
+%setup colored box environment for each math env above
+\tcolorboxenvironment{define}{
+    enhanced, colframe=myTeal!50!teal, colback=myTeal!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{prop}{
+    enhanced, colframe=myGreen!50!black, colback=myGreen!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{thm}{
+    enhanced, colframe=mySapphire!50!mySapphire, colback=mySapphire!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{question}{
+    enhanced, colframe=blue!50!black, colback=blue!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{lemma}{
+    enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+
+%setup hyperlink within pdf
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+%common command (add to template)
+%general
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+\newcommand{\Id}{\textmd{Id}} %identity
+\newcommand{\lcm}{\textmd{lcm}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\paran}{(}{)}%paranthesis
+\DeclarePairedDelimiter{\bracket}{\langle}{\rangle}
+
+%algebra
+\newcommand{\Gal}{\textmd{Gal}}
+\newcommand{\Aut}{\textmd{Aut}}
+\newcommand{\End}{\textmd{End}}
+\newcommand{\Coker}{\textmd{Coker}}
+\newcommand{\Hom}{\textmd{Hom}}
+\newcommand{\Nil}{\textmd{Nil}}
+\newcommand{\Char}{\textmd{char}}
+
+%analysis
+\newcommand{\Vol}{\textmd{Vol}}
+
+%complex
+\newcommand{\Real}{\textmd{Re}}
+\newcommand{\Imag}{\textmd{Im}} %can also be used for Image
+\newcommand{\Res}{\textmd{Res}}
+
+%lie algebra
+\newcommand{\gl}{\mathfrak{gl}}
+
+%physics
+\newcommand{\br}{\textbf{r}}
+\newcommand{\bv}{\textbf{v}}
+\newcommand{\ba}{\textbf{a}}
+
+\title{Phys 103 HW3}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{question}\label{q1}
+    A cylindrical pole is inserted into a frozen lake to the pole stands vertically. One end of a rope is attached to a point on the surface of the pole near where it enters the ice, and the rope is then laid out in a straight line on the surface. An ice skater with initial velocity $\bv_0$ approaches the opposite end of the rope, moving perpendicular to the rope. As she reaches the rope she grabs it and holds on, and the rope then winds up around the pole.
+    \begin{itemize}
+        \item[(a)] Has there been any change in her kinetic energy? If so, identify what positive or negative work has been done on her, and by what source.
+        \item[(b)] Has there been any change in her angular momentum? If so, identify the source of the torque done upon her.
+        \item[(c)] When the rope is half wound up, what is her speed, assuming there is no friction between the rope or herself and the ice?
+    \end{itemize}
+\end{question}
+
+\textbf{Pf:}
+
+\break
+
+\section*{2}
+\begin{question}\label{q2}
+    Consider an equilateral triangle of mass $M$, side length $L$, and uniform density. Let's choose coordinates so that the origin is at the center of mass, the triangle (at least initially) lies in the $xy$ plane, and one of the vertices of the triangle (at least initially) is on the positive $x$-axis.
+    \begin{itemize}
+        \item[(a)] Calculate the inertia tensor of the triangle. To be clear, for this and all later parts you should give answers in the lab frame.
+        \item[(b)] Suppose we give the triangle angular speed $w_0$ around the $z$ axis. What is the initial angular momentum (magnitude and direction)? Is the inertia tensor constant in time? Give a qualitative explanation for why and how the inertia tensor and angular velocity do or do not change.
+        \item[(c)] Suppose we give the triangle initial angular speed $w_0$ around the $x$-axis. What is the angular momentum (magnitude and direction)? Is the inertia tensor constant in time? Calculate the initial angular acceleration. Is the angular velocity constant in time? Give a qualitative explanation for why and how the inertia tensor and angular velocity do or do not change.
+        \item[(d)] Suppose we give the triangle angular velocity $(w_0/\sqrt{2},0,w_0/\sqrt{2})$, i.e., around an axis in between the $x$ and $z$ axes. (Suggestion: use Rotation Matrix function in Mathematica, or other programming languages). What is the initial angular momentum (magnitude and direction)? Is the inertia tensor constant in tiem? Calculate the initial angular acceleration. Is the angular velocity constant in time? Give a qualitative explanation for why and how the inertia tensor and angular velocity do or do not change. 
+    \end{itemize}
+\end{question}
+
+\textbf{Pf:}
+
+\break
+
+\section*{3}
+\begin{question}\label{q3}
+    A rigid body has principal moments of inertia $I_{xx}=I_0/3$, $I_{yy}=I_{zz}=2I_0/3$.
+    \begin{itemize}
+        \item[(a)] Find all elements of the moment of the inertia tensor in a reference frame that has been rotated by $\pi/6$ around the $z$ axis counterclockwise.
+        \item[(b)] In this new frame, the inertia tensor can be written as a $3\times 3$ matrix with all nine entries. Pretending you do not already know the answer, diagonalize thsi matrix to find the principal moments of inertia. 
+    \end{itemize}
+\end{question}
+
+\textbf{Pf:}
+
+\break
+
+\section*{4}
+\begin{question}\label{q4}
+    A rigid body has an axis of symmetry, which we shall designate axis $1$. The principal moment of inertia about this axis is $I_1$, while the principal moments of inertia about the remaining two principal axes are $I_2=I_3=I_0\neq I_1$. No torques act on the body, and it has some initial angular velocity $(w_1,w_2,w_3)=(w_{10},w_{20},w_{30})$.
+    \begin{itemize}
+        \item[(a)] Show that the body precesses around axis $1$: $w_1$ is constant and $w_2,w_3$ both oscillate sinusoidally, with the same magnitude and a $\pi/2$ phase difference.
+        \item[(b)] Does either the frequency or direction of the precession depend on whether the body is prolate (like a baseball bat) or oblate (like a frisbee)? 
+    \end{itemize}
+\end{question}
+
+\textbf{Pf:}
+
+\break
+
+\section*{5}
+\begin{question}\label{q5}
+    Model a space station as a hollow cylinder of mass $M$, radius $R$, and length $D$; the endcaps are of negligible mass. Initially, the station spins about its symmetry axis (which we'll take to be the $z$-axis) with angular velocity $w_0$.
+    \begin{itemize}
+        \item[(a)] Find its inertia tensor about its center.
+        \item[(b)] A meteor of mass $m$ and velocity $v_0$, moving in the $x$ direction, strikes the station very near one of the endcaps and bounces directly back with velocity $-v_0/2$. Find the station's CM velocity and angular momentum after the collision.
+        \item[(c)] Show that the station wobbles (i.e. the direction of the angular velocity rotates). Find the period of the wobble, as experienced by a person o the station.  
+    \end{itemize}
+\end{question}
+
+\textbf{Pf:}
+
+
+\end{document}
