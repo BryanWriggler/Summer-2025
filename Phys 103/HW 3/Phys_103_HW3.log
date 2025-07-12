@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.6.12)  12 JUL 2025 09:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.6.12)  12 JUL 2025 12:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -679,197 +679,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 116.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/User/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11]
-Runaway argument?
-\begin {pmatrix} 
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:617: Paragraph ended before \align was complete.
-<to be read again> 
-                   \par 
-l.617 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:617: Missing $ inserted.
-<inserted text> 
-                $
-l.617 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:617: Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.617 
-      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:617: Display math should end with $$.
-<to be read again> 
-                   \tex_par:D 
-l.617 
-      
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:618: Misplaced \crcr.
-\endarray ->\crcr 
-                  \egroup \egroup 
-l.618     \end{pmatrix}
-                       
-I can't figure out why you would want to use a tab mark
-or \cr or \span just now. If something like a right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:618: Extra }, or forgotten \endgroup.
-\endarray ->\crcr \egroup 
-                          \egroup 
-l.618     \end{pmatrix}
-                       
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:618: Extra }, or forgotten \endgroup.
-\endarray ->\crcr \egroup \egroup 
-                                  
-l.618     \end{pmatrix}
-                       
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:618: Missing $ inserted.
-<inserted text> 
-                $
-l.618     \end{pmatrix}
-                       
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:618: Extra \right.
-\endpmatrix -> \endmatrix \right )
-                                  
-l.618     \end{pmatrix}
-                       
-I'm ignoring a \right that had no matching \left.
-
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:618: LaTeX Error: \begin{align} on input line 611 ended by \end{pmatrix}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.618     \end{pmatrix}
-                       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:618: Missing $ inserted.
-<inserted text> 
-                $
-l.618     \end{pmatrix}
-                       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:619: Misplaced \cr.
-\math@cr@@@ ->\cr 
-                  
-l.619 \end{align}
-                 
-I can't figure out why you would want to use a tab mark
-or \cr or \span just now. If something like a right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:619: Misplaced \noalign.
-\math@cr@@ ... \iffalse }\fi \math@cr@@@ \noalign 
-                                                  {\vskip #1\relax }
-l.619 \end{align}
-                 
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:619: Misplaced \noalign.
-\black@ #1->\noalign 
-                     {\ifdim #1>\displaywidth \dimen@ \prevdepth \nointerlin...
-l.619 \end{align}
-                 
-I expect to see \noalign only after the \cr of
-an alignment. Proceed, and I'll ignore this case.
-
-
-Overfull \hbox (351.05833pt too wide) detected at line 619
-[]
- []
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:619: Too many }'s.
-\endalign ->\math@cr \black@ \totwidth@ \egroup 
-                                                \ifingather@ \restorealignst...
-l.619 \end{align}
-                 
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:619: LaTeX Error: \begin{document} ended by \end{align}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.619 \end{align}
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:619: Missing $ inserted.
-<inserted text> 
-                $
-l.619 \end{align}
-                 
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:619: Display math should end with $$.
-<to be read again> 
-                   \endgroup 
-l.619 \end{align}
-                 
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-c:/Users/User/OneDrive/桌面/Summer-2025/Phys 103/HW 3/Phys_103_HW3.tex:619: Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.619 \end{align}
-                 
-Things are pretty mixed up, but I think the worst is over.
-
-[12] (Phys_103_HW3.aux)
+{C:/Users/User/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] (Phys_103_HW3.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -878,17 +688,17 @@ Package rerunfilecheck Info: File `Phys_103_HW3.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28188 strings out of 474486
- 570997 string characters out of 5744227
+ 28194 strings out of 474486
+ 571075 string characters out of 5744227
  1966542 words of memory out of 5000000
  49944 multiletter control sequences out of 15000+600000
  569007 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 93i,17n,99p,838b,952s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,17n,99p,861b,952s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\User\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Phys_103_HW3.pdf (12 pages, 284964 bytes).
+Output written on Phys_103_HW3.pdf (12 pages, 290984 bytes).
 PDF statistics:
- 271 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 500000)
+ 280 PDF objects out of 1000 (max. 8388607)
+ 87 named destinations out of 1000 (max. 500000)
  157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

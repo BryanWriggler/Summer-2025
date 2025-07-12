@@ -126,6 +126,8 @@
 
 \textbf{Pf:}
 
+Overall, if the pole has radius $r\approx 0$, then we can assume that one end of the rope is always at the origin (i.e. the center of the pole), then can assume that the tension of the rope is always in radial direction, while the rope is decreasing in its length as it's wraping around the pole (like having a)
+
 \break
 
 \section*{2 ((b) Need physical interpretation, (d) not done)}
@@ -196,7 +198,7 @@ Hence, the actual inertia tensor is:
     \end{pmatrix}
 \end{align}
 
-\subsection*{(b) (physical explain not done)}
+\subsection*{(b)}
 First, about the initial angular momentum $\textbf{L}_0$, since initial angular velocity $\textbf{w}_0 = w_0\hat{z}$, we get the following:
 \begin{align}
     \textbf{L}_0 = I\textbf{w}_0 = \frac{ML^2}{24}\begin{pmatrix}
@@ -235,7 +237,7 @@ If assuming no external torque is applied, then $\frac{d\textbf{L}}{dt}=\frac{dI
 
 Here, the physical explanation of the inertia tensor being constant is because the equilateral triangle has a rotation symmetry along the $z$-axis (which is orthogonal to the surface), then the rotational inertia around $z$-axis is not going to change if rotating around $z$-axis; then, since the triangle stays in the $xy$ plane when rotating around $z$-axis, then the mass distribution is likely staying in the plane with the same way, relative to the $x$ andy $y$ axis the rotational symmetry would likely stay the same. 
 
-On the other hand, the angular velocity is constant due to the fact that 
+On the other hand, the angular velocity is constant because it's initially aligned with $z$-axis (where the equilateral's surface is perpendicular to, which has a rotational symmetry), then after certain small rotation around $z$-axis, under a rotated frame around $z$-axis the system looks identical, showing that the angular velocity isn't likely going to change when rotating around an axis with symmetry.
 
 \subsection*{(c)}
 The initial angular momentum $\bL_0$ is given as:
@@ -453,7 +455,7 @@ Which, $D=I$, the original inertia tensor.
 
 \break
 
-\section*{4}
+\section*{4 (Need to check validity)}
 \begin{question}\label{q4}
     A rigid body has an axis of symmetry, which we shall designate axis $1$. The principal moment of inertia about this axis is $I_1$, while the principal moments of inertia about the remaining two principal axes are $I_2=I_3=I_0\neq I_1$. No torques act on the body, and it has some initial angular velocity $(w_1,w_2,w_3)=(w_{1,0},w_{2,0},w_{3,0})$.
     \begin{itemize}
@@ -581,7 +583,6 @@ Hence, the inertia tensor of the center is given by:
     \end{pmatrix}
 \end{align}
 
-
 \subsection*{(b)}
 \textbf{Insert image}
 
@@ -609,14 +610,49 @@ Which, right after the impact, the linear momentum of the meteor $\bP_m = -\frac
 \subsection*{(c)}
 If we view in body frame (which aligns with the frame of standard basis right after the collision), then we get the following for angular velocity $\bw_i$ right after the collision:
 \begin{align}
-    \bL_s = I\bw_i \implies \bw_i = I^{-1}\bL_s = \begin{pmatrix}
+    \bL_s = I\bw_i \implies \bw_i &= I^{-1}\bL_s = \begin{pmatrix}
         \frac{12}{3MR^2+MD^2}&0&0\\
         0&\frac{12}{3MR^2+MD^2}&0\\
         0&0&\frac{2}{MR^2}
     \end{pmatrix}\begin{pmatrix}
         0\\\frac{3mv_0D}{2}\\\frac{MR^2w_0}{2}
-    \end{pmatrix} = what
+    \end{pmatrix} = \begin{pmatrix}
+        0\\ \frac{18mv_0D}{3MR^2+MD^2}\\ Rw_0
+    \end{pmatrix}
 \end{align}
+Which, assume after the angular momentum has changed, there is no torque applied on the station, then using Euler's Equation (like in Question \ref{q4}), we get:
+\begin{align}
+    \begin{cases}
+        I_1\frac{dw_1}{dt}=N_1+(I_2-I_3)w_2w_3\\
+        I_2\frac{dw_2}{dt}=N_2+(I_3-I_1)w_3w_1\\
+        I_3\frac{dw_3}{dt}=N_3+(I_1-I_2)w_1w_2
+    \end{cases}, \quad N_1=N_2=N_3=0,\ I_1=I_2 = \frac{MR^2}{4}+\frac{MD^2}{12},\ I_3 = \frac{MR^2}{2}
+\end{align}
+\begin{align}
+    \implies \begin{cases}
+        I_1\frac{dw_1}{dt}=(I_1-I_3)w_2w_3\\
+        I_1\frac{dw_2}{dt}=-(I_1-I_3)w_3w_1\\
+        I_3\frac{dw_3}{dt}=0
+    \end{cases}
+\end{align}
+The third equation implies that $w_3$ is constant, hence $w_3(t)=Rw_0$. Plug into the other two equations, we get:
+\begin{align}
+    \begin{cases}
+        \frac{dw_1}{dt}=\frac{Rw_0(I_1-I_3)}{I_1}w_2\\
+        \frac{dw_2}{dt}=-\frac{Rw_0(I_1-I_3)}{I_1}w_1
+    \end{cases} \implies \Omega = \frac{Rw_0(I_1-I_3)}{I_1},\ \begin{cases}
+        \frac{dw_1}{dt}=\Omega w_2\\
+        \frac{dw_2}{dt}=-\Omega w_1
+    \end{cases}\implies \begin{cases}
+        \frac{d^2w_1}{dt^2}=\Omega \frac{dw_2}{dt} = -\Omega^2 w_1\\
+        \frac{d^2w_2}{dt^2}=-\Omega \frac{dw_1}{dt} = -\Omega^2 w_2
+    \end{cases}
+\end{align}
+Based on the solution provided in Question \ref{q4}, we know $w_1 = A\cos(\Omega t+\phi),\ w_2=A\cos(\Omega t+\phi+\frac{\pi}{2})$ for some amplitude $A$ and phase $\phi$. With the given initial condition, we know $w_1(0) = A\cos(\phi) = 0$, and $w_2(0)=A\cos(\phi+\frac{\pi}{2}) = -A\sin(\phi) =\frac{18mv_0D}{3MR^2+MD^2}\neq 0$, which shows $A\neq 0$, so the angular momentum is not fixed when viewed in the body frame. Hence, with $w_1,w_2$ being sinusoidal waves, this shows that the station is in fact wobbling, and with frequency $\Omega$.
 
-
+Finally, since $\Omega = \frac{Rw_0(I_1-I_3)}{I_1}$, we get the following for the frequency:
+\begin{align}
+    \Omega = Rw_0\cdot \paran*{\frac{MD^2}{12}+\frac{MR^2}{4}-\frac{MR^2}{2}}&\cdot\frac{12}{3MR^2+MD^2} = Rw_0\cdot\frac{MD^2-3MR^2}{12}\cdot \frac{12}{MD^2+3MR^2} \\
+    &= Rw_0\cdot\frac{MD^2-3MR^2}{MD^2+3MR^2}
+\end{align}
 \end{document}
