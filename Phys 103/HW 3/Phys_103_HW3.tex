@@ -98,12 +98,14 @@
 \newcommand{\gl}{\mathfrak{gl}}
 
 %physics
-\newcommand{\br}{\textbf{r}}
-\newcommand{\bv}{\textbf{v}}
-\newcommand{\ba}{\textbf{a}}
-\newcommand{\bL}{\textbf{L}}
-\newcommand{\bN}{\textbf{N}}
-\newcommand{\bw}{\textbf{w}}
+\newcommand{\br}{\textbf{r}} %position
+\newcommand{\bv}{\textbf{v}} %velocity
+\newcommand{\ba}{\textbf{a}} %cceleration
+\newcommand{\bF}{\textbf{F}} %force
+\newcommand{\bP}{\textbf{P}} %momentum
+\newcommand{\bL}{\textbf{L}} %angular momentum
+\newcommand{\bN}{\textbf{N}} %torque
+\newcommand{\bw}{\textbf{w}} %angular velocity
 \newcommand{\bzero}{\textbf{0}}
 
 \title{Phys 103 HW3}
@@ -581,8 +583,40 @@ Hence, the inertia tensor of the center is given by:
 
 
 \subsection*{(b)}
+\textbf{Insert image}
 
+First, if consider the system's linear momentum, since initially the station is not moving within its own reference frame, then the momentum initially would all be provided by the meteor, so $\bP_0 = mv_0\hat{x}$ (since the initial speed of the meteor is $v_0$ in $x$-direction).
+
+Then, since the meteor bounces back with velocity $-\frac{v_0}{2}$ (still in $x$-direction), then the final momentum of the meteor $\bP_m = -\frac{mv_0}{2}\hat{x}$. By energy conservation, the final momentum of the station must satisfy $\bP_s + \bP_m = \bP_0$, then $\bP_s = \bP_0-\bP_m = mv_0\hat{x}-(-\frac{mv_0}{2})\hat{x} = \frac{3mv_0}{2}\hat{x}$. Becacuse $\bP_s= M\bv_s$ (where $\bv_s$ denotes the velocity of the station, which is the velocity of the CM of the station), then $M\bv_s = \frac{3mv_0}{2}\hat{x}$, so $\bv_s = \bv_{CM} = \frac{3mv_0}{2M}\hat{x}$.
+
+\hfil
+
+Now, to consider the angular momentum, we'll assume the meteor collides on the upper part, which because it bounces directly back of its original direction, then the surface it collides must be orthogonal to its initial motion, hence it must happen when $y=0$; and since it's assumed to collide near the end (and because the meteor is initially heading toward positive $x$-direction), then the meteor collides with the station at location $\br_0=(-R, 0, \frac{D}{2})$ (based on the graph). Which, right before the collision, since the meteor has linear momentum $\bP_0 = mv_0\hat{x}$, then its initial angular momentum $\bL_{0,m} = \br_0\times \bP_0 = \frac{mv_0D}{2}\hat{y}$.
+
+Also, initially the station was rotating around $z$-axis with angular velocity $w_0$, its initial angular velocity is $w_0\hat{z}$. Hence, the station's initial angular momentum $\bL_{0,s}$ is given by:
+\begin{align}
+    \bL_{0,s}=I(w_0\hat{z}) = \begin{pmatrix}
+        \paran*{\frac{MR^2}{4}+\frac{MD^2}{12}}&0&0\\
+        0&\paran*{\frac{MR^2}{4}+\frac{MD^2}{12}}&0\\
+        0&0& \frac{MR^2}{2}
+    \end{pmatrix}\begin{pmatrix}
+        0\\0\\w_0
+    \end{pmatrix} = \frac{MR^2w_0}{2}\hat{z}
+\end{align}
+Hence, the total initial angular momentum is $\bL_0 = \bL_{0,m}+\bL_{0,s} = (0,\frac{mv_0D}{2},\frac{MR^2w_0}{2})$.
+
+Which, right after the impact, the linear momentum of the meteor $\bP_m = -\frac{mv_0}{2}\hat{x}$, hence the meteor's angular momentum right after the impact is $\bL_m = \br_0\times \bP_m = -\frac{mv_0D}{4}\hat{y}$. Finally, based on conservation of angular momentum, the station's final angular momentum (after the collision) must satisfy $\bL_s+\bL_m=\bL_0$, showing that $\bL_s = \bL_0-\bL_m = (0,\frac{mv_0D}{2}, \frac{MR^2w_0}{2})-(0,-\frac{mv_0D}{4},0) = (0,\frac{3mv_0D}{2},\frac{MR^2w_0}{2})$.
 \subsection*{(c)}
+If we view in body frame (which aligns with the frame of standard basis right after the collision), then we get the following for angular velocity $\bw_i$ right after the collision:
+\begin{align}
+    \bL_s = I\bw_i \implies \bw_i = I^{-1}\bL_s = \begin{pmatrix}
+        \frac{12}{3MR^2+MD^2}&0&0\\
+        0&\frac{12}{3MR^2+MD^2}&0\\
+        0&0&\frac{2}{MR^2}
+    \end{pmatrix}\begin{pmatrix}
+        0\\\frac{3mv_0D}{2}\\\frac{MR^2w_0}{2}
+    \end{pmatrix} = what
+\end{align}
 
 
 \end{document}
