@@ -83,6 +83,8 @@
 \newcommand{\Hom}{\textmd{Hom}}
 \newcommand{\Nil}{\textmd{Nil}}
 \newcommand{\Char}{\textmd{char}}
+    %linear algebra basis
+    \newcommand{\be}{\textmd{e}}
 
 %analysis
 \newcommand{\Vol}{\textmd{Vol}}
@@ -99,6 +101,10 @@
 \newcommand{\br}{\textbf{r}}
 \newcommand{\bv}{\textbf{v}}
 \newcommand{\ba}{\textbf{a}}
+\newcommand{\bL}{\textbf{L}}
+\newcommand{\bN}{\textbf{N}}
+\newcommand{\bw}{\textbf{w}}
+\newcommand{\bzero}{\textbf{0}}
 
 \title{Phys 103 HW3}
 \author{Zih-Yu Hsieh}
@@ -120,7 +126,7 @@
 
 \break
 
-\section*{2}
+\section*{2 ((b) Need physical interpretation, (d) not done)}
 \begin{question}\label{q2}
     Consider an equilateral triangle of mass $M$, side length $L$, and uniform density. Let's choose coordinates so that the origin is at the center of mass, the triangle (at least initially) lies in the $xy$ plane, and one of the vertices of the triangle (at least initially) is on the positive $x$-axis.
     \begin{itemize}
@@ -132,6 +138,160 @@
 \end{question}
 
 \textbf{Pf:}
+
+\textbf{Insert image about triangle setup}
+
+\subsection*{(a)}
+Given the picture, we got the bound of the integration given as $x\in [-\frac{\sqrt{3}}{6}L, \frac{\sqrt{3}}{3}L]$, and $\frac{\sqrt{3}}{3}x-\frac{1}{3}L\leq y\leq -\frac{\sqrt{3}}{3}x+\frac{1}{3}L$. Now, to calculate the actual inertia tensor,  the height cannot be assumed to be $0$ directly, we'll take the height $z\in [-\epsilon,\epsilon]$ for $\epsilon>0$, and at the end take the limit $\epsilon\rightarrow 0$. 
+
+Which, with side length $L$, the equilateral triangle has base area $A=\frac{\sqrt{3}}{4}L^2$, and with height $2\epsilon$ based on the chosen range of $z$, the total volume is $V=\frac{\sqrt{3}}{2}L^2\epsilon$, showing that the density $\rho = \frac{M}{V}=\frac{2\sqrt{3}M}{3L^2\epsilon}$. Then, taken the inertia tensor, we get:
+\begin{align}
+    I(\epsilon) &= \int_{z=-\epsilon}^{\epsilon}\int_{x=-\frac{\sqrt{3}}{6}L}^{\frac{\sqrt{3}}{3}L}\int_{y=\frac{\sqrt{3}}{3}x-\frac{1}{3}L}^{-\frac{\sqrt{3}}{3}x+\frac{1}{3}L} \begin{pmatrix}
+        y^2+z^2 & -xy & -xz\\
+        -xy & x^2+z^2 & -yz\\
+        -xz & -yz & x^2+y^2
+    \end{pmatrix}\rho\ dy\ dx\ dz
+\end{align}
+Which, notice that the integration bound of $x,y,z$ are all symmetric (from $-a$ to $a$ when fixing $(x,y,z)$), so when viewed as single-variable functions, $xy,yz,xz$ would all be odd functions, then the integration bound would provide $0$ regardless of the order of integration (for $xy$ and $yz$, since it's an odd function of $y$, the integration of $y$ generate $0$; then for $xz$, since integrating with respect to $y$ then $x$ generates a constant, so it remains as an odd function of $z$, hence the final integration with respect to $z$ provides $0$). 
+
+So, it remains to check the diagonal entries. Doing the integrals, we get:
+\begin{align}
+    Y&:=\int_{z=-\epsilon}^{\epsilon}\int_{x=-\frac{\sqrt{3}}{6}L}^{\frac{\sqrt{3}}{3}L}\int_{y=\frac{\sqrt{3}}{3}x-\frac{1}{3}L}^{-\frac{\sqrt{3}}{3}x+\frac{1}{3}L}y^2dy\ dx\ dz = -\frac{2}{3}\int_{z=-\epsilon}^{\epsilon}\int_{x=-\frac{\sqrt{3}}{6}L}^{\frac{\sqrt{3}}{3}L}\paran*{\frac{\sqrt{3}}{3}x-\frac{1}{3}L}^3 dx\ dz\\
+    &= -\frac{2}{3}\cdot 2\epsilon\cdot \frac{\sqrt{3}}{4}\paran*{\frac{\sqrt{3}}{3}x-\frac{1}{3}L}^4\bigg|_{-\frac{\sqrt{3}}{6}L}^{\frac{\sqrt{3}}{3}L}= -\frac{\sqrt{3}\epsilon}{3}\paran*{0-\frac{L^4}{16}} = \frac{\sqrt{3}L^4\epsilon}{48}
+\end{align}
+\begin{align}
+    Z&:=\int_{z=-\epsilon}^{\epsilon}\int_{x=-\frac{\sqrt{3}}{6}L}^{\frac{\sqrt{3}}{3}L}\int_{y=\frac{\sqrt{3}}{3}x-\frac{1}{3}L}^{-\frac{\sqrt{3}}{3}x+\frac{1}{3}L}z^2 dy\ dx\ dz= \frac{2}{3}\epsilon^3\int_{x=-\frac{\sqrt{3}}{6}L}^{\frac{\sqrt{3}}{3}L}\paran*{-\frac{2\sqrt{3}}{3}x+\frac{2}{3}L}dx\\
+    &= -\frac{3}{2\sqrt{3}}\cdot \frac{2\epsilon^3}{3}\cdot\frac{1}{2}\paran*{-\frac{2\sqrt{3}}{3}x+\frac{2}{3}L}^2\bigg|_{-\frac{\sqrt{3}}{6}L}^{\frac{\sqrt{3}}{3}L}= -\frac{\sqrt{3}\epsilon^3}{6}\paran*{0-L^2} = \frac{\sqrt{3}L^2\epsilon^3}{6}
+\end{align}
+\begin{align}
+    X&:= \int_{z=-\epsilon}^{\epsilon}\int_{x=-\frac{\sqrt{3}}{6}L}^{\frac{\sqrt{3}}{3}L}\int_{y=\frac{\sqrt{3}}{3}x-\frac{1}{3}L}^{-\frac{\sqrt{3}}{3}x+\frac{1}{3}L}x^2 dy\ dx\ dz= 2\epsilon \int_{x=-\frac{\sqrt{3}}{6}L}^{\frac{\sqrt{3}}{3}L}-2x^2\paran*{\frac{\sqrt{3}}{3}x-\frac{1}{3}L}dx\\
+    &= 2\epsilon\paran*{
+        -\frac{2\sqrt{3}}{3}\int_{-\frac{\sqrt{3}}{6}L}^{\frac{\sqrt{3}}{3}L}x^3dx + \frac{2L}{3}\int_{-\frac{\sqrt{3}}{6}L}^{\frac{\sqrt{3}}{3}L}x^2dx
+    }= 2\epsilon\paran*{
+        -\frac{5\sqrt{3}}{288}L^4+\frac{\sqrt{3}L^4}{36}
+    }=\frac{\sqrt{3}L^4\epsilon}{48}
+\end{align}
+With $X=Y$, plug the results into $I$ (and with $\rho$ being a constant), we get:
+\begin{align}
+    I(\epsilon)=\rho\begin{pmatrix}
+        Y+Z&0&0\\
+        0&X+Z&0\\
+        0&0&X+Y
+    \end{pmatrix} = \rho \begin{pmatrix}
+        X+Z&0&0\\
+        0&X+Z&0\\
+        0&0&2X
+    \end{pmatrix}
+\end{align}
+Then, with the above expression of $X,Z,\rho$, we get the following limits:
+\begin{align}
+    \lim_{\epsilon\rightarrow 0}\rho X = \lim_{\epsilon\rightarrow 0}\frac{2\sqrt{3}M}{3L^2\epsilon}\cdot\frac{\sqrt{3}L^4\epsilon}{48} = \frac{ML^2}{24}, \quad \lim_{\epsilon\rightarrow 0}\rho Z = \lim_{\epsilon\rightarrow 0}\frac{2\sqrt{3}M}{3L^2\epsilon}\cdot\frac{\sqrt{3}L^2\epsilon^3}{6}=0
+\end{align}
+Hence, the actual inertia tensor is:
+\begin{align}
+    I = \lim_{\epsilon\rightarrow 0}I(\epsilon) = \frac{ML^2}{24}\begin{pmatrix}
+        1&0&0\\0&1&0\\0&0&2
+    \end{pmatrix}
+\end{align}
+
+\subsection*{(b) (physical explain not done)}
+First, about the initial angular momentum $\textbf{L}_0$, since initial angular velocity $\textbf{w}_0 = w_0\hat{z}$, we get the following:
+\begin{align}
+    \textbf{L}_0 = I\textbf{w}_0 = \frac{ML^2}{24}\begin{pmatrix}
+        1&0&0\\0&1&0\\0&0&2
+    \end{pmatrix} \begin{pmatrix}
+        0\\0\\w_0
+    \end{pmatrix} = \frac{ML^2w_0}{12}\hat{z}
+\end{align}
+Overtime, if the triangle rotates with angle $\phi$ around $z$-axis (as an active rotation, it's equivalent to a passive rotation of angle $-\phi$), then the corresponding rotation matrix is:
+\begin{align}
+    R = \begin{pmatrix}
+        \cos(-\phi) & -\sin(-\phi)&0\\
+        \sin(-\phi) & \cos(-\phi)& 0\\
+        0&0&1
+    \end{pmatrix}
+\end{align}
+Then, the inertia tensor after rotation is:
+\begin{align}
+    I(\phi) = RIR^T = \frac{ML^2}{24}\begin{pmatrix}
+        \cos(\phi) & \sin(\phi)&0\\
+        -\sin(\phi) & \cos(\phi)& 0\\
+        0&0&1
+    \end{pmatrix}\begin{pmatrix}
+        1&0&0\\0&1&0\\0&0&2
+    \end{pmatrix}\begin{pmatrix}
+        \cos(\phi) & -\sin(\phi)&0\\
+        \sin(\phi) & \cos(\phi)& 0\\
+        0&0&1
+    \end{pmatrix}= \frac{ML^2}{24}\begin{pmatrix}
+        1&0&0\\0&1&0\\0&0&2
+    \end{pmatrix}
+\end{align}
+So, the inertia tensor is constant regardless of the angle it rotates, hence $I$ is constant over time.
+
+If assuming no external torque is applied, then $\frac{d\textbf{L}}{dt}=\frac{dI}{dt}\bw + I\frac{d\bw}{dt}=\bzero$. Since $I$ is constant, $\frac{dI}{dt}=0$, so we get $I\frac{d\bw}{dt}=\bzero$; and since $I$ in general is invertible (in this case it is), then $\frac{d\bw}{dt}=\bzero$. Hence, the angular velocity is constant, showing that initial angular acceleration is $\bzero$.
+
+Here, the physical explanation of the inertia tensor being constant is because the equilateral triangle has a rotation symmetry along the $z$-axis (which is orthogonal to the surface), then the rotational inertia around $z$-axis is not going to change if rotating around $z$-axis; then, since the triangle stays in the $xy$ plane when rotating around $z$-axis, then the mass distribution is likely staying in the plane with the same way, relative to the $x$ andy $y$ axis the rotational symmetry would likely stay the same. 
+
+On the other hand, the angular velocity is constant due to the fact that 
+
+\subsection*{(c)}
+The initial angular momentum $\bL_0$ is given as:
+\begin{align}
+    \bL_0=I\bw_0 = \frac{ML^2}{24}\begin{pmatrix}
+        1&0&0\\0&1&0\\0&0&2
+    \end{pmatrix}\begin{pmatrix}
+        w_0\\0\\0
+    \end{pmatrix} = \frac{ML^2w_0}{24}\hat{x}
+\end{align}
+Now, suppose within some short time $t$, the triangle is still rotating with angular velocity $w_0\hat{x}$ (given by the problem), which it actively rotates with angle $\phi=w_0t$ around $x$-axis (or a passive rotation of angle $-\phi$ around $x$-axis), hence we get the following rotation matrix:
+\begin{align}
+    R=\begin{pmatrix}
+        1&0&0\\
+        0&\cos(-\phi) &-\sin(-\phi)\\
+        0&\sin(-\phi)&\cos(-\phi)
+    \end{pmatrix}
+\end{align}
+Hence, the inertia tensor changes as follow:
+\begin{align}
+    I(\phi) = RIR^T &= \frac{ML^2}{24}\begin{pmatrix}
+        1&0&0\\
+        0&\cos(\phi) &\sin(\phi)\\
+        0&-\sin(\phi)&\cos(\phi)
+    \end{pmatrix}\begin{pmatrix}
+        1&0&0\\0&1&0\\0&0&2
+    \end{pmatrix}\begin{pmatrix}
+        1&0&0\\
+        0&\cos(\phi) &-\sin(\phi)\\
+        0&\sin(\phi)&\cos(\phi)
+    \end{pmatrix}\\
+    &=\frac{ML^2}{24}\begin{pmatrix}
+        1&0&0\\
+        0&1+\sin^2(\phi)&\sin(\phi)\cos(\phi)\\
+        0&\sin(\phi)\cos(\phi) & 1+\cos^2(\phi)
+    \end{pmatrix}
+\end{align}
+As $t\rightarrow 0$, we get the initial change as follow:
+\begin{align}
+    \frac{dI}{dt}\bigg|_{t=0} = \frac{ML^2}{24}\begin{pmatrix}
+        0&0&0\\
+        0&\sin(2\phi)&\cos(2\phi)\\
+        0 & \cos(2\phi) & -\sin(2\phi)
+    \end{pmatrix}\frac{d\phi}{dt} = \frac{ML^2w_0}{24}\begin{pmatrix}
+        0&0&0\\
+        0&\sin(2w_0t)&\cos(2w_0t)\\
+        0 & \cos(2w_0t) & -\sin(2w_0t)
+    \end{pmatrix}\bigg|_{t=0}
+\end{align}
+Notice that with $\bw_0 = w_0\hat{x}$, we get $\paran*{\frac{dI}{dt}\bigg|_{t=0}}\bw_0 = \bzero$. Hence, with torque $\bN = \frac{dI}{dt}\bw + I\frac{d\bw}{dt}=\bzero$, at $t=0$, we get $I\paran*{\frac{d\bw}{dt}\bigg|_{t=0}} = \bzero$; with $I$ being invertible, this implies initial angular acceleration $\frac{d\bw}{dt}\bigg|_{t=0}=\bzero$.
+
+Loosely speaking, within a small time period after $t=0$, one can say $I$ is changing, while $\bw$ is not changing; then, such phenomenon can be extended further to any $t$ (using the same logic from above): We can see that $I(\phi)$ after rotating $\phi = w_0t$ is given above, and $\frac{dI}{dt}$ is also given as above. Since we can claim that $\bw=w_0\hat{x}$ stays the same within some small period of time, and with $\frac{dI}{dt}\bw = \bzero$ (after dowing matrix multiplication), then we have $I\frac{d\bw}{dt}=\bzero$, or $\frac{d\bw}{dt}=\bzero$ (since after rotation, $I(\phi)$ is still invertible, one can verify it). Hence, even though $I$ would be constantly changing (with the above formula), $\bw$ maintains constant.
+
+Physically, the reason why $I$ is changing, is because after rotating around $x$-axis, the surface of the triangle is now facing a different direction: We've seen that initially its moment of inertia around $y$ and $z$-axis are different, but after rotating around $z$-axis for angle $\frac{\pi}{2}$, the surface would be orthogonal to $y$-axis instead, showing that the moment of inertia around $y$-axis now changes to what $z$-axis initially has.
+
+However, the reason why the angular velocity doesn't change, is because $\bw_0 = w_0\hat{x}$ lines up with an axis of symmetry of the equilateral triangle (it has a reflection symmetry around $x$-axis based on the setup). So, after certain rotation, the mass distribution around the rotation axis stays similar, hence it is relatively stable to stay in such motion of rotation unless external torque is applied.
+
+\subsection*{(d) (not done)}
 
 \break
 
@@ -145,12 +305,155 @@
 \end{question}
 
 \textbf{Pf:}
+\subsection*{(a)}
+From the description, the inertia tensor in standard basis is provided as:
+\begin{align}
+    I = \begin{pmatrix}
+        I_{xx}&0&0\\
+        0&I_{yy}&0\\
+        0&0&I_{zz}
+    \end{pmatrix} = \frac{I_0}{3}\begin{pmatrix}
+        1&0&0\\
+        0&2&0\\
+        0&0&2
+    \end{pmatrix}
+\end{align}
+Given a reference frame with rotation of $\frac{\pi}{6}$ around $z$-axis, the rotation matrix (passive rotation) is given as follow:
+\begin{align}
+    R = \begin{pmatrix}
+        \cos(\pi/6)&-\sin(\pi/6)&0\\
+        \sin(\pi/4)&\cos(\pi/6)&0\\
+        0&0&1
+    \end{pmatrix} = \begin{pmatrix}
+        \sqrt{3}/2 & -1/2&0\\
+        1/2&\sqrt{3}/2&0\\
+        0&0&1
+    \end{pmatrix}
+\end{align}
+Then, in the rotated frame (denoted with subscript $1$), the inertia tensor is:
+\begin{align}
+    I_1 = RIR^T = \frac{I_0}{3}\begin{pmatrix}
+        \sqrt{3}/2 & -1/2&0\\
+        1/2&\sqrt{3}/2&0\\
+        0&0&1
+    \end{pmatrix}\begin{pmatrix}
+        1&0&0\\0&2&0\\0&0&2
+    \end{pmatrix}\begin{pmatrix}
+        \sqrt{3}/2 & 1/2&0\\
+        -1/2&\sqrt{3}/2&0\\
+        0&0&1
+    \end{pmatrix} = \frac{I_0}{3}\begin{pmatrix}
+        \frac{5}{4} & -\frac{\sqrt{3}}{4} & 0\\
+        -\frac{\sqrt{3}}{4} & \frac{7}{4}&0\\
+        0&0&2
+    \end{pmatrix}
+\end{align}
+\subsection*{(b)}
+To diagonalize the matrix, first consider its characteristic polynomial:
+\begin{align}
+    \det(I_1-\lambda \Id) &= \det\begin{pmatrix}
+        (5I_0/12-\lambda)&-\sqrt{3}I_0/12&0\\
+        -\sqrt{3}I_0/12&(7I_0/12-\lambda)&0\\
+        0&0&(2I_0/3-\lambda) 
+    \end{pmatrix}\\
+    &= \paran*{\frac{2I_0}{3}-\lambda}\paran*{\paran*{\frac{5I_0}{12}-\lambda}\paran*{\frac{7I_0}{12}-\lambda}-\frac{I_0^2}{48}}\\
+    &= -\paran*{\lambda-\frac{2I_0}{3}}\paran*{\lambda^2-\lambda+\frac{2I_0^2}{9}}\\
+    &= -\paran*{\lambda-\frac{2I_0}{3}}^2\paran*{\lambda-\frac{I_0}{3}}
+\end{align}
+Hence, with $\det(I_1-\lambda\Id)=0$, we get eigenvalues $\lambda=\frac{2I_0}{3},\frac{I_0}{3}$.
+\begin{itemize}
+    \item First, for $\lambda=\frac{2I_0}{3}$, plug into the equation, we get:
+    \begin{align}
+        I_1-\frac{2I_0}{3}\Id = \begin{pmatrix}
+            -\frac{I_0}{4}& -\frac{\sqrt{3}I_0}{12} & 0\\
+            -\frac{\sqrt{3}I_0}{12} & -\frac{I_0}{12}& 0\\
+            0&0&0
+        \end{pmatrix} = -\frac{I_0}{12}\begin{pmatrix}
+            3&\sqrt{3}&0\\
+            \sqrt{3}&1&0\\
+            0&0&0
+        \end{pmatrix}
+    \end{align}
+    Which, if for vector $\bv=(x,y,z)$, $(I_1-\frac{2I_0}{3}\Id)\bv = \bzero$, we get:
+    \begin{align}
+        \begin{pmatrix}
+            3&\sqrt{3}&0\\
+            \sqrt{3}&1&0\\
+            0&0&0
+        \end{pmatrix}\begin{pmatrix}
+            x\\y\\z
+        \end{pmatrix}=\bzero \implies \begin{pmatrix}
+            \sqrt{3}(\sqrt{3}x+y)\\ \sqrt{3}x+y\\ 0
+        \end{pmatrix} = \bzero \implies \sqrt{3}x+y=0
+    \end{align}
+    So, $\bv \in \textmd{span}\{(0,0,1),\ (-\frac{1}{2},\frac{\sqrt{3}}{2},0)\}$, these are the eigenvectors associated with $\lambda=\frac{2I_0}{3}$.
+    \item Then, for $\lambda=\frac{I_0}{3}$, plug into the equation, we get:
+    \begin{align}
+        I_1-\frac{I_0}{3}\Id = \begin{pmatrix}
+            \frac{I_0}{12}&-\frac{\sqrt{3}I_0}{12}&0\\
+            -\frac{\sqrt{3}I_0}{12}&\frac{I_0}{4}&0\\
+            0&0&\frac{I_0}{3}
+        \end{pmatrix}=\frac{I_0}{12}\begin{pmatrix}
+            1&-\sqrt{3}&0\\
+            -\sqrt{3}&3&0\\
+            0&0&4
+        \end{pmatrix}
+    \end{align}
+    Which, if for vector $\bv = (x,y,z)$, $(I_1-\frac{I_0}{3}\Id)\bv=\bzero$, we get:
+    \begin{align}
+        \begin{pmatrix}
+            1&-\sqrt{3}&0\\
+            -\sqrt{3}&3&0\\
+            0&0&4
+        \end{pmatrix}\begin{pmatrix}
+            x\\y\\z
+        \end{pmatrix} = \bzero \implies \begin{pmatrix}
+            x-\sqrt{3}y\\ \sqrt{3}(x-\sqrt{3}y)\\ 4z
+        \end{pmatrix}=\bzero\implies z=0,\ x-\sqrt{3}y=0
+    \end{align}
+    So, $\bv\in \textmd{span}\{(\frac{\sqrt{3}}{2},\frac{1}{2},0)\}$. These are the eigenvectors associated with $\lambda = \frac{I_0}{3}$.
+\end{itemize}
+Now, if chosen the set of eigenvectors as $\be_1 = (\frac{\sqrt{3}}{2},\frac{1}{2},0)$, $\be_2=(-\frac{1}{2},\frac{\sqrt{3}}{2},0)$, and $\be_3 = (0,0,1)$, one can check that they're mutually orthogonal (i.e. $\be_i \cdot \be_j = 0$, and $\|\be_i\|=1$ for all index $i\neq j$). Hence, it is an orthonormal basis (which consists of eigenvectors of $I_1$, corresponding to $\lambda=\frac{I_0}{3},\frac{2I_0}{3},\frac{2I_0}{3}$ respectively). Then, let the diagonal matrix $D$, and change of basis matrix $U$ (which is also a special orthogonal matrix) be as follow:
+\begin{align}
+    &D=\begin{pmatrix}
+        \frac{I_0}{3}&0&0\\
+        0&\frac{2I_0}{3}&0\\
+        0&0&\frac{2I_0}{3}
+    \end{pmatrix}, \quad U = \begin{pmatrix}
+        | & |&|\\
+        \be_1&\be_2&\be_3\\
+        |&|&|
+    \end{pmatrix} = \begin{pmatrix}
+        \frac{\sqrt{3}}{2}&-\frac{1}{2}&0\\
+        \frac{1}{2}&\frac{\sqrt{3}}{2}&0\\
+        0&0&1
+    \end{pmatrix}, \ U^{-1}=U^T
+\end{align}
+(Note: For special orthogonal matrix, or column vectors form an orthonormal basis, $UU^T = U^TU = \Id$). 
+
+Then, after diagonalization, we get:
+\begin{align}
+    I_1 = U^{-1}DU = \begin{pmatrix}
+        \frac{\sqrt{3}}{2}&\frac{1}{2}&0\\
+        -\frac{1}{2}&\frac{\sqrt{3}}{2}&0\\
+        0&0&1
+    \end{pmatrix}\begin{pmatrix}
+        \frac{I_0}{3}&0&0\\
+        0&\frac{2I_0}{3}&0\\
+        0&0&\frac{2I_0}{3}
+    \end{pmatrix}\begin{pmatrix}
+        \frac{\sqrt{3}}{2}&-\frac{1}{2}&0\\
+        \frac{1}{2}&\frac{\sqrt{3}}{2}&0\\
+        0&0&1
+    \end{pmatrix}
+\end{align}
+Which, $D=I$, the original inertia tensor.
 
 \break
 
 \section*{4}
 \begin{question}\label{q4}
-    A rigid body has an axis of symmetry, which we shall designate axis $1$. The principal moment of inertia about this axis is $I_1$, while the principal moments of inertia about the remaining two principal axes are $I_2=I_3=I_0\neq I_1$. No torques act on the body, and it has some initial angular velocity $(w_1,w_2,w_3)=(w_{10},w_{20},w_{30})$.
+    A rigid body has an axis of symmetry, which we shall designate axis $1$. The principal moment of inertia about this axis is $I_1$, while the principal moments of inertia about the remaining two principal axes are $I_2=I_3=I_0\neq I_1$. No torques act on the body, and it has some initial angular velocity $(w_1,w_2,w_3)=(w_{1,0},w_{2,0},w_{3,0})$.
     \begin{itemize}
         \item[(a)] Show that the body precesses around axis $1$: $w_1$ is constant and $w_2,w_3$ both oscillate sinusoidally, with the same magnitude and a $\pi/2$ phase difference.
         \item[(b)] Does either the frequency or direction of the precession depend on whether the body is prolate (like a baseball bat) or oblate (like a frisbee)? 
@@ -158,6 +461,59 @@
 \end{question}
 
 \textbf{Pf:}
+
+We'll assume all vectors are represented under body frame, and initially $\bw_0 = (w_{1,0},w_{2,0},w_{3,0})$ under body frame also (i.e. initially the body frame aligns with standard basis).
+\subsection*{(a)}
+First, recall that under body frame, Euler's equation is satisfied:
+\begin{align}
+    \begin{cases}
+        I_1\frac{dw_1}{dt}=N_1+(I_2-I_3)w_2w_3\\
+        I_2\frac{dw_2}{dt}=N_2+(I_3-I_1)w_3w_1\\
+        I_3\frac{dw_3}{dt}=N_3+(I_1-I_2)w_1w_2
+    \end{cases}
+\end{align}
+With torque $\bN=\bzero$ (since assumes no torque is acting on the body), the $N_1=N_2=N_3=0$. Also, plug in $I_2=I_3 = I_0$, we get:
+\begin{align}
+    \begin{cases}
+        I_1\frac{dw_1}{dt}=0\\
+        I_0\frac{dw_2}{dt}=(I_0-I_1)w_3w_1\\
+        I_0\frac{dw_3}{dt}=-(I_0-I_1)w_1w_2
+    \end{cases}
+\end{align}
+The first equation provides $\frac{dw_1}{dt}=0$, hence $w_1$ is constant; with initial $w_1=w_{1,0}$, we get $w_1(t) = w_{1,0}$. Plug this into the other two equations, and take differentiation again, we get:
+\begin{align}
+    \begin{cases}
+        \frac{dw_2}{dt}=\frac{w_{1,0}(I_0-I_1)}{I_0}w_3\\
+        \frac{dw_3}{dt}=-\frac{w_{1,0}(I_0-I_1)}{I_0}w_2
+    \end{cases}, \quad \begin{cases}
+        \frac{d^2w_2}{dt^2} = \frac{w_{1,0}(I_0-I_1)}{I_0}\frac{dw_3}{dt}\\
+        \frac{d^2w_3}{dt^2}=-\frac{w_{1,0}(I_0-I_1)}{I_0}\frac{dw_2}{dt}
+    \end{cases}\implies \begin{cases}
+        \frac{d^2w_2}{dt^2} = -\paran*{\frac{w_{1,0}(I_0-I_1)}{I_0}}^2w_2\\
+        \frac{d^2w_3}{dt^2}=-\paran*{\frac{w_{1,0}(I_0-I_1)}{I_0}}^2w_3
+    \end{cases}
+\end{align}
+Which, the above differential equations are simple harmonic oscillators. Let $\Omega = \frac{w_{1,0}(I_0-I_1)}{I_0}$, the solution to $w_2$ is in the form $w_2=A\cos(\Omega t+\phi)$ for some phase $\phi$. Then, if taken a derivative, with the first order differential equations on the left, we get:
+\begin{align}
+    \Omega w_3 = \frac{dw_2}{dt} = -\Omega A\sin(\Omega t+\phi) = &\Omega A\paran*{\cos(\Omega t+\phi)\cos\paran*{\frac{\pi}{2}}-\sin(\Omega t+\phi)\sin\paran*{\frac{\pi}{2}}} = \Omega A\cos\paran*{\Omega t+\phi + \frac{\pi}{2}}\\
+    &\implies w_3 = A\cos\paran*{\Omega t+\phi + \frac{\pi}{2}}
+\end{align}
+(Note: the second line is true, because by assumption $I_0\neq I_1$, and both are not $0$, we get $\Omega\neq 0$).
+
+So, this proves that under the body frame, $w_2,w_3$ are sinusoidal waves with phase difference of $\frac{\pi}{2}$, while $w_1$ is kept constant. This shows that the angular velocity precesses around axis $1$, so the body precess around axis $1$, regardless of the amplitude $A$.
+
+\subsection*{(b)}
+First, about the frequency of precession, with the above formulas, it's given by $\Omega = \frac{w_{1,0}(I_0-I_1)}{I_0}$ (more generally, using $|\Omega|$ would sufficient since frequency doesn't care about the direction of the precession). 
+Which, if $I_0$ and $I_1$ are close, we get that $|\Omega|$ is small, hence it takes longer period to complete one precession; else, if $I_0$ and $I_1$ varies a lot, then $|\Omega|$ is also large, hence it'll take shorter period to complete one percession. However, this requires a more precise understanding about the mass distribution, knowing if the object is prolate or oblate is not sufficient to tell (for instance, under fixed $I_0$, take $I_1 = \frac{I_0}{2}<I_0$ and $I_1 = \frac{3I_0}{2}>I_0$ provides the same $|\Omega|=\frac{w_{1,0}}{2}$, while the first situation is close to prolate, and the second situation is close to oblate).
+
+\hfil
+
+Now, about the direction of precession, we care more about the sign of $\Omega$:
+\begin{itemize}
+    \item If the body is prolate (like a baseball bat), since with respect to axis $1$ (where the bat has rotational symmetry with) the mass distribution is in general closer to the axis, while respect to other two axes the bat is farther from center of mass, then $I_1 < I_0$; which, $\Omega = 0<w_{1,0}(1-\frac{I_1}{I_0})$, showing that with respect to the body frame, angular velocity $\bw$ is precessing counterclockwise.
+    \item If the body is oblate (like a frisbee), then the mass is scattered more outward for axis $1$ compared to the other axes, hence $I_1>I_0$. Which, $\Omega=w_{1,0}(1-\frac{I_1}{I_0})<0$, showing that with respect to the body frame, angular velocity $\bw$ is precessing clockwise instead.
+\end{itemize}
+Hence, the shape of the object (being prolate or oblate) would affect the direction of the precession, however it's precise effect on the frequency cannot be concluded by the rough shape (requires more knowledge about mass distribution of the object).
 
 \break
 
@@ -167,11 +523,66 @@
     \begin{itemize}
         \item[(a)] Find its inertia tensor about its center.
         \item[(b)] A meteor of mass $m$ and velocity $v_0$, moving in the $x$ direction, strikes the station very near one of the endcaps and bounces directly back with velocity $-v_0/2$. Find the station's CM velocity and angular momentum after the collision.
-        \item[(c)] Show that the station wobbles (i.e. the direction of the angular velocity rotates). Find the period of the wobble, as experienced by a person o the station.  
+        \item[(c)] Show that the station wobbles (i.e. the direction of the angular velocity rotates). Find the period of the wobble, as experienced by a person on the station.  
     \end{itemize}
 \end{question}
 
 \textbf{Pf:}
+\subsection*{(a)}
+Again, since assuming it has no width directly is going to cause some calculation problem, so we'll assume the width is $\epsilon>0$, and at the end take the limit $\epsilon\rightarrow 0$. Now, suppose the inner radius is $R-\frac{\epsilon}{2}$ and outer radius is $R+\frac{\epsilon}{2}$, we get that the total volume of the (almost) hollow cylinder is $V=D\pi((R+\frac{\epsilon}{2})^2-(R-\frac{\epsilon}{2})^2) = \pi D2R\epsilon$. So, the density $\rho = \frac{M}{V}=\frac{M}{2\pi RD\epsilon}$.
+
+Since the center of mass of the cylinder is precisely at half of the height, then $z\in [-\frac{D}{2},\frac{D}{2}]$, anglet $\theta\in [0,2\pi]$, and $r\in [R-\frac{\epsilon}{2},R+\frac{\epsilon}{2}]$. So, the inertia tensor about its center is given as follow:
+\begin{align}
+    I(\epsilon) = \int_V \begin{pmatrix}
+        y^2+z^2 & -xy & -xz\\
+        -xy & x^2+z^2 & -yz\\
+        -xz & -yz & x^2+y^2
+    \end{pmatrix}\rho dV
+\end{align}
+Based on the symmetry on $x$ and $y$, if using the standard cartesian coordinate for integration, the bound of $x,y,z$ are all in the form from $-a$ to $a$. Hence, if integrate $xy,xz,yz$, we all get $0$ (for $xy,yz$, if integrate $y$ first, since it's an odd function of $y$, the integral provides $0$; for $z$, since separating out variable $z$ individually to integrate from $-\frac{D}{2}$ to $\frac{D}{2}$ provides $0$, the total integral is again $0$). Then, we only need to consider the diagonals. In this case, we'll use cylindrical coordinate, and we get the following:
+\begin{align}
+    X &:= \int_{z=-\frac{D}{2}}^{\frac{D}{2}}\int_{r=R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}}\int_{\theta =0}^{2\pi}x^2 r\ d\theta\ dr\ dz = \int_{z=-\frac{D}{2}}^{\frac{D}{2}}\int_{r=R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}}\int_{\theta =0}^{2\pi}r^3\cos^2(\theta)\ d\theta\ dr\ dz\\
+    &= \pi D\cdot\frac{1}{4}r^4\bigg|_{R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}} = \frac{\pi DR\epsilon}{2}\paran*{R^2+\frac{\epsilon^2}{4}}
+\end{align}
+\begin{align}
+    Y &:=\int_{z=-\frac{D}{2}}^{\frac{D}{2}}\int_{r=R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}}\int_{\theta =0}^{2\pi}y^2 r\ d\theta\ dr\ dz = \int_{z=-\frac{D}{2}}^{\frac{D}{2}}\int_{r=R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}}\int_{\theta =0}^{2\pi}r^3\sin^2(\theta)\ d\theta\ dr\ dz\\
+    &= \pi D\cdot\frac{1}{4}r^4\bigg|_{R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}} = \frac{\pi DR\epsilon}{2}\paran*{R^2+\frac{\epsilon^2}{4}} = X
+\end{align}
+\begin{align}
+    Z &:=\int_{z=-\frac{D}{2}}^{\frac{D}{2}}\int_{r=R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}}\int_{\theta =0}^{2\pi}z^2 r\ d\theta\ dr\ dz = \int_{z=-\frac{D}{2}}^{\frac{D}{2}}z^2dz\int_{r=R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}}rdr\int_{\theta=0}^{2\pi}d\theta\\
+    &= 2\pi\paran*{\frac{1}{2}r^2\bigg|_{R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}}}\paran*{\frac{1}{3}z^3\bigg|_{-\frac{D}{2}}^{\frac{D}{2}}} = \frac{\pi D^3R\epsilon}{6}
+\end{align}
+(Note: $\int_{0}^{2\pi}\cos^2(\theta)d\theta=\int_{0}^{2\pi}\sin^2(\theta)d\theta=\pi$).
+
+Then, the inertia tensor of the center becomes:
+\begin{align}
+    I(\epsilon)=\rho\begin{pmatrix}
+        Y+Z&0&0\\
+        0&X+Z&0\\
+        0&0&X+Y
+    \end{pmatrix}=\rho\begin{pmatrix}
+        X+Z&0&0\\
+        0&X+Z&0\\
+        0&0&2X
+    \end{pmatrix}
+\end{align}
+Which, take the limit $\epsilon\rightarrow 0$, we get:
+\begin{align}
+    \lim_{\epsilon\rightarrow 0}\rho X=\lim_{\epsilon\rightarrow 0}\frac{M}{2\pi RD\epsilon}\cdot \frac{\pi DR\epsilon}{2}\paran*{R^2+\frac{\epsilon^2}{4}}=\frac{MR^2}{4},\quad \lim_{\epsilon\rightarrow 0}\rho Z=\lim_{\epsilon\rightarrow 0}\frac{M}{2\pi RD\epsilon}\cdot\frac{\pi D^3R\epsilon}{6}=\frac{MD^2}{12}
+\end{align}
+Hence, the inertia tensor of the center is given by:
+\begin{align}
+    I = \lim_{\epsilon\rightarrow 0}I(\epsilon) = \begin{pmatrix}
+        \paran*{\frac{MR^2}{4}+\frac{MD^2}{12}}&0&0\\
+        0&\paran*{\frac{MR^2}{4}+\frac{MD^2}{12}}&0\\
+        0&0& \frac{MR^2}{2}
+    \end{pmatrix}
+\end{align}
+
+
+\subsection*{(b)}
+
+\subsection*{(c)}
 
 
 \end{document}
