@@ -31,6 +31,8 @@ for i in range(len(t)):
 plt.plot(t,Function, lw=2, label='Function f(t)')
 plt.plot(t,Fourier, lw=2, label = 'Fourier Approximation')
 plt.ylim(-T,T)
+plt.xlabel("Points t")
+plt.ylabel("Values y")
 
 plt.legend()
 plt.show()
