@@ -216,11 +216,14 @@ For this problem, we can make a few premises: First, assume Bert is traveling in
 
 First, since Bert travels to a planet and comes back, in Al's frame Bert travels through two identical distance; and, since for both trips, Bert's relative speed to Al is $\frac{12}{13}c$ (in different direction), both trips (except the part of changing direction) are identical. Hence can assume for both trips in Bert's frame, he travels the same distance, while both trips take the same time in Bert's frame. Then, since for the two trips, in Bert's frame he changes from 24 to 44 years old, so in Bert's frame he passes through total of 20 years, with the two trips being similar (only different in direction), each trip takes $\Delta t'=\Delta t'' = 10$ years in Bert's frame. 
 
-Using the first trip as reference, Bert observes the planet heading towards him with speed $\frac{12}{13}c$, hence in Bert's frame, the planet travels through distance $\Delta x' = \frac{12}{13}c \cdot 10$, where it's with unit m/s times year.
+\begin{comment}
+Bert observes the planet heading towards him with speed $\frac{12}{13}c$, hence in Bert's frame, the planet travels through distance $\Delta x' = \frac{12}{13}c \cdot 10$, where it's with unit m/s times year.
+
 
 Here, with speed $\frac{12}{13}c$, we get $\beta = \frac{12}{13}c/c = \frac{12}{13}$, and $\gamma = \frac{1}{\sqrt{1-\beta^2}} = \frac{13}{5}$. Since it is the distance that is traveling in Bert's frame, if the original distance (between Al and the planet) is $\Delta x$, by length contraction $\Delta x' = \frac{\Delta x}{\gamma}$, or $\Delta x=\gamma\Delta x' = \frac{13}{5}\frac{120}{13}c = 24c$ m/s times year.
+\end{comment}
 
-Or, in Bert's frame, the event of him reaching the planet has coordinates $(ct', x') = (c\Delta t', \Delta x') = (10c, 0)$ (both are with unit of m/s times year; since in Bert's frame he never moves, so $x'=0$). Hence, if this event of Bert reaching the planet has coordinate $(ct, x)$ in Al's frame, using Lorentz boost, we get:
+Using the first trip as example, in Bert's frame, the event of him reaching the planet has coordinates $(ct', x') = (c\Delta t', \Delta x') = (10c, 0)$ (both are with unit of m/s times year; since in Bert's frame he never moves, so $x'=0$, and because Bert starts at $(ct',x')=(0,0)$ in his own frame, then the eventual $ct'= c\Delta t'$). Hence, if this event of Bert reaching the planet has coordinate $(ct, x)$ in Al's frame, using Lorentz boost, we get:
 \begin{align}
     \begin{pmatrix}
         10c\\
@@ -246,16 +249,26 @@ Which, solving the system of equations, we get (both in units of m/s times year)
 \begin{align}
     x= 24c,\quad ct = \frac{313}{13}c
 \end{align}
-Which, this is the coordinate of Bert reaching the planet in Al's frame, which the $x$ coordinate is the planet's distance from Al. The answer of $x$ coincides with length contraction, showing it's valid to apply here. Transfer the distance to light year, in Al's frame the planet has coordinate $x=24$ light years.
+Which, this is the coordinate of Bert reaching the planet in Al's frame, which the $x$ coordinate is the planet's distance from Al. Transfer the distance to light year, in Al's frame the planet has coordinate $x=24$ light years.
 
-Hence, with Bert's speed being $\frac{12}{13}c$ m/s, in Al's frame, it takes Bert $\Delta t = \frac{24c}{\frac{12}{13}c} = 26$ years to reach the planet. And, since for Bert's trip back it's a similar system, it takes a total of $\Delta t=52$ year for Bert to travel back and forth in Al's frame. At this point, in Al's frame himself is $24 + 52 = 76$ years old.
+Hence, with Bert's speed being $\frac{12}{13}c$ m/s, in Al's frame, it takes Bert $\Delta t = \frac{\Delta x}{v} = \frac{24c}{\frac{12}{13}c} = 26$ years to reach the planet. And, since for Bert's trip back it's a similar system (after changing coordinates), it takes a total of $2\cdot 26 = 52$ year for Bert to travel back and forth in Al's frame. At this point, in Al's frame himself is $24 + 52 = 76$ years old.
 
 \rule{15.6cm}{0.1mm}
 
-The reason why Bert can't claim that Al's clock is the one dilated (which supposedly should cause Al to be younger than Bert when reunite), is because Bert is not in an inertial frame: Even though we assumed the change of direction to be happen in an instant, but realistically during that moment Bert is in fact accelerating with respect to Al and the Planet, which makes him no longer in an inertial frame, and cause the calculation to be more complicated.
+The reason why Bert can't claim that Al's clock is the one dilated (which supposedly should cause Al to be younger than Bert when reunite), is because Bert is not in an inertial frame: Even though we assumed the change of direction to happen in an instant, but realistically during that moment Bert is in fact accelerating with respect to Al and the Planet, which makes him no longer in an inertial frame, and cause the calculation to be more complicated.
 
-If we consider Bert's frame in the first trip, about what the second trip looks like, we'll get the following: We know for the second trip (in its own frame, with double prime coordinates) has the difference in coordinates (of the end and the start) given as $(c\Delta t'', \Delta x'') =   (10c, 0)$ (in the second trip's frame, Bert isn't moving, so $\Delta x'' = 0$, while time passes through $\Delta t''=10$ years). Then, because the second trip Al has relative speed to Bert of $\frac{12}{13}c$ in $x''$ direction (for the first trip, it's Al leaving Bert in $-x'$ direction, so now when Al is getting closer in Bert's frame, it's moving in the $x''$ direction), We get the following relation in the difference of coordinates in Al's frame (using Lorentz Boost):
+If we consider Bert's frame \textbf{only} in the first trip, about what the second trip looks like, we'll get the following: 
+
+We know for the second trip (in its own frame, with double prime coordinates) has the difference in coordinates (of the end and the start) given as $(c\Delta t'', \Delta x'') =   (10c, 0)$ (in the second trip's frame, Bert isn't moving, so $\Delta x'' = 0$, while time passes through $\Delta t''=10$ years). Then, because the second trip Bert has relative speed of $\frac{12}{13}c$ in $-x$ direction of Al's frame, we get the following relation about the difference of coordinates in Al's frame:
 \begin{align}
+    \begin{pmatrix}
+        c\Delta t''\\ \Delta x''
+    \end{pmatrix}=\begin{pmatrix}
+        \gamma & \gamma\beta\\
+        \gamma\beta & \gamma
+    \end{pmatrix}\begin{pmatrix}
+        c\Delta t\\ \Delta x
+    \end{pmatrix}\implies 
     \begin{pmatrix}
         c\Delta t\\\Delta x
     \end{pmatrix} = \begin{pmatrix}
@@ -265,7 +278,7 @@ If we consider Bert's frame in the first trip, about what the second trip looks 
         c\Delta t''\\\Delta x''
     \end{pmatrix}
 \end{align}
-Then again, since the first trip's frame is trnasformed from Al's frame using the same Lorentz Boost (since relative to Al, the first trip has speed $\frac{12}{13}c$ in $x$ direction), we get:
+Then again, since during the first trip (the primed frame) has relative speed of $\frac{12}{13}c$ in $x$ direction based on Al's frame, we get:
 \begin{align}
     \begin{pmatrix}
         c\Delta t'\\\Delta x'
@@ -291,9 +304,13 @@ With $\gamma = \frac{13}{5}$, $\beta = \frac{12}{13}$, $\Delta x''=0$, and $\Del
     &c\Delta t' = \gamma^2(1+\beta^2)c\Delta t'' - 2\gamma^2\beta \Delta x'' = \frac{13^2}{5^2}\paran*{1+\frac{12^2}{13^2}}10c = \frac{3130}{25}c\\
     &\implies \Delta t' = \frac{3130}{25}\textmd{ years} = 125.2 \textmd{ years}
 \end{align}
-Which, adding the first trip's $10$ years, in the first trip's frame, Bert takes total of $135.2$ years to travel, which is significantly longer than the time that Al perceived to pass (which is 52 years). Moreover, if using time dilation formula, since Al is the one moving in speed $\frac{12}{13}c$ (with $\gamma = \frac{13}{5}$), then with $\Delta t=52$ years as Al's percieved time difference, Bert (in the first trip's frame) would percieve a time of $\Delta t' = \gamma \Delta t = \frac{13}{5}\cdot 52 = 135.2$ years, which matches with the calculated time in the first trip's frame.
+Which, adding the first trip's $10$ years, in the first trip's frame, Bert takes total of $135.2$ years to travel, which is significantly longer than the time that Al perceived to pass (which is 52 years). 
 
-Hence, time dilation in fact is applied (when we're sticking with inertial frame), the reason why we can't see it in Bert's perspective, is because the additional time of the trip can only be seen in the second trip \textbf{if Bert stays in the first trip's frame}. However, since Bert changes his direction of travel, he no longer stays in the same frame, hence the time dilation effect is no longer seen. (This also tells us that time dilation can only be applied when objects are staying in inertial frame; if change of direction happens, it no longer applies).
+\begin{comment}
+Moreover, if using time dilation formula, since Al is the one moving in speed $\frac{12}{13}c$ (with $\gamma = \frac{13}{5}$), then with $\Delta t=52$ years as Al's percieved time difference, Bert (in the first trip's frame) would percieve a time of $\Delta t' = \gamma \Delta t = \frac{13}{5}\cdot 52 = 135.2$ years, which matches with the calculated time in the first trip's frame.
+\end{comment}
+
+Hence, time dilation in fact is applied (when Bert sticked with an inertial fram, in this calculation the first trip's frame), the reason why we can't see it in Bert's perspective, is because the additional time of the trip can only be seen in the second trip \textbf{if Bert stays in the first trip's frame}. However, since Bert changes his direction of travel, he no longer stays in the same frame, hence the time dilation effect can no longer be seen. (This also tells us that time dilation can only be applied when objects are staying in inertial frame; if change of direction happens, it no longer applies).
 
 \break
 
@@ -340,11 +357,11 @@ Because the stamping process doesn't appear to be "simultaneous" in the cookie d
 
 \hfil
 
-Overall, we can say that the cookie appears to be an ellipes, which is stretched in the cookie dough's traveling direction (if we assume the stamping process is "simultaneous" in the stamp's frame), with length $\frac{2r}{\sqrt{1-\frac{v^2}{c^2}}}$ (while the width is $2r$).
+Overall, we can say that the cookie appears to be an ellipse, which is stretched in the cookie dough's traveling direction (if we assume the stamping process is "simultaneous" in the stamp's frame), with length $\frac{2r}{\sqrt{1-\frac{v^2}{c^2}}}$ (while the width is still $2r$).
 
 \break
 
-\section*{4 (Table Not done)}
+\section*{4}
 \begin{question}\label{q4}
     A stick of proper length $L$ moves at speed $v$ in the direction of its length. It passes over an infinitesimally thin sheet that has a hole of diameter $L$ cut in it. As the stick passes over the hole, the sheet is raised so that the stick passes through the hole and ends up underneath the sheet. Well, maybe\dots
 
@@ -374,7 +391,21 @@ If we turn to the stick's frame, intuitively using length contraction, we'd get 
 So, one can see in the Spacetime Diagram, that in the stick's frame, it isn't passing through the hole at the same time, but gradually having more parts passing through the hole, showing that the stick can still pass through the hole in the stick's frame, just not passing through simultaneously.
 
 \subsection*{Table Problem:}
-If we consider the stick with proper length $L$, sliding on a table with a hole with proper length $L$, and the stick falls through the hole if it passes through, then if not specifically considering the kinematics in other directions, the situation would be similar to the sheet discussed above. So, I'd say the stick could still pass over. 
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width=100mm]{hw4 q42.jpg}
+        \caption{The Illustration of how the stick passes through the hole}
+    \end{center}
+\end{figure}
+
+If we consider the stick with proper length $L$, sliding on a table with a hole with proper length $L$ (and some thickness $\Delta y$ in the original frame), and the stick intends to fall through the hole when the whole body is simultaneously on top of the hole in the original frame (can make this assumption if the stick is fast enough, such that the center of mass loses the table's support approximately when the whole stick is above the hole).
+
+Then, it'll create some velocity in the orthogonal direction due to gravity (in the original frame). However, notice that this new velocity has component that is orthogonal to the original traveling direction (where the length is placed), so it's not affecting the length, hence in the rest frame we still have the stick contracts to length $L/\gamma$ (i.e. length contraction only occurs in the traveling direction of the object). 
+
+Which, back to the kinematics, suppose for the stick to fall through the thickness of the table $\Delta y$, since initially the vertical speed is $0$, with acceleration $g$, its vertical motion is recorded as $\frac{1}{2}gt^2$. So, if at time $t$ it falls through the distance $\Delta y$, we get $\frac{1}{2}gt^2=\Delta y$, or $t=\sqrt{\frac{2\Delta y}{g}}$. During this time, the stick travels horizontally of distance $vt = v\sqrt{\frac{2\Delta y}{g}}$, then the head of the stick is at position $L/\gamma + v\sqrt{\frac{2\Delta y}{g}}$. If we want the stick to pass through the hole, we want $L/\gamma + v\sqrt{\frac{2\Delta y}{g}}\leq L$, which $\sqrt{\frac{2\Delta y}{g}} \leq \frac{(\gamma -1)L}{\gamma v}$. This implies $\frac{2\Delta y}{g} \leq \frac{(\gamma-1)^2L^2}{\gamma^2 v^2}$, hence $\Delta y\leq \frac{g(\gamma-1)^2L^2}{2\gamma^2 v^2}$. 
+
+This thickness is the limiting condition for the stick to actually pass through the hole.
 
 \break
 
