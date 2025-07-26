@@ -1,0 +1,238 @@
+\documentclass{article}
+\usepackage[margin = 2.54cm]{geometry} % set margin to traditional doc
+
+%packages
+\usepackage{graphicx} % Required for inserting images
+\usepackage[most]{tcolorbox} %for creating environments
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor} %for importing multiple colors
+\usepackage{hyperref} %for creating links to different sections
+
+\linespread{1.2} %controlling line spread
+
+%define colors i like
+\definecolor{myTeal}{RGB}{0,128,128}
+\definecolor{myGreen}{RGB}{34,170,34}
+\definecolor{mySapphire}{RGB}{15,82,186}
+\definecolor{myEmerald}{RGB}{50.4, 130, 90}
+
+%create math environments, can add [section] or [subsection] to add index counter based on sections/subsections
+\newtheorem{define}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{lemma}{Lemma}
+
+%setup colored box environment for each math env above
+\tcolorboxenvironment{define}{
+    enhanced, colframe=myTeal!50!teal, colback=myTeal!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{prop}{
+    enhanced, colframe=myGreen!50!black, colback=myGreen!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{thm}{
+    enhanced, colframe=mySapphire!50!mySapphire, colback=mySapphire!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{question}{
+    enhanced, colframe=blue!50!black, colback=blue!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{lemma}{
+    enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+
+%setup hyperlink within pdf
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+%common command (add to template)
+%general
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+\newcommand{\Id}{\textmd{Id}} %identity
+\newcommand{\lcm}{\textmd{lcm}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\paran}{(}{)}%paranthesis
+\DeclarePairedDelimiter{\bracket}{\langle}{\rangle}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+%algebra
+\newcommand{\Gal}{\textmd{Gal}}
+\newcommand{\Aut}{\textmd{Aut}}
+\newcommand{\End}{\textmd{End}}
+\newcommand{\Coker}{\textmd{Coker}}
+\newcommand{\Hom}{\textmd{Hom}}
+\newcommand{\Nil}{\textmd{Nil}}
+\newcommand{\Char}{\textmd{char}}
+
+%analysis
+\newcommand{\Vol}{\textmd{Vol}}
+
+%complex
+\newcommand{\Real}{\textmd{Re}}
+\newcommand{\Imag}{\textmd{Im}} %can also be used for Image
+\newcommand{\Res}{\textmd{Res}}
+
+%lie algebra
+\newcommand{\gl}{\mathfrak{gl}}
+
+%physics
+\newcommand{\br}{\textbf{r}} %position
+\newcommand{\bv}{\textbf{v}} %velocity
+\newcommand{\ba}{\textbf{a}} %cceleration
+\newcommand{\bF}{\textbf{F}} %force
+\newcommand{\bP}{\textbf{P}} %momentum
+\newcommand{\bL}{\textbf{L}} %angular momentum
+\newcommand{\bN}{\textbf{N}} %torque
+\newcommand{\bw}{\textbf{w}} %angular velocity
+\newcommand{\bzero}{\textbf{0}}
+
+\title{Phys 103 HW5}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{1}
+\begin{question}\label{q1}
+\end{question}
+
+\textbf{Pf:}
+\subsection*{(a)}
+First, with $\phi(\bar{r},t)=A\sin(\bar{k}\cdot \bar{r}-wt)$, since $\bar{k}=(k_x,k_y,k_z)\in\RR^3$ for some real numbers $k_x,k_y,k_z$, we know $k^2=\|\bar{k}\|^2 =k_x^2+k_y^2+k_z^2$. Hence, applying the partial derivatives, we get:
+\begin{align}
+    \begin{cases}
+        \frac{\partial^2 \phi}{\partial (r^\mu)^2} = -k_\mu^2 A\sin(\bar{k}\cdot \bar{r}-wt) & \mu \in \{x,y,z\}\\
+        \frac{\partial ^2\phi}{\partial t^2}=-w^2 A\sin(\bar{k}\cdot \bar{r}-wt)
+    \end{cases}
+\end{align}
+Then, given that $w = ck$, we get the following after summing up the components of wave equations:
+\begin{align}
+    \frac{\partial^2\phi}{\partial x^2}+\frac{\partial^2\phi}{\partial y^2}+\frac{\partial^2\phi}{\partial z^2}-\frac{1}{c^2}\frac{\partial^2\phi}{\partial t^2} &= -k_x^2A\sin(\bar{k}\cdot \bar{r}-wt) -k_y^2A\sin(\bar{k}\cdot \bar{r}-wt)-k_z^2A\sin(\bar{k}\cdot \bar{r}-wt)+\frac{w^2}{c^2}A\sin(\bar{k}\cdot \bar{r}-wt)\\
+    &= A\sin(\bar{k}\cdot \bar{r}-wt)\paran*{ -k^2 + \frac{c^2k^2}{c^2}} = 0
+\end{align}
+So, this function satisfies the wave equation of light.
+
+\subsection*{(b)}
+Suppose in an inertial frame $F$ (with unprimed index), we have four-vector $k^\mu = (w/c, \bar{k})^\mu$. Then, for any position $\bar{r}=(x,y,z)\in\RR^3$ and time $t\in\RR$, a corresponding event in spacetime is written as $r^\mu = (ct, x,y,z)^\mu$ in the frame $F$. So, the input of the wave function $\phi$ as $\bar{k}\cdot \bar{r}-wt$, it can be rewritten as:
+\begin{align}
+    \bar{k}\cdot \bar{r}-wt = -\frac{w}{c}\cdot (ct)+k^x\cdot x+k^y\cdot y+k^z\cdot z = \begin{pmatrix}
+        w/c, k^x, k^y, k^z
+    \end{pmatrix}\begin{pmatrix}
+        -1 &0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&1
+    \end{pmatrix}\begin{pmatrix}
+        ct\\x\\y\\z
+    \end{pmatrix}
+\end{align}
+So, in index, notation, we get that $\bar{k}\cdot \bar{r}-wt = k^\mu \eta_{\mu\nu} r^\nu$. Hence, under any inertial frame $F'$ (with primed index), we get the following:
+\begin{align}
+    \bar{k}'\cdot \bar{r}'-w't' = k^{\mu'}\eta_{\mu'nu'}r^{\nu'} = k^\mu\eta_{\mu\nu}r^\nu = \bar{k}\cdot\bar{r}-wt
+\end{align}
+(Note: Recall that for any four-vectors $\textbf{A},\textbf{B}$, the term $A^\mu \eta_{\mu\nu}B^\nu$ is a Lorentz scalar, which is invariant under Lorentz transformation).
+
+This verified that if the wavevector and frequency form four-vector $k^\mu =(w/c, \bar{k})^\mu$, we get $\bar{k}\cdot\bar{r}-wt = \bar{k}'\cdot \bar{r}'-w't'$. Which, based on the logic of four-vecor $k^\mu$, we get $k^{\mu'}=(w'/c, \bar{k}')^{\mu'}$, where $k^{\mu'} = \Lambda^{\mu'}_{\ \mu}k^\mu$ (obtained through a Lorentz transformation $\hat{\Lambda}$), and $(k')^2= (k^{x'})^2+(k^{y'})^2+(k^{z'})^2$. Then, since in the original frame $F$ we have $w=ck$ (or $\frac{w}{c}=k$), we get the following equation:
+\begin{align}
+    k^{\mu'}\eta_{\mu'\nu'}k^{\nu'}= k^\mu\eta_{\mu\nu}k^\nu = -\paran*{\frac{w}{c}}^2 + (k^x)^2+(k^y)^2+(k^z)^2 = -k^2+k^2 = 0
+\end{align}
+And, with $0=k^{\mu'}\eta_{\mu'\nu'}k^{\nu'} = -\paran*{\frac{w'}{c}}^2 + (k^{x'})^2+(k^{y'})^2+(k^{z'})^2 = -\frac{(w')^2}{c^2}+(k')^2$ given beforehand, we get $\frac{(w')^2}{c^2}=(k'^2)$, which $w' = \pm ck'$. If taken the convention that for any nontrivial wave $w, k> 0$, we get $w' = ck'$. Hence, in any inertial frame the wave is still traveling at the speed of light.
+
+\subsection*{(c)}
+Given an original inertial frame $F$ and a wave traveling in some direction, such that some other inertial frame $F'$ with some relative velocity $v$ (also traveling in the same direction). WLOG, set this traveling direction of the wave to be the $x$ direction for simplicity. Then, for the wave's traveling direction (which is given by $\bar{k}$), we get $\bar{k} = k\hat{x}$. Hence, the four vector $k^\mu = (w/c, k, 0,0)^\mu$ based on our provided definition. 
+
+To consider the four-vector $k^{\mu'}$ in the frame $F'$, it can be obtained through a Lorentz Boost with speed $v$ in the $x$ direction (based on the relative velocity of $F'$ to $F$):
+\begin{align}
+    k^{\mu'} = \Lambda^{\mu'}_{\ \mu}k^\mu \implies \begin{pmatrix}
+        \frac{w'}{c}\\k^{x'}\\k^{y'}\\k^{z'}
+    \end{pmatrix}=\begin{pmatrix}
+        \gamma & -\gamma\beta&0&0\\
+        -\gamma\beta&\gamma&0&0\\
+        0&0&1&0\\0&0&0&1
+    \end{pmatrix}\begin{pmatrix}
+        \frac{w}{c}\\k\\0\\0
+    \end{pmatrix} = \begin{pmatrix}
+        \gamma(w/c - \beta k)\\ \gamma(-\beta w/c+k)\\0\\0
+    \end{pmatrix}
+\end{align}
+Which, with $w=ck$, we get that $w' = c\gamma(w/c-\beta k) = \gamma(w-(v/c)\cdot ck) = \gamma(w-vk) = \gamma ck(1-v/c) = \gamma ck(1-\beta)$.
+
+So, we get the following:
+\begin{align}
+    w' = ck\frac{1-\beta}{\sqrt{1-\beta^2}} = ck\sqrt{\frac{1-\beta}{1+\beta}} = ck\sqrt{1-\frac{2\beta}{1+\beta}}
+\end{align}
+Notice that if two inertial frames $F_1', F_2'$ have speed $0<v_1<v_2<c$ respectively as described in the question, we get $0<\beta_1<\beta_2<c$ (where $\beta_i = \frac{v_i}{c}$), in this case we get $2\beta_1 < 2\beta_2$, hence $2\beta_1 (1+\beta_2) = 2\beta_1 + 2\beta_1\beta_2 < 2\beta_2 + 2\beta_1\beta_2 = 2\beta_2(1+\beta_1)$, showing that $\frac{2\beta_1}{1+\beta_1}<\frac{2\beta_2}{1+\beta_2}$. Therefore, we get $1-\frac{2\beta_1}{1+\beta_1}>1-\frac{2\beta_2}{1+\beta_2}\geq 0$, showing that $w_1'=ck\sqrt{1-\frac{2\beta_1}{1+\beta_1}}>ck\sqrt{1-\frac{2\beta_2}{1+\beta_2}}=w_2'$.
+
+This indicates that if a frame $F'$ has a wave with lower frequency, if its relative speed (to the original frame $F$) in the wave's longitudinal / traveling direction is larger (Longitudinal Doppler shift). 
+
+The same concept can be extended to frames traveling in $-x$ direction (where instead of considering $\beta = \frac{v}{c}$, use $\beta = -\frac{v}{c}$ to show the frame traveling in an opposite direction). Then in this generalization, the above statement of Doppler shift is still true (since the inequality just simply adds extra negative signs, and one can check that everything still follows).
+
+\subsection*{(d)}
+Suppose given an original inertial frame $F$ with some wave traveling in some direction, if another inertial frame $F'$ is traveling at speed $v$ in a transverse direction of the wave. Then, WLOG, can assume the wave travels in $y$ direction, while the frame $F'$ has speed in $x$ direction.
+
+With these assumptions, we an still use the Lorentz Boost in the $x$ direction for coordinates in $F'$, while the wavevector $\bar{k} = k\hat{y}$ (since it indicates the traveling direction of the wave). Using the relation of $k^{\mu'}$ and $k^\mu$ in (c) again, we get:
+\begin{align}
+    k^{\mu'} = \Lambda^{\mu'}_{\ \mu}k^\mu \implies \begin{pmatrix}
+        \frac{w'}{c}\\k^{x'}\\k^{y'}\\k^{z'}
+    \end{pmatrix}=\begin{pmatrix}
+        \gamma & -\gamma\beta&0&0\\
+        -\gamma\beta&\gamma&0&0\\
+        0&0&1&0\\0&0&0&1
+    \end{pmatrix}\begin{pmatrix}
+        \frac{w}{c}\\0\\k\\0
+    \end{pmatrix} = \begin{pmatrix}
+        \frac{\gamma w}{c} \\-\gamma\beta \frac{w}{c}\\k\\0
+    \end{pmatrix}
+\end{align}
+Hence, we get $w'/c = \gamma w/c$, which $w' = \gamma w$. We know that for two inertial frames $F_1'$ and $F_2'$, if their speed are $0<v_1<v_2<c$ respectively, then $\gamma_1 < \gamma_2$, which $w_1' = \gamma_1 w<\gamma_2 w=w_2'$. 
+
+Hence, if the velocity of the frame $F'$ is in the transverse direction of the wave, then the frequency of the wave is higher if the frame's relative speed to the original frame is faster (Transverse Doppler effect).
+
+\break
+
+\section*{2 (Extra Credit)}
+\begin{question}\label{q2}
+\end{question}
+
+\textbf{Pf:}
+
+
+\break
+
+\section*{3}
+\begin{question}\label{q3}
+\end{question}
+
+\textbf{Pf:}
+\subsection*{(a)}
+If we're still given that $F = \frac{dP}{dt}$ under $1$-dimension (for any inertial frame), then given that $P = \gamma mv$ (on the same direction), we get the following relation: 
+\begin{align}
+    \frac{dP}{dt} &= \frac{dm}{dt} \gamma v + m \frac{d}{dt}\paran*{\frac{v}{\sqrt{1-v^2/c^2}}} = \frac{dm}{dt}\gamma v + m\frac{\sqrt{1-v^2/c^2} - v\cdot \paran*{\frac{-2v/c^2}{2\sqrt{1-v^2/c^2}}}}{1-v^2/c^2}\frac{dv}{dt}\\
+    &= \frac{dm}{dt}\gamma v + m\gamma^2\paran*{\frac{1}{\gamma}+\gamma\beta^2}\frac{dv}{t}
+\end{align}
+Now, suppose in some frame $F$, the rocket's measured velocity is $v$, an the velocity of the exhaustion is $u'$, then suppose within some small instant $\Delta t$, the amount of exhaustion has total mass $\Delta M$ (which $\Delta t\rightarrow 0$ implies $\Delta M\rightarrow 0$, since shorter time implies shorter mass exhaustion), then using conservation of momentum, with the initial momentum $P_0 = \gamma_v mv$, the final momentum of the rocket $P_r = m(t+\Delta t) \gamma_v v(t+\Delta t)$, and the momentum of the exhaustion $P_e \approx \Delta M \gamma_{u'}u'$, we get $P_0 = P_r+P_e$ (or $P_0-P_r-P_e = 0$). Then, divide by $\Delta t$ and take $\Delta t\rightarrow 0$, we get:
+\begin{align}
+    \frac{dm}{dt}\gamma v+m\gamma \frac{dv}{dt} + m\gamma^3\beta^2\frac{dv}{dt}
+\end{align}
+
+
+\end{document}
