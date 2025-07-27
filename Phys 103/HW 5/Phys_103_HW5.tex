@@ -116,6 +116,21 @@
 
 \section*{1}
 \begin{question}\label{q1}
+    Consider a sinusoidal wave, described by 
+    $$\phi(\bar{r},t)=A\sin(\bar{k}\cdot \bar{r}-wt)$$
+    ($\phi$ is a Lorentz scalar representing some wave). $A$ is then the amplitude; $w$ is the frequency; and $\bar{k}$ is the wavevector. The wave propogates in the direction $\hat{k}$ with wavenumber $k$.
+    \begin{itemize}
+        \item[(a)] Check by explicit calculation that this solution satisfies the wave equation from last week's problem set, 
+        $$\frac{\partial^2\phi}{\partial x^2}+\frac{\partial^2\phi}{\partial y^2}+\frac{\partial^2\phi}{\partial z^2}-\frac{1}{c^2}\frac{\partial^2\phi}{\partial t^2} = 0$$
+        provided $w=ck$. Since $w/k$ is the speed at which the peaks and valleys (and therefore the wave itself) moves, this means our wave is traveling at the speed of light.
+        \item[(b)] Consider the same wave in a different frame, with primed coordinates. Since the Lorentz transformation is linear (each of $x,y,z,t$ are a linear combination of $x',y',z',t'$), we can write 
+        $$\phi(\bar{r}',t')=A\sin(\bar{k}',\bar{r}'-w't')$$
+        for some $\bar{k}'$ and $w'$. Since $\phi$ is a Lorentz scalar by assumption, it must have the same value in both frames, so (can choose $\bar{k}'$,$w'$ such that)
+        $$\bar{k}\cdot \bar{r}-wt=\bar{k}'\cdot \bar{r}'-w't'$$
+        Show that this is so if the wavevector and frequency are components of a four-vector $k^\mu=(w/c,\bar{k})^\mu$. Use this to verify that $w'=ck'$; the wave travels at the speed of light in all inertial frames.
+        \item[(c)] Using $k^\mu$, derive the longitudinal Doppler shift by calculating the observed frequency in a frame moving in the same direction as the wave.
+        \item[(d)] Using $k^\mu$, derive the transverse Doppler shift by calculating the observed frequency in a frame moving in a direction perpendicular to the wave. 
+    \end{itemize}
 \end{question}
 
 \textbf{Pf:}
@@ -158,7 +173,7 @@ This verified that if the wavevector and frequency form four-vector $k^\mu =(w/c
 And, with $0=k^{\mu'}\eta_{\mu'\nu'}k^{\nu'} = -\paran*{\frac{w'}{c}}^2 + (k^{x'})^2+(k^{y'})^2+(k^{z'})^2 = -\frac{(w')^2}{c^2}+(k')^2$ given beforehand, we get $\frac{(w')^2}{c^2}=(k'^2)$, which $w' = \pm ck'$. If taken the convention that for any nontrivial wave $w, k> 0$, we get $w' = ck'$. Hence, in any inertial frame the wave is still traveling at the speed of light.
 
 \subsection*{(c)}
-Given an original inertial frame $F$ and a wave traveling in some direction, such that some other inertial frame $F'$ with some relative velocity $v$ (also traveling in the same direction). WLOG, set this traveling direction of the wave to be the $x$ direction for simplicity. Then, for the wave's traveling direction (which is given by $\bar{k}$), we get $\bar{k} = k\hat{x}$. Hence, the four vector $k^\mu = (w/c, k, 0,0)^\mu$ based on our provided definition. 
+Given an original inertial frame $F$ and a photon traveling in some direction, such that some other inertial frame $F'$ with some relative velocity $v$ (also traveling in the same direction). WLOG, set this traveling direction of the wave to be the $x$ direction for simplicity. Then, for the wave's traveling direction (which is given by $\bar{k}$), we get $\bar{k} = k\hat{x}$. Hence, the four vector $k^\mu = (w/c, k, 0,0)^\mu$ based on our provided definition. 
 
 To consider the four-vector $k^{\mu'}$ in the frame $F'$, it can be obtained through a Lorentz Boost with speed $v$ in the $x$ direction (based on the relative velocity of $F'$ to $F$):
 \begin{align}
@@ -174,13 +189,13 @@ To consider the four-vector $k^{\mu'}$ in the frame $F'$, it can be obtained thr
         \gamma(w/c - \beta k)\\ \gamma(-\beta w/c+k)\\0\\0
     \end{pmatrix}
 \end{align}
-Which, with $w=ck$, we get that $w' = c\gamma(w/c-\beta k) = \gamma(w-(v/c)\cdot ck) = \gamma(w-vk) = \gamma ck(1-v/c) = \gamma ck(1-\beta)$.
+Which, with $w=ck$, we get that $w' = c\gamma(w/c-\beta k) = \gamma(w-\beta\cdot ck) = \gamma w(1-\beta)$.
 
 So, we get the following:
 \begin{align}
-    w' = ck\frac{1-\beta}{\sqrt{1-\beta^2}} = ck\sqrt{\frac{1-\beta}{1+\beta}} = ck\sqrt{1-\frac{2\beta}{1+\beta}}
+    w' = w\frac{1-\beta}{\sqrt{1-\beta^2}} = w\sqrt{\frac{1-\beta}{1+\beta}} = w\sqrt{1-\frac{2\beta}{1+\beta}}
 \end{align}
-Notice that if two inertial frames $F_1', F_2'$ have speed $0<v_1<v_2<c$ respectively as described in the question, we get $0<\beta_1<\beta_2<c$ (where $\beta_i = \frac{v_i}{c}$), in this case we get $2\beta_1 < 2\beta_2$, hence $2\beta_1 (1+\beta_2) = 2\beta_1 + 2\beta_1\beta_2 < 2\beta_2 + 2\beta_1\beta_2 = 2\beta_2(1+\beta_1)$, showing that $\frac{2\beta_1}{1+\beta_1}<\frac{2\beta_2}{1+\beta_2}$. Therefore, we get $1-\frac{2\beta_1}{1+\beta_1}>1-\frac{2\beta_2}{1+\beta_2}\geq 0$, showing that $w_1'=ck\sqrt{1-\frac{2\beta_1}{1+\beta_1}}>ck\sqrt{1-\frac{2\beta_2}{1+\beta_2}}=w_2'$.
+Notice that if two inertial frames $F_1', F_2'$ have speed $0<v_1<v_2<c$ respectively as described in the question, we get $0<\beta_1<\beta_2<c$ (where $\beta_i = \frac{v_i}{c}$), in this case we get $2\beta_1 < 2\beta_2$, hence $2\beta_1 (1+\beta_2) = 2\beta_1 + 2\beta_1\beta_2 < 2\beta_2 + 2\beta_1\beta_2 = 2\beta_2(1+\beta_1)$, showing that $\frac{2\beta_1}{1+\beta_1}<\frac{2\beta_2}{1+\beta_2}$. Therefore, we get $1-\frac{2\beta_1}{1+\beta_1}>1-\frac{2\beta_2}{1+\beta_2}\geq 0$, showing that $w_1'=w\sqrt{1-\frac{2\beta_1}{1+\beta_1}}>w\sqrt{1-\frac{2\beta_2}{1+\beta_2}}=w_2'$.
 
 This indicates that if a frame $F'$ has a wave with lower frequency, if its relative speed (to the original frame $F$) in the wave's longitudinal / traveling direction is larger (Longitudinal Doppler shift). 
 
@@ -211,28 +226,249 @@ Hence, if the velocity of the frame $F'$ is in the transverse direction of the w
 
 \section*{2 (Extra Credit)}
 \begin{question}\label{q2}
+    
+    \hfil
+
+    \begin{itemize}
+        \item[(a)] The photon is related to an electromagnetic wave (in a complicated way; one needs quantum mechanics). Rather than just talking about the energy and momentum of a photon, we thus also talk about the frequency and/or wavelength. Verify that $p^\mu=\hbar k^\mu$ is an acceptable relation, meaning that $p^\mu$ satisfies the necessary relation for the four-momentum of a photon iff $k^\mu$ satisfies the necessary relation for a four-wavevector moving at the speed of light. $\hbar$ is \emph{Planck's constant}, a constant of fundamental importance in quantum mechanics.
+        \item[(b)] A $\pi^0$ meson with mass $m_\pi=135.0$ MeV/c$^2$ is created in the upper atmosphere when a cosmic-ray proton collides with a nitrogen nucleus. The mean lifetime of a $\pi^0$ is $8.4\cdot 10^{-17}$ s; they almost always decay into two photons. Suppose this particular pion has total energy $E=500$ MeV and moves vertically downward toward the ground, and that it decayse after three mean lifetimes into two photons, one moving up and one moving down. How far does that $\pi^0$ move relative to the ground from its creation until it decayse? What is the frequency of each final photon, measured in the frame of the ground?
+        \item[(c)] The quantity $\lambda_C:=\hbar/m_ec$ is called the \emph{Compton wavelength} of the electron. If a photon scatters off an electron at rest with scattering angle $\theta=\pi/4$, what is the photon's change in wavelength in terms of $\lambda_C$? For what scattering angle is the change in wavelength a maximum, and what is the change in wavelength in that case? 
+    \end{itemize}
 \end{question}
 
 \textbf{Pf:}
+\subsection*{(a)}
+Given an inertial frame $F$, a photon with energy $E$ is traveling in some direction, WLOG, can set the traveling direction to be $x$ direction. Then, with the relation $P = \frac{E}{c}$ for photon, the associated four-momentum is given by coordinates $P^\mu = (\frac{E}{c}, P,0,0)$. Hence, its Lorentz invariant scalar $P^\mu\eta_{\mu\nu}P^\nu = -\paran*{\frac{E}{c}}^2+P^2 = 0$.
 
+Similarly, if consider the four-wavevector $k^\mu = (\frac{w}{c},k,0,0)$ (since in the space, the wavevector $\bar{k}$ has direction $\hat{x}$) based on the proposed form in Question \ref{q1}. Which, with $\frac{w}{k}=c$ (or $w=ck$) based on speed of light wave, its Lorentz invariant scalar $k^\mu\eta_{\mu\nu}k^\nu = -\paran*{\frac{w}{c}}^2+k^2 = 0$.
+
+Hence, if wet $\hbar$ (the Planck's Constant) to be a Lorentz invariant scalar, the relation $P^\mu = \hbar k^\mu$ is a plausible relation, since both have Minkwoski metric of $0$ (each due to their own property related to lightwave).
+
+\subsection*{(b)}
+WLOG, w'll set the downward direction as the $x$ direction for simplicity of calculation.
+
+Given a $\pi^0$ meson with mass $m_\pi = 135.0$ MeV/c$^2$ and total energy $E=500$ MeV in the ground frame, then given that $E=\sqrt{m^2c^4 + p^2c^2}$, since $m_\pi c^2 = 135.0$ MeV, we get the following for spatial momentum:
+\begin{align}
+    &(500)^2 \textmd{ MeV}^2= E^2 = (m_\pi c^2)^2 + p^2c^2 =(135)^2 + p^2c^2 \textmd{ MeV}^2\\
+    &\implies p^2c^2 = 500^2 - 135^2 = 365\cdot 635 = 231,775 \textmd{ MeV}^2\\
+    &\implies pc = \sqrt{231,775}\approx 481.430 \textmd{ MeV}\implies p \approx 481.430 \textmd{ MeV/c}
+\end{align}
+Also, since $\gamma = \frac{E}{mc^2}$, with $m_\pi c^2 = 135.0$ MeV and $E = 500$ MeV, we get $\gamma = \frac{500}{135} = \frac{100}{27}$ (which these are the relativistic factors corresponding to the frame $F'$ where spatial momentum $P$ is $0$). Which, $\frac{1}{\gamma^2} = 1-\beta^2 = \frac{27^2}{100^2}$, hence $\beta^2 = \frac{100^2-27^2}{100^2} = \frac{73\cdot 127}{100^2}$, or $\beta =\frac{\sqrt{73\cdot 127}}{100}\approx 0.963$. And, since in frame $F'$, the spatial momentum $P$ is $0$, then the meson is at rest, hence its total energy $E'$ in frame $F'$ is the rest energy, $E' = m_\pi c^2 = 135.0$ MeV.
+
+Notice that in $F'$ (which has some relative velocity to the original frame in $x$ direction), the meson initially has spatial momentum $p_0' = 0$ based on the relation, hence the final momentum is also $0$. Because after the decay, there are two photons flying off, one in $x'$ direction and the other in $-x'$ direction, then the two must have the same magnitude of spatial momentum $p'$; using the previous relation (where $p^\mu = \hbar k^\mu$), we can derive that $p' = \hbar k'$ (where $k'$ is the wavenumber of the photons in frame $F'$). Then, with $w' = ck'$, the two photons have the same frequency in frame $F'$. 
+
+Also, since the two photons have the same momentum, and photon has relation $E=pc$, then they also have the same energy. Using conservation of energy, in frame $F'$ each photon receives an energy of $\frac{E'}{2} = 67.5$ MeV, hence we get $\frac{E'}{2} = p'c = \hbar k'c = \hbar w'$, showing that $w'= \frac{67.5}{\hbar}$ rad/s.
+
+Now, using the Longitudinal Doppler effect derived in Question \ref{q1} (c), if transform to a frame with some speed $v$ in the wavev's traveling direction, then the wavelength in the transformed frame $w' = ck\sqrt{1-\frac{2\beta}{1+\beta}} = w\sqrt{1-\frac{2\beta}{1+\beta}}$. For the two photons, we can derive the following:
+\begin{itemize}
+    \item For the photon forwarding in $x$ direction, since transforming from $F$ to $F'$ requires a Lorentz Transformation with a speed in $x$ direction, then the factor $\beta \approx 0.963$ is used. Which, we get that $ \frac{67.5}{\hbar} = w' = w\sqrt{1-\frac{2\beta}{1+\beta}}$, hence $w = \frac{w'}{\sqrt{1-\frac{2\beta}{1+\beta}}} \approx \frac{490.715}{\hbar}$ rad/s.
+    \item For the photon traveling in $-x$ direction, since moving from $F$ to $F'$ can be viewed as a transformation in the opposite direction of the wave's traveling direction, then we instead plugin $-\beta \approx -0.963$. Which, we get that $\frac{67.5}{\hbar}=w' = w\sqrt{1+\frac{2\beta}{1-\beta}}$, hence $w=\frac{w'}{\sqrt{1+\frac{2\beta}{1-\beta}}}\approx \frac{9.285}{\hbar}$ rad/s.
+\end{itemize}
+
+\hfil
+
+Then, to calculate the distance the meson moves relative to the ground frame $F$, since it lives through three times of the mean life time, while a mean life time is $8.4\cdot 10^{-17}$ seconds, it lives total of $\Delta t = 2.52 \cdot 10^{-16}$ seconds. Which, recall that we've derived $p = \gamma mv$, where $p \approx 481.430$ MeV/c, $\gamma = \frac{100}{27}$, and $m_\pi = 135.0$ MeV/c$^2$, then we get $v = \frac{p}{\gamma m_\pi}\approx \frac{27\cdot 481.430}{100\cdot 135}$ c $\approx 0.963 c \approx 2.887 \cdot 10^8$ m/s.
+
+Hence, the total distance the meson has traveled is $v\Delta t \approx 7.274 \cdot 10^{-8}$ m.
+
+\subsection*{(c)}
+Suppose initially the wavelength of the photon $\gamma$ is $\lambda$, then with the relationship $p = \hbar k$, $k = \frac{2\pi}{\lambda}$, and $E = pc$ for photon and wave, we get the energy of the initial photon $E_\gamma = \frac{2\pi c\hbar}{\lambda}$.
+
+Now, for Compton scattering, recall that with scattering angle $\theta$, the scattered photon $\gamma'$ has energy $E_{\gamma'}=\frac{E_\gamma}{1+\frac{E_\gamma}{m_e c^2}(1-\cos(\theta))}$. Then, suppose photon $\gamma'$ has wavelength $\lambda'$, with $\theta = \frac{\pi}{4}$, $\cos(\theta) = \frac{\sqrt{2}}{2}$, we get the following:
+\begin{align}
+    \frac{2\pi c\hbar}{\lambda'}\paran*{1+\frac{E_\gamma}{m_ec^2}\paran*{1-\frac{\sqrt{2}}{2}}} = E_{\gamma'}\paran*{1+\frac{E_\gamma}{m_ec^2}\paran*{1-\frac{\sqrt{2}}{2}}} = E_\gamma
+\end{align}
+With Compton wavelength $\lambda_C := \frac{\hbar}{m_ec}$, we know $\frac{E_\gamma}{m_ec^2} = \frac{2\pi c\hbar}{\lambda m_ec^2} = \frac{2\pi}{\lambda} \lambda_C$, we get the following relation:
+\begin{align}
+    &\frac{2\pi c\hbar}{\lambda'}\paran*{1+\frac{2\pi}{\lambda}\lambda_C\paran*{1-\frac{\sqrt{2}}{2}}} = \frac{2\pi c\hbar}{\lambda}\\
+    &\implies \lambda' = \lambda\paran*{1+\frac{2\pi}{\lambda}\lambda_C\paran*{1-\frac{\sqrt{2}}{2}}} = \lambda + 2\pi \lambda_C\paran*{1-\frac{\sqrt{2}}{2}}\\
+    &\implies \Delta \lambda = \lambda' - \lambda = 2\pi\paran*{1-\frac{\sqrt{2}}{2}}\lambda_C
+\end{align}
+So, the change in wavelength is $\Delta \lambda=2\pi\paran*{1-\frac{\sqrt{2}}{2}}\lambda_C$.
+
+\hfil
+
+In general the term $\frac{\sqrt{2}}{2}$ is $\cos(\theta)$ with the scattering angle. Hence, in general $\Delta \lambda = 2\pi\paran*{1-\cos(\theta)}\lambda_C$. Which, its maximum occurs at the minimum of $\cos(\theta)$, which is exactly at $\theta=\pi$ (if given the range $\theta\in [0,\pi]$). In this sense, $\cos(\pi)=-1$, hence $\Delta \lambda=4\pi\lambda_C$.
 
 \break
 
 \section*{3}
 \begin{question}\label{q3}
+    Earlier in the course, we worked with a non-relativistic rocket, for which both the exhaust and the rocket are traveling at non-relativistic speeds. Now we'll examine a relativistic rocket, for which some speed is comparable to the speed of light.
+    \begin{itemize}
+        \item[(a)] Use conservation of momentum to show that 
+        $$\frac{v\ dm}{(-v^2/c^2)^{1/2}}+\frac{m\ dv}{(1-v^2/c^2)^{3/2}}=-\frac{ u'\ dM}{(1-(u')^2/c^2)^{1/2}}$$
+        Here $m,v$ are the mass and velocity of the rocket, $dM$ is the (infinitesimal) mass of the exhaust expelled in time $dt$, and $u'$ is the velocity of the exhaust. All velocities are measured in a particular inertial frame (arbitrary, but the same for all).
+        \item[(b)] For a non-relativistic rocket, conservation of mass means $dM=-dm$. In the relativistic case, mass is not conserved, so $dM\neq -dm$. Use conservation of energy to eliminate $dM$ in favor of $dm$ and/or $dv$, and show that 
+        $$m\frac{dv}{dm}-u(1-v^2/c^2)=0$$
+        Here $u$ is the velocity ofthe exhaust iin the rocket frame. As usual with rockets, the engine effects a constant exhaust velocity relative to the rocket. Verify that this predicts that the rocket will go in the opposite direction as it expels exhuast.
+        \item[(c)] Solve the differential equation to show that the speed is given by 
+        $$v=\frac{1-(m/m_0)^{2u/c}}{1+(m/m_0)^{2u/c}}c$$
+        where $u,v$ are now speeds, assumign the rocket starts from rest. Show that, for any fixed mass ratio $m/m_0$, $v$ is an increasing function of $u$; expelling the reaction mass at faster speeds maks the rocket go faster. Also show that 
+        \begin{itemize}
+            \item[i.] if $m<<m_0$, this predicts $v\approx c$, and explain why this makes sense.
+            \item[ii.] if $u<<c$ and $m\not<<m_0$, this agrees with the non-relativistic prediction.
+            \item[iii.] if $1-m/m_0<<1$, this agrees with the non-relativistic prediction (for any nonzero $u$, relativistic or not).  
+        \end{itemize}
+        \item[(d)] Now we'll look at a few different types of rockets and see how they perform. Our examples will be:
+        \begin{itemize}
+            \item[i.] A standard chemical rocket, with $\sim 10^{-5}c$.
+            \item[ii.] An ion thruster, with $u\sim 10^{-4}c$. Ion thrusters work by ionizing a gas and then using the electric force to accelerate the ions. They don't work well for launching off of Earth because $dm/dt$ is too small, but are preferred for spacecraft in vacuum due to the larger $u$.
+            \item[iii.] Next-generation electric propulsion, with $u\sim 10^{-3}c$.
+            \item[iv.] An idealized antimatter-powered engine, which perfectly converts all the fuel mass to pure energy and manages to fire every last drop of it out the back, exactly opposite the rocket's motion. It has $u=c$.
+            \item[v.] A more realistic (but still futuristic) antimatter-powered engine, such as a pion rocket, for which $u\sim c/2$.    
+        \end{itemize}
+        In all cases, we'll assume that $dm/dt$ is large enought that essentially all of the rockett's trip is spent traveling at its maximum speed. Given structural constraints (i.e. the need for a fuel tank), assume that in all cases at most 90\% of the initial mass is fuel (and that we use a one-stage rocket). We'll also forget about any need to stop at our destination; all the fuel will be used to accelerate to top speed. Finally, we'll assume that our rocket is taking off from a space station, rather than launching out of Earth's gravity well.
+
+        Consider traveling to Proxima Centauri, 4.2 light-years away as measured on the Eart. For each of our five example rockets, calculate how long a trip to Proxima Centauri takes in the Earth frame (which can assume to be inertial) and how much proper time elapses on the rocket.
+    \end{itemize}
 \end{question}
 
 \textbf{Pf:}
+
+WLOG, assume the rocket (and the exhaustion) are having motion in the $x$ direction.
 \subsection*{(a)}
-If we're still given that $F = \frac{dP}{dt}$ under $1$-dimension (for any inertial frame), then given that $P = \gamma mv$ (on the same direction), we get the following relation: 
+If we're still given that $F = \frac{dP}{dt}$ under $1$-dimension (for a fixed inertial frame), then given that $P = \gamma mv$ (assuming in an inertial frame, we're only moving on one direction), we get the following relation: 
 \begin{align}
     \frac{dP}{dt} &= \frac{dm}{dt} \gamma v + m \frac{d}{dt}\paran*{\frac{v}{\sqrt{1-v^2/c^2}}} = \frac{dm}{dt}\gamma v + m\frac{\sqrt{1-v^2/c^2} - v\cdot \paran*{\frac{-2v/c^2}{2\sqrt{1-v^2/c^2}}}}{1-v^2/c^2}\frac{dv}{dt}\\
-    &= \frac{dm}{dt}\gamma v + m\gamma^2\paran*{\frac{1}{\gamma}+\gamma\beta^2}\frac{dv}{t}
+    &= \frac{dm}{dt}\gamma v + m\gamma^2\paran*{\frac{1}{\gamma}+\gamma\beta^2}\frac{dv}{dt} = \frac{dm}{dt}\gamma v + m\gamma\frac{dv}{dt}+m\gamma \frac{\beta^2}{1-\beta^2}\frac{dv}{dt}\\
+    &= \frac{dm}{dt}\gamma v+m\gamma\frac{dv}{dt} + m\gamma\paran*{\frac{1}{1-\beta^2}-1}\frac{dv}{dt} = \frac{dm}{dt}\gamma v + m\gamma^3\frac{dv}{dt}
 \end{align}
-Now, suppose in some frame $F$, the rocket's measured velocity is $v$, an the velocity of the exhaustion is $u'$, then suppose within some small instant $\Delta t$, the amount of exhaustion has total mass $\Delta M$ (which $\Delta t\rightarrow 0$ implies $\Delta M\rightarrow 0$, since shorter time implies shorter mass exhaustion), then using conservation of momentum, with the initial momentum $P_0 = \gamma_v mv$, the final momentum of the rocket $P_r = m(t+\Delta t) \gamma_v v(t+\Delta t)$, and the momentum of the exhaustion $P_e \approx \Delta M \gamma_{u'}u'$, we get $P_0 = P_r+P_e$ (or $P_0-P_r-P_e = 0$). Then, divide by $\Delta t$ and take $\Delta t\rightarrow 0$, we get:
+(Note: Recall that $\gamma^2 = \frac{1}{1-\beta^2}$ for the last line).
+
+Now, suppose in some frame $F$, the rocket's measured velocity is $v$, an the velocity of the exhaustion is $u'$, then suppose within some small instant $\Delta t$, the amount of exhaustion has total mass $\Delta M$ (which $\Delta t\rightarrow 0$ implies $\Delta M\rightarrow 0$, since shorter time implies shorter mass exhaustion), then using conservation of momentum, with the initial momentum $P_0 = P_{r,0} = \gamma_v mv$ (at the instant the whole system can assumed to have mass only on the rocket), the final momentum of the rocket $P_r = m(t+\Delta t) \gamma_v v(t+\Delta t)$, and the momentum of the exhaustion $P_e \approx \Delta M \gamma_{u'}u'$, we get $P_{r,0} = P_r+P_e$ (or $-P_e = P_r - P_{r,0}$). Then, divide by $\Delta t$ and take $\Delta t\rightarrow 0$, we get:
 \begin{align}
-    \frac{dm}{dt}\gamma v+m\gamma \frac{dv}{dt} + m\gamma^3\beta^2\frac{dv}{dt}
+    \lim_{\Delta t\rightarrow 0}-\frac{\Delta M}{\Delta t}\gamma_{u'}u' = \lim_{\Delta t\rightarrow 0}\frac{P_r - P_{r,0}}{\Delta t}
+\end{align}
+\begin{align}
+    -\frac{dM}{dt}\gamma_{u'}u'= \frac{dP_r}{dt} = \frac{dm}{dt}\gamma_v v+m\gamma_v^3 \frac{dv}{dt} = \frac{dm}{dt}\frac{v}{\sqrt{1-\frac{v^2}{c^2}}} + m\frac{dv}{dt}\frac{1}{\paran*{1-\frac{v^2}{c^2}}^\frac{3}{2}}
+\end{align}
+Hence, we get the following differential equation in general, as long as all velocities are measured in the same inertial frame:
+\begin{align}
+    \frac{v\ dm}{\paran*{1-\frac{v^2}{c^2}}^\frac{1}{2}} + \frac{m\ dv}{\paran*{1-\frac{v^2}{c^2}}^\frac{3}{2}} = -\frac{u'\ dM}{\paran*{1-\frac{(u')^2}{c^2}}^\frac{1}{2}}
 \end{align}
 
+\subsection*{(b)}
+Using similar method as we did the calculation in (a), at any instant $t$ with some small time elapsed $\Delta t$ (for the given inertial frame $F$), initially at time $t$ since all the masses are on the rocket itself, then the initial energy $E_0 = \gamma_{v(t)} m(t)c^2$; at time $t+\Delta t$, the exhaustion has a total mass of $\Delta M$ (at velocity $u'$), while the mass of the rocket becomes $m(t+\Delta t)$ (at velocity $v(t+\Delta t)$), then the final energy becomes $E_f \approx \gamma_{v(t+\Delta t)}m(t+\Delta t)c^2 + \gamma_{u'}\Delta M c^2$. By conservation of energy, we know $E_0 = E_f$, hence $\gamma_{v(t)}m(t)c^2 = \gamma_{v(t+\Delta t)}m(t+\Delta t)c^2 + \gamma_{u'}\Delta M c^2$. Do some rearrangements and cancellation, we get:
+\begin{align}
+    \gamma_{v(t+\Delta t)}m(t+\Delta t) - \gamma_{v(t)}m(t) = -\gamma_{u'}\Delta M
+\end{align}
+
+Then, take division by $\Delta t$, take $\Delta t\rightarrow 0$, we get:
+\begin{align}
+    &\lim_{\Delta t\rightarrow 0}\frac{\gamma_{v(t+\Delta t)m(t+\Delta t)-\gamma_{v(t)}m(t)}}{\Delta t} = \lim_{\Delta t\rightarrow 0}-\gamma_{u'}\frac{\Delta M}{\Delta t}\\
+    &\implies \frac{d\gamma_v}{dt}m + \frac{dm}{dt}\gamma_v = -\frac{dM}{dt}\gamma_{u'}\\
+    &\implies -\paran*{-\frac{1}{2}}\frac{2v/c^2}{\paran*{1-\frac{v^2}{c^2}}^\frac{3}{2}}\frac{dv}{dt}m + \frac{dm}{dt}\frac{1}{\sqrt{1-\frac{v^2}{c^2}}} = -\gamma_{u'}\frac{dM}{dt}\\
+    &\implies -\gamma_{u'}\frac{dM}{dt} = \frac{mv}{c^2\paran*{1-\frac{v^2}{c^2}}^\frac{3}{2}}\frac{dv}{dt} + \frac{dm}{dt}\frac{1}{\paran*{1-\frac{v^2}{c^2}}^\frac{1}{2}}
+\end{align}
+Using the fact that $u$ is the relative velocity of the exhaustion under rocket's frame (at any instant, can be transformed using the rocket's speed $v$ from the original frame) and $u'$ is the velocity of the exhaustion under the original frame (both in similar spatial direction), we derived $u = \frac{u'-v}{1-\frac{vu'}{c^2}}$, or $u-\frac{vu}{c^2}u' = u'-v$, hence $u+v = u'\paran*{1+\frac{uv}{c^2}}$, or $u' = \frac{u+v}{1+\frac{vu}{c^2}}$.  With the previous equation in (a), saying $-\frac{dM}{dt}\gamma_{u'}u' = \frac{dm}{dt}\gamma v+m\frac{dv}{dt}\gamma^3$ (where $\gamma$ associates with speed $v$ of the rocket in frame $F$), plugin the relation of $\gamma_{u'}\frac{dM}{dt}$ and $u'$ from above, we get:
+\begin{align}
+    \frac{u+v}{1+\frac{vu}{c^2}}\paran*{\frac{mv\gamma^3}{c^2}\frac{dv}{dt}+\gamma\frac{dm}{dt}} = \frac{dm}{dt}\gamma v+m\frac{dv}{dt}\gamma^3
+\end{align}
+\begin{align}
+    \frac{mv(u+v)\gamma^3}{c^2}\frac{dv}{dt}+(u+v)\gamma\frac{dm}{dt} =\paran*{1+\frac{vu}{c^2}}\gamma v\frac{dm}{dt} + \paran*{1+\frac{vu}{c^2}}m\gamma^3\frac{dv}{dt}
+\end{align}
+\begin{align}
+    m\beta^2\gamma^3\frac{dv}{dt}+u\gamma\frac{dm}{dt}= u\gamma\beta^2\frac{dm}{dt} + m\gamma^3\frac{dv}{dt}
+\end{align}
+\begin{align}
+    u(1-\beta^2)\frac{dm}{dt} - m\gamma^2(1-\beta^2)\frac{dv}{dt}=0
+\end{align}
+\begin{align}
+    u\paran*{1-\frac{v^2}{c^2}} - m\frac{dv}{dm} = u\paran*{1-\frac{v^2}{c^2}} - m\frac{dv/dt}{dm/dt} = 0
+\end{align}
+Hence, we derived that $m\frac{dv}{dm} - u\paran*{1-\frac{v^2}{c^2}} = 0$.
+
+The reason this causes the the rocket to go in opposite direction of the exhaustion's direction, we'll suppose $u<0$ (i.e. the exhaustion is expelled in $-x$ direction relative to the rocket), then we get $m\frac{dv}{dm} = u\paran*{1-\frac{v^2}{c^2}}<0$ (since $\paran*{1-\frac{v^2}{c^2}}>0$). Which, with $m\geq 0$ at all time, we must have $\frac{dv}{dm}<0$. This indicates that as the mass $m$ of the rocket decreases, its velocity $v$ (in $x$ direction of frame $F$) increases, hence showing there is an acceleration in the $x$ direction, showing that the rocket is intended to go in the opposite direction from the direction it expels exhaustion.
+
+\subsection*{(c)}
+With the equation in (b), it can be rewritten as $\frac{dv}{dm} = \frac{u}{mc^2}\paran*{c^2-v^2} = -\frac{u}{mc^2}(v-c)(c+v)$. Hence, we get the following relation:
+\begin{align}
+    \frac{1}{(v-c)(v+c)}\frac{dv}{dm} = -\frac{u}{mc^2}
+\end{align}
+Using partial fraction, $\frac{1}{(v-c)(v+c)} = \frac{A}{v-c}+\frac{B}{v+c}$ for some $A,B \in \CC$, which $A(v+c) + B(v-c) = 1$, hence we must have $A=-B$ and $(A-B)c = 1$, showing that $A=\frac{1}{2c}$ and $B=\frac{-1}{2c}$. Plug these relations in, we get:
+\begin{align}
+    \frac{1}{2c}\paran*{\frac{1}{v-c}-\frac{1}{v+c}}\frac{dv}{dm} = -\frac{u}{c^2}\frac{1}{m}&\implies \paran*{\frac{1}{v-c}-\frac{1}{v+c}}\frac{dv}{dm} = -\frac{2u}{c}\frac{1}{m}\\
+    &\implies \int \paran*{\frac{1}{v-c}-\frac{1}{v+c}}\frac{dv}{dm}dm = -\frac{2u}{c}\int \frac{1}{m}dm \\
+    &\implies \ln\paran*{\frac{v-c}{v+c}}=\ln(v-c) - \ln(v+c) = -\frac{2u}{c}\ln(m)+K\\
+    &\implies 1-\frac{2c}{v+c} = \frac{v-c}{v+c} = K'm^{-2u/c}\\
+    &\implies \frac{v+c}{2c} = \frac{1}{1-K'm^{-2u/c}}\\ 
+    &\implies v = \frac{2c}{1-K'm^{-2u/c}}-c = c\frac{1+K'm^{-2u/c}}{1-K'm^{-2u/c}}
+\end{align}
+Given that in the inertial frame we observed, the rocket starts from rest (and with initial mass $m_0$), we get $v(m_0) = 0$, hence the relationship becomes:
+\begin{align}
+    0=v(m_0)=\frac{2c}{1-K'm_0^{-2u/c}}-c&\implies 1-K'm_0^{-2u/c} = 2\\
+    &\implies K'm_0^{-2u/c} = -1\\
+    &\implies K' = -m_0^{2u/c}
+\end{align}
+Plug into the equation of $v$, we get:
+\begin{align}
+    v(m) = \frac{1-m_0^{2u/c}m^{-2u/c}}{1+m_0^{2u/c}m^{-2u/c}}c = \frac{1-(m/m_0)^{-2u/c}}{1+(m/m_0)^{-2u/c}}c
+\end{align}
+If we treat $u$ as speed (which in terms of velocity is $-u$, since we generally expel the exhaustion in $-x$ direction; the above function is in terms of velocity, not speed), then we get $v(m) = \frac{1-(m/m_0)^{2u/c}}{1+(m/m_0)^{2u/c}}c$. 
+
+\hfil
+
+Given the above relations, here are some relations:
+\begin{itemize}
+    \item[0.] First, given a fixed mass ratio $0<\frac{m}{m_0}< 1$ (strict inequality for nontrivial results, since $m=0$ and $m=m_0$ the speed $v$ is not changing in terms of $u$), if given $0<u_1<u_2<c$, we get that $(m/m_0)^{2u_1/c} > (m/m_0)^{2u_2/c}>0$ (since the base $0<m/m_0<1$). 
+    
+    Now, given any real numbers $a>b>-1$, we get that $a-b>0>-(a-b) = b-a$, hence $(1+a)(1-b) = 1+a-b-ab > 1-a+b-ab = (1-a)(1+b)$. Which, with $(1+a),(1+b)>0$, we get the relation $\frac{1-b}{1+b}>\frac{1-a}{1+a}$.
+
+    The above two inequalities show the statements $0<u_1<u_2<c\ \implies (m/m_0)^{2u_1/c} > (m/m_0)^{2u_2/c}>0$, while $a>b>-1\ \implies \frac{1-a}{1+a}<\frac{1-b}{1+b}$. Combining the two, we get:
+    \begin{align}
+        0<u_1<u_2<c\ \implies (m/m_0)^{2u_1/c} > (m/m_0)^{2u_2/c}>0>-1\ \implies \frac{1-(m/m_0)^{2u_1/c}}{1+(m/m_0)^{2u_1/c}} < \frac{1-(m/m_0)^{2u_2/c}}{1+(m/m_0)^{2u_2/c}}
+    \end{align}
+    This shows that with fixed mass ratio $0<\frac{m}{m_0}<1$, the function $v=\frac{1-(m/m_0)^{2u/c}}{1+(m/m_0)^{2u/c}}c$ is an increasing function of $u$ (with $0<u<c$). So, expell the mass at faster speed makes the rocket go faster.
+
+    \hfil
+
+    \item[i.] Now, given that $m<<m_0$, then the term $\frac{m}{m_0}\approx 0$. Hence, with $u>0$, we have $v=\frac{1-(m/m_0)^{2u/c}}{1+(m/m_0)^{2u/c}}c \approx \frac{1-0}{1+0}c = c$. A reason this makes sense is because of the momentum $p=\gamma mv$: Since the rocket constantly propells mass out of itself, this process leads to an accumulation of certain amount of momentum on the rocket itself (which, even when $m\approx 0$, there are still nonzero momentum). Then, with $v$ being bounded and $m$ close to $0$, in case for $P$ to be nontrivial, we must have $\gamma$ increase accordingly. Moreover, if $m\rightarrow 0$, for $P$ to be nonzero we need $\gamma\rightarrow \infty$, which can only be achieved when the speed of the rocket approaches $c$. Hence, when the mass ratio of the rocket's mass to its initial mass is about $0$, the speed approaches $c$.
+    
+    \item[ii.] With $u<<c$ and $m\not<< m_0$, using Taylor series of exponential function up to the first order, we get $(m/m_0)^{2u/c} = e^{2u/c\ln(m/m_0)} \approx 1+\frac{2u}{c}\ln\paran*{\frac{m}{m_0}}$, hence the speed can be approximated as:
+    \begin{align}
+        v=\frac{1-(m/m_0)^{2u/c}}{1+(m/m_0)^{2u/c}}c \approx \frac{-\frac{2u}{c}\ln(m/m_0)}{2+\frac{2u}{c}\ln(m/m_0)}c \approx -u\ln\paran*{\frac{m}{m_0}}
+    \end{align}
+    (Note: recall that $\frac{x}{1+x}\approx x$ when $x\approx 0$).
+
+    Which, the above approximated form is the nonrelativistic prediction of the rocket equation (given that $v=0$ when $m=m_0$, initially at rest), based on mass ratio and the relative speed of exhaustion.
+
+    \item[iii.] Finally, with $1-\frac{m}{m_0}<<1$, we get $1-\frac{m}{m_0}\approx 0$, or $\frac{m}{m_0}\approx 1$. Which, with $0<u<c$, the term $\frac{2u}{c}\ln\paran*{\frac{m}{m_0}}\approx 0$ due to $\ln\paran*{\frac{m}{m_0}}\approx 0$ (and $0<\frac{2u}{c}<2$). Hence again, $(m/m_0)^{2u/c} = e^{2u/c\ln(m/m_0)}\approx 1+\frac{2u}{c}\ln\paran*{\frac{m}{m_0}}$, which the same approximation used in ii. can also be used here. Hence, again $v \approx -u\ln\paran*{\frac{m}{m_0}}$, which again is the nonrelativistic prediction of the rocket equation with the rocket initially at rest (and this time it's not that dependent on the exhaustion's speed $u$).
+\end{itemize}
+
+\subsection*{(d)}
+For the question, we're given that Proxima Centauri being $4.2$ light-years away from Earth (in Earth's frame), at most 90\% of the initial mass is fuel (so after consuming all fuel, the rocket has at least 10\% of mass left, which eventually $\frac{1}{10}\leq \frac{m}{m_0}<1$; here we treat the final mass ratio $\frac{m}{m_0}=\frac{1}{10}$), and assume that nearly the whole rocket's trip is with maximum speed (i.e. the rocket is in inertial frame nearly the whole trip). Hence, the time duration in the rocket's frame can be approximated as $c\Delta t' \approx \gamma c\Delta t - \gamma\beta \Delta x$.
+
+For simplicity, distance will use scale of light-year, while time will use scale of year.
+
+\begin{itemize}
+    \item[i.] Given a standard chemical rocket with $u \sim 10^{-5}c$, we have $\frac{2u}{c}\sim \frac{2}{10^5}$. Hence, with final mass ratio being about $\frac{1}{10}$, we get $\paran*{\frac{m}{m_0}}^{2u/c} \approx 10^{-2/10^5}$. Plug into the speed function, we get the final speed $v\approx \frac{1-10^{-2/10^5}}{1+10^{-2/10^5}}c \approx 2.303\cdot 10^{-5}c$. Hence, with distance $\Delta x=4.2$ light-years away, in Earth's frame the trip takes time $\Delta t\approx \frac{4.2}{2.303\cdot 10^{-5}} \approx 1.824 \cdot 10^5$ years to reach Proxima Centauri.
+    
+    When transfer to the rocket's frame (assume with its speed being maximum speed), we have $\gamma \approx 1+2.7\cdot 10^{-10}$, $\beta \approx 2.303\cdot 10^{-5}$. Which, using the formula we get $c\Delta t' \approx 1.824\cdot 10^5$ light-year, or $\Delta t'\approx 1.824\cdot 10^5$ years, showing $\Delta t'\approx \Delta t$, there's no significant relativistic effect on this rocket.
+
+    \hfil
+
+    \item[ii.] Given an ion thruster with $u \sim 10^{-4}c$, we have $\frac{2u}{c}\sim \frac{2}{10^4}$. Hence, with final mass ratio of about $\frac{1}{10}$, we get $\paran*{\frac{m}{m_0}}^{2u/c}\approx 10^{-2/10^4}$. Plug into the speed function, the final speed $v \approx \frac{1-10^{-2/10^4}}{1+10^{-2/10^4}}c \approx 2.303\cdot 10^{-4}c$. Hence, in Earth's frame the trip takes time $\Delta t\approx \frac{4.2}{2.303\cdot 10^{-4}}\approx 1.824\cdot 10^4$ years to reach proxima Centauri.
+    
+    When transfer to the rocket's frame (in maximum speed), we have $\gamma\approx 1+2.651\cdot 10^{-8}$, $\beta\approx 2.303\cdot 10^{-4}$. Which, using the formula we get $c\Delta t' \approx 1.824\cdot 10^4$ light-year, or $\Delta t'\approx 1.824\cdot 10^4$ years, showing $\Delta t'\approx \Delta t$, there's no significant relativistic effect on this rocket.
+
+    \hfil
+
+    \item[iii.] Given a Next-generation electric propulsion with $u\sim 10^{-3}c$, we have $\frac{2u}{c}\sim \frac{2}{10^3}$. Hence, with final mass ratio of $\frac{1}{10}$, we get $\paran*{\frac{m}{m_0}}^{2u/c}\approx 10^{2/10^3}$. Plug into the speed function, the final speed $v\approx \frac{1-10^{2/10^3}}{1+10^{2/10^3}}c \approx 2.303\cdot 10^{-3}c$. Hence, in Earth's frame the trip takes time $\Delta t\approx \frac{4.2}{2.303\cdot 10^{-3}}\approx 1824.040$ years to reach Poxima Centauri.
+    
+    When transfer to the rocket's frame (in max speed), we have $\gamma\approx 1+2.651\cdot 10^{-6}$, $\beta \approx 2.303\cdot 10^{-3}$. Which, using the formula we get $c\Delta t'\approx 1824.035$ light-year, or $\Delta t'\approx 1824.035$ years, showing $\Delta t'\approx \Delta t$, there's still no significant relativistic effect on this rocket.
+
+    \hfil
+
+    \item[iv.] Given an idealized antimatter-powered engine (with everyting in idealized) and $u=c$, we have $\frac{2u}{c}=2$. Hence, with final mass ratio of $\frac{1}{10}$ (by assumption of converting all fuel to propulsion), we get $\paran*{\frac{m}{m_0}}^{2u/c} = 10^{-2}$. Plug into the speed function, the final speed $v=\frac{1-10^{-2}}{1+10^{-2}}c \approx 0.980c$. Hence, in Earth's frame the trip takes time $\Delta t \approx \frac{4.2}{0.980} \approx 4.285$ years to reach Proxima Centauri.
+    
+    When transfer to the rocket's frame in max speed, we have $\gamma =5.05$, $\beta \approx 0.980$. Which, using the formula we get $c\Delta t' \approx 0.848$ light-years, or $\Delta t'\approx 0.848$ years. Here, it's obvious that $\Delta t'< \Delta t$, where relativistic effect can be seen.
+
+    \hfil
+
+    \item[v.] Given an antimatter-powered engine with $u\sim \frac{c}{2}$, then $\frac{2u}{c}\sim 1$. Hence, with final mass ratio of approximately $\frac{1}{10}$, we get $\paran*{\frac{m}{m_0}}^{2u/c}\approx \frac{1}{10}$. Plug into the speed function, the final speed $v\approx \frac{1-1/10}{1+1/10}c = \frac{9}{11}c$. Hence, in Earth's frame the trip takes time $\Delta t\approx \frac{4.2}{9/11} = \frac{77}{15} \approx 5.133$ years to reach Proxima Centauri.
+    
+    When transfer to the rocket's frame in max speed, we have $\gamma\approx 1.739$, $\beta=\frac{9}{11}$. Which, using the formula we get $c\Delta t'\approx 2.951$ light-years, or $\Delta t'\approx 2.951$ years. Here, $\Delta t'<\Delta t$ is also obvious, where relativistic effect can be seen.
+\end{itemize}
 
 \end{document}
