@@ -1,5 +1,6 @@
 #import "@preview/rubber-article:0.4.1": *
 #import "@preview/ergo:0.1.0": *
+#import "@preview/fletcher:0.5.5" as fletcher: *
 
 //basic template setup
 #show: article.with(
