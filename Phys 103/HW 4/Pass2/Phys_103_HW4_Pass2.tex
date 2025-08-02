@@ -1,0 +1,171 @@
+\documentclass{article}
+\usepackage[margin = 2.54cm]{geometry} % set margin to traditional doc
+
+%packages
+\usepackage{graphicx} % Required for inserting images
+\usepackage[most]{tcolorbox} %for creating environments
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor} %for importing multiple colors
+\usepackage{hyperref} %for creating links to different sections
+
+\linespread{1.2} %controlling line spread
+
+%define colors i like
+\definecolor{myTeal}{RGB}{0,128,128}
+\definecolor{myGreen}{RGB}{34,170,34}
+\definecolor{mySapphire}{RGB}{15,82,186}
+\definecolor{myEmerald}{RGB}{50.4, 130, 90}
+
+%create math environments, can add [section] or [subsection] to add index counter based on sections/subsections
+\newtheorem{define}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{lemma}{Lemma}
+
+%setup colored box environment for each math env above
+\tcolorboxenvironment{define}{
+    enhanced, colframe=myTeal!50!teal, colback=myTeal!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{prop}{
+    enhanced, colframe=myGreen!50!black, colback=myGreen!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{thm}{
+    enhanced, colframe=mySapphire!50!mySapphire, colback=mySapphire!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{question}{
+    enhanced, colframe=blue!50!black, colback=blue!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{lemma}{
+    enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+
+%setup hyperlink within pdf
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+%common command (add to template)
+%general
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+\newcommand{\Id}{\textmd{Id}} %identity
+\newcommand{\lcm}{\textmd{lcm}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\paran}{(}{)}%paranthesis
+\DeclarePairedDelimiter{\bracket}{\langle}{\rangle}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+%algebra
+\newcommand{\Gal}{\textmd{Gal}}
+\newcommand{\Aut}{\textmd{Aut}}
+\newcommand{\End}{\textmd{End}}
+\newcommand{\Coker}{\textmd{Coker}}
+\newcommand{\Hom}{\textmd{Hom}}
+\newcommand{\Nil}{\textmd{Nil}}
+\newcommand{\Char}{\textmd{char}}
+
+%analysis
+\newcommand{\Vol}{\textmd{Vol}}
+
+%complex
+\newcommand{\Real}{\textmd{Re}}
+\newcommand{\Imag}{\textmd{Im}} %can also be used for Image
+\newcommand{\Res}{\textmd{Res}}
+
+%lie algebra
+\newcommand{\gl}{\mathfrak{gl}}
+
+%physics
+\newcommand{\br}{\textbf{r}} %position
+\newcommand{\bv}{\textbf{v}} %velocity
+\newcommand{\ba}{\textbf{a}} %cceleration
+\newcommand{\bF}{\textbf{F}} %force
+\newcommand{\bP}{\textbf{P}} %momentum
+\newcommand{\bL}{\textbf{L}} %angular momentum
+\newcommand{\bN}{\textbf{N}} %torque
+\newcommand{\bw}{\textbf{w}} %angular velocity
+\newcommand{\bzero}{\textbf{0}}
+
+\title{Latex Template}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{Question 1}
+
+\textbf{Pf:}
+
+About this point I got points docked off because of not using index notations. I'll try and practice using that more often so I can get used to it.
+
+\hfil
+
+\hfil
+
+\section*{Question 2}
+
+\textbf{Pf:}
+
+\break
+
+\section*{Question 3}
+
+\textbf{Pf:}
+
+\break
+
+\section*{Question 4}
+
+\textbf{Pf:}
+
+\break
+
+\section*{Question 5}
+
+\textbf{Pf:}
+
+About this question, I assumed that in the initial rest frame, the observed acceleration of the two spaceships are always some constant $a$ within some given time (where the speed doesn't exceed $c$), which in general is not that practical. But I'm not sure why exactly I got the points docked off, because I did mention we can't keep accelerating at constant rate (in an inertial frame) forever.
+
+\hfil
+
+\hfil
+
+\section*{Question 6}
+
+\textbf{Pf:}
+
+About this question, I got marked wrong because the grader claimed that I didn't specify the boost in other directions. However I did mention that no matter which "direction" in the space we're boosting to (which has no relation with the coordinates yet, just a vector in the 3-dimensional space), we can always choose spatial coordinates (basis) so that the boosting direction is always aligned in the $x$-direction. Since I've specified this (and submitted a regrade request before), I still got marked off, I don't know why.
+
+\hfil
+
+\hfil
+
+\section*{Question 7}
+
+\textbf{Pf:}
+
+Even though I got this question right, but I still got marked off by 0.1 pt.
+
+\end{document}
