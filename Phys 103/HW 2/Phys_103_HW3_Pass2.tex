@@ -1,0 +1,212 @@
+\documentclass{article}
+\usepackage[margin = 2.54cm]{geometry} % set margin to traditional doc
+
+%packages
+\usepackage{graphicx} % Required for inserting images
+\usepackage[most]{tcolorbox} %for creating environments
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor} %for importing multiple colors
+\usepackage{hyperref} %for creating links to different sections
+
+\linespread{1.2} %controlling line spread
+
+%define colors i like
+\definecolor{myTeal}{RGB}{0,128,128}
+\definecolor{myGreen}{RGB}{34,170,34}
+\definecolor{mySapphire}{RGB}{15,82,186}
+\definecolor{myEmerald}{RGB}{50.4, 130, 90}
+
+%create math environments, can add [section] or [subsection] to add index counter based on sections/subsections
+\newtheorem{define}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{lemma}{Lemma}
+
+%setup colored box environment for each math env above
+\tcolorboxenvironment{define}{
+    enhanced, colframe=myTeal!50!teal, colback=myTeal!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{prop}{
+    enhanced, colframe=myGreen!50!black, colback=myGreen!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{thm}{
+    enhanced, colframe=mySapphire!50!mySapphire, colback=mySapphire!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{question}{
+    enhanced, colframe=blue!50!black, colback=blue!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{lemma}{
+    enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+
+%setup hyperlink within pdf
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+%common command (add to template)
+%general
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+\newcommand{\Id}{\textmd{Id}} %identity
+\newcommand{\lcm}{\textmd{lcm}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\paran}{(}{)}%paranthesis
+\DeclarePairedDelimiter{\bracket}{\langle}{\rangle}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+%algebra
+\newcommand{\Gal}{\textmd{Gal}}
+\newcommand{\Aut}{\textmd{Aut}}
+\newcommand{\End}{\textmd{End}}
+\newcommand{\Coker}{\textmd{Coker}}
+\newcommand{\Hom}{\textmd{Hom}}
+\newcommand{\Nil}{\textmd{Nil}}
+\newcommand{\Char}{\textmd{char}}
+
+%analysis
+\newcommand{\Vol}{\textmd{Vol}}
+
+%complex
+\newcommand{\Real}{\textmd{Re}}
+\newcommand{\Imag}{\textmd{Im}} %can also be used for Image
+\newcommand{\Res}{\textmd{Res}}
+
+%lie algebra
+\newcommand{\gl}{\mathfrak{gl}}
+
+%physics
+\newcommand{\br}{\textbf{r}} %position
+\newcommand{\bv}{\textbf{v}} %velocity
+\newcommand{\ba}{\textbf{a}} %cceleration
+\newcommand{\bF}{\textbf{F}} %force
+\newcommand{\bP}{\textbf{P}} %momentum
+\newcommand{\bL}{\textbf{L}} %angular momentum
+\newcommand{\bN}{\textbf{N}} %torque
+\newcommand{\bw}{\textbf{w}} %angular velocity
+\newcommand{\bzero}{\textbf{0}}
+
+\title{Phys 103 HW3 Pass2}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{Question 2}
+
+\textbf{Pf:}
+
+\textbf{For all the parts (b), (c), and (d)}, I misunderstood the rotation matrices: Given standard basis $\alpha=\{\hat{x},\hat{y},\hat{z}\}$ and the rotated bases with angle $\phi$ around the $z$-axis $\beta=\{\hat{e_1},\hat{e_2},\hat{z}\}$, I thought the rotation matrix $R$ is a change of basis matrix from basis $\beta$ to basis $\alpha$. But it is in fact the opposite, transforming from basis $\alpha$ to basis $\beta$ instead (since we want the vectors to be expressed in the rotated form, due to the principal axes being aligned with the rotated basis). So, the following (on the left) is the matrix of the first case (wrong one), and the second matrix is of the second case (right one):
+\begin{align}
+    R_\alpha^\beta=\begin{pmatrix}
+        \cos(\phi) & -\sin(\phi) & 0\\
+        \sin(\phi) & \cos(\phi) & 0\\
+        0&0&1
+    \end{pmatrix},\quad \quad R_\beta^\alpha = \begin{pmatrix}
+        \cos(\phi) & \sin(\phi) & 0\\
+        -\sin(\phi) & \cos(\phi) & 0\\
+        0&0&1
+    \end{pmatrix}
+\end{align}
+And the reason is because in the frame of $\beta$, $\alpha$ is rotated by an angle of $-\phi$, hence we get $\hat{x}=\cos(-\phi)\hat{e_1}+\sin(-\phi)\hat{e_2}=\cos(\phi)\hat{e_1}-\sin(\phi)\hat{e_2}$, while $\hat{y}=-\sin(-\phi)\hat{e_1}+\cos(-\phi)\hat{e_2} = \sin(\phi)\hat{e_1}+\cos(\phi)\hat{e_2}$.
+
+After fixing the use of rotation matrices, all the calculation still follows (except need to add an extra negative sign to all the angles to adjust for the solution).
+
+\hfil
+
+\hfil
+
+\section*{Question 3}
+
+\textbf{Pf:}
+
+Similar to \textbf{Question 2}, I used the wrong formulation for the rotation matrix. So, instead of the one I picked (on the left), the correct one is as follow (on the right):
+\begin{align}
+    R_\textmd{wrong}=\begin{pmatrix}
+        \cos(\pi/6)&-\sin(\pi/6)&0\\
+        \sin(\pi/6)&\cos(\pi/6)&0\\
+        0&0&1
+    \end{pmatrix},\quad R_\textmd{correct} = \begin{pmatrix}
+        \cos(\pi/6)&\sin(\pi/6)&0\\
+        -\sin(\pi/6)&\cos(\pi/6)&0\\
+        0&0&1
+    \end{pmatrix} = \begin{pmatrix}
+        \sqrt{3}/2 & 1/2 & 0\\
+        -1/2 & \sqrt{3}/2 & 0\\
+        0&0&1
+    \end{pmatrix}
+\end{align}
+
+\break
+
+\section*{Question 5}
+
+\textbf{Pf:}
+
+\subsection*{(a)}
+When calculating the integral of $X := \int_V x^2 dV$ and $Y:=\int_V y^2 dV$ for the inertia tensor, I did the wrong calculation and got $X=Y=\frac{\pi DR\epsilon}{2}\left(R^2+\frac{\epsilon^2}{4}\right)$ when the cylinder shell has a thickness of $\epsilon$. Together with the calculated density $\rho=\frac{M}{2\pi RD\epsilon}$, I eventually get $\lim_{\epsilon\rightarrow 0}\rho X = \frac{MR^2}{4}$ (which is incorrect).
+
+The correct calculation should be as follow:
+\begin{align}
+    X &= \int_{z=-\frac{D}{2}}^{\frac{D}{2}}\int_{r=R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}}\int_{\theta=0}^{2\pi} x^2r\ d\theta\ dr\ dz = \int_{z=-\frac{D}{2}}^{\frac{D}{2}}\int_{r=R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}}\int_{\theta=0}^{2\pi}r^3\cos^2(\theta)\ d\theta dr\ dz\\
+    &= \frac{\pi D}{4}r^4\bigg|_{R-\frac{\epsilon}{2}}^{R+\frac{\epsilon}{2}} = \frac{\pi D}{4}\paran*{(R+\epsilon/2)^2-(R-\epsilon/2)^2}\paran*{(R+\epsilon/2)^2+(R-\epsilon/2)^2}\\
+    &= \frac{\pi D}{4}\cdot 2R\epsilon\paran*{R^2+R\epsilon + \epsilon^2/4 + R^2 - R\epsilon + \epsilon^2/4} = \pi DR\epsilon\paran*{R^2+\frac{\epsilon^2}{4}}
+\end{align}
+Similar calculation can be done on $Y$, and we'll also get $X=Y$. Then, the result is taken the limit $\lim_{\epsilon\rightarrow 0}\rho X = \lim_{\epsilon\rightarrow 0}\frac{M}{2\pi RD\epsilon}\cdot \pi DR\epsilon\paran*{R^2+\frac{\epsilon^2}{4}} = \frac{MR^2}{2}$ (for a cylinder shell modeled with no thickness). So, eventually the inertia tensor should be as follow instead (continued from what is written correctly in my own HW):
+\begin{align}
+    I = \lim_{\epsilon\rightarrow 0} I(\epsilon)= \begin{pmatrix}
+        \frac{MR^2}{2}+\frac{MD^2}{12} &0&0\\
+        0& \frac{MR^2}{2}+\frac{MD^2}{12} &0\\
+        0&0& MR^2
+    \end{pmatrix}
+\end{align}
+
+\subsection*{(b)}
+This part the angular momentum eventually got the wrong answer because of the wrong Inertia tensor calculated in part (a).
+
+The initial angular momentum of the meteor is $\bL_{0,m}=\frac{mv_0D}{2}\hat{y}$ calculated before, for the initial angular momentum of the space station, with initially $\bw = w_0\hat{z}$ and the right inertia tensor calculated in (a), it is given by:
+\begin{align}
+    \bL_{0,s}=I(w_0\hat{z})=\begin{pmatrix}
+        \frac{MR^2}{2}+\frac{MD^2}{12} &0&0\\
+        0& \frac{MR^2}{2}+\frac{MD^2}{12} &0\\
+        0&0& MR^2
+    \end{pmatrix}\begin{pmatrix}
+        0\\0\\w_0
+    \end{pmatrix} = MR^2w_0\hat{z}
+\end{align}
+Hence, the initial angular momentum $\bL_0 = \bL_{0,m}+\bL_{0,s} = (0,\frac{mv_0D}{2},MR^2w_0)$. 
+
+Then, the instant after the collision, the meteor has angular momentum $\bL_m = -\frac{mv_0D}{4}\hat{y}$ (this part is calculated in the HW). Then, the final angular momentum of the space station $\bL_s$ satisfies $\bL_s + \bL_m = \bL_f = \bL_0$ (based on conservation of momentum). Hence, $\bL_s = \bL_0-\bL_m = (0,\frac{mv_0D}{2}, MR^2w_0)-(0,-\frac{mv_0D}{4},0) = (0,\frac{3mv_0D}{4},MR^2w_0)$.
+
+\subsection*{(c)}
+This part, the eventual frequency was wrongly calculated, also because the Inertia tensor was wwrongly calculated in part (a). Given that $\Omega = \frac{w_0(I_1-I_3)}{I_1}$ and the right inertia tensor in this pass 2, we get:
+\begin{align}
+    \Omega &= w_0\paran*{\frac{MR^2}{2}+\frac{MD^2}{12}-MR^2}\cdot \frac{12}{6MR^2+MD^2}\\
+    &= w_0\cdot \frac{MD^2-6MR^2}{12}\cdot \frac{12}{MD^2+6MR^2}\\
+    &= w_0\cdot\frac{D^2-6R^2}{D^2+6R^2}
+\end{align}
+In general we need to take the positive case as the frequency, so $\Omega = w_0\cdot\frac{|D^2-6R^2|}{D^2+6R^2}$, hence the period $T=\frac{2\pi}{\Omega} = \frac{2\pi}{w_0}\cdot\frac{D^2+6R^2}{|D^2-6R^2|}$.
+
+\end{document}
