@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage[margin = 2.54cm]{geometry} % set margin to traditional doc
+
+%packages
+\usepackage{graphicx} % Required for inserting images
+\usepackage[most]{tcolorbox} %for creating environments
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor} %for importing multiple colors
+\usepackage{hyperref} %for creating links to different sections
+
+\linespread{1.2} %controlling line spread
+
+%define colors i like
+\definecolor{myTeal}{RGB}{0,128,128}
+\definecolor{myGreen}{RGB}{34,170,34}
+\definecolor{mySapphire}{RGB}{15,82,186}
+\definecolor{myEmerald}{RGB}{50.4, 130, 90}
+
+%create math environments, can add [section] or [subsection] to add index counter based on sections/subsections
+\newtheorem{define}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{lemma}{Lemma}
+
+%setup colored box environment for each math env above
+\tcolorboxenvironment{define}{
+    enhanced, colframe=myTeal!50!teal, colback=myTeal!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{prop}{
+    enhanced, colframe=myGreen!50!black, colback=myGreen!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{thm}{
+    enhanced, colframe=mySapphire!50!mySapphire, colback=mySapphire!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{question}{
+    enhanced, colframe=blue!50!black, colback=blue!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{lemma}{
+    enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+
+%setup hyperlink within pdf
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+%common command (add to template)
+%general
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+\newcommand{\Id}{\textmd{Id}} %identity
+\newcommand{\lcm}{\textmd{lcm}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\paran}{(}{)}%paranthesis
+\DeclarePairedDelimiter{\bracket}{\langle}{\rangle}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+%algebra
+\newcommand{\Gal}{\textmd{Gal}}
+\newcommand{\Aut}{\textmd{Aut}}
+\newcommand{\End}{\textmd{End}}
+\newcommand{\Coker}{\textmd{Coker}}
+\newcommand{\Hom}{\textmd{Hom}}
+\newcommand{\Nil}{\textmd{Nil}}
+\newcommand{\Char}{\textmd{char}}
+
+%analysis
+\newcommand{\Vol}{\textmd{Vol}}
+
+%complex
+\newcommand{\Real}{\textmd{Re}}
+\newcommand{\Imag}{\textmd{Im}} %can also be used for Image
+\newcommand{\Res}{\textmd{Res}}
+
+%lie algebra
+\newcommand{\gl}{\mathfrak{gl}}
+
+%physics
+\newcommand{\br}{\textbf{r}} %position
+\newcommand{\bv}{\textbf{v}} %velocity
+\newcommand{\ba}{\textbf{a}} %cceleration
+\newcommand{\bF}{\textbf{F}} %force
+\newcommand{\bP}{\textbf{P}} %momentum
+\newcommand{\bL}{\textbf{L}} %angular momentum
+\newcommand{\bN}{\textbf{N}} %torque
+\newcommand{\bw}{\textbf{w}} %angular velocity
+\newcommand{\bzero}{\textbf{0}}
+
+\title{Phys 103 Quiz3 Pass2}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section*{Question 1}
+
+\textbf{Pf:}
+
+About this problem, I misunderstood the question: I thought the question was describing a system where the tension and the centripetal force initially didn't match up, so I was trying to calculate the equilibrium solution for a single mass $m$.
+
+Since we're actually talking about adding an extra mass $m$ onto the system for the final state (eventual mass $2m$), while the weight didn't change, then we get that the cenripetal force never changes. With initial centripetal force being $m r_0w_0^2$, and final centripetal force being $(2m) r_fw_f^2$, we get $mr_0w_0^2=2mr_fw_f^2 \implies r_0w_0^2=2r_fw_f^2$.
+
+On the other hand, since the tension force is always directed toward the center for the system, then the force (and position) ar both in radial direction at all time, which is parallel. Hence, $\bN = \br\times \bF = \bzero$ at all time, showing the angular momentum is conserved. With the initial vertical angular momentum being $mr_0^2w_0$, and the final vertical angular momentum being $2mr_f^2w_f$, we get $mr_0^2w_0=2mr_f^2w_f\implies r_0^2w_0=2r_f^2w_f$.
+
+In general can assume the above two quantities are nonzero (since we have nonzero mass, and nontrivial circular motion), then dividing the first quantity by the second, we get:
+$$\frac{r_0w_0^2}{r_0^2w_0}=\frac{2r_fw_f^2}{2r_f^2w_f}\implies \frac{w_0}{r_0}=\frac{w_f}{r_f}$$
+Hence, if say $w_f=kw_0$ for some $k\in\RR$ ($k\neq 0$), with $\frac{w_0}{r_0}=\frac{kw_0}{r_f}$, we get $r_f=kr_0$. Plug into the first equation, we get:
+$$r_0w_0^2 = 2r_fw_f^2 = 2(kr_0)(kw_0)^2 = 2k^3r_0w_0^2 \implies 2k^3 = 1\implies k=2^{-\frac{1}{3}}$$
+Hence, we get $r_f = 2^{-1/3}r_0$, and $w_f=2^{-1/3}w_0$.
+
+\break
+
+\end{document}
