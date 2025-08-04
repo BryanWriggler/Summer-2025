@@ -467,5 +467,56 @@ Again, based on the definition of initial object, such free abelian group is uni
 #thm("Construction of free Abelian Groups")[
   Free Abelian Group exists for all set $A$.
 ][
-  Given any set, define $ZZ^(plus.circle A)$
+  First, given $A={1,...,n}$, consider $ZZ^(plus.circle n):= ZZ plus.circle...plus.circle ZZ$ with total of $n$ times, which acts the same as $ZZ^n$ like direct product (under finite sense), and as a coproduct of the category of abelian group. 
+
+  To claim that it is the free abelian group, we'll take the function $f:A arrow.r ZZ^(plus.circle n)$ by $f(i) = e_i = (0,...,1,...,0)$ (having $1$ at the $i^"th"$ entry). Which, given any other pair $(G, j)$ for abelian group $G$ and function $j:A arrow.r G$ (which, we denote the operation of $G$ as addition, so can treat addition $n$ times as "multiplying by $n$").
+
+  Then, in case for the diagram we desired to commute, we need $phi:ZZ^(plus.circle n) arrow.r G$ to satisfy $phi(e_i) = j(i)$ for all given $i$, and to make $phi$ into a group homomorphism, any element $b = sum_(i=1)^n k_i e_i$ for some $k_i in ZZ$, must have the image $phi(b)= sum_(i=1)^n k_i phi(e_i) = sum_(i=1)^n k_i j(i)$. Which, $phi$ is uniquely determined. To make sure it is a group homomorphism, since for any $b,c in ZZ^(plus.circle n)$, we have $b=sum_(i=1)^n k_i e_i$ and $c=sum_(i=1)^n l_i e_i$, then:
+  $ phi(b+c) =phi(sum_(i=1)^n (k_i+l_i)e_i) = sum_(i=1)^n (k_i+l_i)j(i) = sum_(i=1)^n k_i j(i) + sum_(i=1)^n l_i j(i) = phi(b)+phi(c) $
+  Which, the second last equality is true based on the abelian condition. So, any pair $(G, j)$ would have the following diagram commutes:
+  
+  #diagram($
+             ZZ^(plus.circle n) edge("r",phi,->) & G\ 
+             A edge("u", f, ->) edge("ur", j, ->)
+           $)
+
+  \ 
+
+  Now in general, we can mimic a similar claim about finding a "direct sum" of $ZZ$ with respect to all the elements in $A$, which because of the finite sum condition, we want it to be a sequence of elements (which has a 1-to-1 correspondance to $A$, like a basis) such that only finitely many are nonzero (so it is a finite sum of the "basis" elements).
+
+  We can define $ZZ^(plus.circle A)$ as the collection of sequences $(k_alpha)_(alpha in A)$ such that each $k_alpha in ZZ$, and only finitely many can be nonzero, with each summation being performed "entry wise" (or summing up the ones with the same index). 
+  
+  Another definition can be made through the Homset: Since $ZZ$ is an additive group, then it automatically make the collection of set functions $Hom_"set" (A, ZZ)$ into a group (like how we add / subtrace real-valued functions). Which, define $ZZ^(plus.circle n)$ as a subset of $Hom_"set" (A,ZZ)$, such that every function $h:A arrow.r ZZ$ has image with finite elements (i.e. finitely many inputs can output nonzero numbers). 
+  
+  Which, the collection ${h_alpha: A arrow.r ZZ | alpha in A}$ by $h_alpha(alpha)=1$ while $h_alpha(x)=0$ for all $x != alpha$, in fact forms a generating set of $ZZ^(plus.circle A)$, which a natural function $i:A arrow.r A^(plus.circle A)$ by $j(alpha) = h_alpha$ is a natural set function of $A$ into $ZZ^(plus.circle A)$; on the other hand, every function can be expressed as finite integer combinations of functions in the generating set (since if $h$ satisfies $h(alpha) = k_alpha$ for precisely $alpha_1,...,alpha_n$ while the rest are zero, then $h = sum_(i=1)^n k_(alpha_i) h_(alpha_i)$ as functions).
+
+  Finally, for any pair $(G, j)$ with $G$ being abelian and $j:A arrow.r G$, for the desired diagram to commute, define $phi:ZZ^(plus.circle A) arrow.r G$ by $phi(h_alpha) = j(alpha)$, and to make it a group homomorphism, for any finite list $alpha_1,...,alpha_n in A$, we must have $phi(sum_(i=1)^n k_(alpha_i)h_(alpha_i)) =sum_(i=1)^n k_(alpha_i) j(alpha_i)$. Such constraint (of diagram commuting) enforces $phi$ to be unique, and the final definition enforces it to be a group homomorphism.
+
+  Since the following diagram commutes for all pairs of $(G,j)$, we can claim that $ZZ^(plus.circle A)$ is a free abelian group of $A$:
+
+  #diagram($
+             ZZ^(plus.circle A) edge("r",phi,->) & G\ 
+             A edge("u",i,->) edge("ur",j,->)
+           $)
+]
+
+Which, free group is closely related to coproducts in the category of groups and abelian groups. Beforehand we know for abelian groups, product and coproduct turns out to be isomorphic, so we know $F^"ab" ({x_1,...,x_n}) tilde.equiv ZZ^(plus.circle n) tilde.equiv ZZ^n$, which is the $n^"th"$ coproduct of $ZZ$. Which, free group in category of group is similar:
+#problem[(Aluffi II 5.6, 5.7) Prove that the group $F({x,y})$ is a coproduct $ZZ * ZZ$ of $ZZ$ in the category of groups. Which, inductively $F({x_1,...,x_n})$ is an $n^"th"$ coproduct of $ZZ$.][
+  For any group $G$, with group homomorphisms $f_1,f_2:ZZ arrow.r G$, we know the pair of functions $i_x,i_y: ZZ arrow.r F({x,y})$ by $i_x (n)=x^n$ and $i_y (n)=y^n$ are well-defined group homomorphisms. Which, to make the diagram for coproduct to commute, a map $phi:F({x,y}) arrow.r G$ by $phi(x) = f_1(1)$ and $phi(y) = f_2(1)$ are required, where $phi(a_1^(k_1)...a_n^(k_n)) = i_(a_1) (1)^(k_1)... i_(a_n) (1)^(k_n)$ is required to be a group homomorphism.
+
+  Which, based on the construction the following diagram commutes:
+
+  #diagram($
+             & G \
+             ZZ edge("ur",f_1,->) edge("r",i_x,->) & F({x,y}) edge("u",phi, ->) & ZZ edge("ul",f_2,->) edge("l", i_y, ->)
+           $)
+
+  $phi$ is uniquely determined by $G,f_1,f_2$ since with $x,y$ (generators of $F({x,y})$) being mapped to by the generators of $ZZ$, then with $f_1,f_2$ fixes where the generators go, it is uniquely determined. Hence, $F({x,y})$ satisfy the universal property of being a coproduct of $ZZ$.
+
+  Which, inductively (since finite coproduct just like product is unique up to isomorphism), then $F({x_1,...,x_n})$ is an $n^"th"$ coproduct of $ZZ$.
+]
+#problem[(Aluffi II 5.8) More generally, $F(A product.co B) = F(A) * F(B)$ and that $F^"ab" (A product.co B) = F^"ab" (A) plus.circle F^"ab" (B)$ (i.e. $F, F^"ab"$ "preserves coproducts" when going from category of sets to groups / abelian groups).][
+  WLOG, can assume $A,B$ are disjoint as sets (since $A product.co B$ is generated through union of disjoint isomorphic copies of $A$ and $B$). Then, given $F(A), F(B)$, since $A product.co B$ can be viewed as a set of disjoint union of $A$ and $B$ (which means the generators of free groups are contained in each other), then we naturally get $F(A), F(B) subset.eq F(A product.co B)$, so there are natural inclusion maps (as group homomorphisms).
+
+  
 ]
