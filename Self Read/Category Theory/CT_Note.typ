@@ -520,3 +520,152 @@ Which, free group is closely related to coproducts in the category of groups and
 
   
 ]
+
+#pagebreak()
+
+= Universal Properties, Limits, Colimits (before should have functors)
+
+#definition[Covariant / Contravariant Functor][
+  Given a functor $F:C arrow.r D$ between the categories, it is called #emph[Covariant] if given any object $A,B$ in $C$, the corrsponding local behavior (i.e. the map on morphisms) have $F_(A,B):Hom_C (A,B) arrow.r Hom_D (F(A),F(B))$;
+  else if the corrsponding local behavior have $F_(A,B):Hom_C (A,B) arrow.r Hom_D (F(B),F(A))$, it is called #emph[Contravariant].
+
+  Which, a more formal viewpoint on contravariant functor is a map $F:C^"op" arrow.r D$ instead.
+]
+
+In some more general context, we not only want objects to be mapped to objects and $F(g compose f)=F(g) compose F(f)$ for morphisms, we also want to preserve the structure of the Homset.
+
+For instance, if given the categories of $R-"Mod"$ and $S-"Mod"$ based on ring $R,S$, since $Hom_(R-"Mod") (M,N)$ for any two $R$-modules $M,N$ is an additive group, we want $F:R-"Mod" arrow.r S-"Mod"$ to not only peserve the structure of category, but also have $F_(A,B): Hom_(R-"Mod") (A,B) arrow.r Hom_(S-"Mod") (F(A),F(B))$ be a group homomorphism also.
+
+#example[Rings to Group of Units][
+  Given any two ring $R,S$ and any ring homomorphism $f:R arrow.r S$ (here require the ring to have nonzero unity elements, limit to nonzero map, and sends $1_R$ to $1_S$), since it preserves multiplication and the structure of group of units, it induces $f':R^* arrow.r S^*$. Hence, a functor $F:"Ring" arrow.r "Grp"$ by $F(R) = R^*$ and $F_(R,S) (f) = f'$ is a well-defined covariant functor.
+]
+
+#example[Spectrum of Commutative Rings][
+  Given $"Spec"(R)$ as a set of all prime ideals of $R$, given a ring homomorphism $phi:R arrow.r S$ between commutative rings, since for any prime ideal $P subset.eq S$, we have $phi^(-1)(P) subset.eq R$ being a prime ideal also, hence it induces a set function $phi^*: "Spec"(S) arrow.r "Spec"(R)$.
+
+  Which, a contravariant functor $F:"Ring" arrow.r "Set"$ by $F(R) = "Spec"(R)$ and $F_(R,S)(phi) = phi^*$ (a map from $Hom_"Ring" (R,S)$ to $Hom_"Set" ("Spec"(R), "Spec"(S))$).
+]
+
+#definition[Faithful and Full Functors][
+  Given a covariant functor $F:C arrow.r D$, it is #emph[Faithful], if for any object $A,B$ in $C$, the corresponding map $F_(A,B):Hom_C (A,B) arrow.r Hom_D (F(A),F(B))$ is injective; it's called #emph[Full] if the corresponding map above is surjective.
+
+  Which, if a functor is #emph[Fully Faithful], then since each possible pairs of objects have the morphism map also being bijective, then it preserves isomorphism classes: Namely $A tilde.equiv B$ implies $F(A) tilde.equiv F(B)$ (since suppose $f:A arrow.r B$ and $g:B arrow.r A$ are inverses of each other, we have $F_(A,B)(Id_A) = F_(A,B)(g compose f) = F(g) compose F(f) = F(Id_A) = Id_(F(A))$, while $F(f):F(A) arrow.r F(B)$ and $F(g):F(B) arrow.r F(A)$, and the other way of composition is also preserved, showing $F(A) tilde.equiv F(B)$).
+]
+
+#definition[Essentially Surjective Functor, and Equivalence of Categories][
+  A functor $F:C arrow.r D$ is #emph[Essentially Surjective] or #emph[Dense], if for all object $Y in Ob(D)$, there exists $X in Ob(C)$ such that $F(X) tilde.equiv Y$ (i.e. for every isomorphism class in $D$, it is mapped to by some isomorphism class of $C$).
+
+  \ 
+
+  And, two categories are equivalent, if there exists a fully faithful and essentially surjective functor $F:C arrow.r D$ (i.e. every isomorphism class is being mapped to, and homsets are preserved).
+]
+
+\ 
+
+#definition[Limits][
+  Given $I$ as a category of idices (can think of it as some kind of diagrams). Given any category $C$, and a covariant functor $F:I arrow.r C$.
+
+  A #emph[Limit] of $F$, is an object $L in Ob(C)$ that satisfies the following properties:
+  1. Each object $i in Ob(I)$ corresponds to a morphism $lambda_i: L arrow.r F(i)$.
+  2. For any morphism $alpha: i arrow.r j$ in the category $I$, its image $F(alpha): F(i) arrow.r F(j)$ must satisfy $lambda_j = F(alpha) compose lambda_i$. Which means any $alpha$ must have the following diagram commutes:
+
+    #diagram($
+              & L edge("dl", lambda_i, ->) edge("dr",lambda_j,->) \
+              F(i)edge("rr", F(alpha),->) & & F(j)
+            $)
+  
+  3. $L$ is final with respect to this property (i.e. collect all other objects $M in Ob(C)$ with the above two properties and morphisms between these objects so that any above diagram commutes, $L$ is a final object in this subcategory of $C$, or there exists a unique morphism $f_M:M arrow.r L$).
+
+  L is also denoted as $lim_(arrow.l) F$, which the arrow to the left implies $L$ is an object "before". all objects of $C$ that is indexed by $I$ through functor $F$. It is also called #emph[Inverse Limit] or #emph[Projective Limit].
+]
+
+#example[Product in Categories][
+  Given $I$ as the "discrete category" with only two objects $1,2$ (which only have identity morphisms). Which can be considered as the following diagram:
+  
+  #diagram($
+            1 & & 2
+           $)
+
+  (I haven't figure out how to do self pointing arrows, right now just pretend it exists).
+
+  Then, for any two objects $A_1$ and $A_2$ of a category $C$, consider the functor $F:I arrow.r C$ by $F(i) = A_i$, and of course the identity to identity (the only required map on morphisms).
+
+  Which, if we collect the objects in $C$ with the desired properties, basically it's all objects $M$ such that $Hom_C (M,A_1)$ and $Hom_C(M, A_2)$ are nonempty. In this case, a limit $L$ of $F$ (equipped with map $lambda_i:L arrow.r A_i$) is such that for any $M$ with morphisms $phi_i:M arrow.r A_i$ for the two indices $1,2$, there exists a unique morphism $phi: M arrow.r L$ such that the following diagram commutes:
+  
+  #diagram($
+             & M edge("ddl", phi_1,->) edge("ddr", phi_2, ->) edge("d",phi,->) \
+             & L edge("dl", lambda_1,->) edge("dr", lambda_2,->) \
+             A_1 && A_2
+           $)
+
+  In other words, if $lim_(arrow.l)F$ exists, it precisely characterizes a product, so the limit of $F$ exists iff product $A_1 times A_2$ exists in $C$.
+]
+
+#example[Equalizer and Kernels][
+  Given category $I$ with objects $1,2$, and the morphisms besides identities are $alpha, beta: 2 arrow.r 1$. 
+
+  Now, given a cetegory $C$, and the functor $K:I arrow.r C$ that chooses $K(i)=A_i$, while $K(alpha),K(beta): A_2 arrow.r A_1$ are two parallel morphisms. We call the limit #emph[Equalizers].
+
+  \ 
+
+  If $C="Set"$, then denote $f = K(alpha)$ and $g = K(beta)$, we get an equalizer $L = {x in A_2 | f(x)=g(x)}$, where $lambda_2:L arrow.r.hook A_2$ is an inclusion, and $lambda_1(x) = f(x)=g(x)$.
+  Based on this choice, we know $lambda_1 = f compose lambda_2 = g compose lambda_2$ (since $lambda_2(x) = x$ where $f(x)=g(x)$, and it's the way $lambda_1$ is defined). Also, for any set $M$ with two functions $phi_2:M arrow.r A_2$ and $phi_1:M arrow.r A_1$ such that $phi_1 = f compose phi_2 = g compose phi_2$, to form a function $phi: M arrow.r L$ such that the diagram (of equalizer) commutes, we want the following:
+
+  #diagram($
+             & M edge("ddl", phi_2, ->) edge("ddr", phi_1, ->) edge("d",phi,->) \
+             & L edge("dl", lambda_2, "hook->") edge("dr", lambda_1, ->) \ 
+             A_2  edge("rr", f ", " g, ->) && A_1
+           $)
+
+  Which, since any $m in M$ must satisfy $f compose phi_2 = g compose phi_2 = phi_1$, we have $f(phi_2(m)) = g(phi_2(m))$ (which implies $phi_2(m) in L subset.eq A_2$, the set where $f,g$ agrees), so for $phi_2 = lambda_2 compose phi$, we must have $phi(m)= phi_2(m)$. Afterward everything follows, showing that $phi$ is uniquely determined, or $L$ is indeed the final object, or $L$ is a $lim_(arrow.l) K$ (which is an equalizer).
+
+  \ 
+
+  Now, choose $C = R$-Mod (category of $R$-modules over ring $R$). Given now that $f,g:A_2 arrow.r A_1$ are now module homomorphisms, if we add an extra restriction that $g$ is the zero map, then we claim that $L = ker(f)$: Intuitively, based on the set theoretic perspective, the two functions $f,g$ only agrees on $ker(f)$ (since $g$ is a zero map), which now given $lambda_2: L arrow.r.hook A_2$ again as an inclusion, $lambda_1: L arrow.r A_1$ as a zero morphism. Given any other $R$-module $M$ with module homomorphisms $phi_2,phi_1$ (same notation as the previous diagram), since we must have $phi_1 = f compose phi_2 = g compose phi_2 = 0$ (since $g=0$), then for all $m in M$, we have $0=g(phi_2(m)) = f(phi_2(m))$, so $phi_2(m) in ker(f) = L$, hence a natural map $phi:M arrow.r L$ such that $phi_2 = lambda_2 compose phi$ is $phi(m) = phi_2(m)$ (and this is the only possible map). The rest commutes, showing that $L$ is indeed the limit of $K$ we're finding.
+  
+]
+
+#example[Limits over Chains][
+  Given a totally ordered set $I$, where for every $i >= j$ there xists a unique morphism $i arrow.r j$ (maybe it's good to denote as $alpha_(i,j): i arrow.r j$).
+
+  Now, given a functor $F:I arrow.r C$ for some category $C$, it's the same as picking out ordered collection of objects ${A_i}_(i in I)$ of $C$, such that $phi_(i,j) :=F(alpha_(i,j)):A_i arrow.r A_j$ generalizes the order on these sets.
+
+  For instance, if pick $I = NN$, we have the following diagram (only show the consecutive maps):
+  
+  #diagram($
+             5 edge(alpha_(5,4),->) & 4 edge(alpha_(4,3),->) & 3 edge(alpha_(3,2),->) & 2 edge(alpha_(2,1),->) & 1
+           $)
+  
+  #diagram($
+             A_5 edge(phi_(5,4),->) & A_4 edge(phi_(4,3),->) & A_3 edge(phi_(3,2),->) & A_2 edge(phi_(2,1),->) & A_1
+           $)
+
+  \ 
+
+  Now, consider the inverse limit of $F$ ($lim_(arrow.l)F$), we want an object $A$ that collects morphisms $phi_i: A arrow.r A_i$ such that the collection commutes with all possible diagrams, while it is also the final object with this property (we're not giving it specific names yet).
+
+  \ 
+
+  Now, given $C=RR$-Modules (consider left-modules for simplicity), we claim that #emph[$lim_(arrow.l i)A_i$ (the above limit) exists in $R$-Mod].
+
+  Consider the $R$-module $product_i A_i$, and create a submodule that is coherent (i.e. collect all sequences in $product_i A_i$ such that plugging into the above sequences of morphisms, we get $phi_(i,j)(a_i)=a_j$). Which, this submodule is well-defined (need to check), and check that it is the limit desired.
+]
+
+\ 
+
+To reverse most of the notion (called "dualing"), we want to define the #emph[colimit] of a functor.
+#definition[Colimits][
+  Given again a category of indices $I$, another category $D$, together with a functor $F:I arrow.r D$. The colimit $C$ is an object of $D$ with the following properties:
+  1. Every $i in Ob(I)$ corresponds to a morphism $gamma_i:F(i) arrow.r C$.
+  2. Given any morphism $alpha: i arrow.r j$ in $I$, we must have $gamma_i = gamma_j compose F(alpha)$, or the following diagram commutes:
+  
+    #diagram($
+              & C \
+              F(i) edge("ur",gamma_i, ->) edge("rr", F(alpha), ->) && F(j) edge("ul", gamma_j, ->)
+            $)
+  
+  3. $C$ is the initial object with respect to the above requirements.
+
+  Which, $C$ is also denoted as $lim_(arrow.r)F$, also called #emph[Direct Limits] or #emph[Injective Limits].
+
+]
