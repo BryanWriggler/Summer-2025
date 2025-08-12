@@ -1,0 +1,482 @@
+\documentclass[x11names,reqno,12pt]{extarticle}
+\usepackage{tikz-cd}
+\usepackage[margin = 2.54cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{exm}{Example}
+
+
+\newcommand{\coker}{\textmd{coker}}
+\newcommand{\id}{\textmd{id}}
+\newcommand{\Hom}{\textmd{Hom}}
+\newcommand{\End}{\textmd{End}}
+\newcommand{\Aut}{\textmd{Aut}}
+\newcommand{\cat}[1]{\textsf{#1}}
+
+\title{UCSB REU - Homological Algebra}
+\author{Zih-Yu Hsieh}
+\date{2025}
+
+\begin{document}
+\maketitle
+\hrule
+\vspace{1em}
+\renewcommand{\tilde}{\widetilde}
+\section*{Homological Algebra (Bryan)}
+This section mostly follows the order in \emph{Algebra Chapter 0} by \emph{Paolo Aluffi}. We'll start with its relation in abstract algebra.
+\subsection*{Homology in $\cat{R-Mod}$}
+Given $R$ an arbitrary ring, this section provides an example of homology in category of $R$-modules.
+
+\begin{defn}
+    Given an index set $I \subseteq \mathbb{Z}$ where for every $i\in I$, either $i-1\in I$ or $i+1\in I$, the associated \emph{Chain Complex} $(M_\bullet, \delta_\bullet)$ is a collection of $R$-modules $\{M_i\}$ and module homomorphisms $\{\delta_i:M_i\rightarrow M_{i-1}\}$, such that any index $i\in I$ with $i+1\in I$, $\delta_i\circ \delta_{i+1}=0$.
+
+    In other words, $\textmd{im}(\delta_{i+1})\subseteq \ker(\delta_i)$ for all index $i$ with the homomorphisms being well-defined. Diagramatically, we get:
+    \begin{center}
+        \begin{tikzcd}
+            \cdots & M_{i-1}\ar[l,"\delta_{i-1}"] & M_i\ar[l,"\delta_{i}"] & M_{i+1}\ar[l,"\delta_{i+1}"] & \cdots \ar[l,"\delta_{i+2}"]
+        \end{tikzcd}
+    \end{center}
+    Sometimes the module homomorphisms $\delta_i$ will be called \textmd{Boundary Operators} or \textmd{Differentials}.
+\end{defn}
+\textbf{Remark:} As a dual to such definition, if $\delta_i':M_i\rightarrow M_{i+1}$ is given instead, with $\delta_{i+1}\circ \delta_i=0$ (or $\textmd{im}(\delta_{i})\subseteq \ker(\delta_{i+1})$), the collection is called \emph{Cochain Complex} instead.
+
+\hfill
+
+Given the property of chain complexes, the homology on a chain complex can be defined:
+\begin{defn}
+    Given a Chain Complex $(M_\bullet, \delta_\bullet)$, the \emph{$i^\textmd{th}$ Homology} $H_i(M_\bullet) := \ker(\delta_i)/\textmd{im}(\delta_{i+1})$, the quotient module of $\ker(\delta_i)$ by its submodule $\textmd{im}(\delta_{i+1})\subseteq \ker(\delta_i)$.
+\end{defn}
+
+\begin{defn}
+    A Chain Complex $(M_\bullet,\delta_\bullet)$ is said to be \emph{Exact} at $M_i$, if $\textmd{im}(\delta_{i+1})=\ker(\delta_i)$, in other words the $i^\textmd{th}$ homology $H_i(M_\bullet) = \ker(\delta_i)/\textmd{im}(\delta_{i+1}) = 0$.
+
+    Which, if a Chain Complex is exact everywhere, we call it an \emph{Exact Sequence}.
+\end{defn}
+Exact Sequence is a stronger condition for a sequence of modules and module homomorphisms to be a chain complex, which mostly carries out better structures.
+\begin{exm}
+    Given $\varphi\in \Hom_{\cat{R-Mod}}(M,N)$, one can define $\ker(\varphi)$ and $\coker(\varphi):= N/\textmd{im}(\varphi)$. Which, the following sequence is exact:
+    \begin{center}
+        \begin{tikzcd}
+            0 \ar[r] & \ker(\varphi) \ar[r, "\textmd{inc}", hook] & M \ar[r,"\varphi"] & N \ar[r,"\pi_{\textmd{im}(\varphi)}", two heads] & \coker(\varphi) \ar[r] & 0
+        \end{tikzcd}
+    \end{center}
+    More generally, given \begin{tikzcd}
+        0 \ar[r] & M\ar[r,"\alpha"] & N
+    \end{tikzcd}, it's exact at $M$, iff $\textmd{im}(0) = \ker(\alpha)$, or $\alpha$ is injective; Similarly, with \begin{tikzcd}
+        N \ar[r,"\beta"] & L \ar[r] & 0
+    \end{tikzcd}, it's exact at $L$ iff $\textmd{im}(\beta) = \ker(0) = N$, or $\beta$ is surjective.
+\end{exm}
+
+\hfill
+
+\begin{defn}
+    Given an Exact Sequence \begin{tikzcd}
+        0 \ar[r] & M_1 \ar[r] & N \ar[r] & M_2 \ar[r] & 0
+    \end{tikzcd}, it's called a \emph{Split Exact Sequence}, if there exists $R$-modules $M_1'\cong M_1$ and $M_2'\cong M_2$ that form an exact sequence \begin{tikzcd}
+        0\ar[r] & M_1' \ar[r,"\textmd{inc}", hook] & M_1'\oplus M_2' \ar[r,"\pi_{M_2'}", two heads] & M_2' \ar[r] & 0
+    \end{tikzcd}, such that $N\cong M_1'\oplus M_2'$, and the following diagram commutes:
+    \begin{center}
+        \begin{tikzcd}
+            0 \ar[r] & M_1 \ar[r] \ar[d,"\sim"] & N \ar[r] \ar[d,"\sim"] & M_2 \ar[r] \ar[d,"\sim"] & 0\\
+            0\ar[r] & M_1' \ar[r,"\textmd{inc}", hook] & M_1'\oplus M_2' \ar[r,"\pi_{M_2'}", two heads] & M_2' \ar[r] & 0
+        \end{tikzcd}
+    \end{center}
+    In a simpler term, $N\cong M_1\oplus M_2$.
+\end{defn}
+Notice that not all exact sequences in the required form split, here is a counterexample:
+\begin{exm}
+    Given \begin{tikzcd}
+        0 \ar[r] & 2\mathbb{Z} \ar[r,"\textmd{inc}", hook] & \mathbb{Z} \ar[r, "\pi_{2\mathbb{Z}}", two heads] & \mathbb{Z}/2\mathbb{Z} \ar[r] & 0
+    \end{tikzcd}, it is an exact sequence of $\mathbb{Z}$-modules, but it doesn't split, since $\mathbb{Z}\not\cong 2\mathbb{Z}\oplus \mathbb{Z}/2\mathbb{Z}$, because $(0,1)\in 2\mathbb{Z}\oplus \mathbb{Z}/2\mathbb{Z}$ has order $2$ under addition, where in $\mathbb{Z}$ there's no such element with order 2 under addition (in $\mathbb{Z}$, $x+x=0\implies x=0$, which has order $1$).
+\end{exm}
+Hopefully, there are nice equivalent conditions of Split Exact Sequences:
+\begin{thm}
+    Given the exact sequence \begin{tikzcd}
+        0 \ar[r] & M_1 \ar[r,"\varphi"] & N \ar[r,"\phi"] & M_2 \ar[r] & 0
+    \end{tikzcd}, TFAE:
+    \begin{itemize}
+        \item[(1)] The Exact Sequence Splits.
+        \item[(2)] $\varphi$ has a left inverse.
+        \item[(3)] $\phi$ has a right inverse.
+    \end{itemize}
+\end{thm}
+\begin{proof}
+
+\hfill
+
+    \begin{itemize}
+        \item First, to prove $(1)\implies (2),(3)$,  suppose the given exact sequence splits, then there exists $R$-modules $M_1'\cong M_1$ (through map $\alpha$), $M_2'\cong M_2$ (through map $\gamma$), and $N\cong M_1'\oplus M_2'$ (through map $\beta$), such that the following diagram commutes:
+        \begin{center}
+            \begin{tikzcd}
+                0 \ar[r] & M_1 \ar[r,"\varphi"] \ar[d,"\sim", "\alpha"'] & N \ar[r,"\phi"] \ar[d,"\sim", "\beta"'] & M_2 \ar[r] \ar[d,"\sim","\gamma"'] & 0\\
+                0\ar[r] & M_1' \ar[r,"\textmd{inc}_1", hook] & M_1'\oplus M_2' \ar[r,"\pi_{M_2'}", two heads] & M_2' \ar[r] & 0
+            \end{tikzcd}
+        \end{center}
+        Notice that $\textmd{inc}_1:M_1'\hookrightarrow M_1'\oplus M_2'$ has left inverse by natural projection $\pi_{M_1'}:M_1'\oplus M_2' \rightarrow M_1'$ (since $\pi_{M_1'}\circ \textmd{inc}_1(m_1') = \pi_{M_1'}(m_1',0) = m_1' $), and $\pi_{M_2'}$ has right inverse by natural inclusion $\textmd{inc}_2:M_2'\hookrightarrow M_1'\oplus M_2'$ via a similar reason.
+
+        \hfill
+
+        Now, consider the morphisms  $\alpha^{-1}\circ \pi_{M_1'}\circ \beta:N \rightarrow M_1$, and $\beta^{-1}\circ \textmd{inc}_2\circ \gamma:M_2 \rightarrow N$. We claim that the former is a left inverse of $\varphi$, while the latter is a right inverse of $\phi$.
+
+        To see this, based on the commutative diagram, since $\beta\circ \varphi = \textmd{inc}_1\circ \alpha$, we get $\pi_{M_1'}\circ \beta \circ \varphi = (\pi_{M_1'}\circ \textmd{inc}_1)\circ \alpha = \id_{M_1'}\circ \alpha = \alpha$, so $(\alpha^{-1}\circ \pi_{M_1'}\circ \beta)\circ \varphi = \alpha^{-1}\circ \alpha = \id_{M_1}$, showing $\varphi$ has a left inverse as claimed.
+
+        Similarly, the diagram also provides $\pi_{M_2'}\circ \beta = \gamma\circ \phi$, or $\gamma^{-1}\circ \pi_{M_2'}=\phi\circ \beta^{-1}$. Which, we get $\gamma^{-1} = \gamma^{-1}\circ \id_{M_2'} = \gamma^{-1}\circ (\pi_{M_2'}\circ \textmd{inc}_2) = \phi \circ \beta^{-1}\circ \textmd{inc}_2$, so $\id_{M_2} = \gamma^{-1}\circ \gamma = \phi\circ(\beta^{-1}\circ \textmd{inc}_2\circ \gamma)$, showing $\phi$ has a right inverse as claimed. 
+
+        Hence, $(1)\implies (2),(3)$.
+
+        \item Now, to prove $(1)\impliedby (2)$, suppose $\varphi$ has some left inverse $\alpha:N\rightarrow M_1$, or $\alpha\circ \varphi = \id_{M_1}$. We claim that $N = \textmd{im}(\varphi)\oplus \ker(\alpha)$: 
+
+        For every $n \in N$, since $n = \varphi\circ \alpha(n) + (n-\varphi\circ\alpha(n))$, where $\varphi\circ \alpha(n)\in \textmd{im}(\varphi)$, and the second term satisfies $\alpha(n-\varphi\circ\alpha(n)) = \alpha(n) - (\alpha\circ\varphi)\circ\alpha(n) = \alpha(n)-\id_{M_1}\circ \alpha(n) = 0$, showing that $n-\varphi\circ\alpha(n)\in \ker(\alpha)$. Then, $n$ can be expressed as combinations of elements in $\textmd{im}(\varphi)$ and $\ker(\alpha)$, showing $N=\textmd{im}(\varphi)+\ker(\alpha)$.
+
+        Then, to prove it's indeed a direct sum, similar to the case of vector spaces, it suffices to show $\textmd{im}(\varphi)\cap \ker(\alpha)=0$. Suppose $n\in \textmd{im}(\varphi)\cap \ker(\alpha)$, there exists $m_1 \in M_1$ satisfying $n = \varphi(m_1)$; also by the claim of kernel, $0=\alpha(n) = \alpha\circ\varphi(m_1) = \id_{M_1}(m_1)=m_1$. Hence, $n = \varphi(m_1) = 0$. So, with the intersection being $0$, the two submodules indeed form a direct sum, hence $N=\textmd{im}(\varphi)\cap \ker(\alpha)$.
+
+        \hfill
+
+        Finally, by the exactness of the sequence, $\varphi$ is injective, hence $\textmd{im}(\varphi)\cong M_1/\ker(\varphi) \cong M_1$. On the other hand, exactness of the sequence provides $\textmd{im}(\varphi)=\ker(\phi)$ and $\phi$ is surjective, which by First Isomorphism Theorem, $M_2 = \textmd{im}(\phi) \cong N/\ker(\phi) = (\textmd{im}(\varphi)\oplus \ker(\alpha)) / \textmd{im}(\varphi) \cong \ker(\alpha)$.
+
+        Combining the two statements, $N = \textmd{im}(\varphi)\oplus \ker(\alpha) \cong M_1\oplus M_2$, hence the sequence splits.
+
+        \item For $(1)\impliedby (3)$, similar construction can be done as the previous one: Given $\beta:M_2\rightarrow N$ as a right inverse of $\phi$ (or $\phi\circ \beta = \id_{M_2}$), one can deduce $N = \ker(\phi)\oplus \textmd{im}(\beta)$ using similar logic, also by exactness that $\ker(\phi)\cong M_1$, and $\textmd{im}(\beta)\cong M_2$.
+    \end{itemize}
+\end{proof}
+
+\begin{exm}
+    Here's an example about $\Hom$ functor on $\textmd{R-Mod}$ and its relation with exact sequence of $R$-modules: Given \begin{tikzcd}
+        0 \ar[r] & M \ar[r,"f", hook] & N \ar[r, "g", two heads] & P \ar[r] & 0
+    \end{tikzcd} an exact sequence of $R$-modules, and $L$ be any $R$-module. Then:
+    \begin{itemize}
+        \item[(1)] The sequence \begin{tikzcd}
+            \Hom(M,L) & \Hom(N,L) \ar[l,"\_ \circ f"] & \Hom(P,L) \ar[l,"\_\circ g"] & 0 \ar[l]
+        \end{tikzcd} is exact for all $R$-module $L$ (if remove the requirement of $f$ being injective, it's if and only if).
+        \item[(2)] The precomposition of $f$ (the leftmost morphism) need not to be surjective.
+        \item[(3)] If the original sequence splits, then the precomposition of $f$ (the leftmost morphism) is surjective.
+    \end{itemize}
+\end{exm}
+\begin{proof}
+
+\hfill
+
+    \begin{itemize}
+        \item[(1)] Given the original sequence is exact, then we get $g$ is surjective, $f$ is injective, and $\textmd{im}(f)=\ker(g)$ (which implies $g\circ f=0$):
+        \begin{itemize}
+            \item Precomposition with $g$ is injective, since if $h\in \Hom(P,L)$ satisfies $h\circ g = 0$, then for all $p\in P$, by surjectivity of $g$, there exists $n\in N$ satisfying $g(n)=p$. Hence, $h(p) = h\circ g(n) = 0$, showing $h=0$. Hence, $\ker(\_\circ g) = 0$.
+
+            \item $\textmd{im}(\_\circ g) = \ker(\_\circ f)$: For all $h\in \Hom(P,L)$, since $(h\circ g)\circ f = h\circ (g\circ f) = h\circ 0 = 0$, then we get $\textmd{im}(\_\circ g)\subseteq \ker(\_\circ f)$. Also, suppose $h'\in \Hom(N,L)$ satisfies $h'\circ f = 0$ (or $h'\in\ker(\_\circ f)$), then $\ker(g)=\textmd{im}(f)\subseteq \ker(h')$, hence by Generalized First Isomorphism Theorem, there exists $\overline{g}\in \Hom(N/\ker(g), L)$, such that with the projection $\pi_{\ker(g)}\in \Hom(N, N/\ker(g))$, we have $\overline{g}\circ \pi_{\ker(g)} = h'$. Or, the following diagram commutes:
+            \begin{center}
+                \begin{tikzcd}
+                    N \ar[rr,"h'"] \ar[rd,"\pi_{\ker(g)}"'] && L\\
+                    & N/\ker(g) \ar[ru, "\overline{g}"']
+                \end{tikzcd}
+            \end{center}
+            And, since $g\in \Hom(N,L)$ is surjective, then by First Isomorphism Theorem, there exists isomorphism $\tilde{g}\in \Hom(N/\ker(g),P)$, such that $g = \tilde{g}\circ \pi_{\ker(g)}$. Adding onto the previous diagram, we get:
+            \begin{center}
+                \begin{tikzcd}
+                    N \ar[rr,"h'"] \ar[rd,"\pi_{\ker(g)}"'] \ar[rrdd, "g"', bend right = 60] && L\\
+                    & N/\ker(g) \ar[ru, "\overline{g}"'] \ar[rd, "\sim", "\tilde{g}"'] \\
+                    && P
+                \end{tikzcd}
+            \end{center}
+            Then, take the homomorphism $\overline{g}\circ \tilde{g}^{-1}\in \Hom(P, L)$, we get: 
+            $$(\overline{g}\circ \tilde{g}^{-1})\circ g = (\overline{g}\circ \tilde{g}^{-1})\circ (\tilde{g}\circ \pi_{\ker(g)}) = \overline{g}\circ \pi_{\ker(g)} = h'$$
+            Hence, we concluded that $h' \in \textmd{im}(\_\circ g)$, showing that $\ker(\_\circ f)\subseteq \textmd{im}(\_\circ g)$. 
+
+            Hence, $\ker(\_\circ f)= \textmd{im}(\_\circ g)$.
+        \end{itemize}
+        The above two statements precisely characterize the exactness of the $\Hom$-sequence.
+
+        \item[(2)] Take the exact sequence \begin{tikzcd}
+            0 \ar[r] & 2\mathbb{Z} \ar[r,"\textmd{inc}", hook] & \mathbb{Z} \ar[r, "\pi_{2\mathbb{Z}}", two heads] & \mathbb{Z}/2\mathbb{Z} \ar[r] & 0
+        \end{tikzcd}, which implies the sequence \begin{tikzcd}
+            \Hom(2\mathbb{Z},\mathbb{Z}) & \ar[l, "\_\circ \textmd{inc}"] \Hom(\mathbb{Z},\mathbb{Z}) & \Hom(\mathbb{Z}/2\mathbb{Z}, \mathbb{Z}) \ar[l, "\_\circ \pi_{2\mathbb{Z}}"] & 0\ar[l]
+        \end{tikzcd} is exact.
+
+        Now, given that $2$ is a generator of $2\mathbb{Z}$ as a $\mathbb{Z}$-module (while $1$ is a generator of $\mathbb{Z}$), a module homomorphism $h\in \Hom(2\mathbb{Z},\mathbb{Z})$ by $h(2) = 1$ can be defined.
+
+        However, we claim that $h\notin \textmd{im}(\_\circ \textmd{inc})$: Suppose the contrary that it is in the image, there exists $h'\in\Hom(\mathbb{Z},\mathbb{Z})$, such that $h = h'\circ \textmd{inc}$. Which, we get $1 = h(2) = h'\circ \textmd{inc}(2) = h'(2) = 2\cdot h'(1)$, which $2\cdot h'(1)=1$ is a contradiction, since $h'$ as an endomorphism on $\mathbb{Z}$ doesn't have such element satisfying $2\cdot x = 1$. Hence, $h$ cannot be in the image of $\_\circ \textmd{inc}$, showing that the left most precomposition isn't necessarily surjective.
+
+        \item[(3)] Given that the original sequence splits, then by \textbf{Theorem 80}, this is equivalent to $f$ having a left inverse $\alpha\in \Hom(N, M)$ (implying $\alpha\circ f = \id_M$). Hence, for all $h\in \Hom(M, L)$, we get $h = h \circ \id_M = (h\circ \alpha) \circ f$. Hence, $h\circ \alpha\in \Hom(N,L)$ has an image of $h$ under the morphism $\_\circ f$, showing $h\in \textmd{im}(\_\circ f)$, which the precomposition of $f$ is now surjective.
+    \end{itemize}
+\end{proof}
+
+\textbf{Remark:} Similar statements can be made the other way: With the same initial exact sequence, then:
+\begin{itemize}
+    \item[(1)] The sequence \begin{tikzcd}
+        0 \ar[r] & \Hom(L,M) \ar[r, "f\circ \_"] & \Hom(L,N) \ar[r,"g\circ \_"] & \Hom(L,P)
+    \end{tikzcd} is exact (if removing the condition of $g$ being surjective, then it's again an if and only if).
+    \item[(2)] The postcomposition of $g$ in the above $\Hom$-sequence is not necessarily surjective (using the same exact sequence, with $L=\mathbb{Z}/2\mathbb{Z}$ instead would work).
+    \item[(3)] If the original exact sequence splits, then postcomposition of $g$ is surjective.
+\end{itemize}
+For these extra statements, similar proofs can be deduced.
+
+\newpage
+\subsection*{Abelian Category}
+Abelian category is aimed for collecting common properties arose when studying homology, which $\cat{R-Mod}$ is the most common example to start with.
+\begin{exm}
+    Given the category of $R$-Modules, it has the following properties (which generally are not true in arbitrary categories):
+    \begin{itemize}
+        \item[1.] $0$-module is a zero-object, serving both as initial and final element (for every other $R$-module $M$, there exists a unique module homomorphism $0\rightarrow M$, namely $0\mapsto 0$, and a unique homomorphism $M\rightarrow 0$, namely $m\mapsto 0$ for all $m\in M$).
+        \item[2.] Finite Products (namely direct product $\prod$) and finite coporducts (namely direct sum $\bigoplus$) exists, and they coincide in $\cat{R-Mod}$.
+        \item[3.] Kernels and Cokernels are well-defined (properties will be explained later).
+        \item[4.] Given a module homomorphism $\varphi:M\rightarrow N$ that is both a monomorphism and epimorphism, since in $\cat{R-Mod}$, monomorphisms are precisely injective homomorphisms, and epimorphisms are precisely surjective homomorphisms (one can check this), the $\varphi$ is an isomorphism.
+        \item[5.] Since all $R$-modules are additive abelian groups, it induces an additive abelian group structure on any set of module homomorphisms $\Hom_\cat{R-Mod}(M,N)$; furthermore, composition of module homomorphisms are bilinear, namely $(f+g)\circ (k+h)=f\circ k+f\circ h+g\circ k+g\circ h$.
+    \end{itemize}
+\end{exm}
+Which, there are more properties that will be developed, here just mentioned a few. 
+
+To generalize these properties to broader categories, we first start with \emph{Additive Ctegory}:
+\begin{defn}
+    A category $\cat{A}$ is an \emph{Additive Category}, if:
+    \begin{itemize}
+        \item[1.] $\cat{A}$ has a zero-object, that serves both as an initial and final object.
+        \item[2.] Finite products and coproducts exist in $\cat{A}$.
+        \item[3.] For any objects $B,C\in\cat{A}$, the set of morphisms $\Hom_\cat{A}(B,C)$ has an abelian group structure (use $+$ as the group operation for simplicity). Furthermore, its composition is bilinear, or $(f+g)\circ (k+h)=f\circ k+f\circ h+g\circ k+g\circ h$, as long as the composition is well-defined.
+    \end{itemize}
+    \textbf{Remark:}
+        Here $0$ would be used as both a zero-object and zero-morphism of a specific Homset, so need to interpret $0$ according to the context.
+\end{defn}
+
+\begin{defn}
+    A functor $F:\cat{A}\rightarrow\cat{B}$ (where both $\cat{A},\cat{B}$ are additive categories) is called \emph{Additive}, if given any objects $X,Y\in \cat{A}$, the induced function $F_{X,Y}:\Hom_\cat{A}(X,Y)\rightarrow \Hom_\cat{B}(F(X),F(Y))$ is also a group homomorphism (i.e. it preserves the abelian group structure on Homsets).
+\end{defn}
+
+\begin{exm}
+    Even though the category $\cat{Grp}$ seems to satisfy many of the desired properties, it's not an additive category, since the Homsets are not necessarily an abelian group.
+
+    For instance, take $\End_\cat{Grp}(S_3)$, take the inner automorphism $\varphi_{(12)},\varphi_{(23)}$, they're not commutative:
+
+    The composition $(12)(23) = (123)$, while $(23)(12) = (132)$. Then, their action on $(12)$ provides:
+    $$\varphi_{(12)}\circ \varphi_{(23}(12) = (12)(23)(12)(23)^{-1}(12)^{-1} = (123)(12)(132)=(23)$$
+    $$\varphi_{(23)}\circ \varphi_{(12}(12) = (23)(12)(12)(12)^{-1}(23)^{-1} = (132)(12)(123) = (13)$$
+    So, the two automorphisms don't commute, this endomorphism on $S_3$ is not abelian.
+\end{exm}
+
+\hfill
+
+Now, to obtain kernel and cokernel of a morphism, we can't simply claim them as "subobjects" of the source or target as $\cat{R-Mod}$. Which, the following observation is done for understanding their properties:
+\begin{exm}
+    Given a module homomorphism $\varphi:M\rightarrow N$, $\ker(\varphi) \subseteq M$ is defined as a submodule collecting all elements being mapped to $0$, and $\coker(\varphi) := N/\textmd{im}(\varphi)$, the quotient module of the image of $\varphi$.
+
+    Which, given the inclusion map $\iota:\ker(\varphi)\hookrightarrow M$, $\varphi\circ \iota = 0$; furthermore, for any module homomorphism $\alpha:Z\rightarrow M$ satisfying $\varphi\circ \alpha = 0$, since $\textmd{im}(\alpha) \subseteq \ker(\varphi)$, there exists a unique $\overline{\alpha}:Z\rightarrow \ker(\varphi)$, such that $\alpha = \iota\circ \overline{\alpha}$ (namely the restriction). Diagramatically, we get:
+    \begin{center}
+        \begin{tikzcd}
+            \ker(\varphi) \ar[r,"\iota"] & M \ar[r,"\varphi"] & N\\
+            Z \ar[ru, "\alpha"'] \ar[u, "\exists ! \overline{\alpha}", dashed] \ar[rru, "0"', bend right = 20]
+        \end{tikzcd}
+    \end{center}
+
+    Similarly, given the projection map $\pi:N\rightarrow \coker(\varphi) = N/\textmd{im}(\varphi)$, $\pi\circ \varphi = 0$; and, for any module homomorphism $\beta:N\rightarrow Z'$ satisfying $\beta\circ\varphi = 0$, since $\textmd{im}(\varphi)\subseteq \ker(\beta)$, then by Generalized First Isomorphism Theorem, there exists a unique module homomorphism $\tilde{\beta}:N/\textmd{im}(\varphi)\rightarrow Z'$, such that $\beta=\tilde{\beta}\circ \pi$. Diagramatically, we get:
+    \begin{center}
+        \begin{tikzcd}
+            M \ar[r,"\varphi"] \ar[rrd,"0"', bend right = 20] & N\ar[r,"\pi"] \ar[rd, "\beta"'] & \coker(\varphi) \ar[d, "\exists ! \tilde{\beta}", dashed]\\
+            && Z'
+        \end{tikzcd}
+    \end{center}
+
+    In general, $\ker(\varphi)$ and $\coker(\varphi)$ can be interchanged with any isomorphic $R$-modules, where $\iota$ and $\pi$ are changed according to the isomorphism used. But, such unique factorization properties are equipped whenever the associated maps $\iota$ and $\pi$ are fixed.
+\end{exm}
+\begin{defn}
+    Given a morphism $\varphi:B\rightarrow C$ in an additive category $\cat{A}$, a morphism $\iota:X\rightarrow B$ is a \emph{Kernel of $\varphi$}, if $\varphi\circ \iota = 0 \in \Hom_\cat{A}(X,C)$, and for any other morphism $\alpha:Z \rightarrow B$ satisfying $\varphi\circ \zeta = 0$, there exists a unique morphism $\overline{\alpha}:Z\rightarrow X$, such that $\alpha=\iota\circ\overline{\alpha}$. Diagramatically, we get:
+    \begin{center}
+        \begin{tikzcd}
+            X \ar[r,"\iota"] & B \ar[r,"\varphi"] & C\\
+            Z \ar[ru, "\alpha"'] \ar[u, "\exists ! \overline{\alpha}", dashed] \ar[rru, "0"', bend right = 20]
+        \end{tikzcd}
+    \end{center}
+    Similarly, a morphism $\pi:C\rightarrow Y$ is a \emph{Cokernel of $\varphi$}, if $\pi\circ\varphi = 0 \in \Hom_\cat{A}(B, Y)$, and for any other morphism $\beta:C\rightarrow Z'$ satisfying $\beta\circ\varphi = 0$, there exists a unique morphism $\tilde{\beta}: Y\rightarrow Z'$, such that $\beta = \tilde{\beta}\circ \pi$. Diagramatically, we get:
+    \begin{center}
+        \begin{tikzcd}
+            B \ar[r,"\varphi"] \ar[rrd,"0"', bend right = 20] & C\ar[r,"\pi"] \ar[rd, "\beta"'] & Y \ar[d, "\exists ! \tilde{\beta}", dashed]\\
+            && Z'
+        \end{tikzcd}
+    \end{center}
+\end{defn}
+So, kernels and cokernels of a morphism in additive category are morphisms, instead of objects paired with morphisms (in contrast to traditional definition in $\cat{R-Mod}$). Which, a morphism could have mutliple kernels and cokernels. 
+
+\hfill
+
+Besides the definition, in $\cat{R-Mod}$ the maps associated with kernels and cokernels are injective / surjective respectively. There are also such relations in additive categoories. Before that, we'll observe a simplified definition for monomorphism / epimorphism in additive categories:
+\begin{prop}
+    Given a morphism $\varphi:A\rightarrow B$ in an additive category:
+    \begin{itemize}
+        \item $\varphi$ is a monomorphism, iff for any morphism $\alpha:Z\rightarrow A$, $\varphi\circ \alpha = 0\implies \alpha=0$.
+        \item $\varphi$ is an epimorphism, iff for any morphism $\beta:B\rightarrow Z'$, $\beta\circ \varphi = 0 \implies \beta=0$.
+    \end{itemize}
+\end{prop}
+\begin{proof}
+    Monomorphism:
+    \begin{itemize}
+        \item[$\implies:$] If $\varphi$ is monic, suppose $\varphi\circ\alpha = 0$, then given a zero morphism $0:Z\rightarrow A$ also (same source and target as $\alpha$), since $\varphi\circ\alpha = 0=\varphi\circ 0$ (by bilinearity), with monomorphisms being left cancellative, $\alpha = 0$. Hence, $\varphi\circ\alpha=0\implies \alpha=0$.
+        \item[$\impliedby:$] If $\varphi\circ\alpha = 0\implies \alpha=0$, then for any morphisms $f_1,f_2:Z\rightarrow A$ satisfying $\varphi\circ f_1=\varphi\circ f_2$, since $\varphi\circ f_1 - \varphi\circ f_2 = \varphi\circ(f_1-f_2) = 0$ through bilinearity, $f_1-f_2=0$, hence $f_1=f_2$. This shows $\varphi$ is monic.
+    \end{itemize}
+
+    Epimorphism:
+    \begin{itemize}
+        \item[$\implies:$] If $\varphi$ is epic, suppose $\beta\circ \varphi = 0$, then given again a zero morphism $0:C\rightarrow Z'$ (same source and target as $\beta$), since $\beta\circ\varphi = 0 = 0\circ \varphi$, with epimorphisms being right cancellative, $\beta = 0$. Hence, $\beta\circ\varphi=0\implies \beta=0$.
+        \item[$\impliedby:$] If $\beta\circ\varphi = 0\implies \beta=0$, then given any morphisms $g_1,g_2:C\rightarrow Z'$ satisfying $g_1\circ\varphi = g_2\circ\varphi$, since $g_1\circ\varphi-g_2\circ\varphi = (g_1-g_2)\circ\varphi = 0$, then $g_1-g_2 = 0$, therefore $g_1=g_2$. Hence, $\varphi$ is epic.
+    \end{itemize}
+\end{proof}
+
+\begin{prop}
+    In additive category, kernels are monomorphisms, and cokernels are epimorphisms.
+\end{prop}
+\begin{proof}
+    Suppose $\iota:X\rightarrow A$ is a kernel of some morphism $\varphi:A\rightarrow B$, if $\alpha:Z\rightarrow X$ satisfies $\iota\circ \alpha=0$, with $\varphi\circ (\iota\circ\alpha) = \varphi\circ 0 = 0$, the following diagram commutes:
+    \begin{center}
+        \begin{tikzcd}
+            X \ar[r,"\iota"] & A\ar[r,"\varphi"] & B\\
+            Z \ar[u,"\alpha"] \ar[ru,"\iota\circ \alpha"'] \ar[rru,"0"',bend right = 20]
+        \end{tikzcd}
+    \end{center}
+    Which, by the unique factorization of kernel, with $\varphi\circ(\iota\circ \alpha) = 0$, this morphism factors uniquely through $\iota$, hence $\alpha$ is the unique morphism satisfying $\iota\circ \alpha = a:= (\iota\circ\alpha)$. However, since $\iota\circ 0 = 0 = \iota\circ\alpha$, $0$ is also another morphism obtaining such property. Hence, $\alpha=0$. Which, $\iota$ is monic.
+
+    \hfill
+
+    Similarly, suppose $\pi:B\rightarrow Y$ is a cokernel of some morphism $\varphi:A\rightarrow B$, if $\beta:B\rightarrow Z'$ satisfies $\beta\circ\pi = 0$, with $(\beta\circ\pi)\circ \varphi = 0\circ \varphi = 0$, the following diagram commutes:
+    \begin{center}
+        \begin{tikzcd}
+            A \ar[r,"\varphi"] \ar[rrd,"0"',bend right = 20] & B \ar[r,"\pi"] \ar[rd,"\beta\circ\pi"'] & Y \ar[d,"\beta"] \\
+            && Z'
+        \end{tikzcd}
+    \end{center}
+    Which, by the unique factorization of cokernel, with $(\beta\circ\pi)\circ\varphi = 0$, this morphism factors uniquely through $\pi$, hence $\beta$ must bbe the unique morphism satisfying $\beta\circ\pi = b:= (\beta\circ\pi)$. However, again since $0\circ\pi = 0 = \beta\circ\pi$, $0$ is another morphis satisfying such factorization. Hence, $\beta=0$. So, $\pi$ is epic.
+\end{proof}
+
+Here is another characterization of monomorphism and epimorphism:
+\begin{prop}
+    Given $\varphi:A\rightarrow B$ a morphism in an additive category.
+    \begin{itemize}
+        \item $\varphi$ is a monomorphism $\iff$ $0\rightarrow A$ is its kernel.
+        \item $\varphi$ is an epimorphism $\iff$ $B\rightarrow 0$ is its cokernel.
+    \end{itemize}
+\end{prop}
+\begin{proof}
+    Monomorphism:
+    \begin{itemize}
+        \item[$\implies:$] Given $\varphi$ as a monomorphism, since $0$ is both an initial and final object of the category, then the only morphism $0\rightarrow A$ is the zero morphism.
+        Hence, the composition $0\rightarrow A \xrightarrow{\varphi}B$ provides a zero morphism.
+
+        Also, suppose $\alpha:Z\rightarrow A$ satisfies $\varphi\circ \alpha = 0$, by properties of monomorphism in additive category, $\alpha=0$. Since there exists a unique morphism $Z\rightarrow 0$ (a zero morphism) by finality of $0$, while the composition $Z\rightarrow 0\rightarrow A$ also provides a zero morphism (coincides with $\alpha=0$), hence $\alpha$ factors uniquely through $0\rightarrow A$, showing it's a kernel of $\varphi$.
+
+        Diagramatically, we get:
+        \begin{center}
+            \begin{tikzcd}
+                0 \ar[r] & A\ar[r, "\varphi"] & B\\
+                Z \ar[u, "\exists !", dashed] \ar[ru, "\alpha=0"'] \ar[rru, "0"', bend right = 20]
+            \end{tikzcd}
+        \end{center}
+
+        \item[$\impliedby:$] Suppose $0\rightarrow A$ is a kernel of $\varphi$, then for all morphism $\alpha:Z\rightarrow A$ satisfying $\varphi\circ\alpha=0$, it factors uniquely through $0\rightarrow A$. Hence, there exists unique morphism $Z\rightarrow 0$, such that $Z\rightarrow 0\rightarrow A$ composes to be $\alpha$. Yet, since both $Z\rightarrow 0$ and $0\rightarrow A$ must be zero morphisms due to the terminality of $0$ (having precisely one morphism going into / out of with respect to each object), then $\alpha$ as a composition of the two must be a zero morphism. So, $\alpha=0$, which  proves that $\varphi$ is monic.
+    \end{itemize}
+
+    Epimorphism:
+    \begin{itemize}
+        \item[$\implies:$] Suppose $\varphi$ an epimorphism, since $B\rightarrow 0$ is a zero morphism, hence the composition $A\xrightarrow{\varphi}B \rightarrow 0$ provides a zero morphism.
+
+        Also, suppose $\beta:B\rightarrow Z'$ satisfies $\beta\circ \varphi = 0$, by properties of epimorphisms in addiive category, $\beta = 0$. Since there exists a unique morphism $0\rightarrow Z'$ since $0$ serves as an initial object, while the composition $B\rightarrow 0\rightarrow Z'$ also provides a zero morphism (which coincides with $\beta=0$), hence $\beta$ factors uniquely through $B\rightarrow 0$, showing it's a cokernel of $\varphi$.
+
+        Diagramatically, we get:
+        \begin{center}
+            \begin{tikzcd}
+                A\ar[r,"\varphi"] \ar[rrd,"0"', bend right = 20] & B\ar[r] \ar[rd,"\beta = 0"'] & 0 \ar[d, "\exists !", dashed]\\
+                && Z
+            \end{tikzcd}
+        \end{center}
+
+        \item[$\impliedby:$] Suppose $B\rightarrow 0$ is a cokernel of $\varphi$, then for all morphism $\beta:B\rightarrow Z'$ satisyfing $\beta\circ \varphi = 0$, there exists a unique morphism $0\rightarrow Z'$, such that the composition $B\rightarrow 0\rightarrow Z'$ provides $\beta$. Yet, since $0$ is both initial and final, the two morphisms in the composition are all zero morphisms, hence the composition is a zero morphism, showing that $\beta=0$. This proves that $\varphi$ is epic.
+    \end{itemize}
+\end{proof}
+
+\hfil
+
+After introduction to kernels and cokernels, there is one problem: kernels and cokernels don't necessarily exist in an additive category.
+\begin{exm}
+    Consider the category of \emph{Finitely Generated Modules over the Ring $\mathbb{Z}[x_1,...]$}, the polynomial ring with infinite indeterminates (which each polynomial must have finitely many indeterminates and degrees). One can check it satisfies all properties as an additive category, with finite products and coproducts being the same as general $\cat{R-Mod}$.
+
+    \hfil
+
+    Both $\mathbb{Z}[x_1,...]$ and $\mathbb{Z}$ can be identified as finitely generated modules over the ring $\mathbb{Z}[x_1,...]$ (the first one in a natural way, while the second one can view the ring action as multiplying the integer by the constant term of the corresponding polynomial).
+
+    However, consider the module homomorphism $\varphi:\mathbb{Z}[x_1,...]\rightarrow \mathbb{Z}$ by $\varphi(f) = f(0)$, which returns the constant term of the polynomial.
+    This morphism (also as a ring homomorphism) has $\ker(\varphi)=(x_1,...)$, the collection of all polynomials with constant term $0$.
+
+    \hfil
+
+    The problem is: such kernel is not finitely generated over $\mathbb{Z}[x_1,...]$: For any finite list $k_1,...,k_n\in \ker(\varphi)$, the ideal / module generated $(k_1,...,k_n)$ contains only polynomials with constant term $0$ (since all generators have constant term $0$). Since there are finite such polynomial, while each polynomial has finite indeterminates, one can collect $G=\{x_{i_1},...,x_{i_j}\}$ as all the indeterminates appeared in $k_1,...,k_n$. Now, shoose indeterminate $x_l\notin G$, if plug in $x_{i_1}=...=x_{i_j}=0$, all $k_1,...,k_n$ vanishes (since they have constant term $0$), hence all elements in $(k_1,...,k_n)$ vanishs; yet, since $x_l \in \ker(\varphi)$ doesn't vanish, $x_l\notin (k_1,...,k_n)$, showing $\ker(\varphi) \neq (k_1,...,k_n)$. Hence, $\ker(\varphi)$ is not finitely generated, it doesn't belong to the chosen category, this module homomorphism doesn't have kernel in the category.
+\end{exm}
+\textbf{Remark:} If expand the codomain to $\mathbb{Z}[x_1,...]$ with the same ring action as $\mathbb{Z}$, then since $\textmd{im}(\varphi)=\mathbb{Z}$, $\coker(\varphi) = \mathbb{Z}[x_1,...]/\mathbb{Z} = (x_1,...)$, then the extended morphism also has no cokernel.
+
+\hfil
+
+Hence, additive category is not enough, we need stronger restriction on the category.
+
+\begin{defn}
+    An additive category is called \emph{Abelian Category}, if for every morphism $\varphi$, its kernels and cokernels exist in the category.
+
+    Moreover, every monomorphism is a kernel of some morphisms, while every epimorphisms is a cokernel of some morphisms.
+\end{defn}
+\textbf{Remark:} Some texts would add an extra restrictions about finite products and coproducts coincide, but it turns out without such restriction, one can deduce the two are isomorphic in Abelian Category. (Here we'll skip the proof, assume it's given). For notation purpose, Finite Products / Coproducts can (and will) be denoted as \emph{Direct Sum} $\bigoplus$. On the other hand, they also coincide in just Additive Category.
+
+\textbf{Remark 2:} In additive category, kernels are monomorphisms while cokernels are epimorphisms. The restriction of Abelian Category makes this an if and only if.
+
+\hfil
+
+\begin{prop}
+    In an Abelian Category, every kernel / monomorphism is a kernel of its cokernel, while every cokernel / epimorphism is a cokernel of its kernel.
+\end{prop}
+\begin{proof}
+    WLOG, since all monomorphisms / epimorphisms are kernels / cokernels of some morphisms respectively, it suffices to fix an arbitrary morphism $\varphi:A\rightarrow B$ and look at its kernels / cokernels.
+
+    Suppose $\iota:X\rightarrow A$ is its kernel, and $\pi:B\rightarrow Y$ is its cokernel. 
+    \begin{itemize}
+        \item First, consider $c:A\rightarrow Z$ as a cokernel of $\iota$, then $c\circ \iota = 0$, and any morphism $\beta$ satisfying $\beta\circ \iota = 0$ can be factored uniquely through $\iota$. Then, since $\varphi\circ \iota = 0$, there exists a uinque morphism $\tilde{\varphi}:Y \rightarrow Z$, such that $\varphi=\tilde{\varphi}\circ c$. Diagramatically, we get:
+        \begin{center}
+            \begin{tikzcd}
+                X \ar[r,"\iota"] \ar[rr,"0", bend left = 40] & A\ar[r,"\varphi"] \ar[rd,"c"'] & B\\
+                && Z\ar[u,"\exists !\tilde{\varphi}"', dashed]
+            \end{tikzcd}
+        \end{center}
+        Now, to prove that $\iota$ is a kernel of $c$, suppose a morphism $\alpha:Z' \rightarrow A$ satisfies $c\circ \alpha = 0$, then since $\varphi\circ \alpha = \tilde{\varphi}\circ (c\circ\alpha) = \tilde{\varphi}\circ 0 = 0$, then with $\iota$ being a kernel of $\varphi$, $\alpha$ factors uniquely through $\iota$, hence proven that $\iota$ is a kernel of $c$, its own cokernel.
+
+        Diagramatically, we get:
+        \begin{center}
+            \begin{tikzcd}
+                X \ar[r,"\iota"] & A\ar[r,"\varphi"] \ar[rd,"c"'] & B\\
+                Z'\ar[ru,"\alpha"] \ar[rr,"0"']\ar[u,"\exists !", dashed] && Z\ar[u,"\exists !\tilde{\varphi}"', dashed]
+            \end{tikzcd}
+        \end{center}
+
+        \item Consider $k:C\rightarrow B$ as a kernel of $\pi$, then $\pi\circ k=0$, and any morphism $\alpha$ satisfying $\pi\circ\alpha=0$ can be factored uniquely through $k$. Then, since $\pi\circ\varphi = 0$, there exists a unique morphism $\overline{\varphi}:A\rightarrow C$, such that $\varphi=k\circ \overline{\varphi}$. Diagramatically, we get:
+        \begin{center}
+            \begin{tikzcd}
+                A \ar[r,"\varphi"] \ar[rr,"0", bend left = 40] \ar[d,"\exists ! \overline{\varphi}"',dashed] & B \ar[r,"\pi"] & Y\\
+                C \ar[ru, "k"']
+            \end{tikzcd}
+        \end{center}
+        Then, to prove that $\pi$ is a cokernel of $k$, suppose a morphism $\beta:B\rightarrow C'$ satisfies $\beta\circ k=0$, then since $\beta\circ\varphi = (\beta \circ k)\circ \overline{\varphi}=0\circ\overline{\varphi}=0$, $\beta$ factors uniquely through $\pi$ (cokernel of $\varphi$), hence proven that $\pi$ is a cokernel of $k$, it's own kernel.
+
+        Diagramatically, we again get:
+         \begin{center}
+            \begin{tikzcd}
+                A \ar[r,"\varphi"] \ar[d,"\exists ! \overline{\varphi}"',dashed] & B \ar[r,"\pi"]\ar[rd, "\beta"'] & Y \ar[d,"\exists !", dashed]\\
+                C \ar[ru, "k"'] \ar[rr,"0"'] && C'
+            \end{tikzcd}
+        \end{center}
+    \end{itemize}
+\end{proof}
+
+\begin{prop}
+    Given $\varphi:A\rightarrow B$ that are both monic and epic in an Abelian Category, then it is an isomorphism.
+\end{prop}
+\begin{proof}
+    Since it its both monic and epic, $\varphi$ is both a kernel and cokernel for some other morphisms (might be different morphisms when view as kernel and cokernel). Moreover, the previous several propositions provided that $\varphi$ is in fact a kernel of its cokernel (since it's monic), and a cokernel of its kernel (since it's epic), it reduces to consider one of its kernel $i:X\rightarrow A$, and one of its cokernel $\pi:B\rightarrow Y$.
+
+    
+\end{proof}
+\end{document}
