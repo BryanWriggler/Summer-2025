@@ -20,7 +20,7 @@
 \newcommand{\Aut}{\textmd{Aut}}
 \newcommand{\cat}[1]{\textsf{#1}}
 
-\title{UCSB REU - Homological Algebra}
+\title{Homology on $\cat{R-Mod}$, and Abelian Category}
 \author{Zih-Yu Hsieh}
 \date{2025}
 
@@ -475,8 +475,73 @@ Hence, additive category is not enough, we need stronger restriction on the cate
     Given $\varphi:A\rightarrow B$ that are both monic and epic in an Abelian Category, then it is an isomorphism.
 \end{prop}
 \begin{proof}
-    Since it its both monic and epic, $\varphi$ is both a kernel and cokernel for some other morphisms (might be different morphisms when view as kernel and cokernel). Moreover, the previous several propositions provided that $\varphi$ is in fact a kernel of its cokernel (since it's monic), and a cokernel of its kernel (since it's epic), it reduces to consider one of its kernel $i:X\rightarrow A$, and one of its cokernel $\pi:B\rightarrow Y$.
+    Since $\varphi$ is both monic and epic, then $0\rightarrow A$ is a kernel, while $B\rightarrow 0$ is a cokernel. Furthermore, since $\varphi$ is also a kernel and cokernel of some other morphisms (not necessarily the same morphism for kernel or cokernel), then $\varphi$ is actually a cokernel of $0\rightarrow A$ (its own kernel), and a kernel of $B\rightarrow 0$ (its own cokernel, based on the previous proposition.
 
+    Now, since $0\rightarrow A\xrightarrow{\id_A}A$ composes to be a zero morphism (since $0\rightarrow A$ is a zero morphism by definition), then with $\varphi$ being a cokernel of $0\rightarrow A$, there exists a unique morphism $\psi:B\rightarrow A$, such that $\id_A = \psi\circ\varphi$. Diagramatically, we get:
+    \begin{center}
+        \begin{tikzcd}
+            0 \ar[r] & A \ar[r,"\varphi"] \ar[rd, "\id_A"'] & B\ar[d,"\exists !\psi", dashed]\\
+            && A
+        \end{tikzcd}
+    \end{center}
     
+    Similarly, since $B\xrightarrow{\id_B} B\rightarrow 0$ composees to be a zero morphism, then with $\varphi$ being a kernel of $B\rightarrow 0$, there exists a unique morphism $\psi':B\rightarrow A$, such that $\id_B = \varphi\circ\psi'$. Diagramatically, we get:
+    \begin{center}
+        \begin{tikzcd}
+            A\ar[r,"\varphi"] & B\ar[r] & 0\\
+            B \ar[ru,"\id_B"'] \ar[u,"\exists ! \psi'", dashed]
+        \end{tikzcd}
+    \end{center}
+    Now, with $\psi$ and $\psi'$, the following is true:
+    $$\psi = \psi\circ \id_B = \psi\circ (\varphi\circ \psi') = (\psi\circ\varphi)\circ \psi' = \id_A \circ \psi' = \psi'$$
+    Hence, $\psi=\psi'$ serves as an inverse of $\varphi$, showing $\varphi$ is in fact an isomorphism.
+\end{proof}
+This indicates that a morphism is both monic and epic $\iff$ it's an isomorphism in Abelian Category.
+
+\hfil
+
+With kernels and cokernels established, they can be used to establish finite pullback / pushouts. As an example, we'll start with cases in $\cat{R-Mod}$:
+\begin{exm}
+    Given $M_1,M_2,N$ three $R$-modules, together with module homomorphisms $f:M_1\rightarrow N$ and $g:M_2\rightarrow N$. together with projections $\pi_1:M_1\oplus M_2\rightarrow M_1$ and $\pi_2:M_1\oplus M_2\rightarrow M_2$, which we claim that $\ker(f\circ \pi_1 - g\circ \pi_2)\subseteq M_1\oplus M_2$ (here serves as modules instead of morphisms) together with the restricted projection onto $M_1$ and $M_2$ serves as a pullback of $f$ and $g$.
+
+    For all $x\in \ker(f\circ \pi_1-g\circ\pi_2)\subseteq M_1\oplus M_2$, since $f\circ \pi_1(x)-g\circ\pi_2(x)=0$, we have $f\circ\pi_1(x)=g\circ\pi_2(x)$, hence $f\circ \pi_1=g\circ\pi_2$ when restricts to the kernel.
+
+    Similarly, given any other module $Z$ with module homomorphisms $z_1:Z\rightarrow M_1$ and $z_2:Z\rightarrow M_2$ satisfying $f\circ z_1=g\circ z_2$. Then, since there exists a unique product map $z_1\times z_2:Z\rightarrow M_1\oplus M_2$, where $\pi_1\circ (z_1\times z_2)=z_1$, and $\pi_2\circ (z_1\times z_2)$, then, we get:
+    $$0=f\circ z_1-g\circ z_2 = (f\circ \pi_1)\circ (z_1\times z_2)-(g\circ \pi_2)\circ (z_1\times z_2) = (f\circ \pi_1-g\circ \pi_2)\circ (z_1\times z_2)$$
+    Hence, we get $\textmd{im}(z_1\times z_2)\subseteq \ker(f\circ \pi_1-g\circ \pi_2)$, showing it induces a unique morphism from $Z$ to $\ker(f\circ \pi_1-g\circ \pi_2)$ (through the restricted product map).
+\end{exm}
+
+The above satisfies the property as a pullback, and as a dual, the cokernel when reversing all arrows (together with inclusion into $M_1\oplus M_2$ in contrast to projection) would provide the pushout instead. Similar notion can be generalized to Abelian Category:
+
+\begin{prop}
+    In Abelian Category, Finite Pullback exists.
+\end{prop}
+\begin{proof}
+    For case of two morphisms, given two morphisms $f_1:X_1\rightarrow Y$ and $f_2:X_2\rightarrow Y$, with direct sum $X_1\oplus X_2$ and two projections $\pi_1:X_1\oplus X_2\rightarrow X_1$ and $\pi_2:X_1\oplus X_2\rightarrow X_2$.
+
+    Which, given the compositions $f_1\circ \pi_1, f_2\circ\pi_2:X_1\oplus X_2\rightarrow Y$, consider $\alpha = \ker(f_1\circ \pi_1-f_2\circ\pi_2): A\rightarrow X_1\oplus X_2$. Which, we claim that the object $A$ together with morphisms $\pi_1\circ \alpha:A\rightarrow X_1$ and $\pi_2\circ \alpha:A\rightarrow X_2$ serves as a pullback for given $f_1,f_2$.
+
+    \hfil
+
+    Since $f_1\circ (\pi_1\circ\alpha), f_2\circ (\pi_2\circ\alpha):A\rightarrow Y$ satisfy the following:
+    $$f_1\circ (\pi_1\circ\alpha)f_2\circ (\pi_2\circ\alpha) = (f_1\circ\pi_1-f_2\circ\pi_2)\circ \ker(f_1\circ\pi_2-f_2\circ\pi_2) = 0$$
+    Hence, $f_1\circ (\pi_1\circ \alpha)=f_2\circ(\pi_2\circ \alpha)$. In commutative diagrams, we get:
+    \begin{center}
+        \begin{tikzcd}
+            A \ar[r, "\pi_1\circ \alpha"] \ar[d,"\pi_2\circ\alpha"'] & X_1 \ar[d,"f_1"]\\
+            X_2 \ar[r,"f_2"'] & Y
+        \end{tikzcd}
+    \end{center}
+    Also, given any object $Z$ equipped with morphisms $z_1:Z\rightarrow X_1$ and $z_2:Z\rightarrow X_2$ satisfying $f_1\circ z_1=f_2\circ z_2$, given its product morphism $(z_1\times z_2):Z\rightarrow X_1\oplus X_2$, it satisfies $z_1=\pi_1\circ(z_1\times z_2)$ and $z_2=\pi_2\circ(z_1\times z_2)$. Then, we derived the following equality:
+    $$0=f_1\circ z_1-f_2\circ z_2=(f_1\circ\pi_1)\circ (z_1\times z_2)-(f_2\circ\pi_2)\circ (z_1\times z_2) = (f_1\circ\pi_1-f_2\circ\pi_2)\circ (z_1\times z_2)$$
+    Then, by the property of $\alpha=\ker(f_1\circ\pi_1-f_2\circ\pi_2)$, there exists a unique morphism $\overline{z}:Z\rightarrow A$, such that $z_1\times z_2=\alpha\circ \overline{z}$. So, $(\pi_1\circ\alpha)\circ \overline{z} = \pi_1\circ (z_1\times z_2)=z_1$, while $(\pi_2\circ\alpha)\circ \overline{z}=\pi_2\circ(z_1\times z_2)=z_2$, showing such factorization through $A$ exists. Diagramatically, we get:
+    \begin{center}
+        \begin{tikzcd}
+            Z \ar[rd,"\overline{z}"] \ar[rrd,"z_1",bend left = 20]\ar[rdd, "z_2"', bend right = 20] \\
+            & A \ar[r, "\pi_1\circ \alpha"] \ar[d,"\pi_2\circ\alpha"'] & X_1 \ar[d,"f_1"]\\
+            & X_2 \ar[r,"f_2"'] & Y
+        \end{tikzcd}
+    \end{center}
+    And, such morphism $\overline{z}$ is unique, 
 \end{proof}
 \end{document}
