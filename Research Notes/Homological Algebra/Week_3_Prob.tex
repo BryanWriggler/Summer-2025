@@ -1,0 +1,291 @@
+\documentclass{article}
+\usepackage[margin = 2.54cm]{geometry} % set margin to traditional doc
+
+%packages
+\usepackage{graphicx} % Required for inserting images
+\usepackage[most]{tcolorbox} %for creating environments
+\usepackage{tikz-cd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor} %for importing multiple colors
+\usepackage{hyperref} %for creating links to different sections
+
+\linespread{1.2} %controlling line spread
+
+%define colors i like
+\definecolor{myTeal}{RGB}{0,128,128}
+\definecolor{myGreen}{RGB}{34,170,34}
+\definecolor{mySapphire}{RGB}{15,82,186}
+\definecolor{myEmerald}{RGB}{50.4, 130, 90}
+
+%create math environments, can add [section] or [subsection] to add index counter based on sections/subsections
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{lemma}{Lemma}
+
+%setup colored box environment for each math env above
+\tcolorboxenvironment{defn}{
+    enhanced, colframe=myTeal!50!teal, colback=myTeal!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{prop}{
+    enhanced, colframe=myGreen!50!black, colback=myGreen!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{thm}{
+    enhanced, colframe=mySapphire!50!mySapphire, colback=mySapphire!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{question}{
+    enhanced, colframe=blue!50!black, colback=blue!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{lemma}{
+    enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+
+%setup hyperlink within pdf
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+%font
+\newcommand{\cat}[1]{\textsf{#1}}
+
+%common command (add to template)
+%general
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+\newcommand{\Id}{\textmd{Id}} %identity
+\newcommand{\lcm}{\textmd{lcm}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\paran}{(}{)}%paranthesis
+\DeclarePairedDelimiter{\bracket}{\langle}{\rangle}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+%algebra
+\newcommand{\Gal}{\textmd{Gal}}
+\newcommand{\Aut}{\textmd{Aut}}
+\newcommand{\End}{\textmd{End}}
+\newcommand{\coker}{\textmd{coker}}
+\newcommand{\im}{\textmd{im}}
+\newcommand{\coim}{\textmd{coim}}
+\newcommand{\Hom}{\textmd{Hom}}
+\newcommand{\Nil}{\textmd{Nil}}
+\newcommand{\Char}{\textmd{char}}
+\newcommand{\Ker}{\textmd{Ker}}
+\newcommand{\Cok}{\textmd{Cok}}
+
+%analysis
+\newcommand{\Vol}{\textmd{Vol}}
+
+%complex
+\newcommand{\Real}{\textmd{Re}}
+\newcommand{\Imag}{\textmd{Im}} %can also be used for Image
+\newcommand{\Res}{\textmd{Res}}
+
+%lie algebra
+\newcommand{\gl}{\mathfrak{gl}}
+
+%physics
+\newcommand{\br}{\textbf{r}} %position
+\newcommand{\bv}{\textbf{v}} %velocity
+\newcommand{\ba}{\textbf{a}} %cceleration
+\newcommand{\bF}{\textbf{F}} %force
+\newcommand{\bP}{\textbf{P}} %momentum
+\newcommand{\bL}{\textbf{L}} %angular momentum
+\newcommand{\bN}{\textbf{N}} %torque
+\newcommand{\bw}{\textbf{w}} %angular velocity
+\newcommand{\bzero}{\textbf{0}}
+
+\title{Week 3 Problem}
+\author{Zih-Yu Hsieh}
+
+\begin{document}
+\maketitle
+
+\section{}
+\begin{question}\label{q1}
+    Give $\cat{A},\cat{B}$ two abelian categories, an additive functor $F:\cat{A}\rightarrow\cat{B}$ is exact if it maps short exact sequences in $\cat{A}$ to short exact sequences in $\cat{B}$.
+
+    Prove that exact functors commute with cohomology: if $F$ is exact and $L^\bullet$ is a cochain complex in $\cat{A}$, then $H^\bullet(F(L^\bullet))\cong F(H^\bullet(L^\bullet))$, where $F(L^\bullet)$ denotes the cochain complex in $\cat{B}$ obtained by applying $F$ to all objects and morphisms in $L^\bullet$.
+\end{question}
+
+\textbf{Pf:}
+
+\begin{comment}
+The goal for the problem is to show exact functors preserve kernels and cokernels.
+
+\subsection*{Preliminaries / Notations:}
+Given a morphism $\varphi:M\rightarrow N$ in abelian categories, $\ker(\varphi),\coker(\varphi)$ exist.
+Where, the properties of kernels and cokernels are provided as follow:
+\begin{defn}
+    Given a morphism $\varphi:B\rightarrow C$ in an additive category $\cat{A}$, a morphism $\iota:X\rightarrow B$ is a \emph{Kernel of $\varphi$}, if $\varphi\circ \iota = 0 \in \Hom_\cat{A}(X,C)$, and for any other morphism $\alpha:Z \rightarrow B$ satisfying $\varphi\circ \zeta = 0$, there exists a unique morphism $\overline{\alpha}:Z\rightarrow X$, such that $\alpha=\iota\circ\overline{\alpha}$. Diagramatically, we get:
+    \begin{center}
+        \begin{tikzcd}
+            X \ar[r,"\iota"] & B \ar[r,"\varphi"] & C\\
+            Z \ar[ru, "\alpha"'] \ar[u, "\exists ! \overline{\alpha}", dashed] \ar[rru, "0"', bend right = 20]
+        \end{tikzcd}
+    \end{center}
+    Similarly, a morphism $\pi:C\rightarrow Y$ is a \emph{Cokernel of $\varphi$}, if $\pi\circ\varphi = 0 \in \Hom_\cat{A}(B, Y)$, and for any other morphism $\beta:C\rightarrow Z'$ satisfying $\beta\circ\varphi = 0$, there exists a unique morphism $\tilde{\beta}: Y\rightarrow Z'$, such that $\beta = \tilde{\beta}\circ \pi$. Diagramatically, we get:
+    \begin{center}
+        \begin{tikzcd}
+            B \ar[r,"\varphi"] \ar[rrd,"0"', bend right = 20] & C\ar[r,"\pi"] \ar[rd, "\beta"'] & Y \ar[d, "\exists ! \tilde{\beta}", dashed]\\
+            && Z'
+        \end{tikzcd}
+    \end{center}
+\end{defn}
+Furthermore, the following notations are given:
+\begin{itemize}
+    \item $\im(\varphi):= \ker(\coker(\varphi))$, and $\Imag(\varphi):= S(\im(\varphi))$ (source of the image morphism)
+    \item $\textmd{coim}(\varphi) := \coker(\ker(\varphi))$, and $\textmd{Coim}(\varphi):= T(\coim(\varphi))$ (target of the coimage)
+    \item $\textmd{Ker}(\varphi):= S(\ker(\varphi))$ (source of the kernel morphism)
+    \item $\textmd{Cok}(\varphi):= T(\coker(\varphi))$ (target of the cokernel morphism)
+\end{itemize}
+
+\hfil
+
+To define cohomology / homology in arbitrary abelian category, we require the following lemma:
+\begin{lemma}
+    Let $\varphi:M\rightarrow N$ be a morphism in an abelian category, and given $\im(\varphi) = \ker(\pi_\varphi):K\rightarrow N$ the image morphism. Then:
+    \begin{itemize}
+        \item $\im(\varphi)$ is a monomorphism (since it's a kernel)
+        \item $\varphi$ factors through $\im(\varphi)$ (since $\pi_\varphi\circ \varphi=0$, so $\varphi$ factors through $\im(\varphi)= \ker(\pi_\varphi)$)
+        \item $\im(\varphi)$ is initial with these properties.
+    \end{itemize}
+\end{lemma}
+The final statement implies if $\varphi$ factors through some monomorphism $f:L\rightarrow N$ (or there exists $\bar{\varphi}:M\rightarrow L$, where $f\circ\bar{\varphi}=\varphi$), there exists a unique morphism $\alpha:K\rightarrow L$, such that $\im(\varphi)=f\circ \alpha$. Diagramatically, we get:
+\begin{center}
+    \begin{tikzcd}
+        M \ar[rr,"\varphi"] \ar[rd,"\bar{\varphi}"] && N\\
+        & L \ar[ru,"f"] && K \ar[lu,"\im(\varphi)"'] \ar[ll,"\exists !\alpha", dashed]
+    \end{tikzcd}
+\end{center}
+Which, Given a cochain complex $L^\bullet$, at degree $i$ the differentials satisfy $\delta^i\circ \delta^{i-1}=0$, hence by definition $\delta^{i-1}$ factors uniquely through $\ker(\delta^{i})$, while $\ker(\delta^i)$ is unique. Based on the above lemma, there exists a unique morphism $\alpha^i:\Imag(\delta^{i-1})\rightarrow \Ker(\delta^i)$, such that $\im(\delta^{i-1})=\ker(\delta^i)\circ \alpha^i$. Diagramatically, we get:
+\begin{center}
+    \begin{tikzcd}
+        L^{i-1}\ar[rr,"\delta^{i-1}"] && L^i \ar[rr,"\delta^i"] && L^{i+1}\\
+        & \Imag(\delta^{i-1}) \ar[ru,"\im(\varphi)"]\ar[rr,"\exists !\alpha^i"', dashed] && \Ker(\delta^i) \ar[lu,"\ker(\delta^i)"']
+    \end{tikzcd}
+\end{center}
+Which, given $\coker(\alpha^i):\Ker(\delta^i)\rightarrow \Cok(\alpha^i)$, define the \emph{$i^\textmd{th}$ Cohomology} $H^i(L^\bullet):= \Cok(\alpha^i)$, also denoted as $\Ker(\delta^i)/\Imag(\delta^{i-1})$.
+
+\hfil
+
+Finally, here is the definition of an exact sequence:
+\begin{defn}
+    Given a sequence $L\xrightarrow{f} M\xrightarrow{g}N$ in an abelian category, it is exact if $g\circ f = 0$, and $\coker(f)\circ \ker(g)=0$.
+\end{defn}
+The first requirement is analogous to $\im(f)\circ \ker(g)$, while the second condition is analogous to $\ker(g)\subseteq \im(f)$.
+
+\hfil
+\end{comment}
+First, we need to show an exact functor $F$ preserves kernels and cokernels (or, the image of a kernel / cokernel of $\varphi$ obtains the property of kernel / cokernel of $F\varphi$).
+
+For any morphism $\varphi:M\rightarrow N$ in $\cat{A}$, \begin{tikzcd}
+    0 \ar[r] & \Ker(\varphi) \ar[r,"\ker(\varphi)"] & M\ar[r,"\varphi"] & N \ar[r,"\coker(\varphi)"] & \Cok(\varphi) \ar[r] & 0
+\end{tikzcd} is an exact sequence. So, with $F$ preserves exact sequences, the following forms an exact sequence:
+\begin{center}
+    \begin{tikzcd}
+        0 \ar[r] &F(\Ker(\varphi)) \ar[r,"F\ker(\varphi)"] & F(M) \ar[r,"F\varphi"] & F(N) \ar[r,"F\coker(\varphi)"] & F(\Cok(\varphi)) \ar[r] &0
+    \end{tikzcd}
+\end{center}
+First, it provides $F\ker(\varphi)$ as a monomorphism, and $F\coker(\varphi)$ as an epimorphism, hence $F\ker(\varphi)$ is a kernel of $\coker(F\ker(\varphi))$, while $F\coker(\varphi)$ is a cokernel of $\ker(F\coker(\varphi))$.
+\begin{itemize}
+    \item[1)] The exactness at $F(M)$ first provides $F\varphi \circ F\ker(\varphi)=0$, hence $F\ker(\varphi)$ factors uniquely through $\ker(F\varphi):\Ker(F\varphi)\rightarrow F(M)$, or there exists a unique morphism $\alpha:F(\Ker(\varphi))\rightarrow \Ker(F\varphi)$ such that $F\ker(\varphi)=\ker(F\varphi)\circ \alpha$.
+    
+    Then, it also provides $\coker(F\ker(\varphi))\circ \ker(F\varphi)=0$, hence $\ker(F\varphi)$ must factor uniquely through kernel of $\coker(F\ker(\varphi))$, which $F\ker(\varphi)$ satisfies it as claimed before. So, there exists a unique morphism $\beta:\Ker(F\varphi)\rightarrow F(\Ker(\varphi))$, where $F\ker(\varphi)\circ \beta = \ker(F\varphi)$. Which, it can be represented as the following commutative diagram:
+    \begin{center}
+        \begin{tikzcd}
+            & \Ker(F\varphi) \ar[d,"\ker(F\varphi)"] \ar[ld, shift left, "\exists !\beta", dashed] \\
+            F(\Ker(\varphi)) \ar[r,"F\ker(\varphi)"'] \ar[ru,shift left,"\exists !\alpha", dashed] & F(M) \ar[r,"F\varphi"'] \ar[d,"\coker(F\ker(\varphi))"] & F(N)\\
+            & \Cok(F\ker(\varphi)) 
+        \end{tikzcd}
+    \end{center}
+    Which, one can verify the existence of unique $\alpha$ and $\beta$ implies $F(\Ker(\varphi))\cong \Ker(F\varphi)$, and $F\ker(\varphi)$ satisfies all properties as a kernel of $F\varphi$.
+
+    \item[2)] Then, the exactness at $F(N)$ first provides $F\coker(\varphi)\circ F\varphi=0$, hence $F\coker(\varphi)$ factors uniquely through $\coker(F\varphi):F(N)\rightarrow \Cok(F\varphi)$, or there exists a unique morphism $\gamma:\Cok(F\varphi)\rightarrow F(\Cok(\varphi))$, such that $F\coker(\varphi)=\gamma\circ \coker(F\varphi)$.
+    
+    Similarly, it also provides $\coker(F\varphi)\circ \ker(F\coker(\varphi))=0$, hence $\coker(F\varphi)$ factors uniquely through cokernel of $\ker(F\coker(\varphi))$, which $F\coker(\varphi)$ itself satisfies this condition. So, there exists a unique morphism $\epsilon:F(\Cok(\varphi))\rightarrow \Cok(F\varphi)$, such that $\coker(F\varphi)=\epsilon\circ F\coker(\varphi)$. Diagramatically, we get:
+    \begin{center}
+        \begin{tikzcd}
+            & \Ker(F\coker(\varphi)) \ar[d,"\ker(F\coker(\varphi))"'] \\
+            F(M) \ar[r,"F\varphi"] & F(N) \ar[r,"F\coker(\varphi)"] \ar[d,"\coker(F\varphi)"'] & F(\Cok(\varphi)) \ar[ld, shift right, "\exists ! \epsilon"', dashed]\\
+            & \Cok(F\varphi)\ar[ru,shift right,"\exists ! \gamma"', dashed]
+        \end{tikzcd}
+    \end{center}
+    Which, existence of unique $\epsilon,\gamma$ guarantees $\Cok(F\varphi)\cong F(\Cok(\varphi))$, and $F\coker(\varphi)$ obtains all desired properties as a cokernel of $F\varphi$.
+\end{itemize}
+So, the above demonstrates how exact functor $F$ preserves kernels and cokernels of morphisms.
+
+\hfil
+
+\hfil
+
+Now, given cochain complex $L^\bullet$, since for any index $i$, $\im(\delta^{i-1})$ factors uniquely through $\ker(\delta^i)$ through some morphism $\alpha^i$ (take this as given), with $H^i(L^\bullet) := \Cok(\alpha^i)$, one obtains the following diagram:
+\begin{center}
+    \begin{tikzcd}
+        L^{i-1} \ar[rr,"\delta^{i-1}"] && L^i\ar[rr,"\delta^i"] && L^{i+1}\\
+        & \Imag(\delta^{i-1}) \ar[ru,"\im(\delta^{i-1})"] \ar[rr,"\exists !\alpha^i"', dashed] && \Ker(\delta^i) \ar[lu,"\ker(\delta^i)"'] \ar[rr,"\coker(\alpha^i)"'] && H^i(L^\bullet)
+    \end{tikzcd}
+\end{center}
+Applying functor $F$, we get:
+\begin{center}
+    \begin{tikzcd}
+        F(L^{i-1}) \ar[rr,"F\delta^{i-1}"] && L^i\ar[rr,"F\delta^i"] && F(L^{i+1})\\
+        & F(\Imag(\delta^{i-1})) \ar[ru,"F\im(\delta^{i-1})"] \ar[rr,"F\alpha^i"'] && F(\Ker(\delta^i)) \ar[lu,"F\ker(\delta^i)"'] \ar[rr,"F\coker(\alpha^i)"'] && F(H^i(L^\bullet))
+    \end{tikzcd}
+\end{center}
+Also, we've seen that kernel and cokernel of $F\varphi$ factor uniquely through the image of kernel and cokernel of $\varphi$ (respectively) via invertible morphisms, so if apply the functor $F$ first before consider its cohomology, together with the above diagrams, we get:
+\begin{center}
+    \begin{tikzcd}
+        F(L^{i-1}) \ar[rr,"F\delta^{i-1}"] && F(L^i)\ar[rr,"F\delta^i"] && F(L^{i+1})\\
+        & \Imag(F\delta^{i-1}) \ar[ru,"\im(F\delta^{i-1})"] \ar[d,"\exists ! f"', "\sim", dashed] && \Ker(F\delta^i) \ar[lu,"\ker(F\delta^i)"'] \ar[d,"\exists ! g","\sim"', dashed]\\
+        & F(\Imag(\delta^{i-1})) \ar[rr,"F\alpha^i"'] \ar[ruu,shift left, "F\im(\delta^{i-1})"'] && F(\Ker(\delta^i)) \ar[luu,shift right, "F\ker(\delta^i)"]
+    \end{tikzcd}
+\end{center}
+Hence, $\im(F\delta^{i-1})$ factors through $\ker(F\delta^i)$ via a morphism $\beta^i = g^{-1}\circ F\alpha^i \circ f:\Imag(F\delta^{i-1})\rightarrow \Ker(F\delta^i)$, or $\im(F\delta^{i-1})=\ker(F\delta^i)\circ \beta^i$. With such factorization being unique, then $\beta^i$ is the unique factorization of $\im(F\delta^{i-1})$ through $\ker(F\delta^i)$, so cohomology of $F(L^i)$ can be derived through $\Cok(\beta^i)$.
+
+Finally, compile the diagrams above, we get the following diagram:
+\begin{center}
+    \begin{tikzcd}
+        F(L^{i-1})\ar[rr,"F\delta^{i-1}"] && F(L^i) \ar[rr,"F\delta^i"] && F(L^{i+1})\\
+        & \Imag(F\delta^{i-1}) \ar[ru, "\im(F\delta^{i-1})"] \ar[rr,"\beta^i"] \ar[d,"f"', "\sim"] && \Ker(F\delta^i) \ar[lu, "\ker(F\delta^i)"'] \ar[d,"g"', "\sim"] \ar[rr,"\coker(\beta^i)"] && H^i(F(L^\bullet))\\
+        & F(\Imag(\delta^{i-1})) \ar[rr,"F\alpha^i"'] && F(\Ker(\delta^i)) \ar[rr, "F\coker(\alpha^i)"'] && F(H^i(L^\bullet))
+    \end{tikzcd}
+\end{center}
+Which, based on the diagram, we get the following relation:
+$$\coker(\beta^i)\circ (g^{-1}\circ F\alpha^i \circ f) = \coker(\beta^i)\circ \beta^i = 0$$
+$$\implies (\coker(\beta^i)\circ g^{-1})\circ F\alpha^i = 0\circ f^{-1}=0$$
+This indicates $\coker(\beta^i)\circ g^{-1}$ factors uniquely through $\coker(F\alpha^i)$, where $F\coker(\alpha^i)$ satisfies such requirement (since in some intuitive sense, kernel / cokernel operation commutes with $F$, an exact functor). Hence, there exists unique morphism $\gamma:F(H^i(L^\bullet))\rightarrow H^i(F(L^\bullet))$, where $\coker(\beta^i)\circ g^{-1} = \gamma\circ F\coker(\alpha^i)$, or $\coker(\beta^i)=\gamma\circ F\coker(\alpha^i)\circ g^{-1}$.
+
+Similarly, another relation is given as below:
+$$(F\coker(\alpha^i)\circ g)\circ \beta^i = (F\coker(\alpha^i)\circ g)\circ (g^{-1}\circ F\alpha^{i}\circ f) = (F\coker(\alpha^i)\circ F\alpha^i)\circ f = 0\circ f = 0$$
+This indicates $F\coker(\alpha^i)\circ g$ factors uniquely through $\coker(\beta^i)$, there exists unique morphism $\epsilon:H^i(F(L^\bullet))\rightarrow F(H^i(L^\bullet))$, where $F\coker(\alpha^i)\circ g = \epsilon\circ \coker(\beta^i)$. Which, we end up with the following commutative diagram:
+\begin{center}
+    \begin{tikzcd}
+        \Imag(F\delta^{i-1}) \ar[rr,"\beta^i"] \ar[d,"f"', "\sim"] && \Ker(F\delta^i) \ar[d,"g"', "\sim"] \ar[rr,"\coker(\beta^i)"] && H^i(F(L^\bullet)) \ar[d, shift right, "\exists ! \epsilon"', dashed]\\
+        F(\Imag(\delta^{i-1})) \ar[rr,"F\alpha^i"'] && F(\Ker(\delta^i)) \ar[rr, "F\coker(\alpha^i)"'] && F(H^i(L^\bullet)) \ar[u, shift right, "\exists ! \gamma"', dashed]
+    \end{tikzcd}
+\end{center}
+Where, the existence of such $\gamma$ and $\epsilon$ guarantees $H^i(F(L^\bullet))\cong F(H^i(L^\bullet))$, so the exact functor $F$ preserves the $i^\textmd{th}$ cohomology. Hence, if given the cohomology functor $H^\bullet$ on the category of cochain complexes, we get $H^\bullet(F(L^\bullet))\cong F(H^\bullet(L^\bullet))$, due to the relation above isomorphic relation.
+
+\end{document}
