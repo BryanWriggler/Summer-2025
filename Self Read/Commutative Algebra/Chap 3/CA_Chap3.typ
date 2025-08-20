@@ -1,5 +1,6 @@
 #import "@preview/rubber-article:0.4.1": *
 #import "@preview/ctheorems:1.1.3": *
+#import "@preview/fletcher:0.5.5": *
 
 //basic template setup
 #show: article.with(
@@ -49,6 +50,7 @@
 #let Gal = $"Gal"$
 #let Nil = $"Nil"$
 #let char = $"char"$
+#let Ann=$"Ann"$
 //complex 
 #let Real = $"Re"$
 #let Imag = $"Im"$ //also used for image
@@ -152,7 +154,7 @@ For the first prime ideal, suppose $x/y dot z/w = 0$ in the associated local rin
 Now, for the second prime ideal, suppose $x/y dot z/w=0$ in the associated local ring (where $y,w in {1,2,4,5}$ this time). Then, there exists $a in {1,2,4,5}$ where $a(x z)equiv 0 mod 6$. Notice that $a$ is not divisible by $3$, while $a(x z)$ is, hence $(x z)$ is divisible by 3, showing (WLOG) that $x$ is divisible by $3$. Hence, take $2$ in the corresponding multiplicatively closed set, $2 dot x equiv 0 mod 6$, showing $x/y=0$ in the local ring. Hence, the second local ring is again an integral domain.
 
 
-= ND//6
+= D//6
 
 #myQuestion[
   Let $A$ be a ring $!=0$ and let $Sigma$ be the set of all multiplicatively closed subsets $S$ of $A$ such that $0 in.not S$. Show that $Sigma$ has maximal elements, and that $S in Sigma$ is maximal if and only if $A\\S$ is a minimal prime ideal of $A$.
@@ -179,7 +181,14 @@ $==>:$ Suppose $S$ is maximal, and take $P=A\\S$. Given any $r in P$, since $uni
 
   Then, to show it's a minimal prime ideal, recall that $P$ is prime $<==>$ $A\\P$ is multiplicative (that's not containing $0$), then with $S = A\\(A\\S) = A\\P$ being multiplicative, $P=A\\S$ is prime. Also, this enforces $P$ to not contain any proper prime ideal, since if $P' subset.neq P$ is prime, then $A\\P'$ is multiplicative (and not containing 0), with $S=A\\P subset.neq A\\P'$, which violates the maximality of $S$. Hence, $P=A\\S$ must be a minimal prime ideal.
 
-$<==:$ Now,
+$<==:$ Now we'll show the contrapositive. Suppose $S$ is not a maximal element, then consider the set $Sigma$ restricted to the elements $S'$ such that $S subset.neq S'$ (which is nonempty by its non-maximality), this again forms a POset, and similar argument from Zorn's Lemma still applies. So, one can claim that there exists maximal $S_m$ such that $S subset.eq S_m$. Now, we claim that $A\\S_m$ is indeed a prime ideal:
+
+  Similarly, given any $r in A\\S_m$, since $union.big_(n in NN)r^n S_m$ is multiplicatively closed, while strictly containing $S$ and $S_m$, hence by maximality of $S_m$ after the restiction, one must have $union.big_(n in NN)r^n S_m$ not in the restricted subset of $Sigma$, hence $0$ is contained in there. So, there exists $k in NN$ and $s in S_m$, such that $r^k s=0$.
+
+  Which, for any $x,y in A\\S_m$, say $n,k in NN$ and $s,t in S_m$ are the elements satisfying $x^n s = y^k t = 0$ from above, we again get $(x-y)^(n+k)s t=0$ by similar binomial expansion, showing that $x-y in.not S_m$, or $x-y in A\\S_m$ (or else $S_m$ contains $0$ by closeness under multiplication). So, $A\\S_m$ is indeed an additive subgroup; similarly, any $r in A$ and $x in s$ satisfies $(r x)^n s = 0$ if $x^n s=0$, showing that $r x in.not S_m$, hence $r x in A\\S_m$, showing $A\\S_m$ is an ideal.
+
+  Finally, since $S_m$ is assumed to be multiplicatively closed, then any $x,y in.not A\\S_m$ (or $x,y in S_m$) must have $x y in S_m$, showing $A\\S_m$ is prime. Hence, with $A\\S_m subset.neq A\\S$, $A\\S$ cannot be a minimal prime ideal (since it contains a proper prime ideal).
+  As a contrapositive, if $A\\S$ is a minimal prime ideal, $S$ must be maximal.
 
 = ND//7
 #myQuestion[
@@ -215,7 +224,7 @@ Finally, given a proper ideal $a subset.neq A$, it's clear that $S=1+a$ is multi
 
 Now, we claim that $P sect (1+a)=emptyset$ iff $a subset.eq P$:
 - First, if $a subset.eq P$, then $(1+a)sect P=emptyset$, since if there exists $k in a$ satisfying $1+k in P$, then since $k in a subset.eq P$, we have $1 = (1+k)-k in P$, showing that $P=A$. Yet, this contradicts the assumption of $P$ being prime, so we must have no $k in a$ satisfying $1+k in P$, showing that $(1+a)sect P=emptyset$.
-- Then, suppose $(1+a)sect P=emptyset$, but $a subset.eq.not P$
+- Then, suppose $(1+a)sect P=emptyset$, but $a subset.eq.not P$, then there exists $r in a\\P$. Where, for all $k in A$, we have $k r in a$, or $1+k r in 1+a$.
 
 \ 
 
@@ -253,11 +262,11 @@ $5==>1:$ Suppose every prime ideal meeting $T$ also meets $S$, then given any pr
 
   First, if $a/s in S^(-1)A$ satisfies $phi(a/s)=a/s=0 in T^(-1)A$, then there exists $t in T$, such that $t a = 0$. There are two cases:
   - Suppose $t$ is a unit, then we must have $a=0$ regardless, so $a/s=0$.
-  - Suppose $t$ is not a unit, there exists prime ideal $P$ containing $t$, hence this prime ideal intersects $T$, which also intersects $S$. So, there exists $u in S sect P$, such that $u(t a)=0$.
+  - Suppose $t$ is not a unit, there exists prime ideal $P$ containing $t$, hence this prime ideal intersects $T$, which also intersects $S$. 
 
-  Given any $a/t in T^(-1)A$
+  Then, given any $a/t in T^(-1)A$
 
-= ND//9
+= D//9
 #myQuestion[
   The set $S_0$ of all non-zero-divisors in $A$, is a saturated multiplicatively closed subset of $A$ (not containig $0$). Hence, the set $D$ of zero-divisors in $A$ is a union of prime ideals. Show that every minimal prime ideal of $A$ is contained in $D$ (using Exercise $6$).
 
@@ -268,4 +277,106 @@ $5==>1:$ Suppose every prime ideal meeting $T$ also meets $S$, then given any pr
 ]
 #text(weight: "bold")[Pf:]
 
-By Exercise $6$, $P$ is a minimal prime ideal $<==>$ $A\\P$ is a maximal multiplicatively closed subset (and, this maximal multiplicatively closed subset is saturated since its complement is $P$, a prime ideal by Exercise 7). Then, suppose 
+By Exercise $6$, $P$ is a minimal prime ideal $<==>$ $A\\P$ is a maximal multiplicatively closed subset. Now, suppose the contrary that there exists $p in P$ that isn't a zero-divisor, then notice that for any $n in NN$, the set $p^n S$ never contains $0$ (where $S = A\\P$ is a maximal multiplicatively closed subset not containing 0), which derives to $union.big_(n in NN)p^n S$ is a multiplicatvely closed subset not containing $0$, while strictly containing $S$ (since $p$ is in there).
+
+Note that the above claim is true since is for every $n,m in NN$ and $s,t in S$, since $p$ is not a zero-divisor, we must have $p^n s, p^m t != 0$; similarly, since $S$ doesn't contain $0$, $s t != 0$. Hence, the product $p^(n+m)s t!=0$ due to the fact that $p$ is not a zero-divisor, hence this larger union of multiplicatively closed set cannot contain $0$, while strictly containing $S$ (a maximal multiplicatively closed subset not containing $0$), so this is a contradiction.
+
+Hence, $P$ must be contained in $D$.
+
+1. Given $S$ multiplicatively closed, such that the natural homomorphism $A arrow.r S^(-1)A$ is injective, the goal is to prove that $S$ contains only non-zero-divisors.
+
+  Given arbitrary $s in S$ and $a in A$, suppose $s a = 0$, then $a/1 = 0 in S^(-1)A$ by definition, hence with $a arrow.r.bar a/1$ under the natural homomorphism, one must have $a=0$ due to injectivity. So, $s$ is not a zero-divisor. Hence, $S subset.eq S_0$.
+
+  And, given that $S_0$ doesn't contain any zero-divisor, suppose $a in A$ satisfies $a/1 = 0 in S_0^(-1)A$, then there exists $s in S_0$, such that $s a=0$. Then, with $s!=0$ by the property of non-zero-divisors, $a=0$ is enforced. Hence, the natural homomorphism $A arrow.r S_0^(-1)A$ is injective, $S_0$ is indeed the largest such set with the injective property.
+
+2. Suppose $u/s in S_0^(-1)A$ is not a zero-divisor, then $u/1$ specifically is not a zero-divisor (since $1/s$ is invertible in this ring). Using the previous subsection in this problem, we must have $u$ being not being a zero-divisor in $A$ (since if $u$ is a zero-divisor, there exists $a!=0$ where $u a =0$, hence $u/1 dot a/1=0$ while $a/1!=0$ due to the injectivity of the natural homomorphism from the previous part; yet, this violates the fact that $u/1$ is not a zero-divisor).
+
+  Hence, $u$ cannot be a zero-divisor in $A$ also, showing $u in S_0$, hence $u/s dot s/u = 1 in S_0^(-1)A$, which is invertible.
+
+3. Suppose a ring $A$ has every non-unit being a zero-divisor, then we already know $A arrow.r S_0^(-1)A$ is injective, it remains to prove that $S_0^(-1)A$ is surjective.
+
+  For all $a/s in S_0^(-1)A$, since $s^(-1)/1 = s^(-1)/1 dot (s/1 dot 1/s)=s^(-1)/1 dot s/1 dot 1/s = ((s^(-1)s)/1) dot 1/s = 1/s$, then $a s^(-1) arrow.r.bar (a s^(-1))/1=a/1 dot s^(-1)/1=a/s$, hence the natural homomorphism is surjective.
+
+  So, the ring must be isomorphic to its own total ring of fraction.
+
+= ND // 10
+= ND //11
+= HD //12
+#myQuestion[
+  Let $A$ be an integral domain and $M$ an $A$-module. An element $x in M$ is a #emph[Torsion Element] of $M$ if $Ann(x)!=0$, so $x$ is killed by some nonzero element of $A$.
+
+  Show that the torsion elements of $M$ form a submodule of $M$. THis submodule is called the #emph[torsion submodule] of $M$ and is denoted by $T(M)$. If $T(M)=0$, the module $M$ is said to be torsion-free. Show that:
+  1. If $M$ is any $A$-module, then $M\/ T(M)$ is torsion-free.
+  2. If $f:M arrow.r N$ is a module homomorphism, then $f(T(M)) subset.eq T(N)$.
+  3. If $0 arrow.r M' arrow.r M arrow.r M''$ is exact, then the sequence $0 arrow.r T(M') arrow.r T(M) arrow.r T(M'')$ is exact.
+  4. If $M$ is any $A$-module, then $T(M)$ is the kernel of the maping $x arrow.r.bar 1 times.circle x$ of $M$ into $K times.circle_A M$, where $K$ is the field of fractions of $A$.
+]
+
+#text(weight: "bold")[Pf:]
+
+Given any $x,y in T(M)$, since there exists $a,b in A$ that are nonzero, such that $a dot x = b dot y=0$, then $(a b) dot (x-y) = b dot (a dot x) - a dot (b dot y) = b dot 0-a dot 0=0$, showing that $x-y in T(M)$. Hence, $T(M)$ is an additive abelian group. Also, for any $x in T(M)$ and $a in A$, suppose $b!=0$ in $A$ satisfies $b dot x = 0$ (by definition of torsion), then $b dot (a dot x) = a dot (b dot x)=a dot 0=0$, so $b dot x in T(M)$, demonstrating $T(M)$ is a submodule of $M$.
+
+1. Consider any $overline(x) in M\/T(M)$. Suppose there exists nonzero $a in A$, such that $a dot overline(x)=0$, then $a dot x in T(M)$, showing that there exists nonzero $b in A$, with $b dot (a dot x) = (a b) dot x = 0$. Hence, with $a b !=0$ by the property of integral domain, $x$ is a torsion element, hence $x in T(M)$, or $overline(x)=0$. Hence, the only torsion element in $M\/T(M)$ must be $0$, showing $M\/T(M)$ is torsion-free.
+
+2. If $f:M arrow.r N$ is a module homomorphism, then for all $m in T(M)$, since there exists nonzero $a in A$ satisfying $a dot m=0$, then $0=f(a dot m)=a dot f(m)$, showing that $f(m) in T(N)$. Hence, $f(T(M)) subset.eq T(N)$.
+
+3. Given the exact sequence $0 arrow.r M' arrow.r M arrow.r M''$ (with morphisms $f,g$ from left to right, not counting the zero-morphism), it's clear that $0 arrow.r T(M') arrow.r T(M) arrow.r T(M'')$ forms a complex (since part2 above proves that image of torsion submodule is part of the codomain's torsion submodule, which the restiction of the map is well-defined; with the original morphisms before restriction composes to be $0$, it's still going to be $0$ after composing the restrictions), so it suffices to check the other direction (about kernels included in image). We'll use $f',g'$ as the restircted morphisms.
+
+  For $f'$, since $f$ is already injective, it's true that $f'$ as its restriction, is injective.
+
+  Now, for any $x in T(M)$ satisfying $g'(x) = g(x)=0$ (or $x in ker(g') subset.eq ker(g)$), by exactness since $ker(g)=im(f)$, there exists a unique $m in M'$, such that $f(m)=x$ (by injectivity of $f$). Then, since there exists nonzero $a in A$ satisfying $a dot x=0$ (since $x$ is a torsion element of $M$), then $f(a dot m)=a dot f(m)= a dot x=0$, showing that $a dot m=0$ (since $f$ is injective). Hence, $m in M'$ is a torsion element, showing that $m in T(M')$, which $f'(m) = f(m)=x$, showing $x in im(f')$, or $ker(g') subset.eq im(f')$. This finishes the exactness of $0 arrow.r T(M') arrow.r T(M) arrow.r T(M'')$.
+
+4. Given that $K$ is the field of fractions of $A$, then $A$ injects into $K$ via proper inclusion. 
+
+  For all $x in T(M)$, since there exists nonzero $a in A$, satisfying $a dot x = 0$. Hence, $1 times.circle_A x= (a dot 1/a) times.circle_A x = 1/a times.circle_A (a dot x) = 1/a times.circle_A 0 = 0$, showing that $x$ is in the kernel of the given map (hence $T(M)$ is a submodule of the kernel). 
+
+  \ 
+
+  Now, suppose $1 times.circle_A x = 0$. First, we'll show that $K$ can be regarded as a direct limit of all its own $A$-submodule $A z$ (where $z in K$): Given the collection $Sigma = {A z | z in K}$, define a preorder $A z <= A z'$ iff $A z subset.eq A z'$. Which, given any $z = a/s$ and $z' = b/r$ in $K$ (where $s,r != 0$), notice that $A z, A z' subset.eq A 1/(s r)$ (since any $x in A$ satisfies $x z = (x a)/s = (x a r)/(s r)$ and $x z' = (x b)/r = (x b s)/(s r)$ in $A 1/(s r)$), so inductively every finite set does have an upper bound, showing that it's indeed a preorder.
+
+  Then, to show that $K$ the field of fraction is indeed a direct limit of such functor, given that every $A z$ has a natural injection into $K$, and for any $A z subset.eq A z'$, such natural injection does commute with the inclusion inside the preorder (naturally), hence $K$ is indeed a cocone of the given functor (since it's together with the morphisms from the functor's diagram to $K$, which is a cocone). Which, if for some other ring $K'$ together with some morphisms $f_z:A z arrow.r K'$ such that if $A z subset.eq A z'$, we have $f_z' |_(A z) = f_z$ (the definition for the following diagram to commute, given arbitrary $z,z'$ with such morphism):
+
+  #diagram($
+        & K' \
+        A z edge("rr", i n c, "hook->") edge("ur", f_z, "->") && A z' edge("ul", f_z', "->")     
+  $)
+
+  Then, for all $z in K$, since $z in A z$, then define $f:K arrow.r K'$ by $f(z) := f_z (z)$ (which is well-defined based on the above restriction relation). Then, for all $z_1,z_2 in K$ and $k,l in A$, we have:
+  $ z_1,z_2, k dot z_1+ l dot z_2 = (k a r+l b s)/(s r) in A 1/(s r), quad f(k dot z_1+l dot z_2) = f_(1/(r s))(k dot z_1+l dot z_2) $
+  $ = k dot f_(1/(s r))(z_1) + l dot f_(1/(s r))(z_2) = k dot f(z_1)+l dot f(z_2) $
+  Which, $f$ is indeed an $A$-module homomorphism, showing that this preorder has a directed limited (or colimit) within the category of $A$-mod.
+
+  Suppose $1 times.circle x = 0 in K times.circle_A M$, then for all invertible $z in A$, since $1 times.circle x in (A z) times.circle_A M subset.eq K times.circle_A M$ must be $0$ (since such inclusion forms a submodule), then $(z dot z^(-1)) times.circle x = z^(-1) times.circle (z dot x)=0$. Hence, $z dot x = 0$ (?)
+
+= D //13
+#myQuestion[
+  Let $S$ be a multiplicatively closed subset of an integral domain $A$. In the notation of previous exercise, show that $T(S^(-1)M) = S^(-1)(T(M))$. Deduce TFAE:
+  1. $M$ is torsion-free.
+  2. $M_P$ is torsion-free for all prime ideals $P$.
+  3. $M_m$ is torsion-free for all maximal ideals $m$.
+]
+#text(weight: "bold")[Pf:]
+
+Given $m/s in S^(-1)M$ that is a torsion element, there exists nonzer $a/t in S^(-1)A$, such that $a/t dot m/s = (a dot m)/(t s)=0$. Hence, there exists $u in S$, such that $u dot (a dot m) = (u a) dot m=0$. Which, can assume that $u!=0$ (for $S^(-1)M$ to be nontrivial), and with $a!=0$ (since $a/t != 0$), then $u a!=0$, showing that $m$ is a torsion element, hence $m in T(M)$, or $m/s in S^(-1)(T(M))$.
+
+Which, the converse is trivially true, since any $m/s in S^(-1)(T(M))$ (where $m in T(M)$), there exists nonzero $a in A$, with $a dot m=0$. So, $a/1 dot m/s = (a dot m)/s = 0$ in $S^(-1)M$, showing $m/s in T(S^(-1)M)$.
+
+\ 
+
+$1 ==> 2:$ Given $M$ is torsion-free, then $T(M)=0$, so $T(S^(-1)M)=S^(-1)(T(M))=0$, showing $S^(-1)M$ is torsion-free. Hence, given $S = A\\P$ for any prime ideal $P$, since $M_P := S^(-1)M$, it is also torsion-free.
+
+$2==>3:$ Given $M_P$ is torsion-free for all prime ideals $P$, since all maximal ideal is prime, all maximal ideal $m$ satisfies $M_m$ being torsion-free.
+
+$3==>1:$ Suppose $T(M_m) = 0$ for all maximal ideal $m$, given $0=T(M_m) = T(M)_m$, then for all $x in T(M)$, there exists nonzero $k in A$, such that $k dot x = 0$. If $x!=0$, consider the ideal $Ann(x)!=A$, since there exists a maximal ideal $m supset.eq Ann(x)$, then in $M_m$, since all $a in A$ satisfying $a dot x=0$ must satisfy $a in m$ (or $a in.not A\\m$), there doesn't exist $a in A\\m$ satisfying $a dot x=0$, hence $x/1 != 0 in M_m$ (similarly, in $T(M)_m$).
+
+  However, in this case $k/1 != 0$ in $A_m$, then $a/1 dot x/1 = (a dot x)/1 = 0$ in $M_m$, showing that $x/1$ is a nonzero torsion element. This contradicts the assumption that all $M_m$ is torsion-free. Hence, the initial assumption is false, $x=0$, showing $T(M)=0$, or $M$ is torsion-free.
+
+= D//14
+#myQuestion[
+  Let $M$ be an $A$-module and $a$ be an ideal of $A$. Suppose that $M_m=0$ for all maximal ideals $m supset.eq a$, prove that $M=a M$.
+]
+#text(weight: "bold")[Pf:]
+
+Given the fact that $M \/ a M tilde.equiv (A\/a)M$ as an $A\/a$-module, where all maximal ideals $m supset.eq a$ corresponds to all the maximal ideals $overline(m)$ of $A\/a$. Then, since $M_m = 0$ for all such maximal ideal, we can conclude that $(A\/a)M_(overline(m)) = 0$ for all maximal ideal $overline(m) subset.eq A\/a$, showing that $(A\/a)M = 0$ (since a module is $0$ is a local property, true for localization for all prime ideals).
+
+As a result, $M\/a M=0$, hence $M = a M$.
