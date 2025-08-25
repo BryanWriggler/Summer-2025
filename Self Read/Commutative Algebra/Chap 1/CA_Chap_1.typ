@@ -639,6 +639,7 @@ Since in either case, the union of two being $X$ implies one of the closed set i
 
   Yet, the reason it's not a homeomorphism, is because taking the inverse (use $phi.alt$ to denote $(phi^*)^(-1)$), even though $V((R\/P) times {0})$ is closed, its preimage ${0} in Spec(R)$ is not closed: Suppose ${0} = V(I)$ for some ideal $I subset.eq R$, then we have $I subset.eq 0$, showing that $I=0$; yet, if consider $V(0)$, we get $v(0) = {0,P} != {0}$, showing a contradiction. Hence, the preimage of a closed set is not closed, showing it's not continuous (the inverse is not continuous, hene not a homeomorphism). 
 
+= ND (Pt 2) //22
 #myQuestion[
   Let $A=product_(i=1)^n A_i$ be the direct product of rings $A_i$. Show that $Spec(A)$ is the disjoint union of open (and closed) subspaces $X_i$, where each $X_i$ is canonically homeomorphic with $Spec(A_i)$.
 
@@ -658,3 +659,26 @@ First, suppose $K subset.eq A times B$ is an ideal, then we know its projection 
 Then, given any prime ideal $P$, its projection onto each coordinate (say $P_A$ and $P_B$) must satisfy the property of a prime ideal (while not necessarily prime), hence $P = P_A times P_B$, while each $P_i$ is either a prime ideal, or the whole ring. However, consider the fact that with two proper prime ideals, the quotient $(A times B)\/(P_A times P_B) tilde.equiv A\/P_A times B\/P_B$, it will not form a prime ideal. Hence, one of $P_A$ or $P_B$ must be the whole ring ($A$ or $B$). 
 
 Finally, using induction one can show that any prime ideal of $product_(i=1)^n A_i$ must be in the form $product_(i=1)^n P_i$, where only one of the $P_i subset.eq A_i$ is a prime ideal, the others are $P_j = A_j$ (for $j!=i$). Hence, $Spec(A) = union.sq.big_(i=1)^n {product_(j=1)^n P_j | P_i subset.eq A_i "prime", P_j = A_j "if" j!=i}$ (and each part of the disjoint union can be characterized as $V(A_1 times ... times {0_i} times ... times A_n)$, which is canonically isomorphic to $Spec(A_i)$).
+
+\ 
+
+For the second half, $3<==>2$, then $2<==>1$ seems to be a better order.
+
+$3==>2:$ Suppose $A$ contains an idempotent, say $e != 0,1$, then consider the ideal $(e)$ and the quotient ring $A\/(e)$: Since for all $a e in (e)$ (where $a in A$), we have $a e dot e = a e$ (since $e$ is idempotent), then $(e)$ itself is a ring with identity. Then, consider the product ring $(e) times A\/(e)$: If given the map $A arrow.r (e) times A\/(e)$ by $a arrow.r.bar (a e, overline(a))$, First it is injective: If $(a e, overline(a)) = (0,0)$, then we must have $a in (e)$, or $a = b e$ for some $b in A$; however since $0=a e = b e^2 = b e = a$, we concluded that $a=0$. It is also surjective: Given any $a,b in A$, the element $(a e, overline(b))$, consider the element $k = a e + (1-e)b$, it satisfies:
+$ k e = a e^2 + b(1-e)e = a e + b(e-e^2) = a e+ b(e-e) = a e $
+$ overline(k)= overline(e(a-b)) + overline(b) = overline(b) $
+Hence, $k arrow.r.bar (a e, overline(b))$, showing the map is surjective.
+
+Therefore, we have $A tilde.equiv (e) times A\/(e)$.
+
+$2==>3:$ Given that $A tilde.equiv A_1 times A_2$, then the corresponding element to $(1,0) in A_1 times A_2$ is idempotent, and $!= 0,1$ (since $(1,0) dot (0,1) = 0$, showing $(1,0)!=1$ in $A_1 times A_2$).
+
+\
+
+$2==>1:$ Suppose$A tilde.equiv A_1 times A_2$ for some nonzero rings $A_1,A_2$, then by the first claim it had disconnected $Spec(A)$.
+
+$1==>2:$ Suppose $Spec(A)$ is disconnected, one can find two closed subsets that're disjoint, with the union being the whole space. Hence, one can find ideals $I,J$, such that $V(I) sect V(J) = emptyset$, while $V(I) union V(J)=Spec(A)$.
+
+Then, since $V(I) union V(J) = V(I sect J) = V(I J) = Spec(A)$, one must have $I sect J subset.eq Nil(A)$; also, since $V(I)sect V(J)=V(I+J)=emptyset$, then $I+J=A$ (since there's no maximal ideal containing it). Then, we claim that $A tilde.equiv I times A\/I$ (or $J$ is also fine).
+
+For any $r in A$, there exists 
