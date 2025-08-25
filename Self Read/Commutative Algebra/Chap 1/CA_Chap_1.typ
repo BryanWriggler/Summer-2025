@@ -675,10 +675,18 @@ $2==>3:$ Given that $A tilde.equiv A_1 times A_2$, then the corresponding elemen
 
 \
 
+\
+
 $2==>1:$ Suppose$A tilde.equiv A_1 times A_2$ for some nonzero rings $A_1,A_2$, then by the first claim it had disconnected $Spec(A)$.
 
 $1==>2:$ Suppose $Spec(A)$ is disconnected, one can find two closed subsets that're disjoint, with the union being the whole space. Hence, one can find ideals $I,J$, such that $V(I) sect V(J) = emptyset$, while $V(I) union V(J)=Spec(A)$.
 
-Then, since $V(I) union V(J) = V(I sect J) = V(I J) = Spec(A)$, one must have $I sect J subset.eq Nil(A)$; also, since $V(I)sect V(J)=V(I+J)=emptyset$, then $I+J=A$ (since there's no maximal ideal containing it). Then, we claim that $A tilde.equiv I times A\/I$ (or $J$ is also fine).
+Then, since $V(I) union V(J) = V(I sect J) = V(I J) = Spec(A)$, one must have $I sect J subset.eq Nil(A)$; also, since $V(I)sect V(J)=V(I+J)=emptyset$, then $I+J=A$ (since there's no maximal ideal containing it). Then, we claim the following two cases:
+- If $I sect J = {0}$, then $A tilde.equiv I times A\/I$
+- Else if $I sect J != {0}$, then $A tilde.equiv (I sect J)times (A\/(I sect J))$
 
-For any $r in A$, there exists 
+\ 
+
+For the first case, since $A=I+J$ while $I sect J={0}$, this in fact implies that $A=I plus.circle J tilde.equiv I times J$ (as $A$-Mod). Hence, we get that $A tilde.equiv I times (I plus.circle J)\/I = I tilde.equiv A\/I$ (the same for $J$ in fact).
+
+For the second case, 
