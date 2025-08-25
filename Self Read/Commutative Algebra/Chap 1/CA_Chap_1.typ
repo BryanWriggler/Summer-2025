@@ -65,7 +65,7 @@
   date: datetime.today().display("[month repr:long] [day], [year]"),
 )
 
-= D//1.13
+//1.13
 #myQuestion[
   Exercise 1.13 (unsolved);
 
@@ -539,11 +539,11 @@ Since there exists $U_x, U_y != emptyset$, with $U_x sect U_y = emptyset$, then 
 
 $<==:$ Now, suppose that $Nil(R)$ is prime, notice that all prime ideal contains $Nil(R)$, so $V(Nil(R))=X$. Now, given any open subsets $U_1,U_2 subset.eq X$, there exists subsets $E_1,E_2 in R$, where $U_i = X\\V(E_i)$. If assume that $U_1 sect U_2 = emptyset$, then the complement $V(E_1) union V(E_2) = V((E_1)) union V((E_2)) = V((E_1)(E_2)) = V(Nil(R))=X$, this shows that $(E_1)(E_2)$ is contained in all prime ideals, hence $(E_1)(E_2) subset.eq Nil(R)$.
 
-If $V(E_1)=X$, then $V(E_2)=emptyset$; which, if $V(E_1) != X$, then $E_1 subset.eq.not Nil(R)$, there exists $e_1 in E_1 \\ Nil(R)$. Which, since for all $e_2 in E_2$, $e_1 e_2 in (E_1)(E_2) subset.eq Nil(R)$, we have $e_2 in Nil(R)$, showing that $E_2 subset.eq Nil(R)$, or $V(E_2) = X$.
+If $V(E_1)=X$, then $U_1=emptyset$; else, if $V(E_1) != X$, then $E_1 subset.eq.not Nil(R)$, there exists $e_1 in E_1 \\ Nil(R)$. Which, since for all $e_2 in E_2$, $e_1 e_2 in (E_1)(E_2) subset.eq Nil(R)$, we have $e_2 in Nil(R)$ (by primeness of $Nil(R)$), showing that $E_2 subset.eq Nil(R)$, or $V(E_2) = X$.
 
 Since in either case, the union of two being $X$ implies one of the closed set is $X$, then that means one of the complement is $emptyset$, hence $U_1 sect U_2 = emptyset$ implies one of them is emptyset, so any two nonempty open subsets must have nontrivial intersection.
 
-= ND//20
+= ND (Pt 4)//20
 #myQuestion[
   Let $X$ be a topological space.
   + If $Y$ is an irreducible subspace of $X$, then the closure $overline(Y)$ of $Y$ in $X$ is irreducible.
@@ -557,7 +557,7 @@ Since in either case, the union of two being $X$ implies one of the closed set i
 
   Which, suppose $U_1, U_2$ now have nontrivial intersection with $overline(Y)$, suppose $y_1,y_2 in overline(Y)$ satisfy $y_i in U_i$ for each $i$, there are two cases:
   - First, if $y_i$ is a limit point of $Y$, then every open neighborhood contains a point in $Y$, hence $U_i$ contains some points in $Y$. 
-  - Then, if $y_i$ is an isolated point of the set ${y_i} union Y$, then $y_i in Y$ is enforced: suppose $y_i in.not Y$, then by definition, there exists some open neighborhood $U in.rev y_i$, which $U sect Y = emptyset$. However, this implies that $Y subset.eq X\\U$ (which is a closed set), hence $overline(Y)subset.eq X\\U$, which notice that $y_i in.not X\\U$, while $y_i in overline(Y) subset.eq X\\U$, which is a contradiction.
+  - Then, if $y_i$ is an isolated point of the set ${y_i} union Y$, then $y_i in Y$ is enforced: suppose the contrary that $y_i in.not Y$, then by definition, there exists some open neighborhood $U in.rev y_i$, which $U sect Y = emptyset$. However, this implies that $Y subset.eq X\\U$ (which is a closed set), hence $overline(Y)subset.eq X\\U$, which notice that $y_i in.not X\\U$, while $y_i in overline(Y) subset.eq X\\U$, which is a contradiction.
 
   Hence, if $U_1, U_2$ has nontrivial intersection with $overline(Y)$, they must both have nontrivial intersection with $Y$, hence $(U_1 sect Y)sect(U_2 sect Y) != emptyset$, showing that $U_1 sect U_2 != emptyset$. This proves the irreducibility of $overline(Y)$.
 
@@ -569,11 +569,11 @@ Since in either case, the union of two being $X$ implies one of the closed set i
 
   Afterward, since $Y_C$ is obviously an upperbound of $C$, then every chain has an upper bound. By Zorn's Lemma, $A$ has a maximal element (which is a maximal irreducible subspace).
 
-  Applying this to the quotient topology $X\/Y$, there exists a maximal irreducible subspace $Y' subset.eq X\/Y$, such that it contains $[y]$ (the equivalence class of some $y in Y$). Our claim is that the preimage of $Y'$ under quotient map is also irreducible. For any open subsets $U_1', U_2' subset.eq X\/Y$ that has nontrivial intersection with $Y'$
+  Finally, given any irreducible subspace $Y$ of $X$, consider $A'$ as a subset of $A$, contains all irreducible subspaces $Y'$ of $X$ that contains $Y$. This again has a maximal element $Y_m$ by Zorn's Lemma, and $Y_m$ is also maximal in $A$ (since if not, one can find another larger irreducible subspace $Y_m' supset.neq Y_m$, which $Y_m'$ must also contain $Y$, but this contradicts the maximality of $Y_m$ in $A'$), so every irreducible subspace must necessarily be contained in a maximal irreducible subspace.
 
 \ 
 
-3. First, given $Y subset.eq X$ that is a maximal, since $overline(Y)$ is also irreducible, and $Y subset.eq overline(Y)$, then by maximality, we must have $Y=overline(Y)$, showing that $Y$ is closed.
+3. First, given $Y subset.eq X$ that is a maximal, since $overline(Y)$ is also irreducible, and $Y subset.eq overline(Y)$, then by maximality, we must have $Y=overline(Y)$, showing that $Y$ is closed. (collections of all maximal irreducible subspaces must cover $X$, since each singleton is automatically irreducible, which must be contained in some maximal irreducible subspace by $2$).
 
   Given a Hausdorff space, suppose nonempty $Y subset.eq X$ is an irreducible component of $X$, then $Y = {x}$ for some $x in X$: Suppose the contrary that $Y$ contains $y_1,y_2$ that are distinct, then by Hausdorff definition, there exists open neighborhoods $U_1, U_2subset.eq X$, where each $y_i in U_i$, and $U_1 sect U_2 = emptyset$. 
 
@@ -585,15 +585,17 @@ Since in either case, the union of two being $X$ implies one of the closed set i
 
 4. Let $X=Spec(R)$, the goal is to prove that $C subset.eq X$ is maximal irreducible $<==> C=V(P)$ for some minimal prime ideal $P$.
 
-  $==>:$ Suppose $C subset.eq X$ is maximal irreducible, we know $C = V(I)$ for some ideal $I$, and can assume $I$ is the intersection of all prime ideals in $V(I)$ (i.e. $I$ is a radical).
+  $==>:$ Suppose $C$ as an irreducible subspace is not $V(P)$ for any minimal prime ideal $P$ (WLOG can assume $C$ is closed, so $C=V(I)$ for some radical $I$)
 
-  $<==:$ Given that $C=V(P)$ (where $P$ is a minimal prime ideal). Suppose $U_1, U_2 subset.eq X$ are open subsets with nontrivial intersection with $C$, take $V(E_i) = X\\U_i$ for each index $i$ (where $E_i subset.eq R$). Since there exists $x_1, x_2 in V(P)$, such that $x_i in U_i$, then $x_i in.not V(E_i)$, showing that $E_i subset.eq.not P_(x_i)$ (while $P subset.eq P_(x_i)$). Which, this implies that each $E_i subset.eq.not P$, hence $P in X$ (as a point of prime ideal in $X=Spec(R)$) satisfies $P in.not V(E_i)$ for both $i$, showing that $P in U_i = X\\V(E_i)$. Hence, $U_1 sect U_2 sect C!= emptyset$ (since $C=V(P)$, so $P in C$ also).
+  \ 
 
-    Since $U_1, U_2$ are arbitrary open subsets, this shows that $C$ is an irreducible subspace.
+  \ 
 
-    Now, to prove that it's maximal, suppose $C subset.eq C'$, where $C'$ is also irreducible (then WLOG, since $overline(C')$ is also irreducible, can assume $C'$ is closed). Which, $C' = V(E')$ for some $E' subset.eq R$. Then, with $V(P) subset.eq V(E')$, we have $E' subset.eq P$ (in general it's not true, but since $P$ is prime, $sqrt(P)=P$, showing that $P$ is exactly the intersection of all prime ideals in $V(P)$). Which, since $V(E')=V((E')) = V(sqrt((E')))$, with $V(P) subset.eq V(sqrt((E')))$ and both being a radical, we must have $sqrt(E') subset.eq sqrt(P)$.
+  $<==:$ Given $C=V(P_(min))$ for some minimal prime ideal $P_min$, then for all $U_1,U_2 subset.eq X$ that are open, let $V(I_i) = X\\U_i$ for $i=1,2$ (and WLOG, can assume $I_1,I_2$ are radicals). Suppose $U_1 sect V(P)$ and $U_2 sect V(P)$ are both nonempty, then there exists prime ideals $P_1,P_2$, such that $P subset.eq P_i$ while $I_i subset.eq.not P_i$ (since we can find some $P_i in V(P) sect U_i$, so $P_i in.not X\\U_i = V(I_i)$). Then, we get that each $I_i subset.eq.not P$, hence $P in.not V(I_i)$, showing $P in U_i$. Therefore, $P in U_1 sect U_2 sect V(P)$, showing the irreducibility of $V(P)$ (since $U_1 sect V(P)$ and $U_2 sect V(P)$ have nontrivial intersection).
 
-= ND//21
+  Then, suppose $C subset.eq C'$ for some other irreducible subspace $C'$, and WLOG can assume $C'$ is closed, hence $C' = V(J)$ for some radical $J$. Which, let $J = sect_(i in I)P_i$ for some collection of prime ideals $P_i$, the fact that $V(P) subset.eq V(J)$ implies that $J subset.eq P$ (since $P in V(P)$). However, since $J$ is an intersection of prime ideals
+
+= ND (Pt 3,5)//21
 #myQuestion[
   Let $phi: R arrow.r S$ be a ring homomorphism. Let $X=Spec(R)$ and $Y=Spec(S)$. If $q in Y$, then $phi^(-1)(q)$ is a prime ideal of $R$, i.i., a point of $X$. Hence, $phi$ induces a mapping $phi^*: Y arrow.r X$, by $phi^*(q) = phi^(-1)(q)$. Show that:
   1. If $f in R$ then $(phi^*)^(-1)(X_f) = Y_(phi(f))$, and hence that $phi^*$ is continuous.
@@ -605,3 +607,54 @@ Since in either case, the union of two being $X$ implies one of the closed set i
   6. Let $psi:S arrow.r U$ be another ring homomorphism. Then $(psi compose phi)^* = phi^* compose psi^*$.
   7. Let $R$ be an integral domain with just one nonzero prime ideal $P$, and let $K$ be a field of fractions of $R$. Let $S = (R\/P) times K$. Define $phi:R arrow.r S$ by $phi(x) = (overline(x),x)$, where $overline(x)$ is the image of $x$ in $R\/P$. Show that $phi^*$ is bijective, but not a homeomorphism.
 ]
+#text(weight: "bold")[Pf:]
+
+1. Suppose $P in (phi^*)^(-1)(X_f)$, that means $phi^(-1)(P) in X_f$, hence $f in.not phi^(-1)(P)$. As a result, this shows that $phi(f) in.not P$, hence $P in Y_phi(f) = Spec(S) \\ V(f)$. So, this shows that $(phi^*)^(-1)(X_f) subset.eq Y_phi(f)$.
+
+  On the other hand, given $Q in Y_phi(f)$, since $phi(f) in.not Q$, then $f in.not phi^(-1)(Q)$, showing that $f in.not phi^*(Q) = phi^(-1)(Q)$. Hence,$phi^*(Q) in X_f$, showing that $Q in (phi^*)^(-1)(X_f)$. As a result, $Y_phi(f) subset.eq p=(phi^*)^(-1)(X_f)$.
+
+2. Given $I$ as an ideal of $R$, $V(I) subset.eq X$. Suppose $P in (phi^*)^(-1)(V(I))$, that means $phi^*(P) = phi^(-1)(P) in V(I)$, hence $I subset.eq phi^(-1)(P)$, or $phi(I) subset.eq P$. Hence, its extended ideal $I^e = (phi(I)) subset.eq P$, showing that $P in V(I^e)$. Therefore, $(phi^*)^(-1)(V(I)) subset.eq V(I^e)$.
+
+  Then, given any $Q in V(I^e)$, since $I^e subset.eq Q$, then $I subset.eq I^(e c) subset.eq phi^(-1)(Q) = phi^*(Q)$, showing $phi^*(Q) in V(I)$, hence $Q in (phi^*)^(-1)(V(I))$, or $V(I^e) subset.eq (phi^*)^(-1)(V(I))$.
+
+3. Given $J$ as an ideal of $S$, any $P in phi^*(V(J))$, then $P=phi^(-1)(P')$ for some prime ideal $P' in V(J)$, or $P = (P')^c$. Then, since $J subset.eq P'$, we have $J^c subset.eq (P')^c = P$, hence $P in V(J^c)$, showinv $phi^*(V(J)) subset.eq V(J^c)$. Hence, $overline(phi^*(V(J))) subset.eq V(J^c)$.
+
+  Now, given any closed subset $C subset.eq X$ satisfying $phi^*(V(J)) subset.eq C$, we want to show that $V(J^c) subset.eq C$ (to prove that $V(J^c)$ is the smallest closed subset containing $phi^*(V(J))$, or the closure of it). Since $C=V(I)$ for some radical $I subset.eq R$, then with $phi^*(V(J)) subset.eq V(I)$, for every $P' in phi^*(V(J))$ (which $P' = phi^*(P)=phi^(-1)(P) = P^c$ for some prime ideal $P in V(J)$), we have $I subset.eq P' = P^c$. 
+
+  Hence, 
+
+4. Given that $phi$ is surjective, then any $P in Y$ must have $phi^*(P) = phi^(-1)(P)$ contains $ker(phi)$, hence $phi^*(P) in V(ker(phi))$.
+
+  $phi^*$ is bijective, since $S tilde.equiv R \/ ker(phi)$, then there is a 1-to-1 correspondance between prime ideals of $S$ (collection $Y$) and prime ideals of $R$ containing $ker(phi)$ (collection $V(ker(phi))$) by taking the preimage (precisely the map $phi^*$).
+
+  Then, to show that it's a homeomorphism, given any closed subset $C subset.eq V(ker(phi))$, since $C = V(I) sect V(ker(phi))$ for some ideal $I subset.eq R$ (using subspace topology), then $C = V(I+ker(phi))$. Now, given any $P in C$, its image $P^e supset.eq (I+ker(phi))\/ker(phi) = I^e$ in $R\/ker(phi)$, hence $P^e in V(I^e)$, or $phi^*(V(I+ker(phi)))subset.eq V(I^e)$; the converse is also true, since a prime ideal $P' supset.eq I^e$ must have its preimage under $phi$, or $P supset.eq I^(e c) = I+ker(phi)$ (due to surjectivity, $overline(x) = overline(a)$ for some $a in I$ iff $x-a in ker(phi)$, or $x = a+k$ for $k in ker(phi)$), showing that $P' in phi^*(V(I+ker(phi)))$, or $V(I^e) subset.eq phi^*(V(I+ker(phi)))$. With both inclusion being true, such map has continuous inverse (since it's a closed map, image of a closed subset is closed), hence is a homeomorphism.
+
+5. (Not done)
+
+6. It's true that $(psi compose phi)^(-1)(E) = phi^(-1)(psi^(-1)(E))$.
+
+7. Given the condition that $R$ is an integral domain with only one nonzero prime ideal $P$, hence $P$ is maximal, or $R\/P$ is a field. Then, Given a prime ideal in $(R\/P) times K$, the only ideals are $(R\/P) times {0}$ and ${overline(0)} times K$: Since if taken the projection of a prime ideal onto $R\/P$ and $K$ respectively, it must be either ${0}$  or everything by the property of field, then the only combinations are projection being ${0},{0}$ (corresponds to ${(0,0)}$, but the direct product is not a integral domain, so this is not prime), ${0}, K$ (corresponds to ${0} times K$), $R\/P, {0}$ (corresponds to $(R\/P) times {0}$), and $R\/P, K$ (corresponds to everything, which doesn't count as a prime ideal).
+
+  Then, if consider their image under $phi^*$, preimage of ${0} times K$ yields $P$ (since only elements in $P$ has first coordinate in $R\/P$ being $0$), while preimage of $(R\/P) times {0}$ is $0$ (since only $0$ can be mapped to $0$ in $R subset.eq K$), so this map is indeed bijective.
+
+  Yet, the reason it's not a homeomorphism, is because taking the inverse (use $phi.alt$ to denote $(phi^*)^(-1)$), even though $V((R\/P) times {0})$ is closed, its preimage ${0} in Spec(R)$ is not closed: Suppose ${0} = V(I)$ for some ideal $I subset.eq R$, then we have $I subset.eq 0$, showing that $I=0$; yet, if consider $V(0)$, we get $v(0) = {0,P} != {0}$, showing a contradiction. Hence, the preimage of a closed set is not closed, showing it's not continuous (the inverse is not continuous, hene not a homeomorphism). 
+
+#myQuestion[
+  Let $A=product_(i=1)^n A_i$ be the direct product of rings $A_i$. Show that $Spec(A)$ is the disjoint union of open (and closed) subspaces $X_i$, where each $X_i$ is canonically homeomorphic with $Spec(A_i)$.
+
+  Conversely, let $A$ be any ring. Show that the following statements are equivalent:
+  1. $X=Spec(A)$ is disconnected.
+  2. $A tilde.equiv A_1 times A_2$ where neither of the rings $A_1,A_2$ is the zero ring.
+  3. $A$ contains an idempotent $!= 0,1$. 
+  
+  In particular, the spectrum of a local ring is always connected.
+]
+#text(weight: "bold")[Pf:]
+
+For the first part, it suffices to show that given product ring $A times B$, its prime ideals are precisely in the form $P_A times B$, or $A times P_B$.
+
+First, suppose $K subset.eq A times B$ is an ideal, then we know its projection onto $A,B$ (say $I$ and $J$ as image) are also ideals. Which, $K subset.eq I times J$, and every $i in I$ has some $j in J$ such that $(i,j) in K$ (similar for any $j' in J$, with corresponding $i' in I$ such that $(i',j') in K$). Then, by the property of ideal, since $(1,0) dot (i,j) = (i,0)$ (and similarly $(0,1) dot (i',j') = (0,j') in K$), we must have $K = I times J$.
+
+Then, given any prime ideal $P$, its projection onto each coordinate (say $P_A$ and $P_B$) must satisfy the property of a prime ideal (while not necessarily prime), hence $P = P_A times P_B$, while each $P_i$ is either a prime ideal, or the whole ring. However, consider the fact that with two proper prime ideals, the quotient $(A times B)\/(P_A times P_B) tilde.equiv A\/P_A times B\/P_B$, it will not form a prime ideal. Hence, one of $P_A$ or $P_B$ must be the whole ring ($A$ or $B$). 
+
+Finally, using induction one can show that any prime ideal of $product_(i=1)^n A_i$ must be in the form $product_(i=1)^n P_i$, where only one of the $P_i subset.eq A_i$ is a prime ideal, the others are $P_j = A_j$ (for $j!=i$). Hence, $Spec(A) = union.sq.big_(i=1)^n {product_(j=1)^n P_j | P_i subset.eq A_i "prime", P_j = A_j "if" j!=i}$ (and each part of the disjoint union can be characterized as $V(A_1 times ... times {0_i} times ... times A_n)$, which is canonically isomorphic to $Spec(A_i)$).
