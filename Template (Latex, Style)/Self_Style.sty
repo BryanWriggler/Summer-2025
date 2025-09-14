@@ -1,0 +1,144 @@
+%% Collect needed packages for most files
+\usepackage{graphicx} % Required for inserting images
+\usepackage[most]{tcolorbox} %for creating environments
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{braket} %specifically appear in physics (QM)
+\usepackage{verbatim} %for special environment (for instance the comment environment)
+\usepackage[utf8]{inputenc} %for japanese? I forgot
+\usepackage[dvipsnames]{xcolor} %for importing multiple colors
+\usepackage{hyperref} %for creating links to different sections
+\usepackage{tikz-cd} %for commutative diagrams
+\usepackage{tikz} %for drawing regular diagrams
+
+%% Set geometry of the margin and line spread
+\usepackage[margin = 2.54cm]{geometry} % set margin to traditional doc
+\linespread{1.2} %controlling line spread
+%setup hyperlink within pdf
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+%%define colors i like
+\definecolor{myTeal}{RGB}{0,128,128}
+\definecolor{myGreen}{RGB}{34,170,34}
+\definecolor{mySapphire}{RGB}{15,82,186}
+\definecolor{myEmerald}{RGB}{50.4, 130, 90}
+
+%%create math environments, can add [section] or [subsection] to add index counter based on sections/subsections
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{ques}{Question}
+\newtheorem{lem}{Lemma}
+\newtheorem{exm}{Example}
+\newtheorem{cor}{Corollary}
+
+%%setup colored box environment for each math env above
+\tcolorboxenvironment{defn}{
+    enhanced, colframe=myTeal!50!teal, colback=myTeal!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{prop}{
+    enhanced, colframe=myGreen!50!black, colback=myGreen!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{thm}{
+    enhanced, colframe=mySapphire!50!mySapphire, colback=mySapphire!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{cor}{
+    enhanced, colframe=mySapphire!50!mySapphire, colback=mySapphire!15,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{ques}{
+    enhanced, colframe=blue!50!black, colback=blue!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{lem}{
+    enhanced, colframe=myEmerald!50!myEmerald, colback=myEmerald!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+\tcolorboxenvironment{exm}{
+    enhanced, colframe=blue!50!black, colback=blue!10,
+    arc=5mm, lower separated=false, fonttitle=\bfseries, breakable
+}
+
+%%common commands (add to template)
+%general
+\newcommand{\FF}{\mathbb{F}} %field F
+\newcommand{\NN}{\mathbb{N}} %natural number
+\newcommand{\ZZ}{\mathbb{Z}} %integer
+\newcommand{\QQ}{\mathbb{Q}} %rational field
+\newcommand{\RR}{\mathbb{R}} %real field
+\newcommand{\CC}{\mathbb{C}} %complex field
+
+\let\id\undefined
+\DeclareMathOperator{\id}{\mathrm{id}} %identity
+\DeclareMathOperator{\lcm}{\mathrm{lcm}} %least common multiple
+
+%paired command
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert} %absolute value
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert} %norm
+%\DeclarePairedDelimiter{\paran}{(}{)}%paranthesis
+\DeclarePairedDelimiter{\brac}{\langle}{\rangle} %bracket (used for cyclic group, generated group, etc.)
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor} %floor function
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil} %ceiling function
+
+%algebra
+\DeclareMathOperator{\Gal}{\mathrm{Gal}} %galois extension
+\DeclareMathOperator{\Aut}{\mathrm{Aut}} %automorphism
+\DeclareMathOperator{\End}{\mathrm{End}} %endomorphism
+\DeclareMathOperator{\Hom}{\mathrm{Hom}} %set of morphism
+\DeclareMathOperator{\Nil}{\mathrm{Nil}} %nilradical in commutatitive ring
+\DeclareMathOperator{\Ann}{\mathrm{Ann}} %annihilator (as ideal in commutative ring)
+\let\char\undefined
+\DeclareMathOperator{\char}{\mathrm{char}} %characteristic
+\DeclareMathOperator{\coker}{\mathrm{coker}} %coker
+\let\im\undefined
+\DeclareMathOperator{\im}{\mathrm{im}} %image
+\DeclareMathOperator{\Spec}{\mathrm{Spec}} %spectrum (used in either operator theory, or spectrum as Zariski Topology)
+\DeclareMathOperator{\coim}{\mathrm{coim}} %coimage in homological algebra
+
+%Lie Group / Lie Algebra
+\DeclareMathOperator{\GL}{\mathrm{GL}} %general linear
+\DeclareMathOperator{\SL}{\mathrm{SL}} %special linear
+\DeclareMathOperator{\U}{\mathrm{U}} %unitary
+\DeclareMathOperator{\SO}{\mathrm{SO}} %special orthogonal
+\DeclareMathOperator{\SU}{\mathrm{SU}} %special unitary
+\DeclareMathOperator{\gl}{\mathfrak{gl}}
+\let\sl\undefined
+\DeclareMathOperator{\sl}{\mathfrak{sl}}
+\DeclareMathOperator{\so}{\mathfrak{so}}
+\DeclareMathOperator{\su}{\mathfrak{sl}}
+
+
+%analysis
+\DeclareMathOperator{\Vol}{\mathrm{Vol}}
+\DeclareMathOperator{\Cont}{\mathcal{C}}
+
+%complex
+\DeclareMathOperator{\Real}{\mathrm{Re}} %real part
+\DeclareMathOperator{\Imag}{\mathrm{Im}} %imaginary part
+\DeclareMathOperator{\Res}{\mathrm{Res}} %residue
+\DeclareMathOperator{\Holo}{\mathcal{O}} %represent holomorphic / analytic function
+\DeclareMathOperator{\Mero}{\mathcal{M}} %represent meromorphic function
+
+
+%physics
+\DeclareMathOperator{\br}{\mathbf{r}} %position
+\DeclareMathOperator{\bv}{\mathbf{v}} %velocity
+\DeclareMathOperator{\ba}{\mathbf{a}} %acceleration
+\DeclareMathOperator{\bF}{\mathbf{F}} %force
+\DeclareMathOperator{\bP}{\mathbf{P}} %momentum
+\DeclareMathOperator{\bL}{\mathbf{L}} %angular momentum
+\DeclareMathOperator{\bN}{\mathbf{N}} %torque
+\DeclareMathOperator{\bw}{\mathbf{w}} %angular velocity
+\DeclareMathOperator{\bzero}{\mathbf{0}} %zero vector
