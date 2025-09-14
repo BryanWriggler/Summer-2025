@@ -80,9 +80,8 @@
 \newcommand{\RR}{\mathbb{R}} %real field
 \newcommand{\CC}{\mathbb{C}} %complex field
 
-\let\id\undefined
-\DeclareMathOperator{\id}{\mathrm{id}} %identity
-\DeclareMathOperator{\lcm}{\mathrm{lcm}} %least common multiple
+\newcommand{\id}{\mathrm{id}} %identity
+\newcommand{\lcm}{\mathrm{lcm}} %least common multiple
 
 %paired command
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} %absolute value
@@ -93,52 +92,69 @@
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil} %ceiling function
 
 %algebra
-\DeclareMathOperator{\Gal}{\mathrm{Gal}} %galois extension
-\DeclareMathOperator{\Aut}{\mathrm{Aut}} %automorphism
-\DeclareMathOperator{\End}{\mathrm{End}} %endomorphism
-\DeclareMathOperator{\Hom}{\mathrm{Hom}} %set of morphism
-\DeclareMathOperator{\Nil}{\mathrm{Nil}} %nilradical in commutatitive ring
-\DeclareMathOperator{\Ann}{\mathrm{Ann}} %annihilator (as ideal in commutative ring)
-\let\char\undefined
-\DeclareMathOperator{\char}{\mathrm{char}} %characteristic
-\DeclareMathOperator{\coker}{\mathrm{coker}} %coker
-\let\im\undefined
-\DeclareMathOperator{\im}{\mathrm{im}} %image
-\DeclareMathOperator{\Spec}{\mathrm{Spec}} %spectrum (used in either operator theory, or spectrum as Zariski Topology)
-\DeclareMathOperator{\coim}{\mathrm{coim}} %coimage in homological algebra
+\newcommand{\Gal}{\mathrm{Gal}} %galois extension
+\newcommand{\Aut}{\mathrm{Aut}} %automorphism
+\newcommand{\End}{\mathrm{End}} %endomorphism
+\newcommand{\Hom}{\mathrm{Hom}} %set of morphism
+\newcommand{\Nil}{\mathrm{Nil}} %nilradical in commutatitive ring
+\newcommand{\Ann}{\mathrm{Ann}} %annihilator (as ideal in commutative ring)
+\newcommand{\Char}{\mathrm{char}} %characteristic
+\newcommand{\coker}{\mathrm{coker}} %coker
+%\let\im\undefined
+\newcommand{\im}{\mathrm{im}} %image
+\newcommand{\Spec}{\mathrm{Spec}} %spectrum (used in either operator theory, or spectrum as Zariski Topology)
+\newcommand{\coim}{\mathrm{coim}} %coimage in homological algebra
+
+%category theory
+\newcommand{\cat}[1]{\mathsf{#1}} %general category font command
+\newcommand{\Grp}{\mathsf{Grp}} %cat of group
+\newcommand{\Ab}{\mathsf{Ab}} %cat of abel group
+\newcommand{\Ring}{\mathsf{Ring}} %cat of ring
+\newcommand{\Fld}{\mathsf{Fld}} %cat of field
+\newcommand{\RMod}{\mathsf{R-Mod}} %cat of R-Mod
+\newcommand{\RAlg}{\mathsf{R-Alg}} %cat of R-Alg
+\newcommand{\Vect}[1]{\mathsf{Vect}_\mathsf{#1}} %cat of vector spaces
+\newcommand{\Top}{\mathsf{Top}} %cat of topological spaces
+\newcommand{\hTop}{\mathsf{hTop}} %cat of topological spaces with homotopic classes of continuous maps
+\newcommand{\Sets}{\mathsf{Set}} %cat of sets
+\newcommand{\Ch}[1]{\mathsf{Ch(#1)}} %cat of chain complex / cochain complex over an abelian category
+\newcommand{\D}[1]{\mathsf{D(#1)}} %derived category
+\newcommand{\Met}{\mathsf{Met}} %cat of metric spaces
+
+
 
 %Lie Group / Lie Algebra
-\DeclareMathOperator{\GL}{\mathrm{GL}} %general linear
-\DeclareMathOperator{\SL}{\mathrm{SL}} %special linear
-\DeclareMathOperator{\U}{\mathrm{U}} %unitary
-\DeclareMathOperator{\SO}{\mathrm{SO}} %special orthogonal
-\DeclareMathOperator{\SU}{\mathrm{SU}} %special unitary
-\DeclareMathOperator{\gl}{\mathfrak{gl}}
+\newcommand{\GL}{\mathrm{GL}} %general linear
+\newcommand{\SL}{\mathrm{SL}} %special linear
+\newcommand{\U}{\mathrm{U}} %unitary
+\newcommand{\SO}{\mathrm{SO}} %special orthogonal
+\newcommand{\SU}{\mathrm{SU}} %special unitary
+\newcommand{\gl}{\mathfrak{gl}}
 \let\sl\undefined
-\DeclareMathOperator{\sl}{\mathfrak{sl}}
-\DeclareMathOperator{\so}{\mathfrak{so}}
-\DeclareMathOperator{\su}{\mathfrak{sl}}
+\newcommand{\sl}{\mathfrak{sl}}
+\newcommand{\so}{\mathfrak{so}}
+\newcommand{\su}{\mathfrak{su}}
 
 
 %analysis
-\DeclareMathOperator{\Vol}{\mathrm{Vol}}
-\DeclareMathOperator{\Cont}{\mathcal{C}}
+\newcommand{\Vol}{\mathrm{Vol}}
+\newcommand{\Cont}{\mathcal{C}}
 
 %complex
-\DeclareMathOperator{\Real}{\mathrm{Re}} %real part
-\DeclareMathOperator{\Imag}{\mathrm{Im}} %imaginary part
-\DeclareMathOperator{\Res}{\mathrm{Res}} %residue
-\DeclareMathOperator{\Holo}{\mathcal{O}} %represent holomorphic / analytic function
-\DeclareMathOperator{\Mero}{\mathcal{M}} %represent meromorphic function
+\newcommand{\Real}{\mathrm{Re}} %real part
+\newcommand{\Imag}{\mathrm{Im}} %imaginary part
+\newcommand{\Res}{\mathrm{Res}} %residue
+\newcommand{\Holo}{\mathcal{O}} %represent holomorphic / analytic function
+\newcommand{\Mero}{\mathcal{M}} %represent meromorphic function
 
 
 %physics
-\DeclareMathOperator{\br}{\mathbf{r}} %position
-\DeclareMathOperator{\bv}{\mathbf{v}} %velocity
-\DeclareMathOperator{\ba}{\mathbf{a}} %acceleration
-\DeclareMathOperator{\bF}{\mathbf{F}} %force
-\DeclareMathOperator{\bP}{\mathbf{P}} %momentum
-\DeclareMathOperator{\bL}{\mathbf{L}} %angular momentum
-\DeclareMathOperator{\bN}{\mathbf{N}} %torque
-\DeclareMathOperator{\bw}{\mathbf{w}} %angular velocity
-\DeclareMathOperator{\bzero}{\mathbf{0}} %zero vector
+\newcommand{\br}{\mathbf{r}} %position
+\newcommand{\bv}{\mathbf{v}} %velocity
+\newcommand{\ba}{\mathbf{a}} %acceleration
+\newcommand{\bF}{\mathbf{F}} %force
+\newcommand{\bP}{\mathbf{P}} %momentum
+\newcommand{\bL}{\mathbf{L}} %angular momentum
+\newcommand{\bN}{\mathbf{N}} %torque
+\newcommand{\bw}{\mathbf{w}} %angular velocity
+\newcommand{\bzero}{\mathbf{0}} %zero vector
