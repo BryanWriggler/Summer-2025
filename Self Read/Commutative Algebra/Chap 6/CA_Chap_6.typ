@@ -229,9 +229,11 @@ Because each irreducible component corresponds to a minimal prime ideal (and als
 ]
 #text(weight: "bold")[Pf:]
 
+First, to show that $Supp(M)$ is closed in $Spec(A)$, we need to show that there exists a radical $J$ such that $J = sect.big P$ (where the intersection ran through all $P in Supp(M)$).
+
 = ND//11 (Need Chapter 5)
 
-= ND//12
+= HD//12
 #myQuestion[
   Let $A$ be a ring such that $Spec(A)$ is a Noetherian space. Show that the set of prime ideals of $A$ satisfies the ascending chain condition. Is the converse true?
 ]
