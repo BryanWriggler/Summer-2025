@@ -1,0 +1,362 @@
+%%%% SYMBOLS AND MATH %%%%
+\let\oldvec\vec
+\usepackage{authblk}	% author block customization
+\usepackage{microtype}	% makes stuff look real nice
+\usepackage{amssymb} 	% math symbols
+\usepackage{siunitx} 	% for SI units, and the degree symbol
+\usepackage{mathrsfs}	% provides script fonts like mathscr
+\usepackage{mathtools}	% extension to amsmath, also loads amsmath
+\usepackage{esint}		% extended set of integrals
+\mathtoolsset{showonlyrefs} % equation numbers only shown when referenced
+\usepackage{amsthm}		% theorem environments
+\usepackage{bm}			% provides bold math
+\usepackage{bbm}		% blackboard bold math font
+\usepackage{scalerel}   % scaling for new large math operators
+\usepackage{relsize}	% font size commands
+
+%%%% FIGURES %%%%
+\usepackage{graphicx} % for including pictures
+\usepackage{float} % allows [H] option on figures, so that they appear where they are typed in code
+\usepackage{caption}
+\usepackage{hyperref}
+%\usepackage{titling}
+\usepackage{tikz} % for drawing
+\usetikzlibrary{shapes,arrows,chains,positioning,cd,decorations.pathreplacing,decorations.markings,hobby,knots,braids}
+\usepackage{subcaption}	% subfigure environment in figures
+\usepackage{cutwin}    % figure environment with wrapping text
+\usepackage[export]{adjustbox} % frames for includegraphics
+
+%%%% MISC %%%%
+\usepackage{xcolor}   % colors
+\usepackage{enumitem} % for lists and itemizations
+\setlist[enumerate]{leftmargin=*,label=\bf \arabic*.}
+
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage[symbol]{footmisc}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{lastpage} % provides the total number of pages for the "X of LastPage" page numbering
+\usepackage{fancyhdr}
+\usepackage{manfnt}
+\usepackage{nicefrac}
+%\usepackage{fontspec}
+%\usepackage{polyglossia}
+%\setmainlanguage{english}
+%\setotherlanguages{khmer}
+%\newfontfamily\khmerfont[Script=Khmer]{Khmer Busra}
+
+%%% Khmer script commands for math %%%
+%\newcommand{\ka}{\text{\textkhmer{ក}}}
+%\newcommand{\ko}{\text{\textkhmer{ត}}}
+%\newcommand{\kha}{\text{\textkhmer{ខ}}}
+
+%\usepackage[
+%backend=biber,
+% numeric
+%style=numeric,
+% APA
+%bibstyle=apa,
+%citestyle=authoryear,
+%]{biblatex}
+
+\usepackage[explicit]{titlesec}
+%%%%%%%% SOME CODE FOR REDECLARING %%%%%%%%%%
+
+\makeatletter
+\newcommand\RedeclareMathOperator{%
+	\@ifstar{\def\rmo@s{m}\rmo@redeclare}{\def\rmo@s{o}\rmo@redeclare}%
+}
+% this is taken from \renew@command
+\newcommand\rmo@redeclare[2]{%
+	\begingroup \escapechar\m@ne\xdef\@gtempa{{\string#1}}\endgroup
+	\expandafter\@ifundefined\@gtempa
+	{\@latex@error{\noexpand#1undefined}\@ehc}%
+	\relax
+	\expandafter\rmo@declmathop\rmo@s{#1}{#2}}
+% This is just \@declmathop without \@ifdefinable
+\newcommand\rmo@declmathop[3]{%
+	\DeclareRobustCommand{#2}{\qopname\newmcodes@#1{#3}}%
+}
+\@onlypreamble\RedeclareMathOperator
+\makeatother
+
+\makeatletter
+\newcommand*{\relrelbarsep}{.386ex}
+\newcommand*{\relrelbar}{%
+	\mathrel{%
+		\mathpalette\@relrelbar\relrelbarsep
+	}%
+}
+\newcommand*{\@relrelbar}[2]{%
+	\raise#2\hbox to 0pt{$\m@th#1\relbar$\hss}%
+	\lower#2\hbox{$\m@th#1\relbar$}%
+}
+\providecommand*{\rightrightarrowsfill@}{%
+	\arrowfill@\relrelbar\relrelbar\rightrightarrows
+}
+\providecommand*{\leftleftarrowsfill@}{%
+	\arrowfill@\leftleftarrows\relrelbar\relrelbar
+}
+\providecommand*{\xrightrightarrows}[2][]{%
+	\ext@arrow 0359\rightrightarrowsfill@{#1}{#2}%
+}
+\providecommand*{\xleftleftarrows}[2][]{%
+	\ext@arrow 3095\leftleftarrowsfill@{#1}{#2}%
+}
+\makeatother
+
+\DeclarePairedDelimiterX{\set}[1]{\{}{\}}{\setargs{#1}}
+\NewDocumentCommand{\setargs}{>{\SplitArgument{1}{;}}m}
+{\setargsaux#1}
+\NewDocumentCommand{\setargsaux}{mm}
+{\IfNoValueTF{#2}{#1} {#1\nonscript\:\delimsize\vert\allowbreak\nonscript\:\mathopen{}#2}}%
+
+%%%%%%%% NEW COMMANDS %%%%%%%%%%
+
+% settings
+\newcommand{\N}{\mathbb{N}}                     	% Natural numbers
+\newcommand{\Z}{\mathbb{Z}}                     	% Integers
+\newcommand{\Q}{\mathbb{Q}}                     	% Rationals
+\newcommand{\R}{\mathbb{R}}                     	% Reals
+\newcommand{\C}{\mathbb{C}}                     	% Complex numbers
+\newcommand{\K}{\mathbb{K}}							% Scalars
+\newcommand{\F}{\mathbb{F}}                     	% Arbitrary Field
+\newcommand{\E}{\mathbb{E}}                     	% Euclidean topological space
+\renewcommand{\H}{{\mathbb{H}}}                   	% Quaternions / Half space
+\newcommand{\RP}{{\mathbb{R}\mathrm{P}}}            % Real projective space
+\newcommand{\CP}{{\mathbb{C}\mathrm{P}}}                     % Complex projective space
+
+% typography
+\newcommand{\tbf}[1]{\textbf{#1}}					% Boldface
+\newcommand{\mc}[1]{\mathcal{#1}}               	% Calligraphic
+\newcommand{\ms}[1]{\mathscr{#1}}               	% Script
+\newcommand{\mbb}[1]{\mathbb{#1}}               	% Blackboard bold
+\newcommand{\mf}[1]{\mathfrak{#1}}               	% Blackboard bold
+
+
+% (in)equalities
+\newcommand{\eqdef}{\overset{\mathrm{def}}{=}}		% Definition equals
+\newcommand{\sub}{\subseteq}						% Changes default symbol from proper to improper
+\renewcommand{\supset}{\supseteq}						% Changes default symbol from proper to improper
+\newcommand{\psub}{\subset}						    % Preferred proper subset symbol
+
+% Categories
+\newcommand{\catname}[1]{{\text{\sffamily {#1}}}}
+
+\newcommand{\Cat}{{\catname{Cat}}}
+\newcommand{\cat}[1]{{\catname{\ifblank{#1}{C}{#1}}}}
+\newcommand{\CAT}{{\catname{Cat}}}
+\newcommand{\Set}{{\catname{Set}}}
+
+\newcommand{\Top}{{\catname{Top}}}
+\newcommand{\hTop}{{\catname{hTop}}}
+\newcommand{\Haus}{{\catname{Haus}}}
+\newcommand{\Met}{{\catname{Met}}}
+\newcommand{\PL}{{\catname{PL}}}
+\newcommand{\Man}{{\catname{Man}}}
+\newcommand{\Diff}{{\catname{Diff}}}
+
+\newcommand{\Grp}{{\catname{Grp}}}
+\newcommand{\Grpd}{{\catname{Grpd}}}
+\newcommand{\Ab}{{\catname{Ab}}}
+\newcommand{\Ring}{{\catname{Ring}}}
+\newcommand{\CRing}{{\catname{CRing}}}
+\newcommand{\Mod}{{\mhyphen\catname{Mod}}}
+\newcommand{\Alg}{{\mhyphen\catname{Alg}}}
+\newcommand{\Field}{{\catname{Field}}}
+\newcommand{\Vect}{{\catname{Vect}}}
+\newcommand{\Hilb}{{\catname{Hilb}}}
+\newcommand{\Ch}{{\catname{Ch}}}
+
+% Hiragana for Yoneda Embedding
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+\newcommand\yo{\!\text{\usefont{U}{min}{m}{n}\symbol{'207}}\!}
+
+% Norms, inner products
+\delimitershortfall=-1sp
+\newcommand{\widecdot}{\, \cdot \,}
+\newcommand\emptyarg{{}\cdot{}}
+\DeclarePairedDelimiterX{\norm}[1]{\Vert}{\Vert}{\ifblank{#1}{\emptyarg}{#1}}
+\DeclarePairedDelimiterX{\abs}[1]\vert\vert{\ifblank{#1}{\emptyarg}{#1}}
+\DeclarePairedDelimiterX\inn[1]\langle\rangle{\ifblank{#1}{\emptyarg,\emptyarg}{#1}}
+\DeclarePairedDelimiterX\cur[1]\{\}{\ifblank{#1}{\emptyarg,\emptyarg}{#1}}
+\DeclarePairedDelimiterX\pa[1](){\ifblank{#1}{\emptyarg}{#1}}
+\DeclarePairedDelimiterX\brak[1][]{\ifblank{#1}{\emptyarg}{#1}}
+\DeclarePairedDelimiterX{\an}[1]\langle\rangle{\ifblank{#1}{\emptyarg}{#1}}
+\DeclarePairedDelimiterX{\bra}[1]\langle\vert{\ifblank{#1}{\emptyarg}{#1}}
+\DeclarePairedDelimiterX{\ket}[1]\vert\rangle{\ifblank{#1}{\emptyarg}{#1}}
+
+%%% mathmode text operators
+
+% operators
+\DeclareMathOperator{\sgn}{\mathrm{sgn}}			% sgn operator
+\DeclareMathOperator{\supp}{\mathrm{supp}}
+\DeclareMathOperator{\grad}{\nabla}                 % Gradient
+\DeclareMathOperator{\del}{\partial}			    % Differential/Boundary
+\RedeclareMathOperator{\Re}{\operatorname{Re}}		% real part
+\RedeclareMathOperator{\Im}{\operatorname{Im}}		% imaginary part
+\DeclareMathOperator{\M}{\mathcal{M}}               % Measure space
+
+\DeclareMathOperator{\Hom}{{\mathrm{Hom}}}
+\DeclareMathOperator{\Iso}{{\mathrm{Iso}}}
+\DeclareMathOperator{\End}{{\mathrm{End}}}
+\DeclareMathOperator{\Aut}{{\mathrm{Aut}}}
+\DeclareMathOperator{\Obj}{{\mathrm{Obj}}}
+\DeclareMathOperator{\Rep}{{\mathrm{Rep}}}
+\DeclareMathOperator{\Arr}{\mathrm{Arr}}            % Arrow category
+\DeclareMathOperator{\Psh}{{\mathrm{Psh}}}
+\DeclareMathOperator{\Kom}{{\mathrm{Kom}}}
+
+\DeclareMathOperator{\dom}{\mathrm{dom}}
+\DeclareMathOperator{\codom}{\mathrm{codom}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\Cone}{{\mathrm{Cone}}}
+\DeclareMathOperator{\Cocone}{{\mathrm{Cocone}}}
+\DeclareMathOperator{\eq}{\mathrm{eq}}
+\DeclareMathOperator{\coeq}{\mathrm{coeq}}
+\DeclareMathOperator{\coker}{\mathrm{coker}}
+\DeclareMathOperator{\im}{\mathrm{im}}
+\DeclareMathOperator{\coim}{\mathrm{coim}}
+\def\colim{\qopname\relax m{colim}}
+
+\DeclareMathOperator{\rank}{\mathrm{rank}}
+\DeclareMathOperator{\stab}{\mathrm{stab}}          % stabilizer of an action
+\DeclareMathOperator{\orb}{\mathrm{orb}}            % orbit of an action
+\DeclareMathOperator{\fix}{\mathrm{fix}}            % fixed points of action
+\DeclareMathOperator{\core}{\mathrm{core}}          % group core
+\DeclareMathOperator{\ncl}{\mathrm{ncl}}            % normal closure
+
+\DeclareMathOperator{\vspan}{\mathrm{span}}			% vector span
+\DeclareMathOperator{\codim}{\mathrm{codim}}
+\DeclareMathOperator{\tr}{\mathrm{tr}}
+\DeclareMathOperator{\xalg}{\textstyle \bigwedge}
+\DeclareMathOperator{\adj}{\mathrm{adj}}
+\DeclareMathOperator{\diag}{\mathrm{diag}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\ord}{\mathrm{ord}}
+
+\DeclareMathOperator{\Frac}{{\mathrm{Frac}}}
+\DeclareMathOperator{\Gal}{{\mathrm{Gal}}}
+\DeclareMathOperator{\Spec}{{\mathrm{Spec}}}        % Spectrum
+
+\DeclareMathOperator{\Mat}{{\mathrm{Mat}}}			% Matrix ring
+\DeclareMathOperator{\GL}{{\mathrm{GL}}}            % General linear group
+\DeclareMathOperator{\SL}{{\mathrm{SL}}}            % Special linear group
+\DeclareMathOperator{\SO}{{\mathrm{SO}}}
+\DeclareMathOperator{\SU}{{\mathrm{SU}}}
+\DeclareMathOperator{\gl}{\mathfrak{gl}}
+\let\sl\undefined
+\DeclareMathOperator{\sl}{\mathfrak{sl}}
+\DeclareMathOperator{\so}{\mathfrak{so}}
+\DeclareMathOperator{\su}{\mathfrak{sl}}
+\DeclareMathOperator{\Uq}{{\mathrm{U_q}}}
+
+\DeclareMathOperator{\Ann}{\mathrm{Ann}}
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+\DeclareMathOperator{\Ext}{\mathrm{Ext}}
+\DeclareMathOperator{\Sub}{\mathrm{Sub}}
+\DeclareMathOperator{\Qu}{{\mathrm{Qu}}}
+
+\DeclareMathOperator{\Op}{{\mathrm{Op}}}
+\DeclareMathOperator{\res}{\mathrm{res}}            % Restriction
+\DeclareMathOperator{\Sh}{\mathrm{Suh}}             % Category of sheaves
+
+% topology
+\DeclareMathOperator{\Sym}{\mathrm{Sym}}            % symmetric space
+\DeclareMathOperator{\intr}{\mathrm{int}}           % interior
+\DeclareMathOperator{\co}{\mathrm{co}}				% dual/convex Hull
+\DeclareMathOperator{\conv}{\mathrm{conv}}			% convex Hull
+
+\DeclareMathOperator{\MCG}{\mathrm{MCG}}            % mapping class group
+\DeclareMathOperator{\Deck}{\mathrm{Deck}}          % deck transformation group
+\DeclareMathOperator{\sk}{\mathrm{sk}}              % skeleton
+
+% \sum-like operators
+\DeclareMathOperator*{\free}{\scalerel*{\ast}{\sum}}% big free product
+
+% binary operators
+\newcommand{\divides}{\mathbin{\big\lvert}}
+\newcommand{\nsub}{\mathbin{\triangleleft}}			% normal subgroup / quandle operation
+
+% misc symbols
+\newcommand{\oo}{\infty}
+\newcommand{\op}{{\mathrm{op}}}                     % opposite ring/category
+\newcommand{\veps}{\varepsilon}						% preferred epsilon
+\newcommand{\vphi}{\varphi}                         % preferred phi
+\renewcommand{\emptyset}{\text{\O}}					% traditional emptyset symbol
+\newcommand{\later}{$\textcolor{red}{\blacksquare}$}% laziness indicator
+
+% misc
+\mathchardef\mhyphen="2D							% mathomode hyphen
+\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}        % modulo thing
+\renewcommand{\bar}[1]{\overline{#1}}				% closure/conjugate
+\renewcommand\qedsymbol{$\blacksquare$} 			% changes default qed in proof environment
+
+%%%%% raised chi
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}}
+\newcommand\concat{+\kern-1.3ex+\kern0.8ex}
+
+% Arrows
+\newcommand{\into}{\hookrightarrow}                 % monomorphism
+\newcommand{\linto}{\hookleftarrow}
+\newcommand{\onto}{\twoheadrightarrow}              % epimorphism
+\newcommand{\lonto}{\twoheadleftarrow}
+\newcommand{\weak}{\rightharpoonup}					% weak convergence
+\newcommand{\lweak}{\leftharpoonup}
+\newcommand{\weakstar}{\overset{*}{\rightharpoonup}}% weak-star convergence
+\newcommand{\lweakstar}{\overset{*}{\leftharpoonup}}% weak-star convergence
+
+% matrices
+\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\psmat}[1]{\begin{psmallmatrix}#1\end{psmallmatrix}}
+
+% Environments
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+%\newtheorem{lem}[thm]{Lemma}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem*{lems}{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{thms}{Theorem}
+\newtheorem*{claim}{Claim}
+\newtheorem*{cors}{Corollary}
+\newtheorem*{props}{Proposition}
+\newtheorem*{conj}{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem*{defns}{Definition}
+\newtheorem{exm}[thm]{Example}
+\newtheorem{exer}{Exercise}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+\newtheorem*{solnx}{Solution}
+\newenvironment{soln}
+    {\pushQED{\qed}\renewcommand{\qedsymbol}{$\Diamond$}\solnx}
+    {\popQED\endsolnx}%
+
+%%%%%%%%%%%% PAGE FORMATTING %%%%%%%%%
+
+\usepackage{geometry}
+    \geometry{
+		left=15mm,
+		right=15mm,
+		top=20mm,
+		bottom=20mm	
+		}
+
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily,columns=fullflexible,keepspaces=true
+}
+\usepackage{setspace}
+\usepackage{mdframed}
+\usepackage{booktabs}

@@ -1,0 +1,80 @@
+\documentclass[x11names,reqno,12pt]{extarticle}
+\usepackage{preamble}
+\usepackage{CJKutf8}
+\fancypagestyle{fancy}{
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+    \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot[R]{\footnotesize Page \thepage \ of \pageref{LastPage}}
+	\fancyfoot[C]{}
+	}
+\fancypagestyle{firststyle}{
+     \fancyhead[L]{}
+     \fancyhead[R]{}
+     \fancyhead[C]{}
+     \renewcommand{\headrulewidth}{0pt}
+	\fancyfoot[R]{\footnotesize Page \thepage \ of \pageref{LastPage}}
+}
+\DeclareMathOperator{\arrow}{\mathrm{arrow}} 
+
+\title{Braid Groups and their Representations}
+\author{Zih-Yu Hsieh \\ Mentor: Choomno Moos}
+\affil{University of California, Santa Barbara \\ College of Creative Studies}
+\date{Summer 2025}
+
+\begin{document}
+\maketitle
+\thispagestyle{firststyle}
+\pagestyle{fancy}
+\renewcommand{\tilde}{\widetilde}
+
+\tableofcontents
+
+\section{Introduction}
+%talks about the history / usage of braid groups / representations, and mention the goal of the project
+Braid group as a mathematical structure initiated by the study of geometric braids, has hidden in multiple fields of math: From the association with braid automorphisms of a free group, the class of isotopic self-homeomorphism of punctured disks, even to its usage of formulating interactions of anyons in Quantum Mechanics - it is embedded in multiple aspectts of both math and physics.
+
+A specific direction of research involves the study of Braid Group Representation, and one longstanding question is about the faithfulness of two representations - Burau and Gassner Representations: For $n\geq 6$ Burau Representation is proven to be not faithful in [Professor D. Long's article] and refined down to the case of $n\geq 5$ in [Professor S. Bigelow's article]. In [Birman's Book] a theorem states the kernel of Gassner Representation is a subgroup of the kernel of Burau Representation, which another work proving faithfulness of Burau Representation for $n\leq 3$ in [One of the articles] also implies the faithfulness of Gassner Representation for same cases. Now, the faithfulness of Burau Representation for $n=4$ is unknown, and similar case for Gassner Representation in case $n\geq 4$.
+
+In this survey we'll aim to understand the construction of Burau and Gassner Representation. In \textbf{Section 2} we'll cover some fundamentals of Algebraic Topology such as Homotopy, Fundamental Group, Deformation Retract, Covering Space, and Homology.; in \textbf{Section 3} we'll introduce Braid Groups, including its algebraic definition, the isomorphism to the \emph{Mapping Class Group} of punctured disks, and its realization as braid automorphisms on free groups - which turns out to be analogous to the Mapping Class Group's action on punctured disk's fundamental group. In \textbf{Section 4} and \textbf{5} we'll cover Burau and Gassner Representation - both definition wise, and their homological construction.
+
+Hope you enjoy the text :) \textbf{(Yeah please delete this line, please.)}
+
+\section{Topological / Algebraic Preliminaries}
+%including concepts of homotopy, fundamental group, homology (probably from a more topological approach?), covering spaces, deck transformations, etc.
+%free differential calculus is another alternative when constructing representations (need magnus representation first though)
+\subsection{Homotopy}
+First, we'll land on the formulation of ``Continuous Deformation" - which is usefule when classifying maps between topological spaces.
+\begin{defn}
+  Given $X,Y$ as topological spaces, $f,g:X\rightarrow Y$ are continuous maps, a \emph{Homotopy} between $f$ and $g$ is a continuous map $H:X\times [0,1]\rightarrow Y$ such that $H(x,0)=f(x)$, and $H(x,1)=g(x)$.
+
+  Also, given subset $A \subseteq X$, $H$ is a Homotopy between $f$ and $g$ \emph{Relative to $A$}, if $H(a,t) = f(a)=g(a)$ for all $a\in A$ and $t\in [0,1]$.
+\end{defn}
+If treated $[0,1]$ as the time interval, one can visualize $H(x,t)$ for each $t\in [0,1]$ as a slice of the deformation from $f$ to $g$, and having it relative to subset $A$ implies such deformation is not changing $A$. 
+
+\hfil
+
+It is well-known tha homotopy is an equivalence relation on the collection of continuous functions between two spaces. With this in mind, if fixing a base point $x_0 \in X$, we can classify the classes of 
+
+\section{Braid Groups}
+%artin braid groups, geometric interpretation, braid automorphism, and mapping class group
+%connect free automorphism and mapping class group by its action on 
+
+\section{Burau Representation}
+%define burau / reduced burau first
+%then introduce the more topologicall / homological construction of the representations
+%If introduce free differential calculus, then change focus onto braid automorphism of free groups, and the corresponding magnus representation
+
+\section{Gassner Representation}
+%similar situation with Burau, but the formula is highly nontrivial. Look into Birman: Braids, Links, Mapping Class Group (where the formulas are directly mentioned
+
+\section{Conclusion}
+%talks about what we've learned throughout the summer, future directions, etc.
+
+%everything that is used for reference
+\bibliography{refs}
+%add sources to refs.bib
+
+
+\end{document}
