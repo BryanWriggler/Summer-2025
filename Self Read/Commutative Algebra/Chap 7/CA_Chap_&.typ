@@ -115,3 +115,13 @@ Where each $sum_(i=0)^l b_i a_(l-i) in I^(k+1)$, since $b_i in I^k$ and $a_(l-i)
 #text(weight: "bold")[Pf:]
 
 $1==>2:$ suppose $I$ is primary, then by theorems 
+
+= ND //4
+#myQuestion[
+  Which of the following rings (of complex holomorphic functions) are Noetherian?
+  1. The ring of rational functions of $z$ with no pole on the circle $|z|=1$.
+  2. The ring of power series in $z$ with a positive radius of convergence (centered at $z=0$).
+  3. The ring of power series in $z$ with an infinite radius of convergence.
+  4. The ring of polynomials in $z$ whose first $k$ derivatives vanish at the origin ($k in NN$ is fixed)
+  4. 
+]
