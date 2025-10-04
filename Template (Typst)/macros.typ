@@ -1,22 +1,3 @@
-//setup basics
-#import "@preview/rubber-article:0.4.1": *
-#import "@preview/ergo:0.1.0": *
-#import "@preview/fletcher:0.5.5" as fletcher: *
-
-//basic template setup
-#show: article.with(
-  header-display: true,
-  eq-numbering: "(1.1)",
-  eq-chapterwise: true,
-  margins: 1.0in,
-)
-#show: ergo-init.with(
-    colors: "bootstrap",  
-    headers: "classic", //"tab" for upper bar, classic for the one I used, sidebar for the emphasis on the left
-    all-breakable: true,
-    inline-qed: true
-)
-
 //common syntaxes needed
 
 //algebra
@@ -31,6 +12,8 @@
 #let im = math.upright[im] //image
 #let Spec = math.upright[Spec]
 #let coker = math.upright[coker]
+#let span = math.upright[span] //span in lin alg
+#let Orb = math.upright[Orb] //orbit in group theory
 
 //category theory
 #let cat(name) = math.sans[name] //general category font command
