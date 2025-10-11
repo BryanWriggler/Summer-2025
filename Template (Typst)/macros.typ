@@ -5,6 +5,7 @@
 #let Aut = math.upright[Aut] //automorphism
 #let End = math.upright[End] //endomorphism
 #let Hom = math.upright[Hom] //homomorphism
+#let Mor = math.upright[Mor] //morphism, in general category
 #let Nil = math.upright[Nil] //nilradical (ring)
 #let Ann = math.upright[Ann] //annihilator (ring/ module)
 #let Char = math.upright[char] //characteristics
