@@ -27,7 +27,8 @@
 )
 
 =//1
-#problem[Statement][
+#problem[
+
+][
   
-  Proof
 ]
