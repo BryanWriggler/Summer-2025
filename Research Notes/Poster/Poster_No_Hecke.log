@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  17 OCT 2025 17:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  17 OCT 2025 19:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -402,10 +402,14 @@ File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \TP@noteheight=\dimen330
 \TP@notebox=\box90
 \notelinewidth=\dimen331
- (/usr/local/texlive/2024/texmf-dist/tex/latex/extsizes/extarticle.cls
+
+
+Package tikzposter Warning: Unknown Option 22pt. on input line 204.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/extsizes/extarticle.cls
 Document Class: extarticle 1996/10/08 v1.0 Non Standard LaTeX document class
-(/usr/local/texlive/2024/texmf-dist/tex/latex/extsizes/size20.clo
-File: size20.clo 1999/11/11 NON-Standard LaTeX file (size option)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/base/exscale.sty
 Package: exscale 2018/09/24 v2.1i Standard LaTeX package exscale
 LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 57.
@@ -445,6 +449,14 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 \Gm@layouthoffset=\dimen340
 \Gm@layoutvoffset=\dimen341
 \Gm@dimlist=\toks31
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/a0poster/a0size.sty
+File: a0size.sty 2004/01/31 v1.22b a0poster class (GK, MW)
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 229.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 229.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 229.
+\big@size=\dimen342
 )
 \pgf@layerbox@backgroundlayer=\box91
 \pgf@layerboxsaved@backgroundlayer=\box92
@@ -466,10 +478,10 @@ Package: amstext 2021/08/26 v2.01 AMS text
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks34
-\ex@=\dimen342
+\ex@=\dimen343
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen343
+\pmbraise@=\dimen344
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
@@ -490,7 +502,7 @@ LaTeX Info: Redefining \big on input line 722.
 LaTeX Info: Redefining \Big on input line 723.
 LaTeX Info: Redefining \bigg on input line 724.
 LaTeX Info: Redefining \Bigg on input line 725.
-\big@size=\dimen344
+\big@size=\dimen345
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \macc@depth=\count300
@@ -508,12 +520,12 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \column@=\count305
 \maxfields@=\count306
 \andhelp@=\toks36
-\eqnshift@=\dimen345
-\alignsep@=\dimen346
-\tagshift@=\dimen347
-\tagwidth@=\dimen348
-\totwidth@=\dimen349
-\lineht@=\dimen350
+\eqnshift@=\dimen346
+\alignsep@=\dimen347
+\tagshift@=\dimen348
+\tagwidth@=\dimen349
+\totwidth@=\dimen350
+\lineht@=\dimen351
 \@envbody=\toks37
 \multlinegap=\skip54
 \multlinetaggap=\skip55
@@ -553,22 +565,22 @@ Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
 \collectedbox=\box97
 )
-\tc@llx=\dimen351
-\tc@lly=\dimen352
-\tc@urx=\dimen353
-\tc@ury=\dimen354
+\tc@llx=\dimen352
+\tc@lly=\dimen353
+\tc@urx=\dimen354
+\tc@ury=\dimen355
 Package trimclip Info: Using driver 'tc-pdftex.def'.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
 File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 ))
-\adjbox@Width=\dimen355
-\adjbox@Height=\dimen356
-\adjbox@Depth=\dimen357
-\adjbox@Totalheight=\dimen358
-\adjbox@pwidth=\dimen359
-\adjbox@pheight=\dimen360
-\adjbox@pdepth=\dimen361
-\adjbox@ptotalheight=\dimen362
+\adjbox@Width=\dimen356
+\adjbox@Height=\dimen357
+\adjbox@Depth=\dimen358
+\adjbox@Totalheight=\dimen359
+\adjbox@pwidth=\dimen360
+\adjbox@pheight=\dimen361
+\adjbox@pdepth=\dimen362
+\adjbox@ptotalheight=\dimen363
  (/usr/local/texlive/2024/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
 \c@checkoddpage=\count307
@@ -576,20 +588,20 @@ Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box98
 \sift@deathcycles=\count308
-\@vwid@loff=\dimen363
-\@vwid@roff=\dimen364
+\@vwid@loff=\dimen364
+\@vwid@roff=\dimen365
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \enitkv@toks@=\toks45
 \labelindent=\skip59
-\enit@outerparindent=\dimen365
+\enit@outerparindent=\dimen366
 \enit@toks=\toks46
 \enit@inbox=\box99
 \enit@count@id=\count309
 \enitdp@description=\count310
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen366
-\WF@size=\dimen367
+\wrapoverhang=\dimen367
+\WF@size=\dimen368
 \c@WF@wrappedlines=\count311
 \WF@box=\box100
 \WF@everypar=\toks47
@@ -874,10 +886,10 @@ Package: xparse 2024-02-18 L3 Experimental document command parser
 Package: blx-case-expl3 2023/03/05 v3.19 expl3 case changing code for biblatex
 )) (./SUtheme.sty) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowinset=\dimen368
-\pgfarrowlength=\dimen369
-\pgfarrowwidth=\dimen370
-\pgfarrowlinewidth=\dimen371
+\pgfarrowinset=\dimen369
+\pgfarrowlength=\dimen370
+\pgfarrowwidth=\dimen371
+\pgfarrowlinewidth=\dimen372
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.markings.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.markings.code.tex)) (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/helvet.sty
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty
@@ -887,42 +899,42 @@ LaTeX Font Info:    Trying to load font information for T1+phv on input line 112
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 19.70294pt on input line 112.
+(Font)              scaled to size 23.63593pt on input line 112.
 )
 \@quotelevel=\count460
 \@quotereset=\count461
 
 
 LaTeX Warning: Unused global option(s):
-    [margin=0.9in,innermargin=-4.5in,blockverticalspace=-0.25in].
+    [22pt,margin=0.9in,innermargin=-4.5in,blockverticalspace=-0.25in].
 
 (./Poster_No_Hecke.aux)
 \openout1 = `Poster_No_Hecke.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count462
-\scratchdimen=\dimen372
+\scratchdimen=\dimen373
 \scratchbox=\box102
 \nofMPsegments=\count463
 \nofMParguments=\count464
 \everyMPshowfont=\toks48
 \MPscratchCnt=\count465
-\MPscratchDim=\dimen373
+\MPscratchDim=\dimen374
 \MPnumerator=\count466
 \makeMPintoPDFobject=\count467
 \everyMPtoPDFconversion=\toks49
@@ -956,15 +968,15 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \textheight=2218.68988pt
 * \oddsidemargin=-7.22743pt
 * \evensidemargin=-7.22743pt
-* \topmargin=-57.22743pt
-* \headheight=20.0pt
-* \headsep=30.0pt
-* \topskip=20.0pt
-* \footskip=35.0pt
-* \marginparwidth=0.0pt
-* \marginparsep=15.0pt
+* \topmargin=-44.22743pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
 * \columnsep=10.0pt
-* \skip\footins=16.0pt plus 6.0pt minus 3.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -977,7 +989,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 <logo.png, id=29, 325.6968pt x 325.6968pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 49.
+Package pdftex.def Info: logo.png  used on input line 50.
 (pdftex.def)             Requested size: 178.64421pt x 178.64676pt.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
@@ -993,99 +1005,80 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Poster_No_Hecke.bbl' not found.
 
 No file Poster_No_Hecke.bbl.
-Package biblatex Info: Reference section=0 on input line 49.
-Package biblatex Info: Reference segment=0 on input line 49.
+Package biblatex Info: Reference section=0 on input line 50.
+Package biblatex Info: Reference segment=0 on input line 50.
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no = in font nullfont!
 Missing character: There is no 1 in font nullfont!
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 19.70294pt on input line 51.
+(Font)              scaled to size 23.63593pt on input line 52.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 49.01033pt on input line 51.
+(Font)              scaled to size 58.8238pt on input line 52.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 49.01033pt on input line 51.
+(Font)              scaled to size 58.8238pt on input line 52.
 LaTeX Font Info:    Font shape `T1/phv/m/sc' will be
-(Font)              scaled to size 49.01033pt on input line 51.
+(Font)              scaled to size 58.8238pt on input line 52.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 40.84036pt on input line 51.
+(Font)              scaled to size 49.01984pt on input line 52.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 34.03839pt on input line 51.
+(Font)              scaled to size 40.84987pt on input line 52.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 51.
+Package pdftex.def Info: logo.png  used on input line 52.
 (pdftex.def)             Requested size: 178.64421pt x 178.64676pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 52.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 51.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 52.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 51.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 52.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 51.
+Package pdftex.def Info: logo.png  used on input line 52.
 (pdftex.def)             Requested size: 178.64421pt x 178.64676pt.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 34.03839pt on input line 54.
+(Font)              scaled to size 40.84987pt on input line 55.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 23.63593pt on input line 54.
+(Font)              scaled to size 28.3669pt on input line 55.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 23.63593pt on input line 146.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <24.88> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 146.
+(Font)              scaled to size 28.3669pt on input line 150.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <29.86> not available
+(Font)              size <24.88> substituted on input line 150.
+
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <29.86> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 150.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 23.63593pt on input line 146.
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 146.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1phv.fd
+(Font)              scaled to size 28.3669pt on input line 150.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 150.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 23.63593pt on input line 146.
-LaTeX Font Info:    Trying to load font information for U+euf on input line 146.
+(Font)              scaled to size 28.3669pt on input line 150.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 150.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 16.41594pt on input line 146.
-LaTeX Font Info:    Calculating math sizes for size <35.83> on input line 168.
+(Font)              scaled to size 19.70294pt on input line 150.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 13.67995pt on input line 150.
 
 
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <17.915> not available
-(Font)              size <17.28> substituted on input line 168.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <35.83> not available
-(Font)              size <24.88> substituted on input line 168.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <17.915> not available
-(Font)              size <17.28> substituted on input line 168.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <35.83> not available
-(Font)              size <24.88> substituted on input line 168.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <17.915> not available
-(Font)              size <17.28> substituted on input line 168.
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <43> not available
+(Font)              size <24.88> substituted on input line 176.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <35.83> not available
-(Font)              size <24.88> substituted on input line 168.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <17.915> not available
-(Font)              size <17.28> substituted on input line 168.
-
-
-Overfull \hbox (4.00449pt too wide) detected at line 347
-\OML/cmm/m/it/24.88  []\OT1/cmr/m/n/24.88 (\OML/cmm/m/it/24.88 ^^[[]\OT1/cmr/m/n/24.88 ) = [] \OML/cmm/m/it/24.88 ;    []\OT1/cmr/m/n/24.88 (\OML/cmm/m/it/24.88 ^^[[]\OT1/cmr/m/n/24.88 ) = [] \OML/cmm/m/it/24.88 ;    []\OT1/cmr/m/n/24.88 (\OML/cmm/m/it/24.88 ^^[[]\OT1/cmr/m/n/24.88 ) = []
- []
+(Font)              size <24.88> substituted on input line 176.
 
 [1
 
@@ -1097,28 +1090,30 @@ L3 programming layer <2024-02-20>
 
 
 LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 10.95pt have occurred.
+(Font)              up to 18.12pt have occurred.
 
 Package logreq Info: Writing requests to 'Poster_No_Hecke.run.xml'.
 \openout1 = `Poster_No_Hecke.run.xml'.
 
  )
-(\end occurred when \iftrue on line 369 was incomplete)
-(\end occurred when \iftrue on line 357 was incomplete)
-(\end occurred when \iftrue on line 347 was incomplete)
-(\end occurred when \iftrue on line 168 was incomplete)
-(\end occurred when \iftrue on line 146 was incomplete)
-(\end occurred when \iftrue on line 54 was incomplete) 
+(\end occurred when \iftrue on line 380 was incomplete)
+(\end occurred when \iftrue on line 368 was incomplete)
+(\end occurred when \iftrue on line 366 was incomplete)
+(\end occurred when \iftrue on line 310 was incomplete)
+(\end occurred when \iftrue on line 201 was incomplete)
+(\end occurred when \iftrue on line 176 was incomplete)
+(\end occurred when \iftrue on line 150 was incomplete)
+(\end occurred when \iftrue on line 55 was incomplete) 
 Here is how much of TeX's memory you used:
- 30622 strings out of 474116
- 646229 string characters out of 5743681
- 2006187 words of memory out of 5000000
- 52432 multiletter control sequences out of 15000+600000
- 605649 words of font info for 113 fonts, out of 8000000 for 9000
+ 29053 strings out of 474116
+ 616026 string characters out of 5743681
+ 2008187 words of memory out of 5000000
+ 50859 multiletter control sequences out of 15000+600000
+ 605935 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,13n,121p,741b,2689s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,13n,121p,741b,2668s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Poster_No_Hecke.pdf (1 page, 537702 bytes).
+Output written on Poster_No_Hecke.pdf (1 page, 527978 bytes).
 PDF statistics:
  84 PDF objects out of 1000 (max. 8388607)
  44 compressed objects within 1 object stream

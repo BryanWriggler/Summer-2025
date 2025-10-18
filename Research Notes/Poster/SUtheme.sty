@@ -98,7 +98,7 @@
 
 % block
 \defineblockstyle{SUBlockStyle}{
-    titlewidthscale=0.9, bodywidthscale=1, roundedcorners=10
+    titlewidthscale=1, bodywidthscale=1, roundedcorners=20
 }{
     \draw[color=framecolor, fill=blockbodybgcolor,
     rounded corners=\blockroundedcorners] (blockbody.south west)
@@ -126,7 +126,7 @@
 \makeatletter
 \renewcommand\TP@maketitle{%
    \centering
-   \begin{minipage}[b]{0.8\linewidth}
+   \begin{minipage}[b]{1\linewidth}
         \centering
         \color{titlefgcolor}
         {\bfseries \Huge \sc \@title \par}
