@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.6.12)  18 OCT 2025 08:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.6.12)  18 OCT 2025 09:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -405,7 +405,7 @@ File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \notelinewidth=\dimen331
 
 
-Package tikzposter Warning: Unknown Option 22pt. on input line 204.
+Package tikzposter Warning: Unknown Option 23pt. on input line 204.
 
 (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/extsizes\extarticle.cls
 Document Class: extarticle 1996/10/08 v1.0 Non Standard LaTeX document class
@@ -907,7 +907,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 
 
 LaTeX Warning: Unused global option(s):
-    [22pt,margin=0.9in,innermargin=-4.5in,blockverticalspace=-0.25in].
+    [23pt,margin=0.9in,innermargin=-4.5in,blockverticalspace=-0.25in].
 
 (Poster_No_Hecke.aux)
 \openout1 = `Poster_No_Hecke.aux'.
@@ -1075,11 +1075,16 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <43> not available
-(Font)              size <24.88> substituted on input line 196.
+(Font)              size <24.88> substituted on input line 238.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <35.83> not available
-(Font)              size <24.88> substituted on input line 196.
+(Font)              size <24.88> substituted on input line 238.
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 429--429
+[]\T1/phv/m/n/29.86 If con-sider the cov-er-ing map cor-re-spond-ing to the ker-nel of
+ []
 
 [1
 
@@ -1097,26 +1102,27 @@ Package logreq Info: Writing requests to 'Poster_No_Hecke.run.xml'.
 \openout1 = `Poster_No_Hecke.run.xml'.
 
  )
-(\end occurred when \iftrue on line 401 was incomplete)
-(\end occurred when \iftrue on line 389 was incomplete)
-(\end occurred when \iftrue on line 387 was incomplete)
-(\end occurred when \iftrue on line 331 was incomplete)
-(\end occurred when \iftrue on line 220 was incomplete)
-(\end occurred when \iftrue on line 196 was incomplete)
+(\end occurred when \iftrue on line 445 was incomplete)
+(\end occurred when \iftrue on line 431 was incomplete)
+(\end occurred when \iftrue on line 429 was incomplete)
+(\end occurred when \iftrue on line 423 was incomplete)
+(\end occurred when \iftrue on line 373 was incomplete)
+(\end occurred when \iftrue on line 262 was incomplete)
+(\end occurred when \iftrue on line 238 was incomplete)
 (\end occurred when \iftrue on line 146 was incomplete)
 (\end occurred when \iftrue on line 55 was incomplete) 
 Here is how much of TeX's memory you used:
- 29084 strings out of 474486
- 621105 string characters out of 5744227
- 2011542 words of memory out of 5000000
- 50812 multiletter control sequences out of 15000+600000
- 605935 words of font info for 106 fonts, out of 8000000 for 9000
+ 29089 strings out of 474486
+ 621182 string characters out of 5744227
+ 2019542 words of memory out of 5000000
+ 50816 multiletter control sequences out of 15000+600000
+ 607163 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,13n,121p,754b,2668s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Poster_No_Hecke.pdf (1 page, 540518 bytes).
+<C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on Poster_No_Hecke.pdf (1 page, 550271 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
+ 87 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  114 words of extra memory for PDF output out of 10000 (max. 10000000)
 
