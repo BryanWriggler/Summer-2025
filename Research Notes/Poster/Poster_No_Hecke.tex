@@ -1,4 +1,4 @@
-\documentclass[24 pt,margin=0.9in,innermargin=-4.5in,blockverticalspace=-0.25in]{tikzposter}
+ \documentclass[24 pt,margin=0.9in,innermargin=-4.5in,blockverticalspace=-0.25in]{tikzposter}
 \geometry{paperwidth=43in,paperheight=32.5in}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -42,7 +42,7 @@
 \linespread{0.9}
 
 \title{Braid Groups, and their Representations}
-\author{Zih-Yu Hsieh \quad \quad Mentor: Choomno Moos}
+%\author{Zih-Yu Hsieh \quad \quad Mentor: Choomno Moos}
 \institute{University of California Santa Barbara, College of Creative Studies}
 \titlegraphic{\includegraphics[width=0.06\textwidth]{logo.png}}
 
@@ -251,10 +251,7 @@
         %The collection of $(\tau_i)_*$ again satisfies the Braid Relations, which generates a group homomorphism $B_n \rightarrow \mathrm{Aut}(\pi_1(D_n, d))$ by $\sigma_i \mapsto (\tau_i)_*$; this homomorphism is injective, so the braid group of $n$ strands $B_n$ is a subgroup of $\mathrm{Aut}(\pi_1(D_n, d))$.
     }
     
-    \column{0.36}  
-    \block{First Homology of Topological Space}{
-
-    }
+    \column{0.36} 
     \block{Reduced Burau Representation}{
         $\psi_n^r:B_n \rightarrow \mathrm{GL}_{n-1}(\mathbb{Z}[t^\pm])$ satisfies:
         $$\sigma_1\mapsto \left(\begin{array}{cc|c}
@@ -333,7 +330,7 @@
             \textbf{Figure:} Deformation Retraction of $D_4$ to $\bigvee_{i=1}^4 S^1$
         \end{center} %change the direction of the arrow
 
-        Let $S^{(4)} := \bigvee_{i=1}^4 S^1$, consider the space $\tilde{S}^{(4)}$ below, a \emph{Covering Space} of $S^{(4)}$:
+        Let $S^{(4)} := \bigvee_{i=1}^4 S^1$, consider its \emph{Covering Space} $\tilde{S}^{(4)}$ as below:
 
         \begin{center}
             \begin{tikzpicture}[scale=2.7]
@@ -346,19 +343,19 @@
             % left loops (t^{-1})
             \draw[->-=0.5, thick] (A) to[out=60,in=120] node[above, scale=0.7]{$t^{-1}\cdot \hat{x}_{1}$} (B);
             \draw[->-=0.5, blue, thick] (A) to[out=30,in=150] node[below, scale=0.7]{$t^{-1}\cdot \hat{x}_{2}$} (B);
-            \draw[->-=0.5, cyan, thick] (A) to[out=-30,in=-150] node[above, scale=0.7]{$t^{-1}\cdot \hat{x}_{3}$} (B);
+            \draw[->-=0.5, teal, thick] (A) to[out=-30,in=-150] node[above, scale=0.7]{$t^{-1}\cdot \hat{x}_{3}$} (B);
             \draw[->-=0.5, red, thick] (A) to[out=-60,in=-120] node[below, scale=0.7]{$t^{-1}\cdot \hat{x}_{4}$} (B);
             
             % middle loops (1)
             \draw[->-=0.5, thick] (B) to[out=60,in=120] node[above, scale=0.7]{$\hat{x}_{1}$} (C);
             \draw[->-=0.5, blue, thick] (B) to[out=30,in=150] node[below, scale=0.7]{$\hat{x}_{2}$} (C);
-            \draw[->-=0.5, cyan, thick] (B) to[out=-30,in=-150] node[above, scale=0.7]{$\hat{x}_{3}$} (C);
+            \draw[->-=0.5, teal, thick] (B) to[out=-30,in=-150] node[above, scale=0.7]{$\hat{x}_{3}$} (C);
             \draw[->-=0.5, red, thick] (B) to[out=-60,in=-120] node[below, scale=0.7]{$\hat{x}_{4}$} (C);
             
             % right loops (t)
             \draw[->-=0.5, thick] (C) to[out=60,in=120] node[above, scale=0.7]{$t\cdot \hat{x}_{1}$} (D);
             \draw[->-=0.5, blue, thick] (C) to[out=30,in=150] node[below, scale=0.7]{$t\cdot\hat{x}_{2}$} (D);
-            \draw[->-=0.5, cyan, thick] (C) to[out=-30,in=-150] node[above, scale=0.7]{$t\cdot\hat{x}_{3}$} (D);
+            \draw[->-=0.5, teal, thick] (C) to[out=-30,in=-150] node[above, scale=0.7]{$t\cdot\hat{x}_{3}$} (D);
             \draw[->-=0.5, red, thick] (C) to[out=-60,in=-120] node[below, scale=0.7]{$t\cdot\hat{x}_{4}$} (D);
             
             % labels under bottom arcs
@@ -386,7 +383,21 @@
             \item $-\ell_i = $ clockwise version of $\ell_i$
             \item $t^k \cdot \ell_i = $ degree $k$ right shift of $\ell_i$
         \end{itemize}
-        Then, all "Integer Laurent Polynomial" combination of $\ell_i$ forms $H_1(\tilde{S}^{(4)})$ as a free $\mathbb{Z}[t^\pm]$-module with basis $\ell_1,\ell_2,\ell_3$.
+        Then, all "Integer Laurent Polynomial" combination of $\ell_i$ forms the \emph{First Homology} of $\tilde{S}^{(4)}$, $H_1(\tilde{S}^{(4)})$ as a free $\mathbb{Z}[t^\pm]$-module with basis $\ell_1,\ell_2,\ell_3$.
+
+        \vspace{2em}
+    }
+
+    \block{Source}{
+        \begin{itemize}
+            \item Braid Groups (Christian Kassel, Vladimir Turaev)
+            \item Algebraic Topology (Hatcher)
+            \item Braids, Links, Mapping Class Groups (Joan Birman)
+            %\item Introduction to Topological Manifold (John Lee)
+            %\item An Introduction to Knot Theory (W.B. Raymond Lickorish)
+            %\item Category Theory in Context (Emily Riehl)
+            %\item Algebra Chapter 0 (Paolo Aluffi)
+        \end{itemize}
     }
 
     \column{0.32}
@@ -394,7 +405,7 @@
     \block{Braid Group Action on Homology}{
         \textbf{Recall:} braid automorphism $(\tau_2)_*$ of $\pi_1(D_4,d)$ satisfies $(\tau_2)_*(x_2) = x_3$, and $(\tau_2)_*(x_3) = x_3\cdot x_2\cdot x_3^{-1}$. Which, it uniquely lifts to an transformation on the $\ell_i$ via $p$: 
         
-        \textbf{EX:} $\ell_2 = \hat{x}_{3}\cdot \hat{x}_{2}^{-1} \mapsto \hat{x}_{2} \cdot \left((t\cdot \hat{x}_{2})\cdot (t\cdot \hat{x}_{3}^{-1})\cdot \hat{x}_{2}^{-1}\right) = -t \cdot \ell_2$.
+    \textbf{EX:} $\ell_2 = \color{teal}{\hat{x}_{3}} \color{black}{\cdot} \color{blue}{\hat{x}_{2}^{-1}} \color{black}{\mapsto} \color{teal}{\left(\hat{x}_{2} \cdot (t\cdot \hat{x}_{2})\cdot (t\cdot \hat{x}_{3}^{-1})\right)} \color{black}{\cdot} \color{blue}{\hat{x}_{2}^{-1}} \color{black}{= -t \cdot \ell_2}$.
         
         \begin{center}
             \begin{tikzpicture}[scale=2.7]
@@ -404,7 +415,7 @@
 
                 %Draw the loop's associated orientation
                 \draw[->-=0.5, blue, thick] (B) to[out=150,in=30] node[below, scale=0.7]{$\hat{x}_{2}^{-1}$} (A);
-                \draw[->-=0.5, cyan, thick] (A) to[out=-30,in=-150] node[above, scale=0.7]{$\hat{x}_{3}$} (B);
+                \draw[->-=0.5, teal, thick] (A) to[out=-30,in=-150] node[above, scale=0.7]{$\hat{x}_{3}$} (B);
 
                 %label the dots in the first graph
                 \node[scale=0.7] at (0,-0.5) {$\tilde d$};
@@ -421,11 +432,11 @@
                 \node (E) at (10,0) [circle,fill,inner sep=3pt]{};
 
                 %first path where x_{3,1} gets mapped to
-                \draw[->-=0.5, cyan, thick] (C) to[out=-30,in=-150] node[above,scale=0.7]{$\hat{x}_{3}$} (D);
+                \draw[->-=0.5, teal, thick] (C) to[out=-30,in=-150] node[above,scale=0.7]{$\hat{x}_{3}$} (D);
+                \draw[->-=0.5, teal, thick] (D) to[out=30,in=150] node[below,scale=0.7]{$t\cdot \hat{x}_{2}$} (E);
+                \draw[->-=0.5, teal, thick] (E) to[out=-150,in=-30] node[above,scale=0.7]{$t\cdot \hat{x}_{3}^{-1}$} (D);
 
                 %second path where x_{2,1}^{-1} gets mapped to
-                \draw[->-=0.5, blue, thick] (D) to[out=30,in=150] node[below,scale=0.7]{$t\cdot \hat{x}_{2}$} (E);
-                \draw[->-=0.5, blue, thick] (E) to[out=-150,in=-30] node[above,scale=0.7]{$t\cdot \hat{x}_{3}^{-1}$} (D);
                 \draw[->-=0.5, blue, thick] (D) to[out=-145,in=-35] node[below,scale=0.7]{$\hat{x}_{3}^{-1}$} (C);
 
                 %label the dots in the second graph
@@ -439,28 +450,33 @@
         Doing this for each $\ell_i$, put into matrix form with basis $\{\ell_i\}$, we recover the Representation.
     }
 
-    \block{Gassner Representation}{
-        Instead of on braid groups $B_n$, this one is representing \emph{Pure Braid Group} $P_n$: Given the map $B_n \rightarrow S_n$ ($n^\textmd{th}$ Symmetry Group) by $\sigma_i\mapsto (i, i+1)$, $P_n$ is the kernel of this morphism (Geometrically, it's the braids with the strand going from the $i^\textmd{th}$ starting point to the $i^\textmd{th}$ ending point, which forms identity as a permutation of the $n$ endpoints).
+    \block{Gassner Representation (Need Diagram of Deformation Retract)}{
+        \textbf{Def:} The \emph{Pure Braid Group} $P_n \subset B_n$, is the kernel of the map $B_n \rightarrow S_n$ by $\sigma_i \mapsto (i,i+1)$. Geometrically, it's the braids with every strand goes back to its original point.
 
-        If consider the covering map corresponding to the kernel of $\pi_1(S^{(n)},d) \rightarrow \mathbb{Z}^n$ by $x_i \mapsto e_i$ (the $i^\textmd{th}$ basis of $\mathbb{Z}^n$), it forms a representation $P_n \rightarrow \mathrm{GL}_n(\mathbf{Z}[t_1^\pm,...,t_n^\pm])$.
+        \hfil
+
+        If consider the \emph{Integer Lattice} $\mathbb{Z}^n$ together with the shifts of connection segments $\hat{x}_i$ connecting $\overline{0}$ to $e_i$ (the elementary basis of $\mathbb{Z}^n$), it again forms a Covering Space of $S^{(n)}:=\bigvee_{i=1}^{^n}S^1$, with covering map $\overline{d}\mapsto d$ for all $\overline{d}\in\mathbb{Z}^n$, and $\hat{x}_i \mapsto x_i$.
+
+        \hfil
+
+        Then, each \emph{Pure Braid} $\rho \in P_n$ (with $P_n \subset \mathfrak{M}(D_n)\cong B_n$)  lifts to an action on the \emph{First Homology} of the covering space, and forms the \emph{Gassner Representation}.
+        \begin{center}
+            %insert integer lattice for pure braid diagrams
+
+            \textbf{Figure:} Covering Space of $S^{(3)}$ corresponds to Gassner Representation
+        \end{center}
     }
 
-    \block{Conclusion \& Future Directions}{}
+    \block{Conclusion \& Future Directions}{
+        We've introduced some basics of Braid Groups, follow with the homological construction of Burau and Gassner Representations.
+
+        \hfil
+
+        This project is intended to continue on with the study of relating kernels of the Representations, and/or other homological representations of Braid Groups.
+    }
     \block{Acknowledgement \& Sources}{
         We're genuinely thankful for the parent donors, Professor Cachadina, and Professor Casteels who made this program possible. 
         We're also grateful for our mentor Choomno Moos with their effort and excellent guidance.
-
-        \textbf{Source:}
-        \vspace{-0.3cm}
-        \begin{itemize}
-            \item Braid Groups (Christian Kassel, Vladimir Turaev)
-            \item Algebraic Topology (Hatcher)
-            \item Braids, Links, Mapping Class Groups (Joan Birman)
-            %\item Introduction to Topological Manifold (John Lee)
-            %\item An Introduction to Knot Theory (W.B. Raymond Lickorish)
-            %\item Category Theory in Context (Emily Riehl)
-            %\item Algebra Chapter 0 (Paolo Aluffi)
-        \end{itemize}
     }
 \end{columns}
 \end{document}
