@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  18 OCT 2025 15:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  18 OCT 2025 15:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1092,6 +1092,9 @@ L3 programming layer <2024-02-20>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 18.12pt have occurred.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package logreq Info: Writing requests to 'Poster_No_Hecke.run.xml'.
 \openout1 = `Poster_No_Hecke.run.xml'.
 
@@ -1107,15 +1110,15 @@ Package logreq Info: Writing requests to 'Poster_No_Hecke.run.xml'.
 (\end occurred when \iftrue on line 150 was incomplete)
 (\end occurred when \iftrue on line 59 was incomplete) 
 Here is how much of TeX's memory you used:
- 29060 strings out of 474116
- 616163 string characters out of 5743681
+ 29061 strings out of 474116
+ 616169 string characters out of 5743681
  2025187 words of memory out of 5000000
  50867 multiletter control sequences out of 15000+600000
- 604781 words of font info for 105 fonts, out of 8000000 for 9000
+ 605935 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,13n,121p,741b,2670s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Poster_No_Hecke.pdf (1 page, 532301 bytes).
+Output written on Poster_No_Hecke.pdf (1 page, 532532 bytes).
 PDF statistics:
  84 PDF objects out of 1000 (max. 8388607)
  44 compressed objects within 1 object stream
