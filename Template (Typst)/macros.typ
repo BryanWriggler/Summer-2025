@@ -65,3 +65,4 @@
 #let bN = math.bold[N] //torque
 #let bw = $bold(omega)$ //angular velocity
 #let b0 = math.bold[0] //zero vector
+#let be = math.overline[e] //use for special case of standard basis
