@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  23 OCT 2025 23:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.22)  24 OCT 2025 16:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1039,52 +1039,52 @@ File: logo.png Graphic file (type png)
 Package pdftex.def Info: logo.png  used on input line 52.
 (pdftex.def)             Requested size: 178.64421pt x 178.64676pt.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 40.84987pt on input line 70.
+(Font)              scaled to size 40.84987pt on input line 71.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 28.3669pt on input line 70.
+(Font)              scaled to size 28.3669pt on input line 71.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 28.3669pt on input line 70.
+(Font)              scaled to size 28.3669pt on input line 71.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <29.86> not available
-(Font)              size <24.88> substituted on input line 70.
+(Font)              size <24.88> substituted on input line 71.
 
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <29.86> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 70.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 71.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 28.3669pt on input line 70.
+(Font)              scaled to size 28.3669pt on input line 71.
 <braid diagrams 2.jpg, id=31, 499.8675pt x 257.96375pt>
 File: braid diagrams 2.jpg Graphic file (type jpg)
 <use braid diagrams 2.jpg>
-Package pdftex.def Info: braid diagrams 2.jpg  used on input line 70.
+Package pdftex.def Info: braid diagrams 2.jpg  used on input line 71.
 (pdftex.def)             Requested size: 236.16078pt x 121.87276pt.
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <43> not available
-(Font)              size <24.88> substituted on input line 155.
+(Font)              size <24.88> substituted on input line 156.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <35.83> not available
-(Font)              size <24.88> substituted on input line 155.
+(Font)              size <24.88> substituted on input line 156.
 
-LaTeX Font Info:    Trying to load font information for U+euf on input line 155.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 156.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 19.70294pt on input line 155.
+(Font)              scaled to size 19.70294pt on input line 156.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 13.67995pt on input line 155.
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 384.
+(Font)              scaled to size 13.67995pt on input line 156.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 385.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 28.3669pt on input line 384.
+(Font)              scaled to size 28.3669pt on input line 385.
 <pure braid.png, id=32, 603.25375pt x 495.8525pt>
 File: pure braid.png Graphic file (type png)
 <use pure braid.png>
-Package pdftex.def Info: pure braid.png  used on input line 483.
-(pdftex.def)             Requested size: 155.16037pt x 127.53401pt.
+Package pdftex.def Info: pure braid.png  used on input line 484.
+(pdftex.def)             Requested size: 232.74648pt x 191.30858pt.
  [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc} <./logo.png> <./braid diagrams 2.jpg> <./pure braid.png>] (./Poster_No_Hecke.aux)
@@ -1101,25 +1101,25 @@ Package logreq Info: Writing requests to 'Poster_No_Hecke.run.xml'.
 \openout1 = `Poster_No_Hecke.run.xml'.
 
  )
-(\end occurred when \iftrue on line 506 was incomplete)
-(\end occurred when \iftrue on line 490 was incomplete)
-(\end occurred when \iftrue on line 483 was incomplete)
-(\end occurred when \iftrue on line 434 was incomplete)
-(\end occurred when \iftrue on line 384 was incomplete)
-(\end occurred when \iftrue on line 279 was incomplete)
-(\end occurred when \iftrue on line 254 was incomplete)
-(\end occurred when \iftrue on line 155 was incomplete)
-(\end occurred when \iftrue on line 70 was incomplete) 
+(\end occurred when \iftrue on line 510 was incomplete)
+(\end occurred when \iftrue on line 494 was incomplete)
+(\end occurred when \iftrue on line 484 was incomplete)
+(\end occurred when \iftrue on line 435 was incomplete)
+(\end occurred when \iftrue on line 385 was incomplete)
+(\end occurred when \iftrue on line 280 was incomplete)
+(\end occurred when \iftrue on line 255 was incomplete)
+(\end occurred when \iftrue on line 156 was incomplete)
+(\end occurred when \iftrue on line 71 was incomplete) 
 Here is how much of TeX's memory you used:
- 29077 strings out of 474116
- 616524 string characters out of 5743681
- 2023187 words of memory out of 5000000
+ 29078 strings out of 474116
+ 616530 string characters out of 5743681
+ 2024187 words of memory out of 5000000
  50884 multiletter control sequences out of 15000+600000
- 604781 words of font info for 105 fonts, out of 8000000 for 9000
+ 605935 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,13n,121p,741b,2672s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Poster_No_Hecke.pdf (1 page, 589926 bytes).
+Output written on Poster_No_Hecke.pdf (1 page, 591024 bytes).
 PDF statistics:
  87 PDF objects out of 1000 (max. 8388607)
  44 compressed objects within 1 object stream
