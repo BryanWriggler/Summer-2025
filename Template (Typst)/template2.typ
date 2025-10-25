@@ -2,7 +2,7 @@
 
 //setup basics
 #import "@preview/rubber-article:0.4.1": *
-#import "@preview/ergo:0.1.0": *
+#import "@preview/ergo:0.2.0": *
 #import "@preview/fletcher:0.5.5" as fletcher: *
 
 //basic template setup
@@ -13,9 +13,9 @@
   margins: 1.0in,
 )
 #show: ergo-init.with(
-    colors: "bootstrap",  
-    headers: "classic", //"tab" for upper bar, classic for the one I used, sidebar for the emphasis on the left
-    all-breakable: true,
+    colors: ergo-colors.penumbra-light,  
+    styles: ergo-styles.classic, 
+    breakable: true,
     inline-qed: true
 )
 
